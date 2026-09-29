@@ -1,0 +1,31 @@
+:root {
+  color-scheme: dark;
+  --bg: #101a22;
+  --surface: #17232d;
+  --surface-raised: #1d2b35;
+  --surface-soft: #142029;
+  --border: #2b3a44;
+  --text: #edf3f2;
+  --muted: #9aadb7;
+  --mint: #78e5bb;
+  --amber: #f5c175;
+  --blue: #89c6ed;
+  --violet: #b3a0f8;
+  --danger: #f19c9c;
+  --accent: var(--mint);
+  --radius: 16px;
+  --font: 'Arial', 'Helvetica Neue', system-ui, sans-serif;
+  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+}
+.family-mint {
+  --accent: var(--mint);
+}
+.family-amber {
+  --accent: var(--amber);
+}
+.family-blue {
+  --accent: var(--blue);
+}
+.family-violet {
+  --accent: var(--violet);
+}

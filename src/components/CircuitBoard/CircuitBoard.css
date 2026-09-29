@@ -1,0 +1,387 @@
+.board-panel {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #111c25;
+}
+.board-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 18px;
+  font-size: 10px;
+  font-family: var(--mono);
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--border);
+}
+.board-heading > span:first-child {
+  color: var(--text);
+}
+.board-heading .mono {
+  font-size: 9px;
+}
+.circuit-canvas {
+  height: clamp(390px, 58vh, 610px);
+  width: 100%;
+}
+.react-flow {
+  --xy-background-color: #111c25;
+  --xy-node-color-default: var(--text);
+}
+.react-flow__attribution {
+  background: #17232ddd !important;
+}
+.react-flow__attribution a {
+  color: var(--muted) !important;
+  font-size: 8px;
+}
+.react-flow__node {
+  cursor: grab;
+}
+.react-flow__node-input,
+.react-flow__node-output {
+  padding: 0;
+  width: auto;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+}
+.react-flow__node:focus-visible {
+  outline: 2px solid var(--mint);
+  border-radius: 13px;
+}
+.react-flow__node.selected .circuit-node {
+  border-color: var(--accent);
+}
+.circuit-node {
+  width: 136px;
+  position: relative;
+  background: var(--surface-raised);
+  border: 1px solid #46555f;
+  border-radius: 12px;
+  box-shadow: 0 7px 18px #0003;
+}
+.input-node {
+  padding: 13px 16px;
+}
+.node-kicker {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+.input-node-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  min-height: 48px;
+  margin: 5px 0;
+}
+.input-node-toggle > strong {
+  font-family: var(--mono);
+  font-size: 27px;
+  font-weight: 500;
+  color: var(--text);
+}
+.node-bit {
+  display: grid;
+  place-items: center;
+  background: #111c25;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  width: 31px;
+  height: 31px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 17px;
+}
+.bit-1 .node-bit {
+  background: #78e5bb12;
+  border-color: #78e5bb55;
+  color: var(--mint);
+}
+.input-node > small {
+  color: var(--muted);
+  display: block;
+  font-size: 10px;
+}
+.gate-node {
+  padding: 10px 14px;
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+}
+.gate-node-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 5px;
+  padding-left: 7px;
+}
+.gate-node-heading > strong {
+  font-size: 12px;
+  color: var(--accent);
+}
+.node-delete {
+  min-width: 30px;
+  min-height: 30px;
+  display: grid;
+  place-items: center;
+  border: none;
+  background: transparent;
+  border-radius: 5px;
+  color: var(--muted);
+}
+.node-delete:hover {
+  background: #f19c9c11;
+  color: var(--danger);
+}
+.gate-node > .gate-symbol {
+  height: 59px;
+  color: var(--accent);
+}
+.gate-node-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 9px;
+  font-size: 8px;
+  color: var(--muted);
+}
+.node-signal {
+  min-width: 20px;
+  min-height: 20px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: var(--mono);
+}
+.node-signal.bit-1 {
+  background: #78e5bb0b;
+  border-color: #78e5bb55;
+}
+.output-node {
+  width: 144px;
+  padding: 12px 16px;
+}
+.output-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+  color: var(--muted);
+}
+.bit-1 .output-indicator > svg {
+  color: var(--mint);
+  filter: drop-shadow(0 0 8px #78e5bb66);
+}
+.output-node > strong {
+  display: block;
+  font-size: 12px;
+}
+.output-node > small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 6px;
+}
+.react-flow__handle.circuit-port {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border: 0;
+  display: grid;
+  place-items: center;
+  cursor: crosshair;
+}
+.circuit-port::after {
+  content: '';
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.react-flow__handle-left.circuit-port {
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.react-flow__handle-right.circuit-port {
+  right: 0;
+  transform: translate(50%, -50%);
+}
+.port-dot {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #71828e;
+  border-radius: 50%;
+  background: #17232d;
+  pointer-events: none;
+}
+.circuit-port.bit-1 .port-dot {
+  background: var(--mint);
+  border-color: var(--mint);
+}
+.circuit-port:hover .port-dot,
+.circuit-port.connectingfrom .port-dot {
+  border-color: var(--mint);
+  box-shadow: 0 0 0 5px #78e5bb19;
+}
+.circuit-port.valid .port-dot {
+  background: var(--mint);
+}
+.port-clear {
+  position: absolute;
+  left: 9px;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  display: grid;
+  place-items: center;
+}
+.port-clear:hover {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+.output-node .port-clear {
+  left: 2px;
+}
+.react-flow__handle-top.circuit-port {
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+.react-flow__handle-bottom.circuit-port {
+  bottom: 0;
+  transform: translate(-50%, 50%);
+}
+.port-clear-vertical {
+  top: -35px;
+  transform: translateX(-50%);
+}
+@media (max-width: 600px) {
+  .circuit-canvas {
+    height: 580px;
+  }
+}
+.wire-path {
+  stroke: #708895;
+  stroke-width: 2.5px;
+}
+.wire-path.bit-1 {
+  stroke: var(--mint);
+  filter: drop-shadow(0 0 3px #78e5bb33);
+}
+.wire-path.bit-unknown {
+  stroke: #5b6975;
+  stroke-dasharray: 5 4;
+}
+.wire-path.wire-selected {
+  stroke-width: 4px;
+}
+.wire-remove {
+  position: absolute;
+  background: var(--surface);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  border-radius: 7px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 10px;
+  font-size: 11px;
+  pointer-events: all;
+}
+.board-tools {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.board-tools button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  color: var(--muted);
+}
+.board-tools button + button {
+  border-left: 1px solid var(--border);
+}
+.board-tools button:hover {
+  color: var(--text);
+  background: var(--surface-raised);
+}
+.board-hint {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  padding: 13px 17px;
+  font-size: 10px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
+.board-hint > svg {
+  color: var(--mint);
+}
+.connection-details {
+  padding: 0 17px;
+  border-top: 1px solid var(--border);
+}
+.connection-details summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 0;
+  min-height: 46px;
+  color: #c8d5da;
+}
+.connection-details summary > .muted {
+  margin-left: auto;
+  font-size: 9px;
+}
+.connection-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 9px;
+  align-items: end;
+  padding-bottom: 15px;
+}
+.connection-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 10px;
+  color: var(--muted);
+  min-width: 0;
+}
+select {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  min-height: 44px;
+  width: 100%;
+  padding: 9px 28px 9px 9px;
+  font-size: 11px;
+}
+.connection-form .button {
+  padding: 10px 13px;
+  font-size: 11px;
+}

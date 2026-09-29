@@ -1,0 +1,627 @@
+@media (min-width: 1750px) {
+  .puzzle-workspace {
+    grid-template-columns: 255px minmax(0, 1fr) 230px;
+    gap: 20px;
+  }
+  .inventory-card > svg:last-child {
+    display: block;
+  }
+}
+@media (max-width: 1100px) {
+  .home-hero {
+    gap: 32px;
+  }
+  .hero-facts {
+    gap: 15px;
+  }
+  .hero-actions .button {
+    padding: 11px 15px;
+  }
+  .puzzle-workspace {
+    grid-template-columns: 185px minmax(0, 1fr) 150px;
+    gap: 10px;
+  }
+  .puzzle-page {
+    padding: 15px 18px 40px;
+  }
+  .objective-panel,
+  .inventory-panel {
+    padding: 18px 12px;
+  }
+  .objective-panel h2 {
+    font-size: 21px;
+  }
+  .inventory-card {
+    gap: 4px;
+  }
+  .inventory-card > .gate-symbol {
+    width: 29px;
+  }
+  .inventory-learn {
+    width: 22px;
+  }
+  .connection-details summary > .muted {
+    display: none;
+  }
+  .connection-form {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .connection-form > .button {
+    grid-column: 1/-1;
+  }
+  .level-grid {
+    gap: 10px;
+  }
+  .level-card {
+    padding: 17px 12px;
+  }
+  .gate-collection {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (max-width: 850px) {
+  .page {
+    padding: 35px 24px 55px;
+  }
+  .home-hero {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-copy h1 {
+    font-size: 58px;
+  }
+  .hero-copy {
+    max-width: 620px;
+  }
+  .hero-lab {
+    max-width: 580px;
+    width: 100%;
+  }
+  .hero-description {
+    max-width: 570px;
+  }
+  .how-section {
+    margin-top: 55px;
+  }
+  .how-grid {
+    gap: 12px;
+  }
+  .how-card {
+    padding: 18px;
+  }
+  .level-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .gate-detail-grid {
+    grid-template-columns: 210px minmax(0, 1fr);
+    gap: 26px;
+  }
+  .detail-character .character-portrait {
+    height: 200px;
+  }
+  .detail-character h1 {
+    font-size: 22px;
+  }
+  .puzzle-workspace {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+  .objective-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    column-gap: 22px;
+    padding: 18px 20px;
+  }
+  .objective-panel > .eyebrow,
+  .objective-panel > h2,
+  .objective-description {
+    grid-column: 1;
+  }
+  .objective-panel h2 {
+    margin: 8px 0 10px;
+  }
+  .objective-inputs {
+    grid-column: 2;
+    grid-row: 1/4;
+    border: 0;
+    margin: 0;
+    padding: 0;
+  }
+  .star-objective {
+    grid-column: 1;
+    padding-top: 12px;
+    margin-top: 13px;
+  }
+  .objective-table {
+    grid-column: 2;
+    margin-top: 13px;
+    padding-top: 12px;
+  }
+  .inventory-panel {
+    padding: 15px 18px;
+  }
+  .inventory-panel h2 {
+    font-size: 15px;
+    display: inline;
+    margin-left: 16px;
+  }
+  .inventory-panel > .small {
+    margin-top: 8px;
+  }
+  .inventory-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 10px;
+  }
+  .inventory-card > .gate-symbol {
+    width: 33px;
+  }
+  .inventory-note {
+    margin-top: 13px;
+    padding-top: 12px;
+  }
+  .inventory-card {
+    min-height: 52px;
+  }
+  .circuit-canvas {
+    height: 440px;
+  }
+  .connection-form {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  }
+  .connection-form > .button {
+    grid-column: auto;
+  }
+}
+@media (max-width: 600px) {
+  .nav-inner {
+    padding: 0 16px;
+    min-height: 70px;
+    gap: 10px;
+  }
+  .brand {
+    gap: 8px;
+    font-size: 15px;
+  }
+  .brand small {
+    font-size: 6px;
+    letter-spacing: 0.09em;
+  }
+  .brand-mark {
+    width: 31px;
+    height: 33px;
+    border-radius: 8px;
+  }
+  .brand-mark svg {
+    width: 21px;
+  }
+  .site-header nav {
+    gap: 0;
+  }
+  .site-header nav a {
+    font-size: 11px;
+    padding: 0 9px;
+  }
+  .site-header nav a > svg {
+    display: none;
+  }
+  .site-header nav a.active::after {
+    left: 9px;
+    right: 9px;
+  }
+  .nav-score {
+    font-size: 10px;
+    padding-left: 9px;
+    gap: 4px;
+  }
+  .nav-score > svg {
+    width: 13px;
+  }
+  .score-total {
+    display: none;
+  }
+  .page {
+    padding: 32px 18px 45px;
+  }
+  .eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+  .hero-copy h1 {
+    font-size: clamp(44px, 12vw, 60px);
+    margin: 23px 0;
+  }
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .hero-actions {
+    gap: 9px;
+  }
+  .hero-actions .button {
+    padding: 13px 15px;
+    font-size: 12px;
+  }
+  .hero-actions .button-quiet {
+    padding-left: 0;
+  }
+  .hero-facts {
+    gap: 18px;
+    font-size: 9px;
+  }
+  .hero-facts strong {
+    font-size: 14px;
+    margin-right: 3px;
+  }
+  .hero-lab-title {
+    padding: 26px 20px 5px;
+  }
+  .hero-lab-title h2 {
+    font-size: 22px;
+  }
+  .gate-simulator {
+    padding: 22px 20px;
+  }
+  .simulator-circuit {
+    gap: 19px;
+    grid-template-columns: 1fr 1.2fr 1fr;
+  }
+  .sim-inputs::after {
+    right: -20px;
+    width: 20px;
+  }
+  .sim-gate {
+    padding: 10px 7px;
+  }
+  .sim-gate::after {
+    width: 19px;
+    right: -20px;
+  }
+  .sim-inputs .binary-switch {
+    padding: 9px 7px;
+    gap: 7px;
+    font-size: 12px;
+  }
+  .sim-output strong {
+    font-size: 13px;
+  }
+  .sim-output small {
+    font-size: 9px;
+  }
+  .lab-bottomline {
+    padding: 15px 19px;
+    font-size: 10px;
+  }
+  .section-intro h2 {
+    font-size: 25px;
+  }
+  .how-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .how-card {
+    padding: 22px;
+  }
+  .how-card h3 {
+    margin-top: 19px;
+  }
+  .collection-banner {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-top: 35px;
+    padding-top: 30px;
+  }
+  .collection-banner h2 {
+    font-size: 25px;
+  }
+  .site-footer {
+    flex-wrap: wrap;
+    padding: 22px 18px;
+    font-size: 10px;
+    gap: 14px;
+  }
+  .site-footer > span:last-child {
+    display: none;
+  }
+  .resume-strip {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .resume-strip .progress-track {
+    flex-basis: 50%;
+  }
+  .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 34px;
+  }
+  .page-heading h1 {
+    font-size: 35px;
+  }
+  .page-heading p {
+    font-size: 13px;
+  }
+  .progress-summary {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 14px 17px;
+  }
+  .progress-summary > strong {
+    font-size: 21px;
+  }
+  .progress-summary .summary-stars {
+    margin-top: 0;
+    margin-left: auto;
+  }
+  .progress-summary > span:first-of-type {
+    font-size: 9px;
+  }
+  .level-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+  }
+  .level-card {
+    padding: 17px;
+  }
+  .world-heading h2 {
+    font-size: 19px;
+  }
+  .world-heading p {
+    font-size: 11px;
+  }
+  .world-heading {
+    gap: 12px;
+  }
+  .gate-collection {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .gate-card-top {
+    padding: 12px;
+  }
+  .gate-card-body {
+    padding: 15px 12px;
+  }
+  .gate-card-body h2 {
+    font-size: 15px;
+  }
+  .gate-card-body p {
+    font-size: 11px;
+    min-height: 49px;
+  }
+  .gate-card-action {
+    font-size: 9px;
+  }
+  .character-portrait {
+    height: 140px;
+  }
+  .gate-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    margin-top: 15px;
+  }
+  .detail-character .character-portrait {
+    height: 215px;
+  }
+  .detail-character {
+    max-width: 380px;
+  }
+  .gate-description {
+    padding: 0;
+  }
+  .description-large {
+    font-size: 18px;
+  }
+  .expression-box {
+    padding: 15px;
+  }
+  .expression-box strong {
+    font-size: 18px;
+  }
+  .detail-simulator {
+    padding: 22px 13px;
+  }
+  .detail-simulator h2 {
+    font-size: 22px;
+  }
+  .detail-simulator .gate-simulator {
+    padding: 20px 7px;
+  }
+  .puzzle-page {
+    padding: 9px 12px 32px;
+  }
+  .puzzle-topbar {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .puzzle-topbar .back-link {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .puzzle-breadcrumb {
+    font-size: 10px;
+  }
+  .puzzle-breadcrumb > span,
+  .puzzle-breadcrumb {
+    font-size: 0;
+  }
+  .puzzle-breadcrumb strong {
+    font-size: 11px;
+  }
+  .puzzle-topbar .stars {
+    gap: 1px;
+  }
+  .puzzle-topbar .stars svg {
+    width: 13px;
+  }
+  .objective-panel {
+    padding: 16px;
+    display: block;
+  }
+  .objective-panel h2 {
+    font-size: 23px;
+    margin: 9px 0;
+  }
+  .objective-description {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+  .objective-inputs {
+    margin-top: 13px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border);
+  }
+  .objective-inputs h3 {
+    margin-bottom: 10px;
+  }
+  .input-switches {
+    display: flex;
+  }
+  .input-switches .binary-switch {
+    min-width: 0;
+    flex: 1;
+    font-size: 10px;
+    gap: 6px;
+  }
+  .star-objective {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4px 9px;
+  }
+  .star-objective p {
+    margin: 0;
+    flex: 1;
+    line-height: 1.6;
+    font-size: 10px;
+  }
+  .star-objective small {
+    font-size: 9px;
+    flex-basis: 100%;
+    margin-top: 3px;
+  }
+  .star-objective .stars svg {
+    width: 13px;
+  }
+  .objective-table {
+    margin-top: 8px;
+    padding-top: 6px;
+  }
+  .objective-table summary {
+    min-height: 36px;
+    font-size: 10px;
+  }
+  .circuit-canvas {
+    height: 370px;
+  }
+  .board-heading {
+    padding: 13px;
+    font-size: 9px;
+  }
+  .board-heading .mono {
+    font-size: 8px;
+  }
+  .board-hint {
+    font-size: 9px;
+    padding: 11px 13px;
+  }
+  .connection-details {
+    padding: 0 13px;
+  }
+  .connection-form {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .connection-form > .button {
+    grid-column: 1/-1;
+  }
+  .inventory-panel {
+    padding: 13px;
+  }
+  .inventory-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .inventory-panel h2 {
+    font-size: 14px;
+  }
+  .inventory-card > .gate-symbol {
+    width: 38px;
+  }
+  .inventory-learn {
+    min-width: 32px;
+  }
+  .puzzle-controls {
+    padding: 9px;
+    gap: 4px;
+  }
+  .puzzle-controls .button {
+    padding: 10px 11px;
+    gap: 6px;
+    font-size: 11px;
+  }
+  .puzzle-controls > .button svg {
+    width: 15px;
+  }
+  .controls-right {
+    gap: 5px;
+  }
+  .controls-right .button-secondary {
+    padding: 10px 9px;
+  }
+  .controls-right .button-secondary svg {
+    display: none;
+  }
+  .reset-confirmation {
+    flex-wrap: wrap;
+  }
+  .reset-confirmation p {
+    flex-basis: 100%;
+  }
+  .test-placeholder {
+    align-items: flex-start;
+    font-size: 10px;
+    padding: 0 10px;
+  }
+  .test-result-heading {
+    padding: 17px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .test-result-heading > div:first-of-type {
+    flex: 1;
+  }
+  .test-result-heading h2 {
+    font-size: 18px;
+  }
+  .test-success-actions {
+    flex-basis: 100%;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+  .test-success-actions .button {
+    font-size: 12px;
+    padding: 10px 15px;
+  }
+  .results-table th,
+  .results-table td {
+    padding: 10px 13px;
+    font-size: 10px;
+  }
+  .circuit-errors {
+    margin-left: 32px;
+    font-size: 11px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
