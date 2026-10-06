@@ -2,8 +2,8 @@
 
 ## Layers
 
-1. `data/`: ten component descriptors and 35 level records, generated complete
-   truth tables and world metadata. No individual level components.
+1. `data/`: ten component descriptors and 45 circuit records (40 regular lessons and
+   five stage challenges), generated complete truth tables and stage metadata. No individual level components.
 2. `engine/`: binary operations, graph topology, structural validation,
    partial/complete evaluation and all-case level validation. Pure JavaScript,
    independent of React and localStorage.
@@ -361,3 +361,46 @@ The planner is a display heuristic, not a planar-graph guarantee. Physically
 overlapping cards can block a terminal's escape and cause fallback routing.
 Moving cards apart or Organizar restores usable corridors. Shared source stems
 represent the same signal, not independent wires accidentally sharing a lane.
+
+## Five-stage curriculum and challenge bypass — 2026-10-06
+
+`data/stages.js` defines five stages, their ordered regular level IDs, and one
+challenge each. IDs 1–35 retain their objectives and earned completion keys.
+New regular lessons are 36, 37 and 39–41; challenges are 38 and 42–45. The
+introductory inventory is restricted to a single primitive gate type, allowing
+one or two gates. Stage 2 reference constructions use two to four gates of
+multiple types. Stage 3 emphasizes NAND, sharing and a complete adder. Stage 4
+covers clocks/D/T memory; stage 5 combines decisions, capture, delay and toggle.
+Challenge reference counts are 3, 5, 6, 5 and 8, each above the regular targets
+in its stage. Sequential counts include CLOCK and memory components.
+
+A stage is credited by its completed challenge or all its regular lessons.
+Players who completed all original lessons belonging to a stage retain that
+credit even if new introductory lessons were added. This derives entirely from
+validated completion records: no saved bypass flag or fabricated regular
+completion is created. A challenge is accessible from the entry of its stage.
+Earlier stages must be credited before a later challenge or lesson opens.
+Passed stages expose every omitted lesson for optional practice; normal stages
+unlock regular lessons in their declared order. Already earned individual
+completions remain accessible even with new lessons pending.
+
+`canAccessLevel`, `nextRegularLevel`, `nextLevelAfter` and stage status helpers
+are shared by the map, route guard, reducer, completion dialog, persistence and
+resume action. The reducer checks access for all puzzle actions and validates
+every combination/sequence before recording completion. `unlockedLevel` remains
+as a derived v1 compatibility field (1 after course completion); it is never
+used as an access boundary. Home uses the nullable next regular level to return
+to the map when all stages are credited. Existing invalid/oversized completion
+records and drafts still pass the same sanitation before use.
+
+All seven primitive gates are available initially; finite per-level inventories
+set the lesson's scope. CLOCK, DFF and TFF unlock together at stage 4 entry,
+including arrival through challenge bypass. Legacy completed memory lessons
+retain access to those components. Learning lock copy names the required stage.
+
+The independent sequence objective model now accepts `toggleExpression` when
+capture and toggle require different input functions, and `dualDelayed` when
+the goal combines Q, the previous Q, and accumulated toggle state. Every input
+sequence is checked with data changes while CLK is held high and on falling
+edges, preserving the rising-edge-only memory contract. New solutions are
+independently wired in test fixtures and verified exhaustively.

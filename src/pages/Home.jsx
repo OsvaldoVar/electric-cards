@@ -21,8 +21,15 @@ export default function Home() {
             puedes construir con un 0 y un 1.
           </p>
           <div className="home-cta-row">
-            <Link className="button button-primary" to={`/puzzle/${progress.unlockedLevel}`}>
-              {hasProgress ? 'Continuar jugando' : 'Empezar a jugar'}
+            <Link
+              className="button button-primary"
+              to={progress.nextLevel ? `/puzzle/${progress.nextLevel}` : '/levels'}
+            >
+              {progress.nextLevel
+                ? hasProgress
+                  ? 'Continuar jugando'
+                  : 'Empezar a jugar'
+                : 'Ver recorrido'}
               <Icon name="arrow" />
             </Link>
             <Link className="button button-secondary" to="/learn">
@@ -31,7 +38,7 @@ export default function Home() {
             </Link>
           </div>
           <p className="home-facts-statement">
-            {progress.totalLevels} niveles progresivos · 10 componentes · 0 requisitos previos.
+            5 etapas · 40 niveles · 5 retos para saltar etapas · 10 componentes.
           </p>
         </div>
 
@@ -56,8 +63,8 @@ export default function Home() {
           <div className="home-resume-text">
             <h2>Tu recorrido actual</h2>
             <p>
-              {progress.completedCount} de {progress.totalLevels} niveles completados · Nivel{' '}
-              {progress.unlockedLevel} listo
+              {progress.completedCount} de {progress.totalLevels} circuitos resueltos ·{' '}
+              {progress.clearedStages} de 5 etapas acreditadas
             </p>
           </div>
           <div
@@ -132,8 +139,9 @@ export default function Home() {
         <div className="home-collection-info">
           <h2 id="home-collection-title">De las compuertas a la memoria</h2>
           <p>
-            Desbloquea siete compuertas lógicas, el reloj y los flip-flops D y T. Cada ficha
-            incluye su regla, símbolo, tabla y simulador interactivo.
+            Explora siete compuertas lógicas; al llegar a la etapa 4 se desbloquean el reloj y
+            los flip-flops D y T. Cada ficha incluye su regla, símbolo, tabla y simulador
+            interactivo.
           </p>
         </div>
         <Link to="/learn" className="button button-primary">

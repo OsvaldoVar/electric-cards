@@ -1,28 +1,16 @@
 import { test, expect } from '@playwright/test';
 import { referenceCircuit } from '../fixtures/solutions';
-import { emptyGame } from '../../src/services/storage';
+import { seedProgress } from './helpers';
 import { createCircuit } from '../../src/engine/createCircuit';
 import { getLevel } from '../../src/data/levels';
 
 async function seed(page, circuit, levelId = 1, completedThrough = levelId - 1) {
-  await page.addInitScript(
-    (state) => localStorage.setItem('electric-cards:v1', JSON.stringify(state)),
-    {
-      ...emptyGame(),
-      completedLevels: Object.fromEntries(
-        Array.from({ length: completedThrough }, (_, index) => [
-          index + 1,
-          { completed: true, bestGateCount: index + 1 === levelId ? 3 : 1 },
-        ]),
-      ),
-      drafts: {
-        [levelId]: {
-          circuit,
-          inputs: Object.fromEntries(getLevel(levelId).inputs.map((input) => [input.id, 0])),
-        },
-      },
+  await seedProgress(page, completedThrough, {
+    [levelId]: {
+      circuit,
+      inputs: Object.fromEntries(getLevel(levelId).inputs.map((input) => [input.id, 0])),
     },
-  );
+  });
 }
 async function freeze(page) {
   await page.clock.install();
@@ -76,35 +64,30 @@ test('checks every truth row on the board before saving completion', async ({ pa
 test('a correct circuit with extra gates shows advice only in the popup and unlocks the next level', async ({
   page,
 }) => {
-  const circuit = referenceCircuit(1);
+  const circuit = referenceCircuit(4);
   circuit.nodes.push({
-    id: 'extra-or',
+    id: 'extra-not',
     type: 'gate',
     position: { x: 320, y: 240 },
-    data: { gateType: 'OR' },
+    data: { gateType: 'NOT' },
   });
-  for (const [source, targetHandle] of [
-    ['input-A', 'a'],
-    ['input-B', 'b'],
-  ]) {
-    circuit.edges.push({
-      id: `extra-${targetHandle}`,
-      source,
-      sourceHandle: 'out',
-      target: 'extra-or',
-      targetHandle,
-    });
-  }
-  await seed(page, circuit, 1, 1);
-  await page.goto('/puzzle/1');
+  circuit.edges.push({
+    id: 'extra-a',
+    source: 'input-A',
+    sourceHandle: 'out',
+    target: 'extra-not',
+    targetHandle: 'a',
+  });
+  await seed(page, circuit, 4, 3);
+  await page.goto('/puzzle/4');
   await freeze(page);
   await page.getByRole('button', { name: 'Probar circuito' }).click();
   const advice = page.getByRole('complementary', { name: 'Optimización del circuito' });
   await expect(advice).toHaveCount(0);
-  await page.clock.runFor(2080);
+  await page.clock.runFor(4160);
   const popupAdvice = page.getByRole('dialog').locator('.completion-optimization');
   await expect(popupAdvice).toContainText('Puedes usar menos compuertas');
-  await expect(popupAdvice).toContainText('tu circuito utiliza 2');
+  await expect(popupAdvice).toContainText('tu circuito utiliza 3');
   await expect(popupAdvice).toHaveCSS('color', 'rgb(99, 221, 255)');
   await page.getByRole('button', { name: 'Seguir explorando' }).click();
   await expect(advice).toHaveCount(0);
@@ -112,19 +95,25 @@ test('a correct circuit with extra gates shows advice only in the popup and unlo
   await page.clock.runFor(300);
   expect(
     await page.evaluate(
-      () => JSON.parse(localStorage.getItem('electric-cards:v1')).completedLevels[1],
+      () => JSON.parse(localStorage.getItem('electric-cards:v1')).completedLevels[4],
     ),
-  ).toEqual({ completed: true, bestGateCount: 2 });
-  await page.getByRole('button', { name: 'Eliminar OR 2' }).click();
+  ).toEqual({ completed: true, bestGateCount: 3 });
+  await page.getByRole('button', { name: 'Eliminar NOT 3' }).click();
   await expect(advice).toHaveCount(0);
   await page.getByRole('button', { name: 'Probar circuito' }).click();
-  await page.clock.runFor(2080);
+  await page.clock.runFor(4160);
   await expect(page.getByRole('heading', { name: '¡Circuito correcto!' })).toBeVisible();
   await page.getByRole('button', { name: 'Seguir explorando' }).click();
   await expect(advice).toHaveCount(0);
+  await page.clock.runFor(300);
+  expect(
+    await page.evaluate(
+      () => JSON.parse(localStorage.getItem('electric-cards:v1')).completedLevels[4],
+    ),
+  ).toEqual({ completed: true, bestGateCount: 2 });
   await page.clock.resume();
   await page.getByRole('link', { name: 'Mapa de niveles' }).click();
-  await expect(page.getByRole('link', { name: 'Nivel 2', exact: true })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Nivel 5', exact: true })).toBeVisible();
   await expect(page.locator('body')).not.toContainText(/estrellas/i);
 });
 

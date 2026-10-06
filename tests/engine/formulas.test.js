@@ -25,14 +25,18 @@ describe('Formula hints and distracting inventory', () => {
       'AB + C(A ⊕ B)',
     ]);
   });
-  it('provides a working distractor in all 25 levels without replacing real solutions', () => {
+  it('keeps distractors in advanced lessons and formulas correct across all combinational levels', () => {
     for (const level of levels.filter((item) => item.kind !== 'sequential')) {
-      expect(level.inventory[level.distractor]).toBe(1);
-      expect(Object.hasOwn(gateOperations, level.distractor)).toBe(true);
+      if (level.distractor) {
+        expect(level.inventory[level.distractor]).toBe(1);
+        expect(Object.hasOwn(gateOperations, level.distractor)).toBe(true);
+      }
       const circuit = referenceCircuit(level.id);
-      expect(circuit.nodes.some((node) => node.data.gateType === level.distractor)).toBe(
-        false,
-      );
+      if (level.distractor) {
+        expect(circuit.nodes.some((node) => node.data.gateType === level.distractor)).toBe(
+          false,
+        );
+      }
       expect(validateLevel(level, circuit).success).toBe(true);
       expect(level.outputs.every((output) => output.formula.length > 0)).toBe(true);
     }

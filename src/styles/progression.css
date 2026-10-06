@@ -172,3 +172,47 @@ body:has(.completion-dialog[open]) {
     padding: 16px;
   }
 }
+
+.stage-challenge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 88px;
+  margin-bottom: 18px;
+  padding: 18px;
+  border: 2px solid var(--accent);
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+.stage-challenge h3 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+.stage-challenge p {
+  color: var(--muted);
+  margin-top: 4px;
+}
+.stage-challenge > svg {
+  flex-shrink: 0;
+}
+.stage-challenge.is-locked {
+  border-color: var(--border);
+}
+.stage-challenge[href]:hover {
+  border-color: var(--blue);
+}
+.stage-challenge[href]:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 4px;
+}
+.stage-context {
+  padding: 12px 20px 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+.completion-dialog .completion-stage {
+  margin-top: 16px;
+  color: var(--success);
+}

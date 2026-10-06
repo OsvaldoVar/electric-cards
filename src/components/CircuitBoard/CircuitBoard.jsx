@@ -200,7 +200,7 @@ function Board({ game, level }) {
       aria-busy={game.playback?.running ?? false}
     >
       <div className="board-heading">
-        <h1>Nivel {level.id}</h1>
+        <h1>{level.challenge ? `Reto de la etapa ${level.stage}` : `Nivel ${level.id}`}</h1>
         <div className="board-actions">
           <div className="board-tools">
             <button

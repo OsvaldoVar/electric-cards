@@ -376,3 +376,38 @@ modules or block every port escape. In those cases wires remain visible through
 the attached orthogonal fallback; moving modules apart or organizing the board
 restores space. A common-source branch necessarily shares its terminal stem.
 Physical Safari/iOS and Firefox remain unverified.
+
+### Five stages and challenge bypass — 2026-10-06
+
+Verified against main commit 35aec32ebbdc83c2718865a8536ff598f91071b0,
+using Node.js 24.19.0, the temporary Chromium binary and loopback-only preview
+configuration documented above. Production dependencies remain unchanged.
+
+- ESLint and changed-file Prettier checks passed.
+- All 102 unit/component tests passed across 11 files.
+- Production build passed.
+- The complete browser suite passed 109 tests; one desktop-only native-touch
+  case was intentionally skipped. The native-touch case passed in the touch project.
+- All 45 independently wired reference solutions pass every defined truth row
+  or sequence, within their optimization targets and available inventory.
+- Progress tests verify teaching order through all 40 regular lessons, five-stage
+  completion by challenges alone, persistence after every bypass, no fabricated
+  regular completions, access to skipped practice lessons, stage-based component
+  unlocks, legacy completion credit and rejection of incomplete, incorrect or
+  inaccessible challenges and forged unlockedLevel values.
+- Stage browser tests in desktop and touch build the three-AND entry challenge,
+  test incorrect/incomplete circuits, skip successive stages, unlock CLOCK/DFF/TFF,
+  finish the memory and integrated challenges, reload credits, continue from home
+  and distinguish credited stages from solved circuits. The four-input challenge
+  reviews 16 rows with ordinary playback; assertions wait for that full review.
+- Existing regressions retain their behavior checks with curriculum-appropriate
+  fixtures: extra-gate optimization uses mixed-gate level 4, invalid truth logic
+  uses a permitted AND with incorrect wiring, and continuation after level 3
+  expects the new two-AND lesson 36. The XOR/XNOR wire regression now uses level
+  15's two outputs and six wires; attachment and separation checks still pass.
+- Responsive map and editor checks cover 360×800, 640×800, 768×1024, 844×390,
+  1280×720, 1366×768, 1600×900 and 1920×1080 as applicable. Map screenshots in
+  both browser projects were inspected; no horizontal page overflow was observed.
+
+The setup emulates mobile Chromium; physical Safari/iOS and Firefox remain
+unverified. Re-run tests/e2e/stages.spec.js to regenerate the ignored map captures.

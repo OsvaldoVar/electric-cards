@@ -1,7 +1,12 @@
 import { evaluateExpression } from './evaluateGate';
 
 // Objective models describe required behavior independently of the player's graph.
-export function sequentialObjectiveTests({ inputIds, mode, expression = inputIds[0] }) {
+export function sequentialObjectiveTests({
+  inputIds,
+  mode,
+  expression = inputIds[0],
+  toggleExpression = expression,
+}) {
   const samples = inputIds.length > 1 ? 2 : 3;
   const sequenceCount = 2 ** (inputIds.length * samples);
   const tests = [];
@@ -29,7 +34,7 @@ export function sequentialObjectiveTests({ inputIds, mode, expression = inputIds
           const data = evaluateExpression(expression, values);
           delayed = q;
           q = data;
-          toggled = Number(toggled !== data);
+          toggled = Number(toggled !== evaluateExpression(toggleExpression, values));
         }
         previousClock = clock;
         const outputs =
@@ -39,9 +44,11 @@ export function sequentialObjectiveTests({ inputIds, mode, expression = inputIds
               ? { PULSO: clock, REPOSO: 1 - clock }
               : mode === 'registerPair'
                 ? { PRIMERO: q, SEGUNDO: delayed }
-                : mode === 'dual'
-                  ? { DATO: q, CAMBIO: toggled }
-                  : { LED: mode === 'toggle' ? toggled : q };
+                : mode === 'dualDelayed'
+                  ? { DATO: q, RETRASO: delayed, CAMBIO: toggled }
+                  : mode === 'dual'
+                    ? { DATO: q, CAMBIO: toggled }
+                    : { LED: mode === 'toggle' ? toggled : q };
         tests.push({ scenario, step: ++step, clock, inputs: { ...values }, outputs });
       }
     }

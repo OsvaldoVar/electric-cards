@@ -1,9 +1,11 @@
 import { evaluateExpression } from '../engine/evaluateGate';
 import { formatExpression } from '../engine/formatExpression';
 import { sequentialLevels } from './sequentialLevels';
+import { stages, stageForLevel } from './stages';
+import { stageCircuitRecords } from './stageLevels';
 
-// One intentional distractor for every level. It is never labeled in the UI.
-// Existing options remain available so saved drafts and alternative solutions work.
+// Advanced lessons retain their optional distractor.
+// Introductory lessons restrict inventory to a single gate type below.
 const distractors = {
   1: 'OR',
   2: 'AND',
@@ -31,51 +33,6 @@ const distractors = {
   24: 'NAND',
   25: 'NOT',
 };
-
-export const worlds = [
-  {
-    id: 6,
-    title: 'El ritmo de las señales',
-    subtitle: 'Relojes, flancos y el primer bit de memoria.',
-    family: 'blue',
-  },
-  {
-    id: 7,
-    title: 'Memoria en movimiento',
-    subtitle: 'Registros, alternancia y decisiones que recuerdan.',
-    family: 'violet',
-  },
-  {
-    id: 1,
-    title: 'Primeras señales',
-    subtitle: 'Un poco de lógica, un mundo de posibilidades.',
-    family: 'mint',
-  },
-  {
-    id: 2,
-    title: 'El otro lado',
-    subtitle: 'Aprende a cambiar las reglas con una negación.',
-    family: 'amber',
-  },
-  {
-    id: 3,
-    title: 'En sintonía',
-    subtitle: 'Compara señales y encuentra sus diferencias.',
-    family: 'violet',
-  },
-  {
-    id: 4,
-    title: 'Redes de decisión',
-    subtitle: 'Varias condiciones. Un circuito que decide.',
-    family: 'blue',
-  },
-  {
-    id: 5,
-    title: 'Menos es más',
-    subtitle: 'El mismo resultado, con un inventario más exigente.',
-    family: 'mint',
-  },
-].sort((a, b) => a.id - b.id);
 
 function createLevel(record) {
   const { inputIds, goals, ...rest } = record;
@@ -105,7 +62,9 @@ function createLevel(record) {
     distractor: distractors[rest.id],
     inventory: {
       ...rest.inventory,
-      [distractors[rest.id]]: rest.inventory[distractors[rest.id]] ?? 1,
+      ...(distractors[rest.id]
+        ? { [distractors[rest.id]]: rest.inventory[distractors[rest.id]] ?? 1 }
+        : {}),
     },
     difficulty: rest.world,
     inputs,
@@ -593,5 +552,44 @@ const records = [
   },
 ];
 
-export const levels = [...records.map(createLevel), ...sequentialLevels];
+const allLevels = [
+  ...records.map(createLevel),
+  ...stageCircuitRecords.map(createLevel),
+  ...sequentialLevels,
+];
+const byId = new Map(
+  allLevels.map((level) => {
+    const stage = stageForLevel(level.id);
+    const challenge = level.id === stage.challengeId;
+    const introductoryGate = {
+      1: 'AND',
+      2: 'OR',
+      3: 'NOT',
+      6: 'NAND',
+      7: 'NOR',
+      11: 'XOR',
+      12: 'XNOR',
+      19: 'XOR',
+    }[level.id];
+    return [
+      level.id,
+      {
+        ...level,
+        stage: stage.id,
+        world: stage.id,
+        difficulty: stage.id,
+        challenge,
+        ...(introductoryGate
+          ? {
+              inventory: { [introductoryGate]: level.id === 19 ? 2 : 1 },
+              distractor: undefined,
+            }
+          : {}),
+      },
+    ];
+  }),
+);
+export const levels = stages.flatMap((stage) =>
+  [...stage.levelIds, stage.challengeId].map((id) => byId.get(id)),
+);
 export const getLevel = (id) => levels.find((level) => level.id === Number(id));

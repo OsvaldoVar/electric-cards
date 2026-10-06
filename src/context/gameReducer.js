@@ -1,10 +1,11 @@
-import { getLevel, levels } from '../data/levels';
+import { getLevel } from '../data/levels';
 import { createCircuit, remainingInventory } from '../engine/createCircuit';
 import { validateConnection } from '../engine/validateCircuit';
 import { validateLevel } from '../engine/validateLevel';
 import { isBinary } from '../engine/operations';
 import { arrangeNodes } from '../services/boardLayout';
 import { unlockedGateIds } from '../data/unlocks';
+import { canAccessLevel, nextRegularLevel } from '../data/stages';
 
 export function createDraft(level, vertical = false) {
   const circuit = createCircuit(level);
@@ -17,7 +18,7 @@ export function createDraft(level, vertical = false) {
 
 export function gameReducer(state, action) {
   const level = getLevel(action.levelId);
-  if (!level) return state;
+  if (!level || !canAccessLevel(level.id, state.completedLevels)) return state;
   const draft = state.drafts[level.id] ?? createDraft(level, action.vertical);
   const circuit = draft.circuit;
   const update = (next) => ({ ...state, drafts: { ...state.drafts, [level.id]: next } });
@@ -150,18 +151,19 @@ export function gameReducer(state, action) {
       const result = validateLevel(level, circuit, {
         unlockedGates: unlockedGateIds(state.completedLevels),
       });
-      if (!result.success || level.id > state.unlockedLevel) return state;
+      if (!result.success) return state;
       const previous = state.completedLevels[level.id];
+      const completedLevels = {
+        ...state.completedLevels,
+        [level.id]: {
+          completed: true,
+          bestGateCount: Math.min(previous?.bestGateCount ?? Infinity, result.gateCount),
+        },
+      };
       return {
         ...state,
-        completedLevels: {
-          ...state.completedLevels,
-          [level.id]: {
-            completed: true,
-            bestGateCount: Math.min(previous?.bestGateCount ?? Infinity, result.gateCount),
-          },
-        },
-        unlockedLevel: Math.max(state.unlockedLevel, Math.min(levels.length, level.id + 1)),
+        completedLevels,
+        unlockedLevel: nextRegularLevel(completedLevels) ?? 1,
       };
     }
     default:

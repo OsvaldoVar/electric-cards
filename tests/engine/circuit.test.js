@@ -100,6 +100,6 @@ describe('Circuit engine', () => {
     expect(validateCircuit(circuit).valid).toBe(false);
   });
   it('derives the finite inventory from nodes', () => {
-    expect(remainingInventory(getLevel(1), referenceCircuit(1))).toEqual({ AND: 0, OR: 1 });
+    expect(remainingInventory(getLevel(1), referenceCircuit(1))).toEqual({ AND: 0 });
   });
 });

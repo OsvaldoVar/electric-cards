@@ -159,15 +159,111 @@ const records = [
       'Comparte A y CLOCK entre DFF y TFF; conecta sus salidas por separado.',
     ],
   },
+  {
+    id: 39,
+    title: 'Permiso registrado',
+    description:
+      'Guarda (A OR B) AND NOT(C) en cada flanco ascendente; entre flancos conserva la decisión.',
+    inputIds: ['A', 'B', 'C'],
+    mode: 'capture',
+    expression: ['AND', ['OR', 'A', 'B'], ['NOT', 'C']],
+    inventory: { CLOCK: 1, OR: 1, NOT: 1, AND: 1, DFF: 1 },
+    outputInfo: [['LED', 'Permiso guardado', 'Q⁺ = (A+B)¬C en ↑CLK']],
+    optimizationGateCount: 5,
+    hints: [
+      'Primero construye la decisión y después guárdala.',
+      'OR y NOT alimentan AND; AND alimenta D y CLOCK alimenta CLK.',
+    ],
+  },
+  {
+    id: 40,
+    title: 'Dos decisiones en el mismo pulso',
+    description:
+      'DATO guarda XOR(A,B). CAMBIO alterna solo cuando A AND B es 1 en el flanco ascendente. Comparte el reloj.',
+    inputIds: ['A', 'B'],
+    mode: 'dual',
+    expression: ['XOR', 'A', 'B'],
+    toggleExpression: ['AND', 'A', 'B'],
+    inventory: { CLOCK: 1, XOR: 1, AND: 1, DFF: 1, TFF: 1 },
+    outputInfo: [
+      ['DATO', 'Diferencia guardada', 'DATO⁺ = A ⊕ B en ↑CLK'],
+      ['CAMBIO', 'Coincidencias acumuladas', 'CAMBIO⁺ = CAMBIO ⊕ AB en ↑CLK'],
+    ],
+    optimizationGateCount: 5,
+    hints: [
+      'D y T reciben reglas distintas, pero el mismo reloj.',
+      'XOR alimenta DFF; AND alimenta TFF.',
+    ],
+  },
+  {
+    id: 41,
+    title: 'Decisión, retraso y alternancia',
+    description:
+      'En cada flanco, DATO guarda (A AND B) OR NOT(C); RETRASO guarda el DATO anterior y CAMBIO alterna cuando esa decisión es 1.',
+    inputIds: ['A', 'B', 'C'],
+    mode: 'dualDelayed',
+    expression: ['OR', ['AND', 'A', 'B'], ['NOT', 'C']],
+    inventory: { CLOCK: 1, AND: 1, NOT: 1, OR: 1, DFF: 2, TFF: 1 },
+    outputInfo: [
+      ['DATO', 'Decisión guardada', 'DATO⁺ = AB + ¬C en ↑CLK'],
+      ['RETRASO', 'Decisión anterior', 'RETRASO⁺ = DATO anterior en ↑CLK'],
+      ['CAMBIO', 'Decisiones acumuladas', 'CAMBIO⁺ = CAMBIO ⊕ (AB + ¬C) en ↑CLK'],
+    ],
+    optimizationGateCount: 7,
+    hints: [
+      'Comparte la decisión con el primer registro y el toggle.',
+      'Conecta el primer DFF al segundo; las tres memorias usan CLOCK.',
+    ],
+  },
+  {
+    id: 44,
+    title: 'Tres memorias, un reloj',
+    description:
+      'En cada flanco, DATO guarda NOT(A), RETRASO guarda el DATO anterior y CAMBIO alterna si A es 0. Este reto acredita toda la etapa 4.',
+    inputIds: ['A'],
+    mode: 'dualDelayed',
+    expression: ['NOT', 'A'],
+    inventory: { CLOCK: 1, NOT: 1, DFF: 2, TFF: 1 },
+    outputInfo: [
+      ['DATO', 'Dato invertido', 'DATO⁺ = ¬A en ↑CLK'],
+      ['RETRASO', 'Dato anterior', 'RETRASO⁺ = DATO anterior en ↑CLK'],
+      ['CAMBIO', 'Cambios acumulados', 'CAMBIO⁺ = CAMBIO ⊕ ¬A en ↑CLK'],
+    ],
+    optimizationGateCount: 5,
+    hints: [
+      'Invierte el dato una vez y comparte esa señal.',
+      'NOT alimenta DFF y TFF; la salida del primer DFF alimenta el segundo. Comparte CLOCK.',
+    ],
+  },
+  {
+    id: 45,
+    title: 'Laboratorio integrado',
+    description:
+      'DATO guarda (A AND NOT(C)) OR (B AND C). RETRASO guarda el DATO anterior. CAMBIO alterna cuando la decisión vale 1 en el flanco. Acredita la etapa 5 con ocho componentes.',
+    inputIds: ['A', 'B', 'C'],
+    mode: 'dualDelayed',
+    expression: ['OR', ['AND', 'A', ['NOT', 'C']], ['AND', 'B', 'C']],
+    inventory: { CLOCK: 1, AND: 2, NOT: 1, OR: 1, DFF: 2, TFF: 1 },
+    outputInfo: [
+      ['DATO', 'Decisión guardada', 'DATO⁺ = A¬C + BC en ↑CLK'],
+      ['RETRASO', 'Decisión anterior', 'RETRASO⁺ = DATO anterior en ↑CLK'],
+      ['CAMBIO', 'Decisiones acumuladas', 'CAMBIO⁺ = CAMBIO ⊕ (A¬C + BC) en ↑CLK'],
+    ],
+    optimizationGateCount: 8,
+    hints: [
+      'C selecciona B cuando vale 1 y A cuando vale 0. Construye ambas rutas.',
+      'Comparte la salida del selector entre DFF y TFF; conecta el primer DFF al segundo y usa un solo CLOCK.',
+    ],
+  },
 ];
 
 export const sequentialLevels = records.map(
-  ({ inputIds, outputInfo, mode, expression, ...record }) => ({
+  ({ inputIds, outputInfo, mode, expression, toggleExpression, ...record }) => ({
     ...record,
     kind: 'sequential',
     difficulty: record.world,
     inputs: inputIds.map((id) => ({ id, label: `Sensor ${id}` })),
     outputs: outputInfo.map(([id, label, formula]) => ({ id, label, formula, type: 'led' })),
-    tests: sequentialObjectiveTests({ inputIds, mode, expression }),
+    tests: sequentialObjectiveTests({ inputIds, mode, expression, toggleExpression }),
   }),
 );

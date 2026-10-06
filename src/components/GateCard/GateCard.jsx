@@ -14,7 +14,7 @@ export function GateCard({ gate, unlocked = true }) {
       aria-label={
         unlocked
           ? `Compuerta ${gate.name}: ${gate.character.name}, ${gate.character.role}`
-          : `Compuerta ${gate.name}. Bloqueada hasta completar el nivel ${gateUnlocks[gate.id]}`
+          : `Compuerta ${gate.name}. Bloqueada hasta llegar a la etapa ${gateUnlocks[gate.id]}`
       }
     >
       <div className="gate-card-top">
@@ -33,7 +33,7 @@ export function GateCard({ gate, unlocked = true }) {
           ) : (
             <>
               <Icon name="lock" size={16} />
-              Completa el nivel {gateUnlocks[gate.id]}
+              Llega a la etapa {gateUnlocks[gate.id]}
             </>
           )}
         </span>

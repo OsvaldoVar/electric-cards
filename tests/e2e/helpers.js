@@ -1,23 +1,30 @@
+import { stages } from '../../src/data/stages';
+
 export async function seedProgress(page, through = 0, drafts = {}) {
+  const order = stages.flatMap((stage) => stage.levelIds);
+  const nextIndex = order.indexOf(through + 1);
+  const completedIds = [
+    ...new Set([
+      ...Array.from({ length: through }, (_, i) => i + 1).filter((id) => order.includes(id)),
+      ...order.slice(0, Math.max(0, nextIndex)),
+    ]),
+  ];
   await page.addInitScript(
-    ({ through, drafts }) => {
+    ({ completedIds, through, drafts }) => {
       if (localStorage.getItem('electric-cards:v1')) return;
       localStorage.setItem(
         'electric-cards:v1',
         JSON.stringify({
           version: 1,
           completedLevels: Object.fromEntries(
-            Array.from({ length: through }, (_, index) => [
-              index + 1,
-              { completed: true, bestGateCount: 1 },
-            ]),
+            completedIds.map((id) => [id, { completed: true, bestGateCount: 1 }]),
           ),
           unlockedLevel: through + 1,
           drafts,
         }),
       );
     },
-    { through, drafts },
+    { completedIds, through, drafts },
   );
 }
 

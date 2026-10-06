@@ -63,7 +63,7 @@ for (const verdict of ['success', 'failure', 'incomplete']) {
   }) => {
     const circuit = referenceCircuit(1);
     if (verdict === 'failure')
-      circuit.nodes.find((node) => node.type === 'gate').data.gateType = 'OR';
+      circuit.edges.find((edge) => edge.targetHandle === 'b').source = 'input-A';
     if (verdict === 'incomplete') circuit.edges = [];
     await seedProgress(page, 1, { 1: { circuit, inputs: { A: 0, B: 0 } } });
     await page.goto('/puzzle/1');

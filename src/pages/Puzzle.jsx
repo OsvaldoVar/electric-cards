@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { canAccessLevel, stageForLevel } from '../data/stages';
 import { getLevel } from '../data/levels';
 import { useProgress } from '../hooks/useProgress';
 import { usePuzzle } from '../hooks/usePuzzle';
@@ -26,6 +27,12 @@ function ActivePuzzle({ level }) {
       <div className="puzzle-workspace">
         <div className="puzzle-sidebar-frame pixel-frame">
           <aside className="puzzle-sidebar" aria-label="Objetivo y compuertas" tabIndex={0}>
+            <p className="stage-context">
+              Etapa {level.stage} ·{' '}
+              {level.challenge
+                ? 'Reto para acreditar la etapa'
+                : stageForLevel(level.id).title}
+            </p>
             <LevelObjective level={level} game={game} />
             <GateInventory
               inventory={game.inventory}
@@ -91,14 +98,17 @@ function ActivePuzzle({ level }) {
 export default function Puzzle() {
   const { id } = useParams();
   const level = getLevel(id);
-  const { unlockedLevel } = useProgress();
+  const { unlockedLevel, completedLevels } = useProgress();
   if (!level) return <NotFound />;
-  if (level.id > unlockedLevel)
+  if (!canAccessLevel(level.id, completedLevels))
     return (
       <main className="page empty-page">
         <Icon name="lock" size={38} />
         <h1>Una señal a la vez.</h1>
-        <p>Completa el nivel {unlockedLevel} para continuar tu recorrido.</p>
+        <p>
+          Completa el nivel {unlockedLevel} o supera el reto de la etapa{' '}
+          {stageForLevel(unlockedLevel).id} para continuar.
+        </p>
         <Link to={`/puzzle/${unlockedLevel}`} className="button button-primary">
           Continuar jugando
           <Icon name="arrow" />

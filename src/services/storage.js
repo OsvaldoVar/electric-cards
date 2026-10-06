@@ -1,5 +1,6 @@
 import { levels, getLevel } from '../data/levels';
 import { validateCircuit } from '../engine/validateCircuit';
+import { nextRegularLevel } from '../data/stages';
 import { isBinary } from '../engine/operations';
 
 export const STORAGE_KEY = 'electric-cards:v1';
@@ -88,8 +89,7 @@ export function sanitizeGame(value) {
       ),
     };
   }
-  while (state.unlockedLevel < levels.length && state.completedLevels[state.unlockedLevel])
-    state.unlockedLevel += 1;
+  state.unlockedLevel = nextRegularLevel(state.completedLevels) ?? 1;
   return state;
 }
 

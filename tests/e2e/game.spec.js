@@ -163,8 +163,8 @@ for (const [width, height] of [
 }
 
 test('board rejects cycles and self-links before adding a wire', async ({ page }) => {
-  await seedProgress(page, 1);
-  await page.goto('/puzzle/1');
+  await seedProgress(page, 3);
+  await page.goto('/puzzle/4');
   await addAnd(page);
   await page.getByRole('button', { name: 'Añadir OR. 1 disponibles' }).click();
   await wire(page, 'AND 1', 'OR 2 · entrada A');

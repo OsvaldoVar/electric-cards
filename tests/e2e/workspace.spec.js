@@ -53,7 +53,7 @@ test('testing, dismissing success and continuing preserve workspace geometry', a
   );
   await page.getByRole('button', { name: 'Probar circuito' }).click();
   await dialog.getByRole('button', { name: 'Siguiente nivel' }).click();
-  await expect(page.getByRole('heading', { name: 'Nivel 4', exact: true })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Nivel 36', exact: true })).toBeVisible();
   expect(await geometry(page)).toEqual(initial);
 });
 

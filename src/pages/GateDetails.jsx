@@ -21,7 +21,7 @@ export default function GateDetails() {
         <Icon name="lock" size={36} />
         <h1>{gate.name} está bloqueado</h1>
         <p>
-          Completa el nivel {gateUnlocks[gate.id]} para desbloquear este componente y su
+          Llega a la etapa {gateUnlocks[gate.id]} para desbloquear este componente y su
           simulador.
         </p>
         <Link to="/levels" className="button button-primary">

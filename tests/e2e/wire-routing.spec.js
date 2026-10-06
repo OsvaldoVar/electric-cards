@@ -4,14 +4,14 @@ import { createCircuit } from '../../src/engine/createCircuit';
 import { getLevel } from '../../src/data/levels';
 
 function draft() {
-  const circuit = createCircuit(getLevel(12));
+  const circuit = createCircuit(getLevel(15));
   circuit.nodes.forEach((node) => {
     node.position =
       node.id === 'input-A'
         ? { x: 40, y: 160 }
         : node.id === 'input-B'
           ? { x: 40, y: 320 }
-          : { x: 650, y: 240 };
+          : { x: 650, y: node.id === 'output-DIF' ? 140 : 370 };
   });
   circuit.nodes.push(
     { id: 'xor', type: 'gate', data: { gateType: 'XOR' }, position: { x: 330, y: 60 } },
@@ -22,7 +22,8 @@ function draft() {
     ['b-xor', 'input-B', 'xor', 'b'],
     ['a-xnor', 'input-A', 'xnor', 'a'],
     ['b-xnor', 'input-B', 'xnor', 'b'],
-    ['out', 'xnor', 'output-LED', 'in'],
+    ['out-equal', 'xnor', 'output-IGUAL', 'in'],
+    ['out-difference', 'xor', 'output-DIF', 'in'],
   ].map(([id, source, target, targetHandle]) => ({
     id,
     source,
@@ -35,11 +36,11 @@ function draft() {
 
 async function checkGeometry(page) {
   await expect(page.locator('.react-flow__edge-path[data-routing="separated"]')).toHaveCount(
-    5,
+    6,
   );
   const geometry = await page.evaluate(() => {
     const state = JSON.parse(localStorage.getItem('electric-cards:v1'));
-    const edges = state.drafts[12].circuit.edges;
+    const edges = state.drafts[15].circuit.edges;
     const paths = edges.map((edge) => {
       const element = document.querySelector(`[data-id="${edge.id}"] .react-flow__edge-path`);
       const points = [...element.getAttribute('d').matchAll(/[ML](-?[\d.]+),(-?[\d.]+)/g)].map(
@@ -114,8 +115,8 @@ async function checkGeometry(page) {
 test('fan-out wires stay distinct through signal changes, reload, dragging and orientation changes', async ({
   page,
 }, testInfo) => {
-  await seedProgress(page, 11, { 12: draft() });
-  await page.goto('/puzzle/12');
+  await seedProgress(page, 14, { 15: draft() });
+  await page.goto('/puzzle/15');
   // Reproduce the supplied left-to-right arrangement in both browser projects.
   await page.setViewportSize({ width: 1366, height: 768 });
   await page.getByRole('button', { name: 'Ajustar tablero' }).click();

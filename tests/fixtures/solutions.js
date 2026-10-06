@@ -4,6 +4,104 @@ import { targetPorts } from '../../src/engine/operations';
 
 // Independent reference constructions, not copied from objective expressions.
 const solutions = {
+  36: {
+    gates: [
+      ['AND', 'A', 'B'],
+      ['AND', 'g1', 'C'],
+    ],
+    outputs: { DOOR: 'g2' },
+  },
+  37: {
+    gates: [
+      ['OR', 'A', 'B'],
+      ['OR', 'g1', 'C'],
+    ],
+    outputs: { LED: 'g2' },
+  },
+  38: {
+    gates: [
+      ['AND', 'A', 'B'],
+      ['AND', 'C', 'D'],
+      ['AND', 'g1', 'g2'],
+    ],
+    outputs: { DOOR: 'g3' },
+  },
+  42: {
+    gates: [
+      ['AND', 'A', 'B'],
+      ['OR', 'A', 'B'],
+      ['AND', 'C', 'g2'],
+      ['OR', 'g1', 'g3'],
+      ['NOT', 'g4'],
+    ],
+    outputs: { MAYORIA: 'g4', OPUESTO: 'g5' },
+  },
+  43: {
+    gates: [
+      ['NAND', 'A', 'B'],
+      ['NAND', 'A', 'g1'],
+      ['NAND', 'B', 'g1'],
+      ['NAND', 'g2', 'g3'],
+      ['NAND', 'g4', 'g4'],
+      ['NAND', 'g1', 'g1'],
+    ],
+    outputs: { DIF: 'g4', IGUAL: 'g5', ACARREO: 'g6' },
+  },
+  39: {
+    gates: [
+      ['CLOCK'],
+      ['OR', 'A', 'B'],
+      ['NOT', 'C'],
+      ['AND', 'g2', 'g3'],
+      ['DFF', 'g4', 'g1'],
+    ],
+    outputs: { LED: 'g5' },
+  },
+  40: {
+    gates: [
+      ['CLOCK'],
+      ['XOR', 'A', 'B'],
+      ['AND', 'A', 'B'],
+      ['DFF', 'g2', 'g1'],
+      ['TFF', 'g3', 'g1'],
+    ],
+    outputs: { DATO: 'g4', CAMBIO: 'g5' },
+  },
+  41: {
+    gates: [
+      ['CLOCK'],
+      ['AND', 'A', 'B'],
+      ['NOT', 'C'],
+      ['OR', 'g2', 'g3'],
+      ['DFF', 'g4', 'g1'],
+      ['DFF', 'g5', 'g1'],
+      ['TFF', 'g4', 'g1'],
+    ],
+    outputs: { DATO: 'g5', RETRASO: 'g6', CAMBIO: 'g7' },
+  },
+  44: {
+    gates: [
+      ['CLOCK'],
+      ['NOT', 'A'],
+      ['DFF', 'g2', 'g1'],
+      ['DFF', 'g3', 'g1'],
+      ['TFF', 'g2', 'g1'],
+    ],
+    outputs: { DATO: 'g3', RETRASO: 'g4', CAMBIO: 'g5' },
+  },
+  45: {
+    gates: [
+      ['CLOCK'],
+      ['NOT', 'C'],
+      ['AND', 'A', 'g2'],
+      ['AND', 'B', 'C'],
+      ['OR', 'g3', 'g4'],
+      ['DFF', 'g5', 'g1'],
+      ['DFF', 'g6', 'g1'],
+      ['TFF', 'g5', 'g1'],
+    ],
+    outputs: { DATO: 'g6', RETRASO: 'g7', CAMBIO: 'g8' },
+  },
   26: { gates: [['CLOCK']], outputs: { LED: 'g1' } },
   27: { gates: [['CLOCK'], ['NOT', 'g1']], outputs: { PULSO: 'g1', REPOSO: 'g2' } },
   28: { gates: [['CLOCK'], ['DFF', 'A', 'g1']], outputs: { LED: 'g2' } },

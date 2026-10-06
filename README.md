@@ -8,7 +8,7 @@ las combinaciones y secuencias de prueba**. Interfaz en español para PC, tablet
 
 ## Qué incluye
 
-- 35 puzzles en siete mundos, con dificultad progresiva y retos de optimización.
+- Cinco etapas: 40 niveles regulares y cinco retos que permiten saltar etapas.
 - AND, OR, NOT, NAND, NOR, XOR, XNOR, CLOCK y flip-flops D y T.
 - Editor de nodos: añadir, mover, conectar, desconectar y eliminar cartas.
 - Conexión por arrastre, dos toques.
@@ -16,7 +16,8 @@ las combinaciones y secuencias de prueba**. Interfaz en español para PC, tablet
 - Rechazo de ciclos, puertos ocupados y conexiones inválidas.
 - LEDs, puertas, banderas, alarmas y motores como salidas binarias.
 - Validación exhaustiva con resultados de cada combinación.
-- Desbloqueo progresivo de componentes, aviso azul de optimización y progreso guardado.
+- Compuertas básicas desde el inicio; CLOCK, DFF y TFF al llegar a la etapa 4.
+- Optimización y progreso guardado: los niveles omitidos siguen disponibles para practicar.
 - Ventana de éxito con el componente obtenido y botón para el siguiente nivel.
 - Reloj manual o automático, memoria y comprobación de secuencias temporales.
 - Guardado local del progreso y de los circuitos en construcción.
@@ -111,7 +112,7 @@ src/
   services/      Persistencia versionada y saneamiento de borradores
   styles/        Variables, estilos globales y reglas responsive
 tests/
-  engine/        Tablas, grafos y soluciones de los 35 niveles
+  engine/        Tablas, grafos y soluciones de los 45 circuitos
   fixtures/      Circuitos de referencia independientes
   e2e/           Recorridos de escritorio y touch
 docs/            Especificación, arquitectura, contenido y QA
@@ -160,3 +161,23 @@ segundo y **Pausar reloj** para detenerlo. DFF guarda D en el flanco 0 → 1;
 TFF alterna Q cuando T vale 1 en ese flanco. Q se conserva entre flancos.
 **Reiniciar memoria** pone CLK y los registros en 0 sin vaciar el circuito.
 El circuito y el progreso se guardan; al recargar, la memoria vuelve a 0.
+
+## Recorrido por etapas
+
+| Etapa | Contenido                                         | Reto de salto                                            |
+| ----- | ------------------------------------------------- | -------------------------------------------------------- |
+| 1     | Una o dos compuertas básicas del mismo tipo       | Tres AND y cuatro sensores                               |
+| 2     | Dos a cuatro compuertas de distintos tipos        | Cinco compuertas, mayoría y su negación                  |
+| 3     | Optimización, señales compartidas, NAND y sumador | Seis NAND y tres salidas                                 |
+| 4     | Reloj, flancos, flip-flops D/T y registros        | Cinco componentes, dato invertido, retraso y alternancia |
+| 5     | Lógica combinacional, reloj y memoria juntos      | Ocho componentes, selector y tres memorias               |
+
+El reto está disponible desde la entrada de su etapa. Aprobar todos los niveles
+regulares o aprobar el reto acredita la etapa y abre la siguiente. Saltar una
+etapa no marca sus niveles como resueltos: quedan disponibles para practicar.
+El reto de la etapa 5 acredita el recorrido completo. Los componentes del reloj
+y la memoria se desbloquean al entrar a la etapa 4, también por saltos.
+
+Los identificadores anteriores se conservan para mantener las finalizaciones.
+El orden pedagógico está definido por etapa y puede diferir del número del nivel.
+Los circuitos guardados siguen cargándose si cumplen el inventario de su nivel.

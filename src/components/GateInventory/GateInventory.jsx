@@ -42,7 +42,7 @@ export function GateInventory({ inventory, lockedGates = [], onAdd }) {
       {lockedGates.map((type) => (
         <p className="inventory-locked" key={type}>
           <Icon name="lock" size={16} />
-          {type}: completa el nivel {gateUnlocks[type]} para desbloquearlo.
+          {type}: llega a la etapa {gateUnlocks[type]} para desbloquearlo.
         </p>
       ))}
       <div className="inventory-note">

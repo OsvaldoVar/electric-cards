@@ -2,12 +2,12 @@ import { test, expect } from '@playwright/test';
 import { seedProgress, wire } from './helpers';
 import { referenceCircuit } from '../fixtures/solutions';
 
-test('completion opens a focused dialog, unlocks OR and continues to the next level', async ({
+test('completion opens a focused dialog and continues to the next lesson', async ({
   page,
 }) => {
   await page.goto('/puzzle/1');
   await expect(page.getByRole('button', { name: 'Añadir OR. 1 disponibles' })).toHaveCount(0);
-  await expect(page.locator('.inventory-locked')).toContainText('OR: completa el nivel 1');
+  await expect(page.getByRole('button', { name: 'Añadir AND. 1 disponibles' })).toBeVisible();
   await page.getByRole('button', { name: 'Añadir AND. 1 disponibles' }).click();
   await wire(page, 'Sensor A', 'AND 1 · entrada A');
   await wire(page, 'Sensor B', 'AND 1 · entrada B');
@@ -15,8 +15,7 @@ test('completion opens a focused dialog, unlocks OR and continues to the next le
   await page.getByRole('button', { name: 'Probar circuito' }).click();
   const dialog = page.getByRole('dialog', { name: '¡Circuito correcto!' });
   await expect(dialog).toBeVisible();
-  await expect(dialog).toContainText('Has desbloqueado');
-  await expect(dialog.locator('.completion-unlock')).toContainText('OR');
+  await expect(dialog.locator('.completion-unlock')).toHaveCount(0);
   const next = dialog.getByRole('button', { name: 'Siguiente nivel' });
   await expect(next).toBeFocused();
   await page.keyboard.press('Tab');
@@ -30,16 +29,20 @@ test('completion opens a focused dialog, unlocks OR and continues to the next le
   await expect(page.getByRole('button', { name: 'Añadir OR. 1 disponibles' })).toBeVisible();
   await page.getByRole('navigation').getByRole('link', { name: 'Compuertas' }).click();
   await expect(page.getByRole('link', { name: /^Compuerta OR:/ })).toBeVisible();
-  await expect(page.getByRole('article', { name: /Compuerta NOT. Bloqueada/ })).toBeVisible();
-  await page.goto('/learn/not');
-  await expect(page.getByRole('heading', { name: 'NOT está bloqueado' })).toBeVisible();
+  await expect(
+    page.getByRole('article', { name: /Compuerta CLOCK. Bloqueada/ }),
+  ).toBeVisible();
+  await page.goto('/learn/clock');
+  await expect(page.getByRole('heading', { name: 'CLOCK está bloqueado' })).toBeVisible();
 });
 
 test('success dialog closes with Escape and last level returns to the map', async ({
   page,
 }) => {
-  await seedProgress(page, 34, { 35: { circuit: referenceCircuit(35), inputs: { A: 0 } } });
-  await page.goto('/puzzle/35');
+  await seedProgress(page, 40, {
+    41: { circuit: referenceCircuit(41), inputs: { A: 0, B: 0, C: 0 } },
+  });
+  await page.goto('/puzzle/41');
   const testButton = page.getByRole('button', { name: 'Probar circuito' });
   await testButton.click();
   await expect(page.getByRole('dialog')).toBeVisible();
@@ -49,7 +52,7 @@ test('success dialog closes with Escape and last level returns to the map', asyn
   await testButton.click();
   await page.getByRole('dialog').getByRole('button', { name: 'Ver recorrido' }).click();
   await expect(page.getByRole('heading', { name: 'Mapa de niveles' })).toBeVisible();
-  await expect(page.locator('.progress-summary-count')).toContainText('35');
+  await expect(page.locator('.progress-summary-count')).toContainText('40');
 });
 
 test('build a D flip-flop, hold between edges, run and pause the clock, then complete the level', async ({
