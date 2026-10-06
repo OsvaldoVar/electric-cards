@@ -51,7 +51,11 @@ function Board({ game, level }) {
           .filter((edge) => edge.target === node.id)
           .map((edge) => [
             edge.targetHandle,
-            { id: edge.id, value: preview.nodeValues?.[edge.source] },
+            {
+              id: edge.id,
+              value: preview.nodeValues?.[edge.source],
+              selected: edge.id === selectedEdge,
+            },
           ]),
       );
       return {
@@ -94,6 +98,7 @@ function Board({ game, level }) {
     deleteGate,
     disconnect,
     selectedNodes,
+    selectedEdge,
     measuredNodes,
     game.vertical,
     game.review,
@@ -235,11 +240,17 @@ function Board({ game, level }) {
           onConnect={connect}
           onConnectEnd={connectEnd}
           isValidConnection={(connection) => validateConnection(circuit, connection).valid}
-          onEdgesChange={(changes) =>
-            changes
-              .filter((change) => change.type === 'remove')
-              .forEach((change) => disconnect(change.id))
-          }
+          onEdgesChange={(changes) => {
+            for (const change of changes) {
+              if (change.type === 'remove') disconnect(change.id);
+              if (change.type === 'select') {
+                setSelectedEdge((previous) =>
+                  change.selected ? change.id : previous === change.id ? null : previous,
+                );
+              }
+            }
+          }}
+          onNodeClick={() => setSelectedEdge(null)}
           onEdgeClick={(_event, edge) => setSelectedEdge(edge.id)}
           onPaneClick={() => {
             setSelectedEdge(null);

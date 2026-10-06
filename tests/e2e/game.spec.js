@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { seedProgress, wire } from './helpers';
+import { seedProgress, wire, selectWire } from './helpers';
 
 async function addAnd(page) {
   await page.getByRole('button', { name: 'Añadir AND. 1 disponibles' }).click();
@@ -101,6 +101,7 @@ test('validation reports a hidden failing combination and edits clear stale resu
   await expect(page.locator('.results-table .case-failed')).toHaveCount(1);
   await page.getByRole('button', { name: 'Ver combinación 3' }).click();
   await expect(page.locator('.output-node .node-bit')).toHaveText('1');
+  await selectWire(page);
   await page.getByRole('button', { name: 'Desconectar Entrada de Puerta' }).click();
   await expect(page.locator('.test-results')).toHaveCount(0);
   await page.getByRole('button', { name: 'Probar circuito' }).click();

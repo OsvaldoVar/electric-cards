@@ -3,8 +3,10 @@ import { gates } from '../../data/gates';
 import { GateSymbol } from '../GateSymbol';
 import { Icon } from '../Icon';
 import { gateUnlocks } from '../../data/unlocks';
+import { useLearningContext } from '../../hooks/useLearningContext';
 
 export function GateInventory({ inventory, lockedGates = [], onAdd }) {
+  const { learningSearch } = useLearningContext();
   return (
     <section className="inventory-panel">
       <h2>Tus compuertas</h2>
@@ -28,7 +30,7 @@ export function GateInventory({ inventory, lockedGates = [], onAdd }) {
               <Icon name="plus" size={16} />
             </button>
             <Link
-              to={`/learn/${type.toLowerCase()}`}
+              to={`/learn/${type.toLowerCase()}${learningSearch}`}
               className="inventory-learn"
               aria-label={`Aprender ${type}`}
             >

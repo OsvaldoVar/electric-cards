@@ -7,11 +7,13 @@ import { Icon } from '../components/Icon';
 import NotFound from './NotFound';
 import { useProgress } from '../hooks/useProgress';
 import { gateUnlocks } from '../data/unlocks';
+import { useLearningContext } from '../hooks/useLearningContext';
 
 export default function GateDetails() {
   const { gate: gateId } = useParams();
   const gate = gates[gateId?.toUpperCase()];
   const { unlockedGates } = useProgress();
+  const { level, learningSearch } = useLearningContext();
   if (!gate) return <NotFound />;
   if (!unlockedGates.includes(gate.id))
     return (
@@ -30,7 +32,7 @@ export default function GateDetails() {
 
   return (
     <main className={`page gate-details gate-details-page family-${gate.family}`}>
-      <Link className="back-link" to="/learn">
+      <Link className="back-link" to={`/learn${learningSearch}`}>
         <Icon name="back" size={17} />
         Volver a la colección
       </Link>
@@ -74,8 +76,11 @@ export default function GateDetails() {
           </div>
 
           <div className="detail-actions">
-            <Link className="button button-primary" to="/levels">
-              Llévala al tablero
+            <Link
+              className="button button-primary"
+              to={level ? `/puzzle/${level.id}` : '/levels'}
+            >
+              {level ? `Volver al nivel ${level.id}` : 'Llévala al tablero'}
               <Icon name="arrow" />
             </Link>
           </div>

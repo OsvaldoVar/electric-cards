@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 import { CharacterPortrait } from '../CharacterPortrait';
 import { Icon } from '../Icon';
 import { gateUnlocks } from '../../data/unlocks';
+import { useLearningContext } from '../../hooks/useLearningContext';
 
 export function GateCard({ gate, unlocked = true }) {
+  const { learningSearch } = useLearningContext();
   const Container = unlocked ? Link : 'article';
   return (
     <Container
-      to={unlocked ? `/learn/${gate.id.toLowerCase()}` : undefined}
+      to={unlocked ? `/learn/${gate.id.toLowerCase()}${learningSearch}` : undefined}
       className={`gate-card family-${gate.family}${unlocked ? '' : 'gate-card-locked'}`}
       aria-label={
         unlocked

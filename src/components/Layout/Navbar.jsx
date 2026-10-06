@@ -2,10 +2,12 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { Icon } from '../Icon';
 import { SettingsDialog } from '../SettingsDialog';
+import { useLearningContext } from '../../hooks/useLearningContext';
 
 export function Navbar() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { pathname } = useLocation();
+  const { level, learningSearch } = useLearningContext();
   const section = pathname.startsWith('/learn')
     ? 'learn'
     : pathname === '/levels' || pathname.startsWith('/puzzle/')
@@ -30,6 +32,15 @@ export function Navbar() {
                 <span>Mapa de niveles</span>
               </Link>
             )}
+            {pathname.startsWith('/learn') && level && (
+              <Link
+                className="button button-primary level-map-button"
+                to={`/puzzle/${level.id}`}
+              >
+                <Icon name="back" size={17} />
+                <span>Volver al nivel {level.id}</span>
+              </Link>
+            )}
           </div>
           <nav aria-label="Navegación principal" data-section={section}>
             <Link
@@ -39,7 +50,7 @@ export function Navbar() {
             >
               Jugar
             </Link>
-            <NavLink to="/learn">Compuertas</NavLink>
+            <NavLink to={`/learn${learningSearch}`}>Compuertas</NavLink>
           </nav>
           <NavLink to="/" className="brand" aria-label="Electric Cards, inicio">
             <Icon name="bolt" size={31} />

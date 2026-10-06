@@ -22,6 +22,7 @@ export function OutputNode({ id, data }) {
         port="in"
         type="target"
         label={`Entrada de ${data.label}`}
+        selected={data.ports.in?.selected}
         edgeId={data.ports.in?.id}
         value={data.ports.in?.value}
         onDisconnect={data.onDisconnect}

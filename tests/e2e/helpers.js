@@ -40,3 +40,17 @@ export async function wire(page, source, target, { drag = false } = {}) {
     await to.click();
   }
 }
+
+export async function selectWire(page, index = 0) {
+  const point = await page
+    .locator('.react-flow__edge-path')
+    .nth(index)
+    .evaluate((path) => {
+      const middle = path.getPointAtLength(path.getTotalLength() / 2);
+      const screen = new DOMPoint(middle.x, middle.y).matrixTransform(path.getScreenCTM());
+      return { x: screen.x, y: screen.y };
+    });
+  if (await page.evaluate(() => navigator.maxTouchPoints > 0))
+    await page.touchscreen.tap(point.x, point.y);
+  else await page.mouse.click(point.x, point.y);
+}

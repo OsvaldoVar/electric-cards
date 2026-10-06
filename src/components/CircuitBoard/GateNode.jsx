@@ -41,6 +41,7 @@ export function GateNode({ id, data }) {
             type="target"
             label={`Entrada ${port.toUpperCase()} de ${gate.name} ${data.instance}`}
             top={gate.inputs === 1 ? 50 : index === 0 ? 33 : 70}
+            selected={data.ports[port]?.selected}
             edgeId={data.ports[port]?.id}
             value={data.ports[port]?.value}
             onDisconnect={data.onDisconnect}

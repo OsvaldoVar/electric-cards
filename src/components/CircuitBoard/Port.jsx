@@ -9,6 +9,7 @@ export function Port({
   top = 50,
   value,
   edgeId,
+  selected = false,
   onDisconnect,
   vertical = false,
 }) {
@@ -35,7 +36,7 @@ export function Port({
       >
         <span className="port-dot" />
       </Handle>
-      {edgeId && (
+      {edgeId && selected && (
         <button
           className={`port-clear nodrag nopan port-clear-${port} ${vertical ? 'port-clear-vertical' : ''}`}
           style={vertical ? { left: `${top}%` } : { top: `${top}%` }}

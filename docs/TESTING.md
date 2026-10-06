@@ -315,3 +315,33 @@ release. The table records local verification. GitHub runs the CI workflow on
 pushes and pull requests; the latest remote result is available in
 [Actions](https://github.com/OsvaldoVar/electric-cards/actions). Vercel deployment
 has not been executed.
+
+### Learning return and selected-wire controls — 2026-10-06
+
+Verified against main commit 016583528494520566a4cd4123e9f76c77c4eefa plus
+this UX change, using Node.js 24.19.0.
+
+- ESLint passed; Prettier passed for changed source and browser tests.
+- All 83 Vitest/Testing Library tests passed.
+- Production build passed.
+- Full Playwright suite: 99 passed, 1 intentional desktop-only touch skip.
+  Native touch wiring passed in the touch project.
+- New browser coverage checks wire selection by pointer/native touch and
+  keyboard, target-port X visibility, deselection on nodes/canvas, target-port
+  removal and keyboard activation of the central remove action.
+- Learning coverage checks inventory and navigation entry points, collection
+  round trips, reload, unchanged validated circuit drafts, return to levels
+  1 and 3, normal direct learning visits and invalid origin parameters.
+- Learning return headers fit 360×800, 768×1024, 1366×768 and 1920×1080 without
+  horizontal page overflow; the existing full workspace checks also passed.
+
+The browser CDN returned an invalid archive. Local QA used temporary
+@sparticuz/chromium outside the repository through
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH. A temporary Playwright config changed only
+the preview host to 127.0.0.1 because this runtime rejects network-interface
+enumeration for Vite's default 0.0.0.0 host. No production configuration or
+dependencies changed. Physical Safari/iOS and Firefox remain unverified.
+
+On short mobile wires the existing central remove action can overlap the
+target-port X. The target-port action remains operable; the central action was
+verified through keyboard activation. This change does not alter wire layout.

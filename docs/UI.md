@@ -119,3 +119,16 @@ this presentation contract does not claim unperformed checks.
 Final visual acceptance and any remaining browser review are pending at this
 handoff. The saved documentation describes implemented source; it does not
 claim completion of that final review.
+
+## Learning return and quiet wires — 2026-10-06
+
+Unselected wires have no delete controls. Selecting a wire reveals its central
+remove button and the X at its target port; other wires stay clear. Selecting
+a node or the canvas hides these controls. Node deletion remains available.
+
+Aprender and Compuertas opened during a puzzle retain the current level.
+The collection and gate details offer Volver al nivel N in the header, and
+the gate detail's main action returns to that same level. The collection link
+and its cards preserve this context, including through reload. Normal visits
+to the collection continue to offer the level map. Circuit drafts and earned
+progress use the existing save behavior.

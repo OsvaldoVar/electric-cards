@@ -316,3 +316,20 @@ row feedback and accessible labels; detailed results keep received values.
 `puzzle-sidebar`. Previously the outline's bottom edge scrolled through the
 inventory because it was positioned inside the scroll container. Content
 separators now remain in normal document flow while the outer frame stays fixed.
+
+## Learning detours and wire selection — 2026-10-06
+
+Learning links opened from a puzzle carry its stable level ID in the `from`
+query parameter. `useLearningContext` resolves only known levels and supplies
+that context to inventory links, navigation, collection cards and the link back
+to the collection. The learning header and detail action return directly to the
+origin puzzle. Ordinary learning visits keep their map action. Query-based
+context survives reload and opening a link in another tab without introducing
+a new saved game field; the existing reducer and validated drafts restore the
+circuit. Sequential memory and running timers remain transient as documented.
+
+Wire selection belongs to the board's view state. The selected edge controls
+both its central remove action and its target port's disconnect action; other
+occupied ports show no X. Pointer/touch and keyboard edge selection use the
+same controlled state. Selecting a node or the canvas clears edge selection.
+Selection is never persisted with circuit drafts.
