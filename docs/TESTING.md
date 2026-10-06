@@ -345,3 +345,34 @@ dependencies changed. Physical Safari/iOS and Firefox remain unverified.
 On short mobile wires the existing central remove action can overlap the
 target-port X. The target-port action remains operable; the central action was
 verified through keyboard activation. This change does not alter wire layout.
+
+### Coordinated wire routing — 2026-10-06
+
+Verified on top of main commit 9ee4ddd3442076d11897a7094c2f5ba4f43f7b36,
+with Node.js 24.19.0 and the same temporary Chromium/loopback preview setup
+documented above. No dependencies or production server configuration changed.
+
+- ESLint passed, and Prettier passed for changed source and tests.
+- All 89 unit/component tests passed across 11 files.
+- Production build passed.
+- The full browser suite passed 101 tests, with the one intentional
+  desktop-only native-touch skip; native touch wiring passed in the touch project.
+- Six routing tests check the reported two-input XOR/XNOR fan-out, only short
+  shared source stems, distinct lanes for independent signals, stable routes
+  after edge reordering, obstacle avoidance, backward placements, top/bottom
+  ports, compact mobile terminal gaps and empty/unmeasured boards.
+- A browser regression in both projects reproduces the reported arrangement
+  with five wires. It measures rendered SVG segment overlap and both endpoint
+  errors, then repeats after signal changes, reload, mouse/native-touch dragging,
+  mobile orientation and organizer changes. Endpoint error remains below 2px;
+  unrelated signals share no collinear segment in the tested layout. The
+  constructed circuit still completes level 12.
+- Desktop and mobile captures were visually inspected. The regression saves
+  fan-out-desktop.png and fan-out-mobile.png in its ignored test-results folder;
+  rerun tests/e2e/wire-routing.spec.js to regenerate them.
+
+The planner cannot guarantee independent lanes when users physically overlap
+modules or block every port escape. In those cases wires remain visible through
+the attached orthogonal fallback; moving modules apart or organizing the board
+restores space. A common-source branch necessarily shares its terminal stem.
+Physical Safari/iOS and Firefox remain unverified.

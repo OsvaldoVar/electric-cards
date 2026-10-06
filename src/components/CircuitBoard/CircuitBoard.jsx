@@ -6,6 +6,7 @@ import {
   ReactFlow,
   ReactFlowProvider,
   useReactFlow,
+  useStore,
   useNodesInitialized,
   useUpdateNodeInternals,
 } from '@xyflow/react';
@@ -18,6 +19,7 @@ import { Wire } from './Wire';
 import { validateConnection } from '../../engine/validateCircuit';
 import { Icon } from '../Icon';
 import { PuzzleControls } from '../PuzzleControls';
+import { routeWires, selectWireGeometry } from '../../services/wireRouting';
 
 const nodeTypes = { input: InputNode, gate: GateNode, output: OutputNode };
 const edgeTypes = { wire: Wire };
@@ -38,6 +40,11 @@ function Board({ game, level }) {
   const { fitView, zoomIn, zoomOut } = useReactFlow();
   const updateNodeInternals = useUpdateNodeInternals();
   const nodesInitialized = useNodesInitialized();
+  const wireGeometry = useStore(selectWireGeometry);
+  const wireRoutes = useMemo(
+    () => routeWires(circuit.edges, JSON.parse(wireGeometry)),
+    [circuit.edges, wireGeometry],
+  );
   const nodeIds = circuit.nodes.map((node) => node.id).join('|');
   const motionDuration = (event) =>
     event.detail === 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -128,9 +135,13 @@ function Board({ game, level }) {
         ...edge,
         type: 'wire',
         selected: edge.id === selectedEdge,
-        data: { value: preview.nodeValues?.[edge.source], onDisconnect: disconnect },
+        data: {
+          value: preview.nodeValues?.[edge.source],
+          onDisconnect: disconnect,
+          route: wireRoutes[edge.id],
+        },
       })),
-    [circuit.edges, preview, disconnect, selectedEdge],
+    [circuit.edges, preview, disconnect, selectedEdge, wireRoutes],
   );
   const changeNodes = (changes) => {
     const dimensions = changes.filter(

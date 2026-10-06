@@ -12,7 +12,7 @@ export function Wire({
   data,
   selected,
 }) {
-  const [path, x, y] = getSmoothStepPath({
+  const [fallbackPath, fallbackX, fallbackY] = getSmoothStepPath({
     sourceX,
     sourceY,
     targetX,
@@ -22,6 +22,15 @@ export function Wire({
     borderRadius: 0,
     offset: 24,
   });
+  const route = data.route;
+  const attached =
+    route &&
+    Math.abs(route.points[0].x - sourceX) < 1 &&
+    Math.abs(route.points[0].y - sourceY) < 1 &&
+    Math.abs(route.points.at(-1).x - targetX) < 1 &&
+    Math.abs(route.points.at(-1).y - targetY) < 1;
+  const path = attached ? route.path : fallbackPath;
+  const { x, y } = attached ? route.label : { x: fallbackX, y: fallbackY };
   return (
     <>
       <path
@@ -34,6 +43,8 @@ export function Wire({
         path={path}
         className={`wire-path bit-${data.value ?? 'unknown'} ${selected ? 'wire-selected' : ''}`}
         interactionWidth={24}
+        data-routing={attached ? 'separated' : 'pending'}
+        data-bridges={attached ? route.bridges : 0}
       />
       {selected && (
         <EdgeLabelRenderer>

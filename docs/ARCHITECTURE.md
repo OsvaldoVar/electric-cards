@@ -333,3 +333,31 @@ both its central remove action and its target port's disconnect action; other
 occupied ports show no X. Pointer/touch and keyboard edge selection use the
 same controlled state. Selecting a node or the canvas clears edge selection.
 Selection is never persisted with circuit drafts.
+
+## Coordinated orthogonal wire routing — 2026-10-06
+
+`services/wireRouting.js` plans all wires together from React Flow's measured
+absolute node positions and handle bounds. The board subscribes to a compact
+geometry snapshot; selection, signal colors, zoom and preview values do not
+replan routes. Moving cards or changing port orientation does. Routes remain
+view data and are never serialized with drafts or passed into the logic engine.
+
+A rectilinear grid reserves 16px clearance around modules and provides 16px
+candidate lanes between boundaries. A deterministic topology order and A*
+length/bend costs favor short paths, with strong penalties for reusing a
+reserved segment and lesser penalties for nearby parallel runs and crossings.
+Terminal escapes are limited to 32px and shorten around nearby modules, so the
+compact mobile organizer can still route wires. Fan-out shares only its source
+stem when space permits; signals from different sources occupy distinct lanes.
+
+Necessary perpendicular crossings use a small square bridge on the later SVG
+wire, preserving the pixel style and both signal colors. Both the dark underlay
+and interactive SVG path use the routed geometry. The selected remove action
+uses the longest routed segment. Wire endpoints must match React Flow's current
+handle coordinates before displaying the plan; while measurement catches up,
+the previous orthogonal helper supplies an attached, visible fallback.
+
+The planner is a display heuristic, not a planar-graph guarantee. Physically
+overlapping cards can block a terminal's escape and cause fallback routing.
+Moving cards apart or Organizar restores usable corridors. Shared source stems
+represent the same signal, not independent wires accidentally sharing a lane.

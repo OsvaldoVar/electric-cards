@@ -132,3 +132,17 @@ the gate detail's main action returns to that same level. The collection link
 and its cards preserve this context, including through reload. Normal visits
 to the collection continue to offer the level map. Circuit drafts and earned
 progress use the existing save behavior.
+
+## Separate wire lanes and crossing bridges — 2026-10-06
+
+The board now routes wires together instead of giving each wire the same
+independent midpoint. Parallel runs prefer separate lanes, and routes avoid
+module bodies. A branching source retains a short common stem before its paths
+separate. Necessary crossings show a square bridge, so a crossover does not
+look like a connection. Signal colors, selection and disconnect actions remain.
+
+Routes follow moved modules, reload existing drafts and switch between desktop
+and mobile port directions. The same path drives the visible stroke, outline
+and hit area. Routing changes no connections, gate inventory or test results.
+The geometry regression reproduces A/B feeding both XOR and XNOR as in the
+reported image.
