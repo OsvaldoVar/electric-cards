@@ -2,24 +2,26 @@
 
 Juego web educativo de lógica digital. Construye un circuito con un inventario
 limitado de compuertas y consigue que sus salidas cumplan el objetivo en **todas
-las combinaciones de entrada**. Interfaz en español para PC, tablet y celular.
+las combinaciones y secuencias de prueba**. Interfaz en español para PC, tablet y celular.
 
 ![Inicio de Electric Cards](docs/screenshots/home-desktop.png)
 
 ## Qué incluye
 
-- 25 puzzles en cinco mundos, con dificultad progresiva y retos de optimización.
-- AND, OR, NOT, NAND, NOR, XOR y XNOR.
+- 35 puzzles en siete mundos, con dificultad progresiva y retos de optimización.
+- AND, OR, NOT, NAND, NOR, XOR, XNOR, CLOCK y flip-flops D y T.
 - Editor de nodos: añadir, mover, conectar, desconectar y eliminar cartas.
-- Conexión por arrastre, dos toques o selectores accesibles.
+- Conexión por arrastre, dos toques.
 - Vista previa de señales 0/1; conexiones incompletas muestran `?`.
 - Rechazo de ciclos, puertos ocupados y conexiones inválidas.
 - LEDs, puertas, banderas, alarmas y motores como salidas binarias.
 - Validación exhaustiva con resultados de cada combinación.
-- Estrellas, desbloqueo de niveles y conservación de mejores resultados.
+- Desbloqueo progresivo de componentes, aviso azul de optimización y progreso guardado.
+- Ventana de éxito con el componente obtenido y botón para el siguiente nivel.
+- Reloj manual o automático, memoria y comprobación de secuencias temporales.
 - Guardado local del progreso y de los circuitos en construcción.
 - Colección educativa con personajes, símbolos, expresiones, tablas de verdad
-  y simuladores interactivos para las siete compuertas.
+  y simuladores interactivos para los diez componentes.
 - Instrucciones para agentes, documentación técnica y CI para GitHub Actions.
 
 No necesita backend ni cuenta. El progreso se guarda en este navegador y no se
@@ -56,15 +58,17 @@ de SPA para importar el repositorio en Vercel. No requiere variables secretas.
 1. Abre **Jugar** y elige un nivel disponible.
 2. Lee la misión y observa el inventario.
 3. Toca una carta para añadirla. Arrástrala dentro del tablero para colocarla.
-4. Conecta una salida con una entrada: arrastra el cable, toca ambos puertos
-   o abre **Conectar con selectores**.
+4. Conecta una salida con una entrada: arrastra el cable o toca primero el
+   puerto de salida y después el de entrada.
 5. Cambia las entradas para explorar el comportamiento del circuito.
 6. Pulsa **Probar circuito**. Solo completas el nivel al pasar todos los casos.
 7. Revisa las combinaciones fallidas, usa una pista o mejora tu solución.
 
-Una estrella confirma la solución. Dos y tres requieren los presupuestos de
-compuertas indicados. No se penaliza pedir pistas. Eliminar una carta devuelve
-su unidad al inventario. Reiniciar vacía el tablero y conserva las estrellas.
+Cualquier solución correcta completa el nivel. Si utiliza más compuertas que
+el objetivo de optimización, aparece información azul indicando que se puede
+resolver con menos compuertas. No se penaliza pedir pistas. Eliminar una carta
+devuelve su unidad al inventario. Reiniciar vacía el tablero y conserva los
+niveles completados.
 El botón **Ajustar tablero** recupera los nodos después de moverlos o hacer zoom.
 **Organizar tablero** distribuye las cartas para la pantalla actual: de
 izquierda a derecha en PC y de arriba hacia abajo en celular.
@@ -107,7 +111,7 @@ src/
   services/      Persistencia versionada y saneamiento de borradores
   styles/        Variables, estilos globales y reglas responsive
 tests/
-  engine/        Tablas, grafos y soluciones de los 25 niveles
+  engine/        Tablas, grafos y soluciones de los 35 niveles
   fixtures/      Circuitos de referencia independientes
   e2e/           Recorridos de escritorio y touch
 docs/            Especificación, arquitectura, contenido y QA
@@ -142,3 +146,17 @@ datos. Antes de una entrega definitiva, conviene completar las comprobaciones
 en Safari, Firefox y celulares físicos indicadas en el registro de QA.
 
 Diseñado para el proyecto académico de compuertas lógicas de FCC-BUAP.
+
+## Relojes y memoria
+
+El juego comienza con AND. Completar 1 desbloquea OR; 2, NOT; 5, NAND; 6, NOR;
+10, XOR; 11, XNOR; 25, CLOCK; 27, DFF; y 31, TFF. Las fichas bloqueadas indican
+el nivel requerido. Los componentes desbloqueados siguen respetando el
+inventario de cada reto.
+
+Los niveles 26–35 comprueban secuencias de señales. Usa **Avanzar reloj** para
+alternar CLK entre 0 y 1, **Iniciar reloj** para avanzar automáticamente cada
+segundo y **Pausar reloj** para detenerlo. DFF guarda D en el flanco 0 → 1;
+TFF alterna Q cuando T vale 1 en ese flanco. Q se conserva entre flancos.
+**Reiniciar memoria** pone CLK y los registros en 0 sin vaciar el circuito.
+El circuito y el progreso se guardan; al recargar, la memoria vuelve a 0.

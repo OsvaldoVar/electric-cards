@@ -28,12 +28,12 @@ export function arrangeNodes(nodes, vertical) {
     inputs.forEach((node, index) => positions.set(node.id, { x: 40, y: 60 + index * 145 }));
     gates.forEach((node, index) =>
       positions.set(node.id, {
-        x: 270 + (index % 3) * 170,
+        x: 270 + (index % 3) * 220,
         y: 80 + Math.floor(index / 3) * 160,
       }),
     );
     outputs.forEach((node, index) =>
-      positions.set(node.id, { x: gates.length > 1 ? 840 : 570, y: 110 + index * 175 }),
+      positions.set(node.id, { x: gates.length > 1 ? 1000 : 570, y: 110 + index * 175 }),
     );
   }
   return nodes.map((node) => ({ ...node, position: positions.get(node.id) }));

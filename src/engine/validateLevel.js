@@ -1,11 +1,12 @@
 import { evaluateCircuit } from './evaluateCircuit';
 import { validateCircuit } from './validateCircuit';
+import { initialSimulation, stepSequentialCircuit } from './sequential';
 
-export function validateLevel(level, circuit) {
+export function validateLevel(level, circuit, options = {}) {
   const gateCount = Array.isArray(circuit?.nodes)
     ? circuit.nodes.filter((node) => node?.type === 'gate').length
     : 0;
-  const validation = validateCircuit(circuit, { level });
+  const validation = validateCircuit(circuit, { ...options, level });
   if (!validation.valid) {
     return {
       success: false,
@@ -15,26 +16,39 @@ export function validateLevel(level, circuit) {
       cases: [],
       errors: validation.errors,
       gateCount,
-      stars: 0,
+      canOptimize: false,
     };
   }
-  const cases = level.tests.map(({ inputs, outputs: expected }) => {
-    const result = evaluateCircuit(circuit, inputs);
-    const received = result.outputs ?? {};
-    const passed =
-      result.valid &&
-      level.outputs.every((output) => received[output.id] === expected[output.id]);
-    return { inputs, expected, received, passed };
-  });
+  let simulation = initialSimulation();
+  let scenario;
+  const cases = level.tests.map(
+    ({ inputs, outputs: expected, clock, scenario: sequence, step }) => {
+      if (level.kind === 'sequential' && scenario !== sequence) {
+        simulation = initialSimulation();
+        scenario = sequence;
+      }
+      const result =
+        level.kind === 'sequential'
+          ? stepSequentialCircuit(circuit, inputs, simulation, { clock })
+          : evaluateCircuit(circuit, inputs);
+      if (result.simulation) simulation = result.simulation;
+      const received = result.outputs ?? {};
+      const passed =
+        result.valid &&
+        level.outputs.every((output) => received[output.id] === expected[output.id]);
+      return {
+        inputs,
+        expected,
+        received,
+        passed,
+        ...(level.kind === 'sequential'
+          ? { clock, scenario: sequence, step, simulation }
+          : {}),
+      };
+    },
+  );
   const failures = cases.filter((test) => !test.passed);
   const success = failures.length === 0 && cases.length > 0;
-  const stars = !success
-    ? 0
-    : gateCount <= level.stars.maxGates3
-      ? 3
-      : gateCount <= level.stars.maxGates2
-        ? 2
-        : 1;
   return {
     success,
     testsPassed: cases.length - failures.length,
@@ -43,6 +57,6 @@ export function validateLevel(level, circuit) {
     cases,
     errors: [],
     gateCount,
-    stars,
+    canOptimize: success && gateCount > level.optimizationGateCount,
   };
 }

@@ -6,11 +6,35 @@ import { useGame } from '../../hooks/useGame';
 export function Layout() {
   const { storageAvailable } = useGame();
   const { pathname } = useLocation();
+  const puzzleRoute = pathname.startsWith('/puzzle/');
+  useEffect(() => {
+    const root = document.documentElement;
+    const onPointer = () => {
+      root.dataset.input = 'pointer';
+    };
+    const onKey = (event) => {
+      if (
+        event.key === 'Tab' ||
+        event.key === 'Enter' ||
+        event.key === ' ' ||
+        event.key.startsWith('Arrow')
+      ) {
+        root.dataset.input = 'keyboard';
+      }
+    };
+    document.addEventListener('pointerdown', onPointer, true);
+    document.addEventListener('keydown', onKey, true);
+    return () => {
+      document.removeEventListener('pointerdown', onPointer, true);
+      document.removeEventListener('keydown', onKey, true);
+      delete root.dataset.input;
+    };
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
   return (
-    <>
+    <div className={`app-shell${puzzleRoute ? ' puzzle-shell' : ''}`}>
       <a className="skip-link" href="#main-content">
         Saltar al contenido
       </a>
@@ -24,11 +48,13 @@ export function Layout() {
       <div id="main-content">
         <Outlet />
       </div>
-      <footer className="site-footer">
-        <span>Electric Cards</span>
-        <span>Construye. Prueba. Comprende.</span>
-        <span>0 y 1. Infinitas ideas.</span>
-      </footer>
-    </>
+      {!puzzleRoute && (
+        <footer className="site-footer">
+          <span>Electric Cards</span>
+          <span>Construye. Prueba. Comprende.</span>
+          <span>0 y 1. Infinitas ideas.</span>
+        </footer>
+      )}
+    </div>
   );
 }

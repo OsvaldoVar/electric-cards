@@ -1,40 +1,33 @@
 .board-panel {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  background: #111c25;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
 }
 .board-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 18px;
-  font-size: 10px;
-  font-family: var(--mono);
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid var(--border);
-}
-.board-heading > span:first-child {
-  color: var(--text);
-}
-.board-heading .mono {
-  font-size: 9px;
+  gap: var(--space-3);
+  border-bottom: 2px solid var(--border-highlight);
 }
 .circuit-canvas {
-  height: clamp(390px, 58vh, 610px);
   width: 100%;
+  height: 510px;
+  background: var(--canvas);
 }
 .react-flow {
-  --xy-background-color: #111c25;
+  --xy-background-color: var(--canvas);
   --xy-node-color-default: var(--text);
+  --xy-edge-stroke-default: var(--cyan);
+  --xy-connectionline-stroke-default: var(--yellow);
+  --xy-connectionline-stroke-width-default: 3;
 }
 .react-flow__attribution {
-  background: #17232ddd !important;
+  background: var(--canvas) !important;
 }
 .react-flow__attribution a {
   color: var(--muted) !important;
-  font-size: 8px;
+  font-size: 10px;
 }
 .react-flow__node {
   cursor: grab;
@@ -48,154 +41,213 @@
   box-shadow: none;
   color: inherit;
 }
-.react-flow__node:focus-visible {
-  outline: 2px solid var(--mint);
-  border-radius: 13px;
+.react-flow__node.selectable:focus,
+.react-flow__node.selectable:focus-visible,
+.react-flow__node.selectable.selected,
+.react-flow__node-input.selectable:hover,
+.react-flow__node-output.selectable:hover {
+  outline: none;
+  box-shadow: none;
 }
-.react-flow__node.selected .circuit-node {
-  border-color: var(--accent);
+.react-flow__node:focus-visible .circuit-node {
+  outline: 3px solid var(--cyan);
+  outline-offset: 8px;
+}
+.react-flow__nodesselection-rect,
+.react-flow__selection,
+.react-flow__nodesselection-rect:focus,
+.react-flow__nodesselection-rect:focus-visible {
+  border: 0;
+  background: transparent;
+  outline: none;
+  box-shadow: none;
 }
 .circuit-node {
+  --frame-color: var(--border-highlight);
   width: 136px;
   position: relative;
-  background: var(--surface-raised);
-  border: 1px solid #46555f;
-  border-radius: 12px;
-  box-shadow: 0 7px 18px #0003;
+  background: var(--surface-light);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
 }
 .input-node {
-  padding: 13px 16px;
+  padding: var(--space-3);
 }
 .node-kicker {
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
+  display: block;
+  text-align: center;
+  color: var(--text-secondary);
+  font: 700 14px/1 var(--display);
 }
 .input-node-toggle {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 6px 0;
+  padding: var(--space-1) 0;
   border: 0;
   background: none;
   min-height: 48px;
-  margin: 5px 0;
+  margin: var(--space-2) 0;
 }
 .input-node-toggle > strong {
-  font-family: var(--mono);
-  font-size: 27px;
-  font-weight: 500;
+  font-family: var(--display);
+  font-size: 36px;
+  font-weight: 700;
   color: var(--text);
+  line-height: 1;
 }
 .node-bit {
   display: grid;
   place-items: center;
-  background: #111c25;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  width: 31px;
-  height: 31px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 17px;
+  background: var(--surface);
+  border: 2px solid var(--border-highlight);
+  border-radius: var(--radius-control);
+  width: 40px;
+  height: 40px;
+  color: var(--text-secondary);
+  font: 700 28px/1 var(--mono);
+  box-shadow: inset 2px 2px 0 var(--surface-light);
 }
 .bit-1 .node-bit {
-  background: #78e5bb12;
-  border-color: #78e5bb55;
+  background: var(--signal-soft);
+  border-color: var(--mint);
   color: var(--mint);
 }
 .input-node > small {
-  color: var(--muted);
+  color: var(--text-secondary);
   display: block;
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 1.2;
+  text-align: center;
 }
 .gate-node {
-  padding: 10px 14px;
-  border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+  padding: var(--space-2);
+  border-color: var(--border-highlight);
+}
+.react-flow__node.selected .gate-node {
+  --frame-color: var(--yellow);
+  border-color: var(--yellow);
 }
 .gate-node-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 5px;
-  padding-left: 7px;
+  gap: var(--space-1);
+  padding-left: var(--space-1);
 }
 .gate-node-heading > strong {
-  font-size: 12px;
-  color: var(--accent);
+  font: 700 22px/1 var(--display);
+  color: var(--yellow);
 }
 .node-delete {
-  min-width: 30px;
-  min-height: 30px;
+  min-width: 44px;
+  min-height: 44px;
   display: grid;
   place-items: center;
-  border: none;
+  border: 0;
   background: transparent;
-  border-radius: 5px;
-  color: var(--muted);
+  border-radius: var(--radius-control);
+  color: var(--pink);
 }
-.node-delete:hover {
-  background: #f19c9c11;
-  color: var(--danger);
+.node-delete svg {
+  width: 20px;
+  height: 20px;
 }
 .gate-node > .gate-symbol {
-  height: 59px;
-  color: var(--accent);
+  display: block;
+  margin: 0 auto var(--space-1);
+  width: 100%;
+  max-width: 108px;
+  height: 56px;
+  color: var(--yellow);
 }
 .gate-node-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 9px;
-  font-size: 8px;
-  color: var(--muted);
+  gap: var(--space-2);
+  font-size: 12px;
+  line-height: 1;
+  color: var(--text-secondary);
 }
 .node-signal {
-  min-width: 20px;
-  min-height: 20px;
+  min-width: 24px;
+  min-height: 24px;
   display: grid;
   place-items: center;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  font-size: 11px;
-  font-family: var(--mono);
+  border: 2px solid var(--border-highlight);
+  border-radius: var(--radius-control);
+  background: var(--surface);
+  font: 700 18px/1 var(--mono);
+  color: var(--text);
 }
 .node-signal.bit-1 {
-  background: #78e5bb0b;
-  border-color: #78e5bb55;
+  background: var(--signal-soft);
+  border-color: var(--mint);
+  color: var(--mint);
 }
 .output-node {
   width: 144px;
-  padding: 12px 16px;
+  padding: var(--space-3);
+}
+.output-node.bit-0 {
+  --frame-color: var(--red);
+  background: var(--danger-soft);
+  border-color: var(--red);
+}
+.output-node.bit-1 {
+  --frame-color: var(--mint);
+  background: var(--signal-soft);
+  border-color: var(--mint);
 }
 .output-indicator {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 10px 0;
-  color: var(--muted);
+  margin: var(--space-3) 0;
+  color: var(--text-secondary);
+}
+.output-indicator > svg {
+  width: 36px;
+  height: 36px;
+}
+.bit-0 .output-indicator > svg,
+.bit-0.output-node .node-bit {
+  color: var(--danger);
+  border-color: var(--red);
 }
 .bit-1 .output-indicator > svg {
   color: var(--mint);
-  filter: drop-shadow(0 0 8px #78e5bb66);
 }
 .output-node > strong {
   display: block;
-  font-size: 12px;
+  font-size: 16px;
+  line-height: 1.2;
 }
 .output-node > small {
   display: block;
-  color: var(--muted);
-  font-size: 10px;
-  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.2;
+  margin-top: var(--space-1);
+}
+/* Review is a verdict; the 0/1 badge and wire colors still show actual signals. */
+.output-node[data-review='passed'] {
+  --frame-color: var(--success);
+  border-color: var(--success);
+}
+.output-node[data-review='failed'] {
+  --frame-color: var(--danger);
+  border-color: var(--danger);
 }
 .react-flow__handle.circuit-port {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   background: transparent;
   border: 0;
+  border-radius: 0;
   display: grid;
   place-items: center;
   cursor: crosshair;
@@ -217,47 +269,6 @@
   right: 0;
   transform: translate(50%, -50%);
 }
-.port-dot {
-  width: 12px;
-  height: 12px;
-  border: 2px solid #71828e;
-  border-radius: 50%;
-  background: #17232d;
-  pointer-events: none;
-}
-.circuit-port.bit-1 .port-dot {
-  background: var(--mint);
-  border-color: var(--mint);
-}
-.circuit-port:hover .port-dot,
-.circuit-port.connectingfrom .port-dot {
-  border-color: var(--mint);
-  box-shadow: 0 0 0 5px #78e5bb19;
-}
-.circuit-port.valid .port-dot {
-  background: var(--mint);
-}
-.port-clear {
-  position: absolute;
-  left: 9px;
-  transform: translateY(-50%);
-  z-index: 2;
-  width: 24px;
-  height: 24px;
-  border-radius: 5px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--muted);
-  display: grid;
-  place-items: center;
-}
-.port-clear:hover {
-  border-color: var(--danger);
-  color: var(--danger);
-}
-.output-node .port-clear {
-  left: 2px;
-}
 .react-flow__handle-top.circuit-port {
   top: 0;
   transform: translate(-50%, -50%);
@@ -266,122 +277,148 @@
   bottom: 0;
   transform: translate(-50%, 50%);
 }
+.port-dot {
+  width: 16px;
+  height: 16px;
+  border: 3px solid var(--text-secondary);
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: 0 0 0 2px var(--frame-dark);
+  pointer-events: none;
+}
+.circuit-port.bit-0 .port-dot {
+  border-color: var(--signal-zero);
+}
+.circuit-port.bit-1 .port-dot {
+  border-color: var(--cyan);
+  background: var(--cyan);
+}
+.circuit-port.connectingfrom .port-dot,
+.circuit-port.valid .port-dot {
+  border-color: var(--yellow);
+  background: var(--yellow);
+}
+.port-clear {
+  position: absolute;
+  left: -52px;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-control);
+  border: 2px solid var(--border-highlight);
+  background: var(--surface-light);
+  color: var(--text);
+  box-shadow: 2px 2px 0 var(--frame-dark);
+  display: grid;
+  place-items: center;
+}
+.port-clear svg {
+  width: 20px;
+  height: 20px;
+}
 .port-clear-vertical {
-  top: -35px;
+  top: -52px;
   transform: translateX(-50%);
 }
-@media (max-width: 600px) {
-  .circuit-canvas {
-    height: 580px;
-  }
-}
 .wire-path {
-  stroke: #708895;
-  stroke-width: 2.5px;
+  stroke: var(--cyan);
+  stroke-width: 4px;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+.react-flow__connection-path {
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+.wire-path.bit-0 {
+  stroke: var(--signal-zero);
 }
 .wire-path.bit-1 {
-  stroke: var(--mint);
-  filter: drop-shadow(0 0 3px #78e5bb33);
+  stroke: var(--cyan);
 }
 .wire-path.bit-unknown {
-  stroke: #5b6975;
-  stroke-dasharray: 5 4;
+  stroke: var(--signal-unknown);
+  stroke-dasharray: 8 4;
 }
 .wire-path.wire-selected {
-  stroke-width: 4px;
+  stroke-width: 6px;
+}
+.wire-underlay {
+  fill: none;
+  stroke: var(--frame-dark);
+  stroke-width: 8px;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+  pointer-events: none;
+}
+.wire-underlay.bit-unknown {
+  display: none;
 }
 .wire-remove {
   position: absolute;
   background: var(--surface);
   color: var(--danger);
-  border: 1px solid var(--danger);
-  border-radius: 7px;
+  border: 2px solid var(--danger);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-card);
   min-height: 44px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 10px;
-  font-size: 11px;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  font-size: 16px;
   pointer-events: all;
 }
 .board-tools {
   display: flex;
   align-items: center;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
+  background: transparent;
+  border: 0;
+  gap: var(--space-3);
 }
 .board-tools button {
-  display: grid;
-  place-items: center;
-  width: 44px;
   height: 44px;
-  background: none;
-  border: 0;
-  color: var(--muted);
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0 var(--space-4);
+  border: 2px solid var(--button-border);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-button);
+  background: var(--yellow);
+  color: var(--on-primary);
+  font: 700 18px/1 var(--display);
+  text-transform: uppercase;
 }
-.board-tools button + button {
-  border-left: 1px solid var(--border);
+.board-tools button[aria-label='Acercar tablero'],
+.board-tools button[aria-label='Alejar tablero'] {
+  width: 44px;
+  padding: 0;
 }
-.board-tools button:hover {
-  color: var(--text);
-  background: var(--surface-raised);
+.board-view-tools button > svg {
+  width: 24px;
+  height: 24px;
 }
 .board-hint {
   display: flex;
-  gap: 9px;
+  gap: var(--space-2);
   align-items: center;
-  padding: 13px 17px;
-  font-size: 10px;
-  color: var(--muted);
-  border-top: 1px solid var(--border);
+  color: var(--text-secondary);
 }
 .board-hint > svg {
-  color: var(--mint);
+  color: var(--cyan);
 }
-.connection-details {
-  padding: 0 17px;
-  border-top: 1px solid var(--border);
-}
-.connection-details summary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 0;
-  min-height: 46px;
-  color: #c8d5da;
-}
-.connection-details summary > .muted {
-  margin-left: auto;
-  font-size: 9px;
-}
-.connection-form {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
-  gap: 9px;
-  align-items: end;
-  padding-bottom: 15px;
-}
-.connection-form label {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 10px;
-  color: var(--muted);
-  min-width: 0;
-}
-select {
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  min-height: 44px;
-  width: 100%;
-  padding: 9px 28px 9px 9px;
-  font-size: 11px;
-}
-.connection-form .button {
-  padding: 10px 13px;
-  font-size: 11px;
+@media (hover: hover) and (pointer: fine) {
+  .node-delete:hover,
+  .port-clear:hover {
+    background: var(--danger-soft);
+    color: var(--danger);
+    border-color: var(--danger);
+  }
+  .circuit-port:hover .port-dot {
+    border-color: var(--yellow);
+  }
 }

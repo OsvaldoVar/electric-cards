@@ -83,7 +83,7 @@ const descriptions = {
   },
 };
 
-export const gates = Object.fromEntries(
+const combinationalGates = Object.fromEntries(
   Object.entries(descriptions).map(([id, data]) => {
     const inputs = gateInputCounts[id];
     const truthTable = Array.from({ length: 2 ** inputs }, (_, index) => {
@@ -96,4 +96,77 @@ export const gates = Object.fromEntries(
     return [id, { id, name: id, inputs, ...data, truthTable }];
   }),
 );
+export const gates = {
+  ...combinationalGates,
+  CLOCK: {
+    id: 'CLOCK',
+    name: 'CLOCK',
+    inputs: 0,
+    ports: [],
+    sequential: true,
+    expression: 'CLK: 0 → 1 → 0',
+    family: 'blue',
+    description:
+      'Genera una señal que alterna entre 0 y 1 al avanzar el reloj. El cambio de 0 a 1 se llama flanco ascendente.',
+    character: {
+      name: 'El Director',
+      ability: 'Ritmo',
+      role: 'Marco el momento de cada cambio.',
+    },
+    example: 'Un reloj coordina cuándo los registros guardan un nuevo dato.',
+    tableLabels: ['CLK actual', 'CLK siguiente'],
+    truthTable: [
+      [0, 1],
+      [1, 0],
+    ],
+  },
+  DFF: {
+    id: 'DFF',
+    name: 'DFF',
+    inputs: 2,
+    ports: ['d', 'clk'],
+    sequential: true,
+    expression: 'Q⁺ = D en ↑CLK',
+    family: 'mint',
+    description:
+      'El flip-flop D guarda D en el flanco ascendente de CLK. Entre flancos, Q conserva el bit guardado. En el juego comienza en 0.',
+    character: {
+      name: 'El Archivista',
+      ability: 'Memoria de un bit',
+      role: 'Guardo el dato cuando llega el pulso.',
+    },
+    example: 'Un registro conserva un dato aunque cambie la entrada.',
+    tableLabels: ['D', 'Q actual', 'Q siguiente en ↑CLK'],
+    truthTable: [
+      [0, 0, 0],
+      [0, 1, 0],
+      [1, 0, 1],
+      [1, 1, 1],
+    ],
+  },
+  TFF: {
+    id: 'TFF',
+    name: 'TFF',
+    inputs: 2,
+    ports: ['t', 'clk'],
+    sequential: true,
+    expression: 'Q⁺ = Q ⊕ T en ↑CLK',
+    family: 'violet',
+    description:
+      'El flip-flop T alterna Q en un flanco ascendente si T es 1. Si T es 0, mantiene Q. Entre flancos no cambia y comienza en 0.',
+    character: {
+      name: 'El Alternador',
+      ability: 'Cambio controlado',
+      role: 'Un pulso puede cambiar mi estado.',
+    },
+    example: 'Un contador alterna su primer bit cada vez que recibe un pulso habilitado.',
+    tableLabels: ['T', 'Q actual', 'Q siguiente en ↑CLK'],
+    truthTable: [
+      [0, 0, 0],
+      [0, 1, 1],
+      [1, 0, 1],
+      [1, 1, 0],
+    ],
+  },
+};
 export const gateList = Object.values(gates);

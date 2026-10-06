@@ -1,48 +1,88 @@
 import { Link, useParams } from 'react-router-dom';
-import { getLevel, worlds } from '../data/levels';
+import { getLevel } from '../data/levels';
 import { useProgress } from '../hooks/useProgress';
 import { usePuzzle } from '../hooks/usePuzzle';
+import { useGame } from '../hooks/useGame';
 import { CircuitBoard } from '../components/CircuitBoard/CircuitBoard';
 import { GateInventory } from '../components/GateInventory/GateInventory';
 import { LevelObjective } from '../components/LevelObjective/LevelObjective';
-import { PuzzleControls } from '../components/PuzzleControls';
+import { PuzzleHint } from '../components/PuzzleHint';
 import { TestResults } from '../components/TestResults/TestResults';
 import { Icon } from '../components/Icon';
-import { Stars } from '../components/Stars';
 import NotFound from './NotFound';
+import { CompletionDialog } from '../components/CompletionDialog';
+import { ClockControls } from '../components/ClockControls';
 
-function ActivePuzzle({ level, bestStars }) {
+function ActivePuzzle({ level }) {
   const game = usePuzzle(level);
-  const world = worlds.find((item) => item.id === level.world);
+  const { storageAvailable } = useGame();
   return (
     <main className="puzzle-page">
-      <div className="puzzle-topbar">
-        <Link className="back-link" to="/levels">
-          <Icon name="back" size={17} />
-          <span>Mapa de niveles</span>
-        </Link>
-        <span className="puzzle-breadcrumb">
-          {world.title}
-          <span>/</span>
-          <strong>Nivel {String(level.id).padStart(2, '0')}</strong>
-        </span>
-        <Stars count={bestStars} />
-      </div>
+      <CompletionDialog
+        completion={game.completion}
+        level={level}
+        onDismiss={game.dismissCompletion}
+      />
       <div className="puzzle-workspace">
-        <LevelObjective level={level} game={game} />
-        <div className="puzzle-center">
-          <CircuitBoard game={game} />
+        <div className="puzzle-sidebar-frame pixel-frame">
+          <aside className="puzzle-sidebar" aria-label="Objetivo y compuertas" tabIndex={0}>
+            <LevelObjective level={level} game={game} />
+            <GateInventory
+              inventory={game.inventory}
+              lockedGates={game.lockedGates}
+              onAdd={game.addGate}
+            />
+            {level.kind === 'sequential' && <ClockControls game={game} />}
+            <PuzzleHint level={level} game={game} />
+            <details className="objective-test-inputs">
+              <summary>
+                Entradas de prueba <Icon name="play" size={15} />
+              </summary>
+              <div className="input-switches">
+                {level.inputs.map((input) => (
+                  <button
+                    key={input.id}
+                    className={`binary-switch bit-${game.inputs[input.id]}`}
+                    aria-label={`Cambiar sensor ${input.id}`}
+                    aria-pressed={game.inputs[input.id] === 1}
+                    onClick={() =>
+                      game.setInputs({ ...game.inputs, [input.id]: 1 - game.inputs[input.id] })
+                    }
+                  >
+                    <span>{input.id}</span>
+                    <strong>{game.inputs[input.id]}</strong>
+                    <span className="switch-indicator" />
+                  </button>
+                ))}
+              </div>
+              <p className="muted small">
+                También puedes cambiar cada entrada directamente en el tablero.
+              </p>
+            </details>
+            <div className="puzzle-bottom">
+              {game.message && (
+                <p className="connection-error" role="alert">
+                  {game.message}
+                </p>
+              )}
+              <TestResults
+                result={game.result}
+                playback={game.playback}
+                level={level}
+                onCase={game.inspectCase}
+              />
+            </div>
+            <p className="save-caption">
+              <Icon name={storageAvailable ? 'check' : 'help'} size={17} />
+              {storageAvailable
+                ? 'Tu progreso se guarda en este navegador.'
+                : 'El guardado no está disponible en este navegador.'}
+            </p>
+          </aside>
         </div>
-        <GateInventory inventory={game.inventory} onAdd={game.addGate} />
-      </div>
-      <div className="puzzle-bottom">
-        <PuzzleControls game={game} level={level} />
-        {game.message && (
-          <p className="connection-error" role="alert">
-            {game.message}
-          </p>
-        )}
-        <TestResults result={game.result} level={level} onCase={game.setInputs} />
+        <div className="puzzle-center">
+          <CircuitBoard game={game} level={level} />
+        </div>
       </div>
     </main>
   );
@@ -51,7 +91,7 @@ function ActivePuzzle({ level, bestStars }) {
 export default function Puzzle() {
   const { id } = useParams();
   const level = getLevel(id);
-  const { unlockedLevel, completedLevels } = useProgress();
+  const { unlockedLevel } = useProgress();
   if (!level) return <NotFound />;
   if (level.id > unlockedLevel)
     return (
@@ -65,11 +105,5 @@ export default function Puzzle() {
         </Link>
       </main>
     );
-  return (
-    <ActivePuzzle
-      key={level.id}
-      level={level}
-      bestStars={completedLevels[level.id]?.stars ?? 0}
-    />
-  );
+  return <ActivePuzzle key={level.id} level={level} />;
 }

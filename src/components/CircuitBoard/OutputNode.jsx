@@ -3,7 +3,10 @@ import { Icon } from '../Icon';
 
 export function OutputNode({ id, data }) {
   return (
-    <div className={`circuit-node output-node bit-${data.value ?? 'unknown'}`}>
+    <div
+      className={`circuit-node pixel-frame output-node bit-${data.value ?? 'unknown'}`}
+      data-review={data.checkStatus ?? 'idle'}
+    >
       <span className="node-kicker">SALIDA</span>
       <div className="output-indicator">
         <Icon name={data.visualType ?? 'led'} size={28} />

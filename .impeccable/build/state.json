@@ -1,0 +1,628 @@
+{
+  "tool": "build-phase",
+  "version": 2,
+  "startedAt": "2026-09-30T03:46:08.353Z",
+  "comp": ".impeccable/mocks/b-circuito.png",
+  "direction": "8e814610",
+  "breakpoint": "1487x1058",
+  "artifact": "src/pages/Puzzle.jsx",
+  "phase": "hero",
+  "phases": {
+    "comps": {
+      "status": "closed",
+      "openedAt": "2026-09-30T03:46:08.353Z",
+      "closedAt": "2026-09-30T03:56:01.442Z",
+      "attempts": 2,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "3 comps, 1 approved",
+        "approved": ".impeccable/mocks/b-circuito.png",
+        "at": "2026-09-30T03:56:01.442Z"
+      },
+      "forced": null
+    },
+    "spec": {
+      "status": "closed",
+      "openedAt": "2026-09-30T03:56:01.499Z",
+      "closedAt": "2026-09-30T03:57:06.880Z",
+      "attempts": 2,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "36 regions, 0 plates, 14 text regions measured",
+        "at": "2026-09-30T03:57:06.880Z"
+      },
+      "forced": null
+    },
+    "plates": {
+      "status": "closed",
+      "openedAt": "2026-09-30T03:57:06.880Z",
+      "closedAt": "2026-09-30T04:01:52.564Z",
+      "attempts": 2,
+      "notes": [],
+      "gate": {
+        "ok": true,
+        "reasons": [],
+        "summary": "no plates owed",
+        "at": "2026-09-30T04:01:52.557Z"
+      },
+      "forced": null
+    },
+    "hero": {
+      "status": "open",
+      "openedAt": "2026-09-30T04:01:52.564Z",
+      "closedAt": null,
+      "attempts": 6,
+      "notes": [],
+      "gate": {
+        "ok": false,
+        "reasons": [
+          "region description is missing (detail 0%, structure 76%): the comp shows material the build does not",
+          "region reset-button is missing (detail 3%, structure 54%): the comp shows material the build does not",
+          "region arrange is missing (detail 0%, structure 54%): the comp shows material the build does not",
+          "region fit is missing (detail 0%, structure 38%): the comp shows material the build does not",
+          "region input-a is missing (detail 2%, structure 79%): the comp shows material the build does not",
+          "region input-b is missing (detail 0%, structure 73%): the comp shows material the build does not",
+          "region output is missing (detail 4%, structure 75%): the comp shows material the build does not",
+          "region board-help is missing (detail 0%, structure 73%): the comp shows material the build does not",
+          "region inventory-button is missing (detail 0%, structure 50%): the comp shows material the build does not",
+          "region star-goal is missing (detail 5%, structure 74%): the comp shows material the build does not",
+          "region wiring-panel is missing (detail 0%, structure 94%): the comp shows material the build does not",
+          "region wiring-heading is missing (detail 0%, structure 65%): the comp shows material the build does not",
+          "region source-label is missing (detail 0%, structure 76%): the comp shows material the build does not",
+          "region target-label is missing (detail 0%, structure 75%): the comp shows material the build does not",
+          "region source-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+          "region target-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+          "region saved is missing (detail 0%, structure 84%): the comp shows material the build does not",
+          "region test-button (control) is contradicted (structure 75%, detail added 32%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification",
+          "region board-title (text) is contradicted (structure 31%, detail added 21%): the composition of this text region differs from the comp; re-derive it from the spec box",
+          "control score drifts to 62% (structure 64%, color 83%): open .impeccable/review/diff/hero/regions/score.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+          "control gate-and drifts to 63% (structure 66%, color 90%): open .impeccable/review/diff/hero/regions/gate-and.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+          "control connect-button drifts to 51% (structure 70%, color 53%): open .impeccable/review/diff/hero/regions/connect-button.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+        ],
+        "regionReasons": {
+          "description": [
+            "region description is missing (detail 0%, structure 76%): the comp shows material the build does not"
+          ],
+          "reset-button": [
+            "region reset-button is missing (detail 3%, structure 54%): the comp shows material the build does not"
+          ],
+          "arrange": [
+            "region arrange is missing (detail 0%, structure 54%): the comp shows material the build does not"
+          ],
+          "fit": [
+            "region fit is missing (detail 0%, structure 38%): the comp shows material the build does not"
+          ],
+          "input-a": [
+            "region input-a is missing (detail 2%, structure 79%): the comp shows material the build does not"
+          ],
+          "input-b": [
+            "region input-b is missing (detail 0%, structure 73%): the comp shows material the build does not"
+          ],
+          "output": [
+            "region output is missing (detail 4%, structure 75%): the comp shows material the build does not"
+          ],
+          "board-help": [
+            "region board-help is missing (detail 0%, structure 73%): the comp shows material the build does not"
+          ],
+          "inventory-button": [
+            "region inventory-button is missing (detail 0%, structure 50%): the comp shows material the build does not"
+          ],
+          "star-goal": [
+            "region star-goal is missing (detail 5%, structure 74%): the comp shows material the build does not"
+          ],
+          "wiring-panel": [
+            "region wiring-panel is missing (detail 0%, structure 94%): the comp shows material the build does not"
+          ],
+          "wiring-heading": [
+            "region wiring-heading is missing (detail 0%, structure 65%): the comp shows material the build does not"
+          ],
+          "source-label": [
+            "region source-label is missing (detail 0%, structure 76%): the comp shows material the build does not"
+          ],
+          "target-label": [
+            "region target-label is missing (detail 0%, structure 75%): the comp shows material the build does not"
+          ],
+          "source-select": [
+            "region source-select is missing (detail 0%, structure 83%): the comp shows material the build does not"
+          ],
+          "target-select": [
+            "region target-select is missing (detail 0%, structure 83%): the comp shows material the build does not"
+          ],
+          "saved": [
+            "region saved is missing (detail 0%, structure 84%): the comp shows material the build does not"
+          ],
+          "test-button": [
+            "region test-button (control) is contradicted (structure 75%, detail added 32%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification"
+          ],
+          "board-title": [
+            "region board-title (text) is contradicted (structure 31%, detail added 21%): the composition of this text region differs from the comp; re-derive it from the spec box"
+          ],
+          "score": [
+            "control score drifts to 62% (structure 64%, color 83%): open .impeccable/review/diff/hero/regions/score.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+          ],
+          "gate-and": [
+            "control gate-and drifts to 63% (structure 66%, color 90%): open .impeccable/review/diff/hero/regions/gate-and.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+          ],
+          "connect-button": [
+            "control connect-button drifts to 51% (structure 70%, color 53%): open .impeccable/review/diff/hero/regions/connect-button.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+          ]
+        },
+        "summary": "hero 79% (drift)",
+        "score": 0.7903,
+        "verdict": "drift",
+        "report": ".impeccable/review/diff/hero/report.json",
+        "sideBySide": "/home/osvaldo/Projects/electric-cards/.impeccable/review/diff/hero/side-by-side.png",
+        "worst": [
+          "inventory-button missing 28%",
+          "board-title contradicted 44%",
+          "fit missing 48%"
+        ],
+        "worstIds": [
+          "inventory-button",
+          "board-title",
+          "fit"
+        ],
+        "worstCrops": [
+          {
+            "id": "inventory-button",
+            "verdict": "missing",
+            "score": {
+              "overall": 0.281,
+              "structure": 0.5033,
+              "color": 0.1559,
+              "colorIntersection": 0.0152,
+              "paletteMatch": 0.2316,
+              "detail": 0,
+              "detailRaw": 0.1378,
+              "detailAdded": 0.3229,
+              "bands": 0.219
+            },
+            "file": ".impeccable/review/diff/hero/regions/inventory-button.png"
+          },
+          {
+            "id": "board-title",
+            "verdict": "contradicted",
+            "score": {
+              "overall": 0.4435,
+              "structure": 0.3078,
+              "color": 0.8629,
+              "colorIntersection": 0.7714,
+              "paletteMatch": 0.9122,
+              "detail": 0.2725,
+              "detailRaw": 0.3766,
+              "detailAdded": 0.2083,
+              "bands": 0.33
+            },
+            "file": ".impeccable/review/diff/hero/regions/board-title.png"
+          },
+          {
+            "id": "fit",
+            "verdict": "missing",
+            "score": {
+              "overall": 0.4754,
+              "structure": 0.3841,
+              "color": 0.8644,
+              "colorIntersection": 0.7977,
+              "paletteMatch": 0.9003,
+              "detail": 0,
+              "detailRaw": 0.1618,
+              "detailAdded": 0.3646,
+              "bands": 0.4444
+            },
+            "file": ".impeccable/review/diff/hero/regions/fit.png"
+          }
+        ],
+        "advisories": [
+          "(advisory, above the 72% bar) region arrange: its ink sits in a 92x17px box in the comp and 127x13px in the build (padding, row height, or size); match the box, not only the position",
+          "(advisory, above the 72% bar) region connect-button: its ink sits in a 62x8px box in the comp and 131x16px in the build (padding, row height, or size); match the box, not only the position",
+          "(advisory, unchanged for 3+ attempts) text arrange: cap height 4.3px in the build, 11.6px in the comp (-63%); set font-size so the cap height renders at 11.6px",
+          "(advisory, unchanged for 3+ attempts) text fit: cap height 11.2px in the build, 14.6px in the comp (-23%); set font-size so the cap height renders at 14.6px",
+          "(advisory, unchanged for 3+ attempts) text hint: cap height 21.1px in the build, 16.6px in the comp (+27%); set font-size so the cap height renders at 16.6px",
+          "(advisory, unchanged for 3+ attempts) text objective-copy: 2 lines in the build, 3 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape",
+          "(advisory, unchanged for 3+ attempts) text hint: ink is #e8b838 in the build, #0c1567 in the comp; use the comp's colour",
+          "(advisory, unchanged for 3+ attempts) control reset-button: its rule sits 1px into the box in the comp and 12px in the build (+11px), so the strip is taller than the comp's; match the height, not only the position",
+          "(advisory, unchanged for 3+ attempts) control fit: its rule sits 22px into the box in the comp and 6px in the build (-16px), so the strip is shorter than the comp's; match the height, not only the position",
+          "(advisory, unchanged for 3+ attempts) control inventory-button: its rule sits 1px into the box in the comp and 24px in the build (+23px), so the strip is taller than the comp's; match the height, not only the position",
+          "(advisory, unchanged for 3+ attempts) control hint: its ink is 35px tall in the build and 22px in the comp (+13px); match the height, not only the position",
+          "(advisory, unchanged for 3+ attempts) chrome wiring-panel: its rule sits 65px into the box in the comp and 1px in the build (-64px), so the strip is shorter than the comp's; match the height, not only the position"
+        ],
+        "regionVerdicts": {
+          "navigation": "match",
+          "brand": "drift",
+          "nav-jugar": "match",
+          "nav-learn": "drift",
+          "score": "drift",
+          "breadcrumb": "drift",
+          "title": "drift",
+          "description": "missing",
+          "test-button": "contradicted",
+          "reset-button": "missing",
+          "board": "drift",
+          "board-title": "contradicted",
+          "arrange": "missing",
+          "fit": "missing",
+          "runtime-canvas": "drift",
+          "input-a": "missing",
+          "input-b": "missing",
+          "gate-and": "drift",
+          "output": "missing",
+          "board-help": "missing",
+          "sidebar": "drift",
+          "objective-heading": "drift",
+          "objective-copy": "drift",
+          "truth-table": "drift",
+          "inventory-heading": "drift",
+          "inventory-button": "missing",
+          "hint": "drift",
+          "star-goal": "missing",
+          "wiring-panel": "missing",
+          "wiring-heading": "missing",
+          "source-label": "missing",
+          "target-label": "missing",
+          "source-select": "missing",
+          "target-select": "missing",
+          "connect-button": "drift",
+          "saved": "missing"
+        },
+        "at": "2026-09-30T04:33:48.474Z"
+      },
+      "forced": null,
+      "readingsSeen": {
+        "text arrange: cap height 4.3px in the build, 11.6px in the comp (-63%); set font-size so the cap height renders at 11.6px": 7,
+        "text fit: cap height 11.2px in the build, 14.6px in the comp (-23%); set font-size so the cap height renders at 14.6px": 7,
+        "text objective-copy: 2 lines in the build, 3 in the comp; the measure (max-width, font-size, letter-spacing) wraps it differently, so the block is a different shape": 7,
+        "text inventory-heading: ink is #324575 in the build, #081058 in the comp; use the comp's colour": 2,
+        "control nav-learn: its rule sits 8px into the box in the comp and 18px in the build (+10px), so the strip is taller than the comp's; match the height, not only the position": 2,
+        "control reset-button: its rule sits 1px into the box in the comp and 42px in the build (+41px), so the strip is taller than the comp's; match the height, not only the position": 2,
+        "control fit: its rule sits 22px into the box in the comp and 36px in the build (+14px), so the strip is taller than the comp's; match the height, not only the position": 2,
+        "text hint: cap height 21.1px in the build, 16.6px in the comp (+27%); set font-size so the cap height renders at 16.6px": 5,
+        "text hint: ink is #e8b838 in the build, #0c1567 in the comp; use the comp's colour": 5,
+        "control reset-button: its rule sits 1px into the box in the comp and 12px in the build (+11px), so the strip is taller than the comp's; match the height, not only the position": 5,
+        "control fit: its rule sits 22px into the box in the comp and 6px in the build (-16px), so the strip is shorter than the comp's; match the height, not only the position": 5,
+        "control inventory-button: its rule sits 1px into the box in the comp and 24px in the build (+23px), so the strip is taller than the comp's; match the height, not only the position": 5,
+        "control hint: its ink is 35px tall in the build and 22px in the comp (+13px); match the height, not only the position": 5,
+        "chrome wiring-panel: its rule sits 65px into the box in the comp and 1px in the build (-64px), so the strip is shorter than the comp's; match the height, not only the position": 5
+      },
+      "records": 1,
+      "history": [
+        {
+          "at": "2026-09-30T04:15:22.187Z",
+          "score": 0.7576,
+          "worstIds": [
+            "brand",
+            "inventory-button",
+            "test-button"
+          ],
+          "blockingReasons": [
+            "region navigation is missing (detail 0%, structure 100%): the comp shows material the build does not",
+            "region brand is missing (detail 5%, structure 29%): the comp shows material the build does not",
+            "region nav-jugar is missing (detail 4%, structure 79%): the comp shows material the build does not",
+            "region nav-learn is missing (detail 2%, structure 59%): the comp shows material the build does not",
+            "region score is missing (detail 4%, structure 73%): the comp shows material the build does not",
+            "region breadcrumb is missing (detail 0%, structure 85%): the comp shows material the build does not",
+            "region title is missing (detail 10%, structure 52%): the comp shows material the build does not",
+            "region description is missing (detail 5%, structure 78%): the comp shows material the build does not",
+            "region test-button is missing (detail 0%, structure 68%): the comp shows material the build does not",
+            "region reset-button is missing (detail 2%, structure 57%): the comp shows material the build does not",
+            "region input-a is missing (detail 5%, structure 79%): the comp shows material the build does not",
+            "region input-b is missing (detail 0%, structure 73%): the comp shows material the build does not",
+            "region output is missing (detail 4%, structure 75%): the comp shows material the build does not",
+            "region board-help is missing (detail 0%, structure 73%): the comp shows material the build does not",
+            "region inventory-heading is missing (detail 0%, structure 50%): the comp shows material the build does not",
+            "region inventory-button is missing (detail 5%, structure 60%): the comp shows material the build does not",
+            "region hint is missing (detail 0%, structure 87%): the comp shows material the build does not",
+            "region star-goal is missing (detail 0%, structure 74%): the comp shows material the build does not",
+            "region wiring-panel is missing (detail 0%, structure 94%): the comp shows material the build does not",
+            "region wiring-heading is missing (detail 0%, structure 65%): the comp shows material the build does not",
+            "region source-label is missing (detail 0%, structure 76%): the comp shows material the build does not",
+            "region target-label is missing (detail 0%, structure 75%): the comp shows material the build does not",
+            "region source-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region target-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region saved is missing (detail 0%, structure 90%): the comp shows material the build does not",
+            "region connect-button (control) is contradicted (structure 74%, detail added 30%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification",
+            "control arrange drifts to 59% (structure 58%, color 87%): open .impeccable/review/diff/hero/regions/arrange.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+            "control gate-and drifts to 62% (structure 66%, color 89%): open .impeccable/review/diff/hero/regions/gate-and.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+          ],
+          "regionVerdicts": {
+            "navigation": "missing",
+            "brand": "missing",
+            "nav-jugar": "missing",
+            "nav-learn": "missing",
+            "score": "missing",
+            "breadcrumb": "missing",
+            "title": "missing",
+            "description": "missing",
+            "test-button": "missing",
+            "reset-button": "missing",
+            "board": "drift",
+            "board-title": "drift",
+            "arrange": "drift",
+            "fit": "drift",
+            "runtime-canvas": "drift",
+            "input-a": "missing",
+            "input-b": "missing",
+            "gate-and": "drift",
+            "output": "missing",
+            "board-help": "missing",
+            "sidebar": "drift",
+            "objective-heading": "drift",
+            "objective-copy": "drift",
+            "truth-table": "drift",
+            "inventory-heading": "missing",
+            "inventory-button": "missing",
+            "hint": "missing",
+            "star-goal": "missing",
+            "wiring-panel": "missing",
+            "wiring-heading": "missing",
+            "source-label": "missing",
+            "target-label": "missing",
+            "source-select": "missing",
+            "target-select": "missing",
+            "connect-button": "contradicted",
+            "saved": "missing"
+          },
+          "artifactHash": "2528b35faf44"
+        },
+        {
+          "at": "2026-09-30T04:23:37.099Z",
+          "score": 0.7904,
+          "worstIds": [
+            "inventory-button",
+            "board-title",
+            "fit"
+          ],
+          "blockingReasons": [
+            "region description is missing (detail 0%, structure 76%): the comp shows material the build does not",
+            "region reset-button is missing (detail 3%, structure 54%): the comp shows material the build does not",
+            "region arrange is missing (detail 0%, structure 54%): the comp shows material the build does not",
+            "region fit is missing (detail 0%, structure 40%): the comp shows material the build does not",
+            "region input-a is missing (detail 2%, structure 79%): the comp shows material the build does not",
+            "region input-b is missing (detail 0%, structure 74%): the comp shows material the build does not",
+            "region output is missing (detail 4%, structure 75%): the comp shows material the build does not",
+            "region board-help is missing (detail 0%, structure 73%): the comp shows material the build does not",
+            "region inventory-button is missing (detail 0%, structure 50%): the comp shows material the build does not",
+            "region star-goal is missing (detail 5%, structure 74%): the comp shows material the build does not",
+            "region wiring-panel is missing (detail 0%, structure 94%): the comp shows material the build does not",
+            "region wiring-heading is missing (detail 0%, structure 65%): the comp shows material the build does not",
+            "region source-label is missing (detail 0%, structure 76%): the comp shows material the build does not",
+            "region target-label is missing (detail 0%, structure 75%): the comp shows material the build does not",
+            "region source-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region target-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region saved is missing (detail 0%, structure 84%): the comp shows material the build does not",
+            "region test-button (control) is contradicted (structure 75%, detail added 32%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification",
+            "region board-title (text) is contradicted (structure 31%, detail added 21%): the composition of this text region differs from the comp; re-derive it from the spec box",
+            "control score drifts to 62% (structure 64%, color 83%): open .impeccable/review/diff/hero/regions/score.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+            "control gate-and drifts to 63% (structure 66%, color 90%): open .impeccable/review/diff/hero/regions/gate-and.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+            "control connect-button drifts to 51% (structure 70%, color 53%): open .impeccable/review/diff/hero/regions/connect-button.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+          ],
+          "regionVerdicts": {
+            "navigation": "match",
+            "brand": "drift",
+            "nav-jugar": "match",
+            "nav-learn": "drift",
+            "score": "drift",
+            "breadcrumb": "drift",
+            "title": "drift",
+            "description": "missing",
+            "test-button": "contradicted",
+            "reset-button": "missing",
+            "board": "drift",
+            "board-title": "contradicted",
+            "arrange": "missing",
+            "fit": "missing",
+            "runtime-canvas": "drift",
+            "input-a": "missing",
+            "input-b": "missing",
+            "gate-and": "drift",
+            "output": "missing",
+            "board-help": "missing",
+            "sidebar": "drift",
+            "objective-heading": "drift",
+            "objective-copy": "drift",
+            "truth-table": "drift",
+            "inventory-heading": "drift",
+            "inventory-button": "missing",
+            "hint": "drift",
+            "star-goal": "missing",
+            "wiring-panel": "missing",
+            "wiring-heading": "missing",
+            "source-label": "missing",
+            "target-label": "missing",
+            "source-select": "missing",
+            "target-select": "missing",
+            "connect-button": "drift",
+            "saved": "missing"
+          },
+          "artifactHash": "d0bd0cc6bb23"
+        },
+        {
+          "at": "2026-09-30T04:30:00.772Z",
+          "score": 0.7904,
+          "worstIds": [
+            "inventory-button",
+            "board-title",
+            "fit"
+          ],
+          "blockingReasons": [
+            "region description is missing (detail 0%, structure 76%): the comp shows material the build does not",
+            "region reset-button is missing (detail 3%, structure 54%): the comp shows material the build does not",
+            "region arrange is missing (detail 0%, structure 54%): the comp shows material the build does not",
+            "region fit is missing (detail 0%, structure 40%): the comp shows material the build does not",
+            "region input-a is missing (detail 2%, structure 79%): the comp shows material the build does not",
+            "region input-b is missing (detail 0%, structure 74%): the comp shows material the build does not",
+            "region output is missing (detail 4%, structure 75%): the comp shows material the build does not",
+            "region board-help is missing (detail 0%, structure 73%): the comp shows material the build does not",
+            "region inventory-button is missing (detail 0%, structure 50%): the comp shows material the build does not",
+            "region star-goal is missing (detail 5%, structure 74%): the comp shows material the build does not",
+            "region wiring-panel is missing (detail 0%, structure 94%): the comp shows material the build does not",
+            "region wiring-heading is missing (detail 0%, structure 65%): the comp shows material the build does not",
+            "region source-label is missing (detail 0%, structure 76%): the comp shows material the build does not",
+            "region target-label is missing (detail 0%, structure 75%): the comp shows material the build does not",
+            "region source-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region target-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region saved is missing (detail 0%, structure 84%): the comp shows material the build does not",
+            "region test-button (control) is contradicted (structure 75%, detail added 32%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification",
+            "region board-title (text) is contradicted (structure 31%, detail added 21%): the composition of this text region differs from the comp; re-derive it from the spec box",
+            "control score drifts to 62% (structure 64%, color 83%): open .impeccable/review/diff/hero/regions/score.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+            "control gate-and drifts to 63% (structure 66%, color 90%): open .impeccable/review/diff/hero/regions/gate-and.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+            "control connect-button drifts to 51% (structure 70%, color 53%): open .impeccable/review/diff/hero/regions/connect-button.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+          ],
+          "regionVerdicts": {
+            "navigation": "match",
+            "brand": "drift",
+            "nav-jugar": "match",
+            "nav-learn": "drift",
+            "score": "drift",
+            "breadcrumb": "drift",
+            "title": "drift",
+            "description": "missing",
+            "test-button": "contradicted",
+            "reset-button": "missing",
+            "board": "drift",
+            "board-title": "contradicted",
+            "arrange": "missing",
+            "fit": "missing",
+            "runtime-canvas": "drift",
+            "input-a": "missing",
+            "input-b": "missing",
+            "gate-and": "drift",
+            "output": "missing",
+            "board-help": "missing",
+            "sidebar": "drift",
+            "objective-heading": "drift",
+            "objective-copy": "drift",
+            "truth-table": "drift",
+            "inventory-heading": "drift",
+            "inventory-button": "missing",
+            "hint": "drift",
+            "star-goal": "missing",
+            "wiring-panel": "missing",
+            "wiring-heading": "missing",
+            "source-label": "missing",
+            "target-label": "missing",
+            "source-select": "missing",
+            "target-select": "missing",
+            "connect-button": "drift",
+            "saved": "missing"
+          },
+          "artifactHash": "d0bd0cc6bb23"
+        },
+        {
+          "at": "2026-09-30T04:30:24.253Z",
+          "score": 0.7903,
+          "worstIds": [
+            "inventory-button",
+            "board-title",
+            "fit"
+          ],
+          "blockingReasons": [
+            "region description is missing (detail 0%, structure 76%): the comp shows material the build does not",
+            "region reset-button is missing (detail 3%, structure 54%): the comp shows material the build does not",
+            "region arrange is missing (detail 0%, structure 54%): the comp shows material the build does not",
+            "region fit is missing (detail 0%, structure 38%): the comp shows material the build does not",
+            "region input-a is missing (detail 2%, structure 79%): the comp shows material the build does not",
+            "region input-b is missing (detail 0%, structure 73%): the comp shows material the build does not",
+            "region output is missing (detail 4%, structure 75%): the comp shows material the build does not",
+            "region board-help is missing (detail 0%, structure 73%): the comp shows material the build does not",
+            "region inventory-button is missing (detail 0%, structure 50%): the comp shows material the build does not",
+            "region star-goal is missing (detail 5%, structure 74%): the comp shows material the build does not",
+            "region wiring-panel is missing (detail 0%, structure 94%): the comp shows material the build does not",
+            "region wiring-heading is missing (detail 0%, structure 65%): the comp shows material the build does not",
+            "region source-label is missing (detail 0%, structure 76%): the comp shows material the build does not",
+            "region target-label is missing (detail 0%, structure 75%): the comp shows material the build does not",
+            "region source-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region target-select is missing (detail 0%, structure 83%): the comp shows material the build does not",
+            "region saved is missing (detail 0%, structure 84%): the comp shows material the build does not",
+            "region test-button (control) is contradicted (structure 75%, detail added 32%): this control differs from the comp: inspect its lettering and visible shape separately against the crop and the measured readings; preserve the region's control classification",
+            "region board-title (text) is contradicted (structure 31%, detail added 21%): the composition of this text region differs from the comp; re-derive it from the spec box",
+            "control score drifts to 62% (structure 64%, color 83%): open .impeccable/review/diff/hero/regions/score.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+            "control gate-and drifts to 63% (structure 66%, color 90%): open .impeccable/review/diff/hero/regions/gate-and.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification",
+            "control connect-button drifts to 51% (structure 70%, color 53%): open .impeccable/review/diff/hero/regions/connect-button.png and compare its lettering and visible shape separately; use the measured readings and preserve the region's control classification"
+          ],
+          "regionVerdicts": {
+            "navigation": "match",
+            "brand": "drift",
+            "nav-jugar": "match",
+            "nav-learn": "drift",
+            "score": "drift",
+            "breadcrumb": "drift",
+            "title": "drift",
+            "description": "missing",
+            "test-button": "contradicted",
+            "reset-button": "missing",
+            "board": "drift",
+            "board-title": "contradicted",
+            "arrange": "missing",
+            "fit": "missing",
+            "runtime-canvas": "drift",
+            "input-a": "missing",
+            "input-b": "missing",
+            "gate-and": "drift",
+            "output": "missing",
+            "board-help": "missing",
+            "sidebar": "drift",
+            "objective-heading": "drift",
+            "objective-copy": "drift",
+            "truth-table": "drift",
+            "inventory-heading": "drift",
+            "inventory-button": "missing",
+            "hint": "drift",
+            "star-goal": "missing",
+            "wiring-panel": "missing",
+            "wiring-heading": "missing",
+            "source-label": "missing",
+            "target-label": "missing",
+            "source-select": "missing",
+            "target-select": "missing",
+            "connect-button": "drift",
+            "saved": "missing"
+          },
+          "artifactHash": "d0bd0cc6bb23"
+        }
+      ]
+    },
+    "sections": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "motion": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "responsive": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    },
+    "review": {
+      "status": "pending",
+      "openedAt": null,
+      "closedAt": null,
+      "attempts": 0,
+      "notes": [],
+      "gate": null,
+      "forced": null
+    }
+  },
+  "finish": null,
+  "sessionId": "01a0f039-e093-71f1-956d-f77b0b1d26e5",
+  "plates": {}
+}

@@ -1,0 +1,46 @@
+/* Only short interaction feedback. Canvas geometry always follows React Flow. */
+.button,
+.board-tools button,
+.binary-switch,
+.inventory-card,
+.case-view,
+.settings-toggle,
+.site-header nav a {
+  transition:
+    background-color var(--duration-state) var(--ease-out),
+    color var(--duration-state) var(--ease-out),
+    border-color var(--duration-state) var(--ease-out),
+    transform var(--duration-press) var(--ease-out);
+}
+.button:active:not(:disabled),
+.board-tools button:active:not(:disabled),
+.binary-switch:active,
+.inventory-card:active:not(:disabled),
+.case-view:active {
+  transform: translateY(2px);
+}
+.switch-indicator::before {
+  transition: transform var(--duration-state) var(--ease-out);
+}
+html[data-input='keyboard'] *,
+html[data-input='keyboard'] *::before,
+html[data-input='keyboard'] *::after {
+  transition: none !important;
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+  .button:active:not(:disabled),
+  .board-tools button:active:not(:disabled),
+  .binary-switch:active,
+  .inventory-card:active:not(:disabled),
+  .case-view:active {
+    transform: none;
+  }
+}

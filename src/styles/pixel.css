@@ -1,0 +1,421 @@
+/* Shared pixel materials, followed by secondary-screen adaptations. */
+body {
+  font-size: 18px;
+  line-height: 1.45;
+}
+h1,
+h2,
+h3,
+.brand {
+  letter-spacing: 0;
+}
+::selection {
+  background: var(--yellow);
+  color: var(--on-primary);
+}
+:focus-visible {
+  outline: 3px solid var(--cyan);
+  outline-offset: 4px;
+}
+img {
+  image-rendering: pixelated;
+}
+/* A hollow stepped outline adds pixel corners without clipping the ports,
+   focus rings, scrollbar or React Flow interaction layer. */
+.pixel-frame {
+  position: relative;
+  --frame-color: var(--border-highlight);
+}
+.pixel-frame::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  z-index: 2;
+  pointer-events: none;
+  background: var(--frame-color);
+  clip-path: polygon(
+    evenodd,
+    0 8px,
+    4px 8px,
+    4px 4px,
+    8px 4px,
+    8px 0,
+    calc(100% - 8px) 0,
+    calc(100% - 8px) 4px,
+    calc(100% - 4px) 4px,
+    calc(100% - 4px) 8px,
+    100% 8px,
+    100% calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 8px),
+    calc(100% - 4px) calc(100% - 4px),
+    calc(100% - 8px) calc(100% - 4px),
+    calc(100% - 8px) 100%,
+    8px 100%,
+    8px calc(100% - 4px),
+    4px calc(100% - 4px),
+    4px calc(100% - 8px),
+    0 calc(100% - 8px),
+    0 8px,
+    4px 12px,
+    8px 12px,
+    8px 8px,
+    12px 8px,
+    12px 4px,
+    calc(100% - 12px) 4px,
+    calc(100% - 12px) 8px,
+    calc(100% - 8px) 8px,
+    calc(100% - 8px) 12px,
+    calc(100% - 4px) 12px,
+    calc(100% - 4px) calc(100% - 12px),
+    calc(100% - 8px) calc(100% - 12px),
+    calc(100% - 8px) calc(100% - 8px),
+    calc(100% - 12px) calc(100% - 8px),
+    calc(100% - 12px) calc(100% - 4px),
+    12px calc(100% - 4px),
+    12px calc(100% - 8px),
+    8px calc(100% - 8px),
+    8px calc(100% - 12px),
+    4px calc(100% - 12px),
+    4px 12px
+  );
+}
+.button {
+  border: 2px solid var(--button-border);
+  border-radius: var(--radius-control);
+  box-shadow: var(--shadow-button);
+  font: 700 18px/1.2 var(--display);
+  text-transform: uppercase;
+  padding: var(--space-3) var(--space-5);
+  gap: var(--space-2);
+}
+.button:active:not(:disabled),
+:root .board-tools button:active {
+  box-shadow: var(--shadow-button-pressed);
+}
+button:disabled {
+  box-shadow: none;
+}
+.site-header {
+  border-bottom: 0;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  z-index: var(--z-header);
+}
+.brand {
+  font-size: 28px;
+  text-transform: uppercase;
+}
+.site-header nav {
+  padding: var(--space-1);
+  border: 2px solid var(--border-highlight);
+  border-radius: var(--radius-control);
+  background: var(--surface-light);
+  box-shadow: 4px 4px 0 var(--frame-dark);
+}
+.site-header nav::before {
+  content: none;
+}
+.site-header nav a {
+  font: 700 18px/1 var(--display);
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border: 2px solid transparent;
+}
+.site-header nav a.active {
+  background: var(--yellow);
+  border-color: var(--button-border);
+  box-shadow: inset 2px 2px 0 var(--yellow-light);
+}
+.puzzle-sidebar,
+.board-panel {
+  box-shadow: var(--shadow-card);
+}
+.puzzle-sidebar .small {
+  font-size: 16px;
+  line-height: 1.3;
+}
+.table-scroll {
+  border: 2px solid var(--border-highlight);
+  border-radius: var(--radius-control);
+}
+.truth-table {
+  background: var(--surface);
+  border: 0;
+}
+.truth-table th {
+  background: var(--surface-light);
+}
+.truth-table td {
+  color: var(--text);
+}
+.truth-table .table-output {
+  background: transparent;
+}
+.truth-table .active-row td,
+.truth-table .truth-active td {
+  color: var(--success);
+}
+.inventory-card {
+  border: 2px solid var(--yellow);
+  background: var(--surface-light);
+  color: var(--yellow);
+  box-shadow: 2px 2px 0 var(--frame-dark);
+}
+.inventory-card > .gate-symbol {
+  color: var(--yellow);
+}
+.inventory-card > svg:last-child {
+  width: 32px;
+  height: 32px;
+  padding: var(--space-1);
+  background: var(--yellow);
+  color: var(--on-primary);
+  border: 2px solid var(--button-border);
+}
+.inventory-card:disabled {
+  border-color: var(--border-highlight);
+}
+.inventory-card:disabled > .gate-symbol {
+  color: var(--text-secondary);
+}
+.inventory-card:disabled > svg:last-child {
+  background: var(--surface);
+  color: var(--text-secondary);
+  border-color: var(--border);
+}
+.inventory-learn {
+  color: var(--text-secondary);
+  min-width: 44px;
+}
+.puzzle-hint {
+  border-top: 2px solid var(--border-highlight);
+  margin-top: var(--space-5);
+}
+.puzzle-hint summary {
+  font-size: 20px;
+}
+.binary-switch,
+.settings-toggle,
+.sim-gate,
+.sim-output,
+.expression-box,
+.world-number,
+.detail-badge {
+  border-width: 2px;
+}
+.switch-indicator,
+.switch-indicator::before {
+  border-radius: var(--radius-control);
+}
+.switch-indicator {
+  background: var(--border);
+}
+.switch-indicator::before {
+  background: var(--text);
+}
+.settings-dialog,
+.completion-dialog {
+  border: 4px solid var(--border-highlight);
+  box-shadow: 8px 8px 0 var(--frame-dark);
+}
+.completion-check {
+  border: 2px solid var(--success);
+}
+.completion-dialog h2,
+.settings-dialog h2 {
+  color: var(--yellow);
+}
+:root[data-theme='light'] .puzzle-sidebar .objective-panel h2,
+:root[data-theme='light'] .puzzle-sidebar .inventory-panel h2,
+:root[data-theme='light'] .gate-node-heading > strong,
+:root[data-theme='light'] .gate-node > .gate-symbol,
+:root[data-theme='light'] .inventory-card,
+:root[data-theme='light'] .inventory-card > .gate-symbol,
+:root[data-theme='light'] .completion-dialog h2,
+:root[data-theme='light'] .settings-dialog h2 {
+  color: var(--text);
+}
+/* The other routes share the same game UI; content and simulators are retained. */
+.page {
+  max-width: 1440px;
+  padding-top: var(--space-8);
+}
+.home-lab-card,
+.home-resume-strip,
+.world-section,
+.gate-card,
+.gate-description,
+.detail-character,
+.detail-simulator,
+.progress-summary,
+.learning-note {
+  border: 2px solid var(--border-highlight);
+  box-shadow: var(--shadow-card);
+}
+.home-title {
+  font-size: clamp(36px, 4.1vw, 60px);
+}
+.home-title span:last-child {
+  color: var(--yellow);
+}
+:root[data-theme='light'] .home-title span:last-child {
+  color: var(--blue);
+}
+.home-eyebrow,
+.home-lab-tag {
+  color: var(--text-secondary);
+}
+.level-card {
+  border-width: 2px;
+}
+.level-card-top {
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.level-card.is-current {
+  border-color: var(--yellow);
+  box-shadow: 4px 4px 0 var(--frame-dark);
+}
+.level-number {
+  font-size: 24px;
+}
+.level-badge,
+.level-signals,
+.level-unlock {
+  font-size: 14px;
+}
+.gate-card-name {
+  font-size: 26px;
+}
+.gate-card-role,
+.description-large,
+.page-heading-copy p,
+.detail-sim-help,
+.editorial-body p {
+  font-size: 18px;
+}
+.character-portrait {
+  height: 160px;
+  border-bottom: 2px solid var(--border);
+}
+/* Portrait component now represents a technical module, never a character. */
+.character-portrait > .gate-symbol {
+  width: 128px;
+  max-width: 128px;
+  height: 88px;
+  color: var(--yellow);
+}
+.character-module-id {
+  position: absolute;
+  bottom: var(--space-2);
+  left: var(--space-3);
+  color: var(--muted);
+  font-size: 14px;
+}
+:root[data-theme='light'] .character-portrait > .gate-symbol {
+  color: var(--text);
+}
+.detail-character .character-portrait {
+  height: 180px;
+}
+progress,
+progress::-webkit-progress-bar,
+progress::-webkit-progress-value {
+  border-radius: 0;
+}
+progress::-webkit-progress-value {
+  background: var(--yellow);
+}
+progress::-moz-progress-bar {
+  background: var(--yellow);
+  border-radius: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .button:hover:not(:disabled),
+  :root .board-tools button:hover:not(:disabled) {
+    background: var(--yellow-light);
+    color: var(--on-primary);
+    border-color: var(--button-border);
+  }
+  .inventory-card:hover:not(:disabled) {
+    background: var(--surface);
+    border-color: var(--yellow-light);
+  }
+  a.level-card:hover,
+  .gate-card:hover {
+    border-color: var(--yellow);
+    transform: none;
+  }
+}
+@media (max-width: 1000px) {
+  .brand {
+    font-size: 22px;
+  }
+}
+@media (max-width: 700px) {
+  .site-header nav a {
+    font-size: 16px;
+  }
+  .home-cover,
+  .home-lab-card,
+  .gate-description,
+  .detail-simulator {
+    padding: var(--space-5);
+  }
+  .home-cover {
+    padding-inline: 0;
+  }
+  .gate-collection {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+@media (forced-colors: active) {
+  .pixel-frame::before {
+    display: none;
+  }
+  .port-dot {
+    forced-color-adjust: none;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .brand span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .brand {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+}
+@media (max-width: 600px) {
+  .gate-detail-title h2 {
+    flex: 1;
+    min-width: 0;
+    font-size: 28px;
+  }
+  .gate-detail-title > .gate-symbol {
+    width: 64px;
+    height: 44px;
+  }
+}
+@media (max-width: 380px) {
+  .site-header nav a {
+    width: 80px;
+    padding-inline: 0;
+    font-size: 14px;
+  }
+}
+@media (max-height: 540px) and (min-width: 701px) {
+  .puzzle-page .circuit-canvas {
+    padding-top: 64px;
+  }
+  .puzzle-page .board-view-tools {
+    top: var(--space-2);
+    right: var(--space-3);
+  }
+}

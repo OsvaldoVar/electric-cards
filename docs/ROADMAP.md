@@ -3,13 +3,13 @@
 ## Implemented in 0.1.0
 
 - React/Vite app, five routes and lazy loading.
-- Seven-gate engine with DAG and port validation.
-- 25 declarative puzzles and independent reference constructions.
+- Seven Boolean gates plus CLOCK, DFF and TFF, with DAG and port validation.
+- 35 declarative puzzles and independent reference constructions.
 - React Flow editor with finite inventory and mouse/touch movement.
-- Drag, tap and selector wiring; visible deletion/disconnection actions.
-- Exhaustive validation, per-case preview, hints, reset and star budgets.
+- Drag and tap wiring; visible deletion/disconnection actions.
+- Exhaustive validation, per-case preview, hints, reset and blue optimization advice.
 - Versioned local progression and drafts with storage-failure recovery.
-- Seven learning cards with SVG characters, symbols and interactive tables.
+- Ten progressively unlocked learning cards with SVG characters, symbols and interactive tables.
 - Four responsive viewport checks, unit/component tests and Chromium E2E.
 - CI workflow and Vercel SPA config.
 

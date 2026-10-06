@@ -1,0 +1,762 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-01T16:05:07.398226+00:00",
+  "title": "Design System: Electric Cards",
+  "extensions": {
+    "colorMeta": {
+      "background": {
+        "role": "neutral",
+        "displayName": "Background",
+        "canonical": "#090d1f",
+        "tonalRamp": [
+          "oklch(15.00% 0.03823 272.14)",
+          "oklch(26.43% 0.03823 272.14)",
+          "oklch(37.86% 0.03823 272.14)",
+          "oklch(49.29% 0.03823 272.14)",
+          "oklch(60.71% 0.03823 272.14)",
+          "oklch(72.14% 0.03823 272.14)",
+          "oklch(83.57% 0.03823 272.14)",
+          "oklch(95.00% 0.03823 272.14)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#11162b",
+        "tonalRamp": [
+          "oklch(15.00% 0.04243 272.12)",
+          "oklch(26.43% 0.04243 272.12)",
+          "oklch(37.86% 0.04243 272.12)",
+          "oklch(49.29% 0.04243 272.12)",
+          "oklch(60.71% 0.04243 272.12)",
+          "oklch(72.14% 0.04243 272.12)",
+          "oklch(83.57% 0.04243 272.12)",
+          "oklch(95.00% 0.04243 272.12)"
+        ]
+      },
+      "surface-light": {
+        "role": "neutral",
+        "displayName": "Surface light",
+        "canonical": "#181e37",
+        "tonalRamp": [
+          "oklch(15.00% 0.04858 272.14)",
+          "oklch(26.43% 0.04858 272.14)",
+          "oklch(37.86% 0.04858 272.14)",
+          "oklch(49.29% 0.04858 272.14)",
+          "oklch(60.71% 0.04858 272.14)",
+          "oklch(72.14% 0.04858 272.14)",
+          "oklch(83.57% 0.04858 272.14)",
+          "oklch(95.00% 0.04858 272.14)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "canonical": "#504075",
+        "tonalRamp": [
+          "oklch(15.00% 0.08765 296.27)",
+          "oklch(26.43% 0.08765 296.27)",
+          "oklch(37.86% 0.08765 296.27)",
+          "oklch(49.29% 0.08765 296.27)",
+          "oklch(60.71% 0.08765 296.27)",
+          "oklch(72.14% 0.08765 296.27)",
+          "oklch(83.57% 0.08765 296.27)",
+          "oklch(95.00% 0.08765 296.27)"
+        ]
+      },
+      "border-highlight": {
+        "role": "tertiary",
+        "displayName": "Border highlight",
+        "canonical": "#8b5cb5",
+        "tonalRamp": [
+          "oklch(15.00% 0.14014 306.83)",
+          "oklch(26.43% 0.14014 306.83)",
+          "oklch(37.86% 0.14014 306.83)",
+          "oklch(49.29% 0.14014 306.83)",
+          "oklch(60.71% 0.14014 306.83)",
+          "oklch(72.14% 0.14014 306.83)",
+          "oklch(83.57% 0.14014 306.83)",
+          "oklch(95.00% 0.14014 306.83)"
+        ]
+      },
+      "yellow": {
+        "role": "primary",
+        "displayName": "Yellow",
+        "canonical": "#ffd34e",
+        "tonalRamp": [
+          "oklch(15.00% 0.15341 90.23)",
+          "oklch(26.43% 0.15341 90.23)",
+          "oklch(37.86% 0.15341 90.23)",
+          "oklch(49.29% 0.15341 90.23)",
+          "oklch(60.71% 0.15341 90.23)",
+          "oklch(72.14% 0.15341 90.23)",
+          "oklch(83.57% 0.15341 90.23)",
+          "oklch(95.00% 0.15341 90.23)"
+        ]
+      },
+      "yellow-light": {
+        "role": "primary",
+        "displayName": "Yellow light",
+        "canonical": "#ffe47a",
+        "tonalRamp": [
+          "oklch(15.00% 0.12949 95.37)",
+          "oklch(26.43% 0.12949 95.37)",
+          "oklch(37.86% 0.12949 95.37)",
+          "oklch(49.29% 0.12949 95.37)",
+          "oklch(60.71% 0.12949 95.37)",
+          "oklch(72.14% 0.12949 95.37)",
+          "oklch(83.57% 0.12949 95.37)",
+          "oklch(95.00% 0.12949 95.37)"
+        ]
+      },
+      "pink": {
+        "role": "secondary",
+        "displayName": "Pink",
+        "canonical": "#ff547d",
+        "tonalRamp": [
+          "oklch(15.00% 0.20709 10.16)",
+          "oklch(26.43% 0.20709 10.16)",
+          "oklch(37.86% 0.20709 10.16)",
+          "oklch(49.29% 0.20709 10.16)",
+          "oklch(60.71% 0.20709 10.16)",
+          "oklch(72.14% 0.20709 10.16)",
+          "oklch(83.57% 0.20709 10.16)",
+          "oklch(95.00% 0.20709 10.16)"
+        ]
+      },
+      "cyan": {
+        "role": "secondary",
+        "displayName": "Cyan",
+        "canonical": "#63ddff",
+        "tonalRamp": [
+          "oklch(15.00% 0.11790 219.11)",
+          "oklch(26.43% 0.11790 219.11)",
+          "oklch(37.86% 0.11790 219.11)",
+          "oklch(49.29% 0.11790 219.11)",
+          "oklch(60.71% 0.11790 219.11)",
+          "oklch(72.14% 0.11790 219.11)",
+          "oklch(83.57% 0.11790 219.11)",
+          "oklch(95.00% 0.11790 219.11)"
+        ]
+      },
+      "green": {
+        "role": "tertiary",
+        "displayName": "Green",
+        "canonical": "#55e58c",
+        "tonalRamp": [
+          "oklch(15.00% 0.17616 152.84)",
+          "oklch(26.43% 0.17616 152.84)",
+          "oklch(37.86% 0.17616 152.84)",
+          "oklch(49.29% 0.17616 152.84)",
+          "oklch(60.71% 0.17616 152.84)",
+          "oklch(72.14% 0.17616 152.84)",
+          "oklch(83.57% 0.17616 152.84)",
+          "oklch(95.00% 0.17616 152.84)"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Red",
+        "canonical": "#e84763",
+        "tonalRamp": [
+          "oklch(15.00% 0.19658 14.88)",
+          "oklch(26.43% 0.19658 14.88)",
+          "oklch(37.86% 0.19658 14.88)",
+          "oklch(49.29% 0.19658 14.88)",
+          "oklch(60.71% 0.19658 14.88)",
+          "oklch(72.14% 0.19658 14.88)",
+          "oklch(83.57% 0.19658 14.88)",
+          "oklch(95.00% 0.19658 14.88)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Text",
+        "canonical": "#f4f2ff",
+        "tonalRamp": [
+          "oklch(15.00% 0.01739 293.14)",
+          "oklch(26.43% 0.01739 293.14)",
+          "oklch(37.86% 0.01739 293.14)",
+          "oklch(49.29% 0.01739 293.14)",
+          "oklch(60.71% 0.01739 293.14)",
+          "oklch(72.14% 0.01739 293.14)",
+          "oklch(83.57% 0.01739 293.14)",
+          "oklch(95.00% 0.01739 293.14)"
+        ]
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Text secondary",
+        "canonical": "#aeb4d0",
+        "tonalRamp": [
+          "oklch(15.00% 0.04042 275.86)",
+          "oklch(26.43% 0.04042 275.86)",
+          "oklch(37.86% 0.04042 275.86)",
+          "oklch(49.29% 0.04042 275.86)",
+          "oklch(60.71% 0.04042 275.86)",
+          "oklch(72.14% 0.04042 275.86)",
+          "oklch(83.57% 0.04042 275.86)",
+          "oklch(95.00% 0.04042 275.86)"
+        ]
+      },
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Canvas",
+        "canonical": "#0c1125",
+        "tonalRamp": [
+          "oklch(15.00% 0.04158 271.26)",
+          "oklch(26.43% 0.04158 271.26)",
+          "oklch(37.86% 0.04158 271.26)",
+          "oklch(49.29% 0.04158 271.26)",
+          "oklch(60.71% 0.04158 271.26)",
+          "oklch(72.14% 0.04158 271.26)",
+          "oklch(83.57% 0.04158 271.26)",
+          "oklch(95.00% 0.04158 271.26)"
+        ]
+      },
+      "grid": {
+        "role": "neutral",
+        "displayName": "Grid",
+        "canonical": "#1b2340",
+        "tonalRamp": [
+          "oklch(15.00% 0.05547 270.60)",
+          "oklch(26.43% 0.05547 270.60)",
+          "oklch(37.86% 0.05547 270.60)",
+          "oklch(49.29% 0.05547 270.60)",
+          "oklch(60.71% 0.05547 270.60)",
+          "oklch(72.14% 0.05547 270.60)",
+          "oklch(83.57% 0.05547 270.60)",
+          "oklch(95.00% 0.05547 270.60)"
+        ]
+      },
+      "frame-dark": {
+        "role": "neutral",
+        "displayName": "Frame dark",
+        "canonical": "#050817",
+        "tonalRamp": [
+          "oklch(15.00% 0.03368 270.69)",
+          "oklch(26.43% 0.03368 270.69)",
+          "oklch(37.86% 0.03368 270.69)",
+          "oklch(49.29% 0.03368 270.69)",
+          "oklch(60.71% 0.03368 270.69)",
+          "oklch(72.14% 0.03368 270.69)",
+          "oklch(83.57% 0.03368 270.69)",
+          "oklch(95.00% 0.03368 270.69)"
+        ]
+      },
+      "button-border": {
+        "role": "neutral",
+        "displayName": "Button border",
+        "canonical": "#a8792d",
+        "tonalRamp": [
+          "oklch(15.00% 0.10810 75.80)",
+          "oklch(26.43% 0.10810 75.80)",
+          "oklch(37.86% 0.10810 75.80)",
+          "oklch(49.29% 0.10810 75.80)",
+          "oklch(60.71% 0.10810 75.80)",
+          "oklch(72.14% 0.10810 75.80)",
+          "oklch(83.57% 0.10810 75.80)",
+          "oklch(95.00% 0.10810 75.80)"
+        ]
+      },
+      "button-shadow": {
+        "role": "neutral",
+        "displayName": "Button shadow",
+        "canonical": "#654329",
+        "tonalRamp": [
+          "oklch(15.00% 0.06130 57.46)",
+          "oklch(26.43% 0.06130 57.46)",
+          "oklch(37.86% 0.06130 57.46)",
+          "oklch(49.29% 0.06130 57.46)",
+          "oklch(60.71% 0.06130 57.46)",
+          "oklch(72.14% 0.06130 57.46)",
+          "oklch(83.57% 0.06130 57.46)",
+          "oklch(95.00% 0.06130 57.46)"
+        ]
+      },
+      "signal-soft": {
+        "role": "neutral",
+        "displayName": "Signal soft",
+        "canonical": "#10392d",
+        "tonalRamp": [
+          "oklch(15.00% 0.05054 170.35)",
+          "oklch(26.43% 0.05054 170.35)",
+          "oklch(37.86% 0.05054 170.35)",
+          "oklch(49.29% 0.05054 170.35)",
+          "oklch(60.71% 0.05054 170.35)",
+          "oklch(72.14% 0.05054 170.35)",
+          "oklch(83.57% 0.05054 170.35)",
+          "oklch(95.00% 0.05054 170.35)"
+        ]
+      },
+      "danger-soft": {
+        "role": "neutral",
+        "displayName": "Danger soft",
+        "canonical": "#401b30",
+        "tonalRamp": [
+          "oklch(15.00% 0.06471 346.86)",
+          "oklch(26.43% 0.06471 346.86)",
+          "oklch(37.86% 0.06471 346.86)",
+          "oklch(49.29% 0.06471 346.86)",
+          "oklch(60.71% 0.06471 346.86)",
+          "oklch(72.14% 0.06471 346.86)",
+          "oklch(83.57% 0.06471 346.86)",
+          "oklch(95.00% 0.06471 346.86)"
+        ]
+      },
+      "warning-soft": {
+        "role": "neutral",
+        "displayName": "Warning soft",
+        "canonical": "#302a24",
+        "tonalRamp": [
+          "oklch(15.00% 0.01383 67.23)",
+          "oklch(26.43% 0.01383 67.23)",
+          "oklch(37.86% 0.01383 67.23)",
+          "oklch(49.29% 0.01383 67.23)",
+          "oklch(60.71% 0.01383 67.23)",
+          "oklch(72.14% 0.01383 67.23)",
+          "oklch(83.57% 0.01383 67.23)",
+          "oklch(95.00% 0.01383 67.23)"
+        ]
+      },
+      "modal-backdrop": {
+        "role": "neutral",
+        "displayName": "Modal backdrop",
+        "canonical": "rgb(5 8 23 / 80%)",
+        "tonalRamp": [
+          "oklch(15.00% 0.03368 270.69)",
+          "oklch(26.43% 0.03368 270.69)",
+          "oklch(37.86% 0.03368 270.69)",
+          "oklch(49.29% 0.03368 270.69)",
+          "oklch(60.71% 0.03368 270.69)",
+          "oklch(72.14% 0.03368 270.69)",
+          "oklch(83.57% 0.03368 270.69)",
+          "oklch(95.00% 0.03368 270.69)"
+        ]
+      },
+      "light-background": {
+        "role": "neutral",
+        "displayName": "Light background",
+        "canonical": "#eeedf7",
+        "tonalRamp": [
+          "oklch(15.00% 0.01338 290.75)",
+          "oklch(26.43% 0.01338 290.75)",
+          "oklch(37.86% 0.01338 290.75)",
+          "oklch(49.29% 0.01338 290.75)",
+          "oklch(60.71% 0.01338 290.75)",
+          "oklch(72.14% 0.01338 290.75)",
+          "oklch(83.57% 0.01338 290.75)",
+          "oklch(95.00% 0.01338 290.75)"
+        ]
+      },
+      "light-surface": {
+        "role": "neutral",
+        "displayName": "Light surface",
+        "canonical": "#faf8ff",
+        "tonalRamp": [
+          "oklch(15.00% 0.00947 299.24)",
+          "oklch(26.43% 0.00947 299.24)",
+          "oklch(37.86% 0.00947 299.24)",
+          "oklch(49.29% 0.00947 299.24)",
+          "oklch(60.71% 0.00947 299.24)",
+          "oklch(72.14% 0.00947 299.24)",
+          "oklch(83.57% 0.00947 299.24)",
+          "oklch(95.00% 0.00947 299.24)"
+        ]
+      },
+      "light-surface-light": {
+        "role": "neutral",
+        "displayName": "Light surface light",
+        "canonical": "#e3e1f2",
+        "tonalRamp": [
+          "oklch(15.00% 0.02302 291.35)",
+          "oklch(26.43% 0.02302 291.35)",
+          "oklch(37.86% 0.02302 291.35)",
+          "oklch(49.29% 0.02302 291.35)",
+          "oklch(60.71% 0.02302 291.35)",
+          "oklch(72.14% 0.02302 291.35)",
+          "oklch(83.57% 0.02302 291.35)",
+          "oklch(95.00% 0.02302 291.35)"
+        ]
+      },
+      "light-canvas": {
+        "role": "neutral",
+        "displayName": "Light canvas",
+        "canonical": "#e9e8f5",
+        "tonalRamp": [
+          "oklch(15.00% 0.01746 289.60)",
+          "oklch(26.43% 0.01746 289.60)",
+          "oklch(37.86% 0.01746 289.60)",
+          "oklch(49.29% 0.01746 289.60)",
+          "oklch(60.71% 0.01746 289.60)",
+          "oklch(72.14% 0.01746 289.60)",
+          "oklch(83.57% 0.01746 289.60)",
+          "oklch(95.00% 0.01746 289.60)"
+        ]
+      },
+      "light-grid": {
+        "role": "neutral",
+        "displayName": "Light grid",
+        "canonical": "#d6d3e8",
+        "tonalRamp": [
+          "oklch(15.00% 0.02884 292.35)",
+          "oklch(26.43% 0.02884 292.35)",
+          "oklch(37.86% 0.02884 292.35)",
+          "oklch(49.29% 0.02884 292.35)",
+          "oklch(60.71% 0.02884 292.35)",
+          "oklch(72.14% 0.02884 292.35)",
+          "oklch(83.57% 0.02884 292.35)",
+          "oklch(95.00% 0.02884 292.35)"
+        ]
+      },
+      "light-text": {
+        "role": "neutral",
+        "displayName": "Light text",
+        "canonical": "#17182f",
+        "tonalRamp": [
+          "oklch(15.00% 0.04455 280.20)",
+          "oklch(26.43% 0.04455 280.20)",
+          "oklch(37.86% 0.04455 280.20)",
+          "oklch(49.29% 0.04455 280.20)",
+          "oklch(60.71% 0.04455 280.20)",
+          "oklch(72.14% 0.04455 280.20)",
+          "oklch(83.57% 0.04455 280.20)",
+          "oklch(95.00% 0.04455 280.20)"
+        ]
+      },
+      "light-text-secondary": {
+        "role": "neutral",
+        "displayName": "Light text secondary",
+        "canonical": "#53546e",
+        "tonalRamp": [
+          "oklch(15.00% 0.04224 282.86)",
+          "oklch(26.43% 0.04224 282.86)",
+          "oklch(37.86% 0.04224 282.86)",
+          "oklch(49.29% 0.04224 282.86)",
+          "oklch(60.71% 0.04224 282.86)",
+          "oklch(72.14% 0.04224 282.86)",
+          "oklch(83.57% 0.04224 282.86)",
+          "oklch(95.00% 0.04224 282.86)"
+        ]
+      },
+      "light-frame-dark": {
+        "role": "neutral",
+        "displayName": "Light frame dark",
+        "canonical": "#34304b",
+        "tonalRamp": [
+          "oklch(15.00% 0.04746 290.30)",
+          "oklch(26.43% 0.04746 290.30)",
+          "oklch(37.86% 0.04746 290.30)",
+          "oklch(49.29% 0.04746 290.30)",
+          "oklch(60.71% 0.04746 290.30)",
+          "oklch(72.14% 0.04746 290.30)",
+          "oklch(83.57% 0.04746 290.30)",
+          "oklch(95.00% 0.04746 290.30)"
+        ]
+      },
+      "light-signal-soft": {
+        "role": "neutral",
+        "displayName": "Light signal soft",
+        "canonical": "#d5f1df",
+        "tonalRamp": [
+          "oklch(15.00% 0.03798 157.40)",
+          "oklch(26.43% 0.03798 157.40)",
+          "oklch(37.86% 0.03798 157.40)",
+          "oklch(49.29% 0.03798 157.40)",
+          "oklch(60.71% 0.03798 157.40)",
+          "oklch(72.14% 0.03798 157.40)",
+          "oklch(83.57% 0.03798 157.40)",
+          "oklch(95.00% 0.03798 157.40)"
+        ]
+      },
+      "light-danger-soft": {
+        "role": "neutral",
+        "displayName": "Light danger soft",
+        "canonical": "#f7dde5",
+        "tonalRamp": [
+          "oklch(15.00% 0.03044 357.11)",
+          "oklch(26.43% 0.03044 357.11)",
+          "oklch(37.86% 0.03044 357.11)",
+          "oklch(49.29% 0.03044 357.11)",
+          "oklch(60.71% 0.03044 357.11)",
+          "oklch(72.14% 0.03044 357.11)",
+          "oklch(83.57% 0.03044 357.11)",
+          "oklch(95.00% 0.03044 357.11)"
+        ]
+      },
+      "light-warning-soft": {
+        "role": "neutral",
+        "displayName": "Light warning soft",
+        "canonical": "#f7edcc",
+        "tonalRamp": [
+          "oklch(15.00% 0.04448 93.10)",
+          "oklch(26.43% 0.04448 93.10)",
+          "oklch(37.86% 0.04448 93.10)",
+          "oklch(49.29% 0.04448 93.10)",
+          "oklch(60.71% 0.04448 93.10)",
+          "oklch(72.14% 0.04448 93.10)",
+          "oklch(83.57% 0.04448 93.10)",
+          "oklch(95.00% 0.04448 93.10)"
+        ]
+      },
+      "light-success": {
+        "role": "tertiary",
+        "displayName": "Light success",
+        "canonical": "#176b3d",
+        "tonalRamp": [
+          "oklch(15.00% 0.10747 153.99)",
+          "oklch(26.43% 0.10747 153.99)",
+          "oklch(37.86% 0.10747 153.99)",
+          "oklch(49.29% 0.10747 153.99)",
+          "oklch(60.71% 0.10747 153.99)",
+          "oklch(72.14% 0.10747 153.99)",
+          "oklch(83.57% 0.10747 153.99)",
+          "oklch(95.00% 0.10747 153.99)"
+        ]
+      },
+      "light-cyan": {
+        "role": "secondary",
+        "displayName": "Light cyan",
+        "canonical": "#225477",
+        "tonalRamp": [
+          "oklch(15.00% 0.07895 242.38)",
+          "oklch(26.43% 0.07895 242.38)",
+          "oklch(37.86% 0.07895 242.38)",
+          "oklch(49.29% 0.07895 242.38)",
+          "oklch(60.71% 0.07895 242.38)",
+          "oklch(72.14% 0.07895 242.38)",
+          "oklch(83.57% 0.07895 242.38)",
+          "oklch(95.00% 0.07895 242.38)"
+        ]
+      },
+      "light-pink": {
+        "role": "secondary",
+        "displayName": "Light pink",
+        "canonical": "#a92249",
+        "tonalRamp": [
+          "oklch(15.00% 0.17039 10.06)",
+          "oklch(26.43% 0.17039 10.06)",
+          "oklch(37.86% 0.17039 10.06)",
+          "oklch(49.29% 0.17039 10.06)",
+          "oklch(60.71% 0.17039 10.06)",
+          "oklch(72.14% 0.17039 10.06)",
+          "oklch(83.57% 0.17039 10.06)",
+          "oklch(95.00% 0.17039 10.06)"
+        ]
+      },
+      "light-signal-unknown": {
+        "role": "neutral",
+        "displayName": "Light signal unknown",
+        "canonical": "#65627b",
+        "tonalRamp": [
+          "oklch(15.00% 0.03940 290.42)",
+          "oklch(26.43% 0.03940 290.42)",
+          "oklch(37.86% 0.03940 290.42)",
+          "oklch(49.29% 0.03940 290.42)",
+          "oklch(60.71% 0.03940 290.42)",
+          "oklch(72.14% 0.03940 290.42)",
+          "oklch(83.57% 0.03940 290.42)",
+          "oklch(95.00% 0.03940 290.42)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "display",
+        "purpose": "Portada; Pixelify Sans 700."
+      },
+      "headline": {
+        "displayName": "headline",
+        "purpose": "Títulos de sección y herramientas."
+      },
+      "board-title": {
+        "displayName": "board-title",
+        "purpose": "Nivel N en el tablero."
+      },
+      "title": {
+        "displayName": "title",
+        "purpose": "Subtítulos de bloque."
+      },
+      "body": {
+        "displayName": "body",
+        "purpose": "Lectura e instrucciones."
+      },
+      "label": {
+        "displayName": "label",
+        "purpose": "Acciones en mayúsculas."
+      },
+      "mono": {
+        "displayName": "mono",
+        "purpose": "Expresiones, valores y módulos EC."
+      }
+    },
+    "shadows": [
+      {
+        "name": "surface",
+        "value": "4px 4px 0 var(--frame-dark)",
+        "purpose": "Paneles y tarjetas; sin blur."
+      },
+      {
+        "name": "button",
+        "value": "0 4px 0 var(--button-shadow), 0 6px 0 var(--frame-dark)",
+        "purpose": "Relieve duro de controles amarillos."
+      },
+      {
+        "name": "button-pressed",
+        "value": "0 2px 0 var(--button-shadow), 0 4px 0 var(--frame-dark)",
+        "purpose": "Relieve reducido al presionar."
+      }
+    ],
+    "motion": [
+      {
+        "name": "press",
+        "value": "80ms ease-out",
+        "purpose": "Desplazamiento vertical de presión de 2px."
+      },
+      {
+        "name": "state",
+        "value": "120ms ease-out",
+        "purpose": "Color, borde y pulgar de interruptor."
+      },
+      {
+        "name": "keyboard-reduced",
+        "value": "none",
+        "purpose": "Teclado elimina transiciones/animaciones; movimiento reducido también elimina el desplazamiento de presión."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "desktop-narrow",
+        "value": "1200px"
+      },
+      {
+        "name": "compact-tools",
+        "value": "1000px"
+      },
+      {
+        "name": "puzzle-stack",
+        "value": "700px"
+      },
+      {
+        "name": "small-phone",
+        "value": "380px"
+      },
+      {
+        "name": "landscape-phone",
+        "value": "(max-height: 540px) and (min-width: 701px)"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Probar circuito",
+      "kind": "button",
+      "description": "Control amarillo con relieve duro y respuesta de presión.",
+      "html": "<button class=\"ds-button-primary\" type=\"button\">Probar circuito</button>",
+      "css": ".ds-button-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 20px; border: 2px solid var(--button-border); border-radius: var(--radius-control); background: var(--yellow); color: var(--on-primary); box-shadow: var(--shadow-button); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); font-size: 18px; font-weight: 700; line-height: 1.2; text-transform: uppercase; cursor: pointer; transition: background-color 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out, transform 80ms ease-out; } @media (hover: hover) and (pointer: fine) { .ds-button-primary:hover:not(:disabled) { background: var(--yellow-light); } } .ds-button-primary:active:not(:disabled) { transform: translateY(2px); box-shadow: var(--shadow-button-pressed); } .ds-button-primary:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; } .ds-button-primary:disabled { background: var(--disabled-bg); color: var(--disabled-text); border-color: var(--border); box-shadow: none; cursor: not-allowed; } @media (prefers-reduced-motion: reduce) { [class^=\"ds-\"] { transition: none !important; transform: none !important; } }",
+      "refersTo": "button-primary"
+    },
+    {
+      "name": "Reiniciar",
+      "kind": "button",
+      "description": "Control amarillo con relieve duro y respuesta de presión.",
+      "html": "<button class=\"ds-button-secondary\" type=\"button\">Reiniciar</button>",
+      "css": ".ds-button-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 12px 20px; border: 2px solid var(--button-border); border-radius: var(--radius-control); background: var(--yellow); color: var(--on-primary); box-shadow: var(--shadow-button); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); font-size: 18px; font-weight: 700; line-height: 1.2; text-transform: uppercase; cursor: pointer; transition: background-color 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out, transform 80ms ease-out; } @media (hover: hover) and (pointer: fine) { .ds-button-secondary:hover:not(:disabled) { background: var(--yellow-light); } } .ds-button-secondary:active:not(:disabled) { transform: translateY(2px); box-shadow: var(--shadow-button-pressed); } .ds-button-secondary:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; } .ds-button-secondary:disabled { background: var(--disabled-bg); color: var(--disabled-text); border-color: var(--border); box-shadow: none; cursor: not-allowed; } @media (prefers-reduced-motion: reduce) { [class^=\"ds-\"] { transition: none !important; transform: none !important; } }",
+      "refersTo": "button-secondary"
+    },
+    {
+      "name": "Selector de secuencia",
+      "kind": "input",
+      "description": "Selector nativo existente para objetivos secuenciales; no es un formulario de conexión.",
+      "html": "<label class=\"ds-sequence-label\" for=\"ds-sequence\">Secuencia<select class=\"ds-sequence-select\" id=\"ds-sequence\"><option>Secuencia 1</option><option>Secuencia 2</option></select></label>",
+      "css": ".ds-sequence-label { display: flex; flex-direction: column; gap: 8px; color: var(--muted); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); font-size: 14px; } .ds-sequence-select { min-width: 0; width: 100%; min-height: 46px; padding: 9px 30px 9px 12px; border: 1px solid var(--border); border-radius: var(--radius-control); background: var(--surface); color: var(--text); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); font-size: 16px; } .ds-sequence-select:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; } .ds-sequence-select:disabled { background: var(--disabled-bg); color: var(--disabled-text); }",
+      "refersTo": "sequence-select"
+    },
+    {
+      "name": "Navegación",
+      "kind": "nav",
+      "description": "Secciones en superficie sólida con selección amarilla y nombre accesible.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navegación principal\"><a class=\"ds-nav-link ds-nav-active\" href=\"/levels\" aria-current=\"page\">Jugar</a><a class=\"ds-nav-link\" href=\"/learn\">Compuertas</a></nav>",
+      "css": ".ds-nav { display: flex; padding: 4px; gap: 4px; border: 2px solid var(--border-highlight); border-radius: var(--radius-control); background: var(--surface-light); box-shadow: 4px 4px 0 var(--frame-dark); } .ds-nav-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 16px; border: 2px solid transparent; color: var(--text-secondary); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); font-size: 18px; font-weight: 700; line-height: 1; text-transform: uppercase; text-decoration: none; transition: background-color 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out, transform 80ms ease-out; } .ds-nav-active { background: var(--yellow); color: var(--on-secondary); border-color: var(--button-border); box-shadow: inset 2px 2px 0 var(--yellow-light); } .ds-nav-link:hover { color: var(--text); } .ds-nav-active:hover { color: var(--on-secondary); } .ds-nav-link:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { [class^=\"ds-\"] { transition: none !important; transform: none !important; } }"
+    },
+    {
+      "name": "Tarjeta de nivel",
+      "kind": "card",
+      "description": "Nivel disponible con numeración visible; el runtime conserva progreso y bloqueo.",
+      "html": "<a class=\"ds-level-card\" href=\"/puzzle/1\"><strong class=\"ds-level-number\">01</strong><span class=\"ds-level-title\">Nivel 1</span><span class=\"ds-level-signals\">2 entradas · 1 salida</span></a>",
+      "css": ".ds-level-card { display: flex; flex-direction: column; min-height: 160px; padding: 16px 14px; border: 2px solid var(--border); border-radius: var(--radius-control); background: var(--surface-light); color: var(--text); text-decoration: none; font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); transition: background-color 120ms ease-out, color 120ms ease-out, border-color 120ms ease-out, transform 80ms ease-out; } .ds-level-number { font-size: 24px; font-weight: 700; } .ds-level-title { flex: 1; margin-top: 12px; font-size: 16px; line-height: 1.3; } .ds-level-signals { margin-top: 6px; font-size: 14px; color: var(--text-secondary); } @media (hover: hover) and (pointer: fine) { .ds-level-card:hover { border-color: var(--yellow); background: var(--surface); } } .ds-level-card:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; } @media (prefers-reduced-motion: reduce) { [class^=\"ds-\"] { transition: none !important; transform: none !important; } }",
+      "refersTo": "level-card"
+    },
+    {
+      "name": "Insignia de familia",
+      "kind": "chip",
+      "description": "Etiqueta técnica informativa en detalle de compuerta.",
+      "html": "<span class=\"ds-detail-badge\">Conjunción</span>",
+      "css": ".ds-detail-badge { display: inline-block; padding: 4px 10px; border: 2px solid var(--border); border-radius: var(--radius-control); background: var(--surface-light); color: var(--accent); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); font-size: 13px; font-weight: 700; line-height: 1.45; }",
+      "refersTo": "detail-badge"
+    },
+    {
+      "name": "Compuerta seleccionada",
+      "kind": "custom",
+      "description": "Módulo técnico de 136px con marco hueco seleccionado; los puertos siguen fuera del marco.",
+      "html": "<div class=\"ds-gate-node\" tabindex=\"0\"><div class=\"ds-gate-heading\"><strong>AND</strong><button class=\"ds-gate-delete\" type=\"button\" aria-label=\"Eliminar AND\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"m6 6 12 12M18 6 6 18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"/></svg></button></div><svg class=\"ds-gate-symbol\" viewBox=\"0 0 112 70\" role=\"img\" aria-label=\"Símbolo AND\"><g fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\" stroke-linecap=\"square\" stroke-linejoin=\"miter\"><path d=\"M4 20h26M4 50h26M30 9h23c45.333 0 45.333 52 0 52H30V9ZM87 35h21\"/></g></svg><div class=\"ds-gate-bottom\"><span>A · B</span><span class=\"ds-gate-bit\">1</span></div></div>",
+      "css": ".ds-gate-node { position: relative; width: 136px; padding: 8px; border: 2px solid var(--yellow); border-radius: var(--radius); background: var(--surface-light); color: var(--text); box-shadow: var(--shadow-card); --frame-color: var(--yellow); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); } .ds-gate-node::before {\n  content: '';\n  position: absolute;\n  inset: -4px;\n  z-index: 2;\n  pointer-events: none;\n  background: var(--frame-color);\n  clip-path: polygon(\n    evenodd,\n    0 8px,\n    4px 8px,\n    4px 4px,\n    8px 4px,\n    8px 0,\n    calc(100% - 8px) 0,\n    calc(100% - 8px) 4px,\n    calc(100% - 4px) 4px,\n    calc(100% - 4px) 8px,\n    100% 8px,\n    100% calc(100% - 8px),\n    calc(100% - 4px) calc(100% - 8px),\n    calc(100% - 4px) calc(100% - 4px),\n    calc(100% - 8px) calc(100% - 4px),\n    calc(100% - 8px) 100%,\n    8px 100%,\n    8px calc(100% - 4px),\n    4px calc(100% - 4px),\n    4px calc(100% - 8px),\n    0 calc(100% - 8px),\n    0 8px,\n    4px 12px,\n    8px 12px,\n    8px 8px,\n    12px 8px,\n    12px 4px,\n    calc(100% - 12px) 4px,\n    calc(100% - 12px) 8px,\n    calc(100% - 8px) 8px,\n    calc(100% - 8px) 12px,\n    calc(100% - 4px) 12px,\n    calc(100% - 4px) calc(100% - 12px),\n    calc(100% - 8px) calc(100% - 12px),\n    calc(100% - 8px) calc(100% - 8px),\n    calc(100% - 12px) calc(100% - 8px),\n    calc(100% - 12px) calc(100% - 4px),\n    12px calc(100% - 4px),\n    12px calc(100% - 8px),\n    8px calc(100% - 8px),\n    8px calc(100% - 12px),\n    4px calc(100% - 12px),\n    4px 12px\n  );} .ds-gate-heading { display: flex; align-items: center; justify-content: space-between; gap: 4px; } .ds-gate-heading strong { color: var(--yellow); font-size: 22px; line-height: 1; } .ds-gate-delete { display: grid; place-items: center; min-width: 44px; min-height: 44px; padding: 0; border: 0; background: transparent; color: var(--pink); cursor: pointer; } .ds-gate-delete:hover { background: var(--danger-soft); } .ds-gate-delete:focus-visible { outline: 3px solid var(--cyan); outline-offset: 4px; } .ds-gate-symbol { display: block; width: 108px; height: 56px; margin: 0 auto 4px; color: var(--yellow); } .ds-gate-bottom { display: flex; justify-content: space-between; align-items: center; color: var(--text-secondary); font-size: 12px; } .ds-gate-bit { display: grid; place-items: center; min-width: 24px; min-height: 24px; border: 2px solid var(--mint); background: var(--signal-soft); color: var(--mint); font-size: 18px; } .ds-gate-node:focus-visible { outline: 3px solid var(--cyan); outline-offset: 8px; }",
+      "refersTo": "gate-node"
+    },
+    {
+      "name": "Señales del circuito",
+      "kind": "custom",
+      "description": "Cables SVG: 0 rosa, 1 cian, desconocido discontinuo y sin underlay.",
+      "html": "<svg class=\"ds-wire-demo\" viewBox=\"0 0 280 138\" role=\"img\" aria-label=\"Cable 0 rosa; cable 1 cian; cable desconocido discontinuo\"><g fill=\"none\"><path class=\"ds-wire-underlay ds-wire-zero\" d=\"M40 24H264\"/><path class=\"ds-wire-underlay ds-wire-one\" d=\"M40 68H264\"/><path class=\"ds-wire ds-wire-zero\" d=\"M40 24H264\"/><path class=\"ds-wire ds-wire-one\" d=\"M40 68H264\"/><path class=\"ds-wire ds-wire-unknown\" d=\"M40 112H264\"/></g><g class=\"ds-wire-label\"><text x=\"8\" y=\"30\">0</text><text x=\"8\" y=\"74\">1</text><text x=\"8\" y=\"118\">?</text></g></svg>",
+      "css": ".ds-wire-demo { width: 100%; max-width: 420px; background: var(--canvas); } .ds-wire { stroke-width: 3.5px; } .ds-wire-underlay { stroke-width: 8px; opacity: 0.14; } .ds-wire-zero { stroke: var(--signal-zero); } .ds-wire-one { stroke: var(--cyan); } .ds-wire-unknown { stroke: var(--signal-unknown); stroke-dasharray: 8 4; } .ds-wire-label { fill: var(--text); font-family: var(--display, 'Pixelify Sans', system-ui, sans-serif); font-size: 18px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Editor indie de lógica pixel art",
+    "overview": "Un editor indie de rompecabezas lógicos: lienzo nocturno, paneles sólidos, marcos escalonados violeta y botones amarillos con relieve duro. La referencia aportada por el usuario fija la identidad pixel art y la relación entre herramientas laterales y tablero. La interfaz sigue siendo un circuito interactivo real, con texto español y símbolos técnicos propios.\n\nLa densidad sirve a la construcción: objetivo e inventario comparten un panel compacto; el lienzo conserva espacio para arrastrar, conectar e inspeccionar señales. Portada, mapa, colección, detalle y diálogos reutilizan los mismos materiales. La apariencia oscura es predeterminada; una elección clara guardada conserva una paleta alternativa con texto y señales de contraste adecuado.",
+    "keyCharacteristics": [
+      "Superficies opacas y marcos pixelados huecos que dejan visibles los puertos.",
+      "Pixelify Sans autohospedada en títulos, lectura, cifras y expresiones.",
+      "Acciones amarillas; cables 0 rosa, 1 cian y desconocidos discontinuos.",
+      "Relieve de píxel con sombras duras sin desenfoque y respuesta breve a la presión."
+    ],
+    "rules": [
+      {
+        "name": "The Signal Meaning Rule",
+        "body": "Mostrar valores 0, 1 y desconocido junto al color; reservar el trazo discontinuo para la señal desconocida y distinguir el valor actual del veredicto de una prueba.",
+        "section": "colors"
+      },
+      {
+        "name": "The Recoverable Canvas Rule",
+        "body": "Mantener Organizar, zoom y Ajustar vista visibles; desplazar las herramientas dentro del panel sin cambiar las dimensiones del tablero.",
+        "section": "layout"
+      },
+      {
+        "name": "The Crisp Material Rule",
+        "body": "Usar superficies sólidas, bordes definidos y sombras con desenfoque cero; no introducir gradientes, glassmorphism, blur ni sombras suaves.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Live Geometry Rule",
+        "body": "El marco decorativo nunca recorta puertos, controles de desconexión, foco ni la capa interactiva de React Flow.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** reutilizar los tokens de `src/styles/variables.css` y el marco hueco de `src/styles/pixel.css`.",
+      "**Do** usar Pixelify Sans autohospedada y conservar `public/fonts/Pixelify-OFL.txt`.",
+      "**Do** acompañar estados con valores, etiquetas, símbolos y foco visible.",
+      "**Do** conservar controles táctiles de al menos 44px y conexiones por arrastre o dos toques.",
+      "**Do** respetar movimiento reducido, teclado y la elección de apariencia guardada.",
+      "**Do** conservar el tablero interactivo y el desplazamiento interno de tablas y herramientas."
+    ],
+    "donts": [
+      "**Don't** añadir gradientes, transparencias de cristal, desenfoque o sombras difusas.",
+      "**Don't** añadir personajes, paisajes o escenas decorativas; representar componentes mediante símbolos técnicos.",
+      "**Don't** depender solo del color, del hover o de un gesto preciso para operar el editor.",
+      "**Don't** recortar los puertos o el foco al implementar esquinas escalonadas.",
+      "**Don't** cambiar motor, niveles, IDs, inventario, rutas ni guardado para resolver una decisión visual.",
+      "**Don't** insertar confirmaciones de éxito o una acción de siguiente nivel encima del tablero; usar el diálogo existente."
+    ]
+  }
+}

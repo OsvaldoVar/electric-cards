@@ -2,7 +2,7 @@ import { Port } from './Port';
 
 export function InputNode({ id, data }) {
   return (
-    <div className={`circuit-node input-node bit-${data.value}`}>
+    <div className={`circuit-node pixel-frame input-node bit-${data.value}`}>
       <span className="node-kicker">ENTRADA</span>
       <button
         className="input-node-toggle nodrag nopan"

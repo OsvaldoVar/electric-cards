@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 2,
+  "stage": "hero",
+  "id": "hero",
+  "title": "Circuito protagonista \u00b7 primera pantalla implementada",
+  "comp": {
+    "path": ".impeccable/mocks/b-circuito.png",
+    "width": 1487,
+    "height": 1058
+  },
+  "components": [
+    {
+      "id": "puzzle-viewport",
+      "name": "Tablero real de Electric Cards",
+      "kind": "chrome",
+      "role": "page-preview",
+      "medium": "code",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "note": "Interfaz React real con todos los controles del juego preservados.",
+      "preview": {
+        "kind": "page",
+        "path": ".impeccable/review/puzzle-preview.html"
+      },
+      "dependencies": [
+        "dist/index.html",
+        "dist/fonts/signika-bold.ttf",
+        "dist/icons/bolt.svg",
+        "dist/assets/index-LDx6Ppm9.js",
+        "dist/assets/CharacterPortrait-BT30Ott0.js",
+        "dist/assets/GateDetails-oNfQSt9Y.js",
+        "dist/assets/GateSimulator-UYd306eC.js",
+        "dist/assets/GateSymbol-evLY6Ov-.js",
+        "dist/assets/Home-DKzVU_Zr.js",
+        "dist/assets/Learn-B1mJ4uCv.js",
+        "dist/assets/Levels-DCqeXyDA.js",
+        "dist/assets/NotFound-DMK9gl8k.js",
+        "dist/assets/Puzzle-D9WQSso6.js",
+        "dist/assets/Stars-ClskDryL.js",
+        "dist/assets/Puzzle-DU9jP91h.css",
+        "dist/assets/index-BS2mSItQ.css"
+      ]
+    }
+  ]
+}

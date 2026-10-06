@@ -1,0 +1,1176 @@
+/* screens.css — Rediseño de pantallas secundarias Electric Cards */
+
+/* ============================================================
+   1. SIMULADOR INTERACTIVO Y TABLA DE VERDAD
+   ============================================================ */
+
+.gate-simulator {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 24px;
+}
+
+.simulator-circuit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 24px;
+  min-height: 140px;
+}
+
+.sim-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+
+.sim-inputs::after {
+  content: '';
+  position: absolute;
+  right: -24px;
+  top: 25%;
+  bottom: 25%;
+  width: 24px;
+  border: solid var(--border);
+  border-width: 2px 2px 2px 0;
+  border-radius: var(--radius-control);
+  pointer-events: none;
+}
+
+.sim-gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--accent);
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  padding: 16px 12px;
+  border-radius: var(--radius-control);
+  position: relative;
+}
+
+.sim-gate::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  width: 24px;
+  right: -24px;
+  top: 50%;
+  background: var(--border);
+  pointer-events: none;
+}
+
+.gate-symbol {
+  width: 100%;
+  max-width: 100px;
+  height: 60px;
+  color: currentColor;
+}
+
+.sim-gate span {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text);
+}
+
+.sim-output {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  padding: 14px;
+  border-radius: var(--radius-control);
+  transition:
+    color 150ms var(--ease-out),
+    background-color 150ms var(--ease-out),
+    border-color 150ms var(--ease-out);
+}
+
+.sim-output.bit-1 {
+  color: var(--mint);
+  background: var(--signal-soft);
+  border-color: var(--mint);
+}
+
+.sim-output strong {
+  font-family: var(--mono);
+  font-size: 18px;
+}
+
+.sim-output small {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.truth-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  margin-top: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+
+.truth-table th {
+  padding: 10px 14px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 700;
+  background: var(--surface-soft);
+  border-bottom: 2px solid var(--border);
+  text-align: center;
+}
+
+.truth-table td {
+  padding: 10px 14px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.truth-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.truth-table .active-row,
+.truth-table .truth-active {
+  background: var(--signal-soft);
+  font-weight: 700;
+}
+
+.truth-table .active-row td,
+.truth-table .truth-active td {
+  color: var(--blue);
+}
+
+.truth-table .table-output {
+  font-weight: 700;
+  background: var(--surface-raised);
+}
+
+.truth-table .active-row .table-output,
+.truth-table .truth-active .table-output {
+  background: var(--surface-soft);
+  color: var(--blue);
+}
+
+.bit {
+  display: inline-block;
+  font-family: var(--mono);
+}
+
+.bit.bit-1 {
+  font-weight: 700;
+  color: var(--mint);
+}
+
+.bit.bit-0 {
+  color: var(--muted);
+}
+
+/* ============================================================
+   2. PERSONAJES Y RETRATOS (PORTRAITS)
+   ============================================================ */
+
+.character-portrait {
+  height: 180px;
+  position: relative;
+  color: var(--accent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--surface-soft);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+}
+
+.character-portrait > svg {
+  width: 82%;
+  height: 100%;
+}
+
+.portrait-grid {
+  opacity: 0.25;
+  stroke: var(--border);
+  stroke-width: 0.75;
+}
+
+.portrait-symbol {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  width: 36px;
+  opacity: 0.85;
+}
+
+.portrait-symbol .gate-symbol {
+  width: 36px;
+  height: 22px;
+}
+
+/* ============================================================
+   3. PÁGINA DE INICIO (HOME)
+   ============================================================ */
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-cover {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 48px;
+  padding: 24px 0 48px;
+}
+
+.home-cover-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-title {
+  font-size: clamp(36px, 4.1vw, 56px);
+  line-height: 1.06;
+  color: var(--text);
+  max-width: 20ch;
+  text-wrap: balance;
+}
+.home-title span {
+  display: block;
+}
+.home-title span:last-child {
+  color: var(--muted);
+}
+.home-eyebrow {
+  margin-bottom: 18px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  color: var(--blue);
+}
+
+.home-lead {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 44ch;
+  margin-top: 24px;
+}
+
+.home-cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.home-cta-row .button {
+  min-width: 180px;
+}
+
+.home-facts-statement {
+  margin-top: 24px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.home-lab-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: var(--shadow-surface);
+  min-width: 0;
+}
+
+.home-lab-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.home-lab-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.home-lab-tag {
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+}
+
+.home-lab-gate {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.home-lab-title {
+  font-size: 24px;
+  color: var(--text);
+}
+
+.home-lab-footer {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 0 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.home-lab-card .gate-simulator {
+  border: 0;
+  padding: 16px 0;
+}
+.home-lab-card .simulator-circuit {
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 20px;
+}
+.home-lab-card .sim-inputs {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+.home-lab-card .binary-switch {
+  flex: 1;
+  min-width: 0;
+}
+.home-lab-card .sim-inputs::after,
+.home-lab-card .sim-gate::after {
+  display: none;
+}
+.home-lab-card .gate-simulator > p {
+  margin-top: 20px;
+}
+
+.home-lab-footer svg {
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.home-resume-strip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.home-resume-text h2 {
+  font-size: 18px;
+}
+
+.home-resume-text p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.home-resume-progress {
+  flex: 1;
+  min-width: 180px;
+}
+
+progress {
+  appearance: none;
+  height: 8px;
+  width: 100%;
+  border: none;
+  border-radius: var(--radius-control);
+  background: var(--surface-soft);
+  color: var(--blue);
+}
+
+progress::-webkit-progress-bar {
+  background: var(--surface-soft);
+  border-radius: var(--radius-control);
+}
+
+progress::-webkit-progress-value {
+  background: var(--blue);
+  border-radius: var(--radius-control);
+}
+
+progress::-moz-progress-bar {
+  background: var(--blue);
+  border-radius: var(--radius-control);
+}
+
+.home-path-section {
+  margin-top: 56px;
+}
+
+.home-path-header {
+  margin-bottom: 28px;
+}
+
+.home-path-header h2 {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.home-path-header p {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.home-editorial-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.home-editorial-item {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.editorial-step {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.editorial-body h3 {
+  font-size: 19px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.editorial-body p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.home-collection-banner {
+  margin-top: 56px;
+  background: var(--surface-soft);
+  border-radius: var(--radius-control);
+  padding: 36px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.home-collection-info h2 {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.home-collection-info p {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 56ch;
+}
+
+/* ============================================================
+   4. PÁGINA DE NIVELES (LEVELS)
+   ============================================================ */
+
+.levels-page {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.page-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.page-heading-copy h1 {
+  font-size: clamp(30px, 3.5vw, 44px);
+  margin-bottom: 10px;
+}
+
+.page-heading-copy p {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 60ch;
+  line-height: 1.55;
+}
+
+.progress-summary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 220px;
+}
+
+.progress-summary-count strong {
+  font-size: 26px;
+  font-family: var(--mono);
+  color: var(--text);
+  display: block;
+  line-height: 1.1;
+}
+
+.progress-summary-count small {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.progress-summary-count span {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.worlds-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.world-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 28px 24px;
+  box-shadow: var(--shadow-surface);
+}
+
+.world-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.world-number {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-control);
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.world-heading-text {
+  flex: 1;
+}
+
+.world-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.world-heading h2 {
+  font-size: 22px;
+}
+
+.world-progress-badge {
+  font-size: 13px;
+  font-family: var(--mono);
+  color: var(--muted);
+  background: var(--surface-raised);
+  padding: 4px 10px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
+}
+
+.world-heading p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.level-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 160px;
+  transition:
+    border-color 150ms var(--ease-out),
+    transform 120ms var(--ease-out),
+    background-color 150ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.level-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    background: var(--surface);
+  }
+}
+
+.level-card.is-current {
+  border-color: var(--blue);
+  background: var(--surface-soft);
+  box-shadow: 0 0 0 1px var(--blue);
+}
+
+.level-card.is-locked {
+  background: var(--surface-raised);
+}
+
+.level-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.level-number {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.is-completed-badge {
+  color: var(--success);
+}
+
+.is-locked-badge {
+  color: var(--muted);
+}
+
+.is-current-badge {
+  color: var(--blue);
+  background: var(--surface-soft);
+  padding: 2px 6px;
+  border-radius: var(--radius-control);
+}
+
+.level-title {
+  font-size: 16px;
+  margin-top: 12px;
+  line-height: 1.3;
+  color: var(--text);
+  flex: 1;
+}
+
+.level-signals {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.level-card-bottom {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+/* ============================================================
+   5. COLECCIÓN EDUCATIVA (LEARN) Y GATE CARD
+   ============================================================ */
+
+.learn-page {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.collection-count {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 10px 16px;
+  border-radius: var(--radius-control);
+  font-size: 14px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.collection-count strong {
+  font-size: 16px;
+  color: var(--text);
+}
+
+.gate-collection {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.gate-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+  box-shadow: var(--shadow-surface);
+  transition:
+    border-color 150ms var(--ease-out),
+    transform 120ms var(--ease-out),
+    box-shadow 150ms var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gate-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card);
+  }
+}
+
+.gate-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--surface-raised);
+  border-bottom: 1px solid var(--border);
+}
+
+.gate-card-id {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.gate-card-expression {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.gate-card .character-portrait {
+  border-radius: var(--radius-control);
+}
+
+.gate-card-body {
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.gate-card-name {
+  font-size: 20px;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.gate-card-role {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.45;
+  margin-bottom: 18px;
+  flex: 1;
+}
+
+.gate-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.learning-note {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 20px 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+/* ============================================================
+   6. DETALLES DE COMPUERTA (GATE DETAILS)
+   ============================================================ */
+
+.gate-details-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.gate-detail-grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.detail-character {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+  text-align: center;
+}
+
+.detail-character .character-portrait {
+  height: 230px;
+  border-bottom: 1px solid var(--border);
+  border-radius: var(--radius-control);
+}
+
+.detail-character-info {
+  padding: 20px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.detail-badge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--surface-soft);
+  padding: 4px 10px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
+}
+
+.detail-character h1 {
+  font-size: 24px;
+  margin-top: 4px;
+}
+
+.detail-character-role {
+  font-size: 14px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.gate-description {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gate-detail-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.gate-detail-title h2 {
+  font-size: 36px;
+  color: var(--text);
+}
+
+.description-large {
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.expression-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 22px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  flex-wrap: wrap;
+}
+
+.expression-label {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.expression-value {
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.expression-meta {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.detail-example {
+  background: var(--surface-soft);
+  border-radius: var(--radius-control);
+  padding: 16px 20px;
+}
+
+.detail-example h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.detail-example p {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.detail-actions {
+  margin-top: 8px;
+}
+
+.detail-simulator {
+  grid-column: 1 / -1;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 32px;
+}
+
+.detail-simulator h2 {
+  font-size: 26px;
+  margin-bottom: 6px;
+}
+
+.detail-sim-help {
+  font-size: 15px;
+  color: var(--muted);
+  margin-bottom: 24px;
+  max-width: 65ch;
+}
+
+/* ============================================================
+   7. RESPONSIVE BREAKPOINTS (360, 768, 1024, 1366, 1920)
+   ============================================================ */
+
+@media (max-width: 1024px) {
+  .home-cover {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+  }
+  .home-title {
+    max-width: none;
+  }
+  .home-lead {
+    max-width: 60ch;
+  }
+  .home-lab-card {
+    max-width: 640px;
+    width: 100%;
+  }
+  .level-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gate-detail-grid {
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 800px) {
+  .home-cover {
+    padding: 16px 0 32px;
+    gap: 32px;
+  }
+
+  .home-editorial-list {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .gate-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .detail-character .character-portrait {
+    height: 180px;
+  }
+
+  .level-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .home-cover {
+    padding: 8px 0 24px;
+    gap: 24px;
+  }
+
+  .home-title {
+    font-size: clamp(32px, 8.8vw, 48px);
+  }
+
+  .home-lead {
+    font-size: 16px;
+  }
+
+  .home-cta-row .button {
+    width: 100%;
+  }
+
+  .home-lab-card {
+    padding: 18px 14px;
+  }
+
+  .simulator-circuit {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .sim-inputs::after,
+  .sim-gate::after {
+    display: none;
+  }
+
+  .home-collection-banner {
+    padding: 24px 18px;
+  }
+
+  .home-collection-banner .button {
+    width: 100%;
+  }
+
+  .level-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .world-section {
+    padding: 20px 16px;
+  }
+
+  .gate-description {
+    padding: 20px 16px;
+  }
+
+  .detail-simulator {
+    padding: 20px 16px;
+  }
+
+  .progress-summary {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+/* La portada abre el cuaderno; las superficies delimitan herramientas reales. */
+.home-cover {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+.home-title {
+  max-width: 19ch;
+  font-size: clamp(36px, 4.5vw, 58px);
+}
+.home-lab-card {
+  background: var(--surface);
+}
+.home-lab-card .gate-simulator,
+.detail-simulator .gate-simulator {
+  border: 0;
+  padding: 16px 0;
+}
+.home-editorial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.home-editorial-item {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  background: transparent;
+  padding: 24px 0;
+}
+.editorial-body {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+@media (max-width: 600px) {
+  .home-cover {
+    padding: 0;
+  }
+  .home-title {
+    font-size: 36px;
+  }
+  .editorial-body {
+    display: block;
+  }
+  .home-editorial-item {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+}

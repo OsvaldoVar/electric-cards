@@ -1,31 +1,121 @@
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('/fonts/pixelify-regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Pixelify Sans';
+  src: url('/fonts/pixelify-bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 700 900;
+  font-display: swap;
+}
 :root {
   color-scheme: dark;
-  --bg: #101a22;
-  --surface: #17232d;
-  --surface-raised: #1d2b35;
-  --surface-soft: #142029;
-  --border: #2b3a44;
-  --text: #edf3f2;
-  --muted: #9aadb7;
-  --mint: #78e5bb;
-  --amber: #f5c175;
-  --blue: #89c6ed;
-  --violet: #b3a0f8;
-  --danger: #f19c9c;
-  --accent: var(--mint);
-  --radius: 16px;
-  --font: 'Arial', 'Helvetica Neue', system-ui, sans-serif;
-  --mono: 'SFMono-Regular', Consolas, 'Liberation Mono', monospace;
+  --background: #090d1f;
+  --surface: #11162b;
+  --surface-light: #181e37;
+  --border: #504075;
+  --border-highlight: #8b5cb5;
+  --yellow: #ffd34e;
+  --yellow-light: #ffe47a;
+  --pink: #ff547d;
+  --cyan: #63ddff;
+  --green: #55e58c;
+  --red: #e84763;
+  --text: #f4f2ff;
+  --text-secondary: #aeb4d0;
+  --canvas: #0c1125;
+  --grid: #1b2340;
+  --frame-dark: #050817;
+  --button-border: #a8792d;
+  --button-shadow: #654329;
+  --signal-soft: #10392d;
+  --danger-soft: #401b30;
+  --warning-soft: #302a24;
+  --signal-zero: var(--pink);
+  --signal-unknown: var(--text-secondary);
+  --modal-backdrop: rgb(5 8 23 / 80%);
+  --bg: var(--background);
+  --surface-raised: var(--surface-light);
+  --surface-soft: var(--surface-light);
+  --surface-text: var(--text);
+  --surface-muted: var(--text-secondary);
+  --muted: var(--text-secondary);
+  --navy: var(--background);
+  --mint: var(--green);
+  --amber: var(--yellow);
+  --blue: var(--cyan);
+  --violet: var(--border-highlight);
+  --danger: var(--pink);
+  --success: var(--green);
+  --accent: var(--yellow);
+  --primary: var(--yellow);
+  --primary-hover: var(--yellow-light);
+  --on-primary: var(--background);
+  --secondary: var(--yellow);
+  --secondary-hover: var(--yellow-light);
+  --on-secondary: var(--background);
+  --header-bg: var(--background);
+  --disabled-bg: var(--surface-light);
+  --disabled-text: var(--text-secondary);
+  --radius: 2px;
+  --radius-control: 2px;
+  --border-width: 2px;
+  --shadow-surface: 4px 4px 0 var(--frame-dark);
+  --shadow-card: 4px 4px 0 var(--frame-dark);
+  --shadow-button: 0 4px 0 var(--button-shadow), 0 6px 0 var(--frame-dark);
+  --shadow-button-pressed: 0 2px 0 var(--button-shadow), 0 4px 0 var(--frame-dark);
+  --font: 'Pixelify Sans', system-ui, sans-serif;
+  --display: 'Pixelify Sans', system-ui, sans-serif;
+  --mono: 'Pixelify Sans', ui-monospace, monospace;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --z-canvas-tools: 5;
+  --z-popover: 10;
+  --z-header: 20;
+  --z-skip: 100;
+  --ease-out: ease-out;
+  --ease-in-out: ease-in-out;
+  --duration-press: 80ms;
+  --duration-state: 120ms;
+  --duration-enter: 120ms;
 }
-.family-mint {
-  --accent: var(--mint);
+/* The saved light-mode option remains available with the same pixel materials. */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --background: #eeedf7;
+  --surface: #faf8ff;
+  --surface-light: #e3e1f2;
+  --canvas: #e9e8f5;
+  --grid: #d6d3e8;
+  --text: #17182f;
+  --text-secondary: #53546e;
+  --frame-dark: #34304b;
+  --signal-soft: #d5f1df;
+  --danger-soft: #f7dde5;
+  --warning-soft: #f7edcc;
+  --mint: #176b3d;
+  --success: #176b3d;
+  --cyan: #225477;
+  --pink: #a92249;
+  --blue: var(--cyan);
+  --danger: #a92249;
+  --signal-zero: #a92249;
+  --signal-unknown: #65627b;
+  --on-primary: #090d1f;
+  --on-secondary: #090d1f;
 }
-.family-amber {
-  --accent: var(--amber);
-}
-.family-blue {
-  --accent: var(--blue);
-}
+.family-mint,
+.family-amber,
+.family-blue,
 .family-violet {
-  --accent: var(--violet);
+  --accent: var(--yellow);
 }

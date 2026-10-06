@@ -1,4 +1,4 @@
-import { BaseEdge, EdgeLabelRenderer, getBezierPath } from '@xyflow/react';
+import { BaseEdge, EdgeLabelRenderer, getSmoothStepPath } from '@xyflow/react';
 import { Icon } from '../Icon';
 
 export function Wire({
@@ -12,16 +12,23 @@ export function Wire({
   data,
   selected,
 }) {
-  const [path, x, y] = getBezierPath({
+  const [path, x, y] = getSmoothStepPath({
     sourceX,
     sourceY,
     targetX,
     targetY,
     sourcePosition,
     targetPosition,
+    borderRadius: 0,
+    offset: 24,
   });
   return (
     <>
+      <path
+        d={path}
+        className={`wire-underlay bit-${data.value ?? 'unknown'}`}
+        aria-hidden="true"
+      />
       <BaseEdge
         id={id}
         path={path}

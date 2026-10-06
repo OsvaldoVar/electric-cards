@@ -1,28 +1,18 @@
 import { test, expect } from '@playwright/test';
+import { seedProgress, wire } from './helpers';
 
 async function addAnd(page) {
   await page.getByRole('button', { name: 'Añadir AND. 1 disponibles' }).click();
   await expect(page.locator('.react-flow__node-gate')).toHaveCount(1);
 }
-async function wire(page, source, targetLabel) {
-  const details = page.locator('.connection-details');
-  if (!((await details.getAttribute('open')) !== null))
-    await details.locator('summary').click();
-  await page
-    .getByRole('combobox', { name: 'Origen del cable' })
-    .selectOption({ label: source });
-  await page
-    .getByRole('combobox', { name: 'Destino del cable' })
-    .selectOption({ label: targetLabel });
-  await page.getByRole('button', { name: 'Conectar', exact: true }).click();
-}
-async function solveAndWithSelectors(page) {
+async function solveAndOnBoard(page) {
   await addAnd(page);
   await wire(page, 'Sensor A', 'AND 1 · entrada A');
   await wire(page, 'Sensor B', 'AND 1 · entrada B');
   await wire(page, 'AND 1', 'Puerta · entrada única');
   await page.getByRole('button', { name: 'Probar circuito' }).click();
-  await expect(page.getByRole('heading', { name: '¡Circuito resuelto!' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '¡Circuito correcto!' })).toBeVisible();
+  await page.getByRole('button', { name: 'Seguir explorando' }).click();
 }
 
 test('puzzles work when randomUUID is unavailable on HTTP mobile development', async ({
@@ -35,7 +25,7 @@ test('puzzles work when randomUUID is unavailable on HTTP mobile development', a
     });
   });
   await page.goto('/puzzle/1');
-  await solveAndWithSelectors(page);
+  await solveAndOnBoard(page);
 });
 
 test('complete a level, inspect all cases, persist progress and open next level', async ({
@@ -44,8 +34,8 @@ test('complete a level, inspect all cases, persist progress and open next level'
   const errors = [];
   page.on('pageerror', (error) => errors.push(error.message));
   await page.goto('/puzzle/1');
-  await solveAndWithSelectors(page);
-  await expect(page.getByText('4 de 4 combinaciones correctas · 1 compuerta')).toBeVisible();
+  await solveAndOnBoard(page);
+  await expect(page.locator('.objective-table .case-passed')).toHaveCount(4);
   await page.getByText('Ver todas las pruebas', { exact: false }).click();
   await expect(page.locator('.results-table tbody tr')).toHaveCount(4);
   await page.getByRole('button', { name: 'Ver combinación 4' }).click();
@@ -54,16 +44,17 @@ test('complete a level, inspect all cases, persist progress and open next level'
     .poll(() =>
       page.evaluate(
         () =>
-          JSON.parse(localStorage.getItem('electric-cards:v1'))?.completedLevels?.[1]?.stars,
+          JSON.parse(localStorage.getItem('electric-cards:v1'))?.completedLevels?.[1]
+            ?.completed,
       ),
     )
-    .toBe(3);
+    .toBe(true);
   await page.reload();
   await expect(page.locator('.react-flow__node-gate')).toHaveCount(1);
   await expect(page.locator('.react-flow__edge')).toHaveCount(3);
   await page.getByRole('button', { name: 'Probar circuito' }).click();
-  await page.getByRole('link', { name: 'Siguiente nivel' }).click();
-  await expect(page.getByRole('heading', { name: 'Cualquier señal' })).toBeVisible();
+  await page.getByRole('dialog').getByRole('button', { name: 'Siguiente nivel' }).click();
+  await expect(page.getByRole('heading', { name: 'Nivel 2', exact: true })).toBeVisible();
   expect(errors).toEqual([]);
 });
 
@@ -82,7 +73,8 @@ test('mobile/native tap wiring completes a level', async ({ page }, testInfo) =>
   await page.getByTestId('port-output-DOOR-in').tap();
   await expect(page.locator('.react-flow__edge')).toHaveCount(3);
   await page.getByRole('button', { name: 'Probar circuito' }).tap();
-  await expect(page.getByRole('heading', { name: '¡Circuito resuelto!' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '¡Circuito correcto!' })).toBeVisible();
+  await page.getByRole('button', { name: 'Seguir explorando' }).click();
 });
 
 test('inventory cannot go negative, deletion removes wires and returns a card', async ({
@@ -106,7 +98,7 @@ test('validation reports a hidden failing combination and edits clear stale resu
   await wire(page, 'Sensor A', 'Puerta · entrada única');
   await page.getByRole('button', { name: 'Probar circuito' }).click();
   await expect(page.getByText('3 de 4 combinaciones correctas · 0 compuertas')).toBeVisible();
-  await expect(page.locator('.case-failed')).toHaveCount(1);
+  await expect(page.locator('.results-table .case-failed')).toHaveCount(1);
   await page.getByRole('button', { name: 'Ver combinación 3' }).click();
   await expect(page.locator('.output-node .node-bit')).toHaveText('1');
   await page.getByRole('button', { name: 'Desconectar Entrada de Puerta' }).click();
@@ -119,20 +111,24 @@ test('validation reports a hidden failing combination and edits clear stale resu
   ).toBeVisible();
 });
 
-test('reset clears draft without removing earned stars', async ({ page }) => {
+test('reset clears draft without removing completed levels', async ({ page }) => {
   await page.goto('/puzzle/1');
-  await solveAndWithSelectors(page);
+  await solveAndOnBoard(page);
   await page.getByRole('button', { name: 'Reiniciar', exact: true }).click();
   await page.getByRole('button', { name: 'Vaciar tablero' }).click();
   await expect(page.locator('.react-flow__node-gate')).toHaveCount(0);
-  await expect(page.locator('.puzzle-topbar .stars')).toHaveAttribute(
-    'aria-label',
-    '3 de 3 estrellas',
+  await page.reload();
+  await expect(page.locator('.react-flow__node-gate')).toHaveCount(0);
+  await page.goto('/levels');
+  await expect(page.getByRole('link', { name: 'Nivel 1', exact: true })).toContainText(
+    'Completado',
   );
+  await page.goto('/puzzle/1');
   await expect(page.locator('.output-node .node-bit')).toHaveText('?');
 });
 
 test('locked routes stay locked and educational simulator works', async ({ page }) => {
+  await seedProgress(page, 11);
   await page.goto('/puzzle/20');
   await expect(page.getByRole('heading', { name: 'Una señal a la vez.' })).toBeVisible();
   await page.goto('/learn/xnor');
@@ -165,17 +161,16 @@ for (const [width, height] of [
   });
 }
 
-test('connection form rejects cycles and self-links before adding a wire', async ({
-  page,
-}) => {
+test('board rejects cycles and self-links before adding a wire', async ({ page }) => {
+  await seedProgress(page, 1);
   await page.goto('/puzzle/1');
   await addAnd(page);
   await page.getByRole('button', { name: 'Añadir OR. 1 disponibles' }).click();
   await wire(page, 'AND 1', 'OR 2 · entrada A');
-  await wire(page, 'OR 2', 'AND 1 · entrada A');
+  await wire(page, 'OR 2', 'AND 1 · entrada A', { drag: true });
   await expect(page.getByRole('alert')).toContainText('crea un ciclo');
   await expect(page.locator('.react-flow__edge')).toHaveCount(1);
-  await wire(page, 'AND 1', 'AND 1 · entrada B');
+  await wire(page, 'AND 1', 'AND 1 · entrada B', { drag: true });
   await expect(page.getByRole('alert')).toContainText('conectarse a sí misma');
   await expect(page.locator('.react-flow__edge')).toHaveCount(1);
 });
@@ -245,7 +240,50 @@ test('changing screen layout keeps wires attached to their ports', async ({
   page,
 }, testInfo) => {
   await page.goto('/puzzle/1');
-  await solveAndWithSelectors(page);
+  await solveAndOnBoard(page);
+  // A persisted circuit must attach every wire on first load without arranging.
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          JSON.parse(localStorage.getItem('electric-cards:v1'))?.drafts?.[1]?.circuit.edges
+            .length,
+      ),
+    )
+    .toBe(3);
+  await page.reload();
+  await expect
+    .poll(() =>
+      page.evaluate(() => {
+        const edges =
+          JSON.parse(localStorage.getItem('electric-cards:v1'))?.drafts?.[1]?.circuit.edges ??
+          [];
+        if (edges.length !== 3) return Infinity;
+        const vertical = window.matchMedia('(max-width: 600px)').matches;
+        return Math.max(
+          ...edges.flatMap((edge) => {
+            const path = document.querySelector(
+              `[data-id="${edge.id}"] .react-flow__edge-path`,
+            );
+            if (!path) return [Infinity];
+            return ['source', 'target'].map((side) => {
+              const port = document.querySelector(
+                `[data-testid="port-${edge[side]}-${edge[side + 'Handle']}"]`,
+              );
+              if (!port) return Infinity;
+              const box = port.getBoundingClientRect();
+              const p = path.getPointAtLength(side === 'source' ? 0 : path.getTotalLength());
+              const point = new DOMPoint(p.x, p.y).matrixTransform(path.getScreenCTM());
+              const expected = vertical
+                ? { x: box.x + box.width / 2, y: side === 'source' ? box.bottom : box.top }
+                : { x: side === 'source' ? box.right : box.left, y: box.y + box.height / 2 };
+              return Math.hypot(point.x - expected.x, point.y - expected.y);
+            });
+          }),
+        );
+      }),
+    )
+    .toBeLessThan(2);
   await page.setViewportSize(
     testInfo.project.name === 'touch'
       ? { width: 1366, height: 768 }
@@ -269,6 +307,7 @@ test('changing screen layout keeps wires attached to their ports', async ({
     )
     .toBeLessThan(2);
   await page.getByRole('button', { name: 'Probar circuito' }).click();
-  await expect(page.getByRole('heading', { name: '¡Circuito resuelto!' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: '¡Circuito correcto!' })).toBeVisible();
+  await page.getByRole('button', { name: 'Seguir explorando' }).click();
   await expect(page.locator('.react-flow__edge')).toHaveCount(3);
 });

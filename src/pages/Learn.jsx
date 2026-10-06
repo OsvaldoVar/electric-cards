@@ -1,28 +1,37 @@
 import { gateList } from '../data/gates';
 import { GateCard } from '../components/GateCard/GateCard';
+import { useProgress } from '../hooks/useProgress';
 
 export default function Learn() {
+  const { unlockedGates } = useProgress();
   return (
     <main className="page learn-page">
-      <div className="page-heading">
-        <div>
-          <span className="eyebrow">TU COLECCIÓN</span>
-          <h1>Siete formas de pensar.</h1>
+      <header className="page-heading">
+        <div className="page-heading-copy">
+          <h1>Colección de compuertas</h1>
           <p>
-            Cada carta tiene una regla. Conócela, prueba sus entradas y descubre cómo
-            combinarla.
+            Completa niveles para desbloquear compuertas, relojes y flip-flops. Cada ficha
+            explica su regla y te permite experimentar con un simulador interactivo.
           </p>
         </div>
-        <span className="collection-count mono">07 / 07 COMPUERTAS</span>
-      </div>
-      <div className="gate-collection">
+        <div
+          className="collection-count mono"
+          aria-label={`${unlockedGates.length} de ${gateList.length} componentes desbloqueados`}
+        >
+          <strong>{unlockedGates.length}</strong> / {gateList.length} desbloqueados
+        </div>
+      </header>
+
+      <section className="gate-collection" aria-label="Catálogo de compuertas">
         {gateList.map((gate) => (
-          <GateCard key={gate.id} gate={gate} />
+          <GateCard key={gate.id} gate={gate} unlocked={unlockedGates.includes(gate.id)} />
         ))}
-      </div>
+      </section>
+
       <p className="learning-note">
-        Las cartas representan compuertas digitales. Sus personajes son una asociación visual;
-        todas trabajan únicamente con señales binarias 0 y 1.
+        Las cartas representan compuertas lógicas digitales. Los personajes son recursos
+        didácticos para recordar sus funciones; cada compuerta procesa exclusivamente valores
+        discretos 0 y 1.
       </p>
     </main>
   );

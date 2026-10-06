@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Icon } from './Icon';
 
-export function PuzzleControls({ game, level }) {
+export function PuzzleControls({ game }) {
   const [confirming, setConfirming] = useState(false);
   return (
     <>
@@ -12,22 +12,21 @@ export function PuzzleControls({ game, level }) {
         </button>
         <div className="controls-right">
           <button
-            className="button button-secondary"
-            onClick={game.showHint}
-            disabled={game.hintCount >= level.hints.length}
+            className="button button-accent"
+            aria-label="Probar circuito"
+            onClick={game.test}
           >
-            <Icon name="help" size={17} />
-            Pista
-          </button>
-          <button className="button button-primary" onClick={game.test}>
             <Icon name="play" size={17} />
-            Probar circuito
+            <span className="control-label-full">Probar circuito</span>
+            <span className="control-label-short" aria-hidden="true">
+              Probar
+            </span>
           </button>
         </div>
       </div>
       {confirming && (
         <div className="reset-confirmation" role="alert">
-          <p>¿Vaciar el tablero? Las estrellas obtenidas se conservan.</p>
+          <p>¿Vaciar el tablero? Los niveles completados se conservan.</p>
           <button className="button button-secondary" onClick={() => setConfirming(false)}>
             Cancelar
           </button>
@@ -40,15 +39,6 @@ export function PuzzleControls({ game, level }) {
           >
             Vaciar tablero
           </button>
-        </div>
-      )}
-      {game.hintCount > 0 && (
-        <div className="hint-panel" role="status">
-          <Icon name="help" />
-          <div>
-            <strong>Una idea para avanzar</strong>
-            <p>{level.hints[game.hintCount - 1]}</p>
-          </div>
         </div>
       )}
     </>

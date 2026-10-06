@@ -1,0 +1,413 @@
+{
+  "regions": [
+    {
+      "id": "navigation",
+      "kind": "chrome",
+      "pixelBox": {
+        "x": 0,
+        "y": 0,
+        "w": 1487,
+        "h": 67
+      },
+      "note": "White navigation strip with pale blue bottom border",
+      "container": true
+    },
+    {
+      "id": "brand",
+      "kind": "text",
+      "pixelBox": {
+        "x": 78,
+        "y": 19,
+        "w": 172,
+        "h": 29
+      },
+      "note": "Electric Cards bold navy wordmark"
+    },
+    {
+      "id": "nav-jugar",
+      "kind": "control",
+      "pixelBox": {
+        "x": 309,
+        "y": 14,
+        "w": 89,
+        "h": 51
+      },
+      "note": "Jugar active navigation link with yellow underline"
+    },
+    {
+      "id": "nav-learn",
+      "kind": "control",
+      "pixelBox": {
+        "x": 418,
+        "y": 20,
+        "w": 121,
+        "h": 30
+      },
+      "note": "Compuertas navigation link"
+    },
+    {
+      "id": "score",
+      "kind": "control",
+      "pixelBox": {
+        "x": 1344,
+        "y": 14,
+        "w": 98,
+        "h": 36
+      },
+      "note": "Actual earned-star count and small star icons"
+    },
+    {
+      "id": "breadcrumb",
+      "kind": "text",
+      "pixelBox": {
+        "x": 44,
+        "y": 88,
+        "w": 357,
+        "h": 20
+      },
+      "note": "Jugar level breadcrumb in navy small sans"
+    },
+    {
+      "id": "title",
+      "kind": "text",
+      "pixelBox": {
+        "x": 44,
+        "y": 125,
+        "w": 502,
+        "h": 41
+      },
+      "note": "Dos señales, una salida bold navy heading"
+    },
+    {
+      "id": "description",
+      "kind": "text",
+      "pixelBox": {
+        "x": 44,
+        "y": 181,
+        "w": 485,
+        "h": 25
+      },
+      "note": "La salida vale 1 solo cuando A y B valen 1."
+    },
+    {
+      "id": "test-button",
+      "kind": "control",
+      "pixelBox": {
+        "x": 1050,
+        "y": 129,
+        "w": 217,
+        "h": 57
+      },
+      "note": "Yellow Probar circuito primary button"
+    },
+    {
+      "id": "reset-button",
+      "kind": "control",
+      "pixelBox": {
+        "x": 1280,
+        "y": 130,
+        "w": 165,
+        "h": 55
+      },
+      "note": "White outlined Reiniciar button"
+    },
+    {
+      "id": "board",
+      "kind": "chrome",
+      "pixelBox": {
+        "x": 44,
+        "y": 227,
+        "w": 1006,
+        "h": 636
+      },
+      "note": "White interactive runtime circuit editor container",
+      "container": true
+    },
+    {
+      "id": "board-title",
+      "kind": "text",
+      "pixelBox": {
+        "x": 61,
+        "y": 251,
+        "w": 154,
+        "h": 30
+      },
+      "note": "Tu circuito navy bold section heading"
+    },
+    {
+      "id": "arrange",
+      "kind": "control",
+      "pixelBox": {
+        "x": 747,
+        "y": 243,
+        "w": 144,
+        "h": 38
+      },
+      "note": "Organizar outlined toolbar button"
+    },
+    {
+      "id": "fit",
+      "kind": "control",
+      "pixelBox": {
+        "x": 902,
+        "y": 243,
+        "w": 128,
+        "h": 38
+      },
+      "note": "Ajustar vista outlined toolbar button"
+    },
+    {
+      "id": "runtime-canvas",
+      "kind": "chrome",
+      "pixelBox": {
+        "x": 58,
+        "y": 287,
+        "w": 974,
+        "h": 480
+      },
+      "note": "Interactive data-driven graph of current Boolean nodes and connections",
+      "container": true,
+      "codeDrawn": true
+    },
+    {
+      "id": "input-a",
+      "kind": "control",
+      "pixelBox": {
+        "x": 148,
+        "y": 378,
+        "w": 136,
+        "h": 94
+      },
+      "note": "A current input value control, dynamic runtime node",
+      "parentId": "runtime-canvas"
+    },
+    {
+      "id": "input-b",
+      "kind": "control",
+      "pixelBox": {
+        "x": 146,
+        "y": 602,
+        "w": 137,
+        "h": 95
+      },
+      "note": "B current input value control, dynamic runtime node",
+      "parentId": "runtime-canvas"
+    },
+    {
+      "id": "gate-and",
+      "kind": "control",
+      "pixelBox": {
+        "x": 531,
+        "y": 475,
+        "w": 113,
+        "h": 115
+      },
+      "note": "AND gate interactive node showing a metadata-driven logic symbol",
+      "parentId": "runtime-canvas",
+      "codeDrawn": true
+    },
+    {
+      "id": "output",
+      "kind": "control",
+      "pixelBox": {
+        "x": 863,
+        "y": 484,
+        "w": 100,
+        "h": 105
+      },
+      "note": "Readonly current Boolean output node",
+      "parentId": "runtime-canvas"
+    },
+    {
+      "id": "board-help",
+      "kind": "text",
+      "pixelBox": {
+        "x": 93,
+        "y": 791,
+        "w": 618,
+        "h": 22
+      },
+      "note": "Toca una salida y luego una entrada para conectar un cable."
+    },
+    {
+      "id": "sidebar",
+      "kind": "chrome",
+      "pixelBox": {
+        "x": 1068,
+        "y": 227,
+        "w": 377,
+        "h": 636
+      },
+      "note": "White outlined objective and inventory sidebar",
+      "container": true
+    },
+    {
+      "id": "objective-heading",
+      "kind": "text",
+      "pixelBox": {
+        "x": 1087,
+        "y": 249,
+        "w": 133,
+        "h": 25
+      },
+      "note": "Objetivo bold navy heading"
+    },
+    {
+      "id": "objective-copy",
+      "kind": "text",
+      "pixelBox": {
+        "x": 1087,
+        "y": 283,
+        "w": 326,
+        "h": 70
+      },
+      "note": "Construye un circuito que cumpla la tabla de verdad utilizando solo las compuertas disponibles."
+    },
+    {
+      "id": "truth-table",
+      "kind": "control",
+      "pixelBox": {
+        "x": 1087,
+        "y": 373,
+        "w": 341,
+        "h": 195
+      },
+      "note": "Semantic table of required per-case Boolean output values",
+      "container": true,
+      "codeDrawn": true
+    },
+    {
+      "id": "inventory-heading",
+      "kind": "text",
+      "pixelBox": {
+        "x": 1087,
+        "y": 617,
+        "w": 209,
+        "h": 25
+      },
+      "note": "Tus compuertas bold navy heading"
+    },
+    {
+      "id": "inventory-button",
+      "kind": "control",
+      "pixelBox": {
+        "x": 1086,
+        "y": 657,
+        "w": 342,
+        "h": 76
+      },
+      "note": "Yellow-edged Añadir AND inventory button with available quantity"
+    },
+    {
+      "id": "hint",
+      "kind": "control",
+      "pixelBox": {
+        "x": 1088,
+        "y": 755,
+        "w": 340,
+        "h": 44
+      },
+      "note": "Ver pista accessible disclosure action"
+    },
+    {
+      "id": "star-goal",
+      "kind": "text",
+      "pixelBox": {
+        "x": 1125,
+        "y": 827,
+        "w": 302,
+        "h": 21
+      },
+      "note": "Hasta 3 estrellas · 1 compuerta goal"
+    },
+    {
+      "id": "wiring-panel",
+      "kind": "chrome",
+      "pixelBox": {
+        "x": 44,
+        "y": 880,
+        "w": 1401,
+        "h": 125
+      },
+      "note": "Light blue accessible connection form container",
+      "container": true
+    },
+    {
+      "id": "wiring-heading",
+      "kind": "text",
+      "pixelBox": {
+        "x": 68,
+        "y": 895,
+        "w": 263,
+        "h": 20
+      },
+      "note": "Conectar con selectores section heading"
+    },
+    {
+      "id": "source-label",
+      "kind": "text",
+      "pixelBox": {
+        "x": 67,
+        "y": 924,
+        "w": 178,
+        "h": 16
+      },
+      "note": "Origen del cable accessible select label"
+    },
+    {
+      "id": "target-label",
+      "kind": "text",
+      "pixelBox": {
+        "x": 569,
+        "y": 924,
+        "w": 178,
+        "h": 16
+      },
+      "note": "Destino del cable accessible select label"
+    },
+    {
+      "id": "source-select",
+      "kind": "control",
+      "pixelBox": {
+        "x": 65,
+        "y": 945,
+        "w": 475,
+        "h": 46
+      },
+      "note": "Source port selector with original accessible name"
+    },
+    {
+      "id": "target-select",
+      "kind": "control",
+      "pixelBox": {
+        "x": 569,
+        "y": 945,
+        "w": 476,
+        "h": 46
+      },
+      "note": "Target port selector with original accessible name"
+    },
+    {
+      "id": "connect-button",
+      "kind": "control",
+      "pixelBox": {
+        "x": 1068,
+        "y": 945,
+        "w": 149,
+        "h": 46
+      },
+      "note": "Conectar button enabled only with valid selection"
+    },
+    {
+      "id": "saved",
+      "kind": "text",
+      "pixelBox": {
+        "x": 78,
+        "y": 1028,
+        "w": 465,
+        "h": 16
+      },
+      "note": "Tu progreso se guarda en este navegador."
+    }
+  ]
+}

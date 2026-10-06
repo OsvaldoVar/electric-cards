@@ -2,10 +2,11 @@ import { useEffect, useMemo, useState } from 'react';
 import {
   Background,
   BackgroundVariant,
-  Panel,
+  ConnectionLineType,
   ReactFlow,
   ReactFlowProvider,
   useReactFlow,
+  useNodesInitialized,
   useUpdateNodeInternals,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
@@ -14,9 +15,9 @@ import { InputNode } from './InputNode';
 import { GateNode } from './GateNode';
 import { OutputNode } from './OutputNode';
 import { Wire } from './Wire';
-import { ConnectionForm } from './ConnectionForm';
 import { validateConnection } from '../../engine/validateCircuit';
 import { Icon } from '../Icon';
+import { PuzzleControls } from '../PuzzleControls';
 
 const nodeTypes = { input: InputNode, gate: GateNode, output: OutputNode };
 const edgeTypes = { wire: Wire };
@@ -28,13 +29,20 @@ const ariaLabels = {
   'controls.fitView': 'Ajustar tablero',
 };
 
-function Board({ game }) {
+function Board({ game, level }) {
   const { circuit, preview, inputs, setInputs, moveNodes, deleteGate, disconnect, connect } =
     game;
   const [selectedEdge, setSelectedEdge] = useState(null);
   const [selectedNodes, setSelectedNodes] = useState([]);
+  const [measuredNodes, setMeasuredNodes] = useState({});
   const { fitView, zoomIn, zoomOut } = useReactFlow();
   const updateNodeInternals = useUpdateNodeInternals();
+  const nodesInitialized = useNodesInitialized();
+  const nodeIds = circuit.nodes.map((node) => node.id).join('|');
+  const motionDuration = (event) =>
+    event.detail === 0 || window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      ? 0
+      : 120;
   const nodes = useMemo(() => {
     let index = 0;
     return circuit.nodes.map((node) => {
@@ -48,6 +56,9 @@ function Board({ game }) {
       );
       return {
         ...node,
+        // React Flow hides unmeasured controlled nodes and their wires on every
+        // position update. Keep dimensions locally; the saved circuit stays pure.
+        measured: measuredNodes[node.id],
         selected: selectedNodes.includes(node.id),
         deletable: node.type === 'gate',
         ariaLabel: node.type === 'gate' ? `Compuerta ${node.data.gateType}` : node.data.label,
@@ -59,6 +70,17 @@ function Board({ game }) {
           instance: node.type === 'gate' ? ++index : undefined,
           onDelete: deleteGate,
           onDisconnect: disconnect,
+          checkStatus:
+            node.type === 'output' &&
+            game.review?.row &&
+            ['passed', 'failed'].includes(game.review.status)
+              ? game.review.row.expected[node.data.outputId] ===
+                game.review.row.received[node.data.outputId]
+                ? 'passed'
+                : 'failed'
+              : game.review?.status === 'invalid'
+                ? 'failed'
+                : 'idle',
           onToggle: () =>
             setInputs({ ...inputs, [node.data.inputId]: 1 - inputs[node.data.inputId] }),
         },
@@ -72,11 +94,29 @@ function Board({ game }) {
     deleteGate,
     disconnect,
     selectedNodes,
+    measuredNodes,
     game.vertical,
+    game.review,
   ]);
   useEffect(() => {
-    updateNodeInternals(nodes.map((node) => node.id));
-  }, [nodes, game.vertical, updateNodeInternals]);
+    if (!nodesInitialized) return;
+    let cancelled = false;
+    let frame;
+    // Handle layout changes when nodes or port orientation change, not on drag frames.
+    // Repeated measurement while dragging makes connected nodes and wires flicker.
+    document.fonts.ready.then(() => {
+      if (cancelled) return;
+      frame = window.requestAnimationFrame(() => {
+        frame = window.requestAnimationFrame(() => {
+          if (!cancelled) updateNodeInternals(nodeIds.split('|'));
+        });
+      });
+    });
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+    };
+  }, [nodeIds, nodesInitialized, game.vertical, updateNodeInternals]);
   const edges = useMemo(
     () =>
       circuit.edges.map((edge) => ({
@@ -88,6 +128,25 @@ function Board({ game }) {
     [circuit.edges, preview, disconnect, selectedEdge],
   );
   const changeNodes = (changes) => {
+    const dimensions = changes.filter(
+      (change) => change.type === 'dimensions' && change.dimensions,
+    );
+    if (dimensions.length) {
+      setMeasuredNodes((previous) => {
+        let next = previous;
+        for (const change of dimensions) {
+          const old = previous[change.id];
+          if (
+            old?.width !== change.dimensions.width ||
+            old?.height !== change.dimensions.height
+          ) {
+            if (next === previous) next = { ...previous };
+            next[change.id] = change.dimensions;
+          }
+        }
+        return next;
+      });
+    }
     const selections = changes.filter((change) => change.type === 'select');
     if (selections.length) {
       setSelectedNodes((previous) => {
@@ -118,22 +177,60 @@ function Board({ game }) {
     }
   };
   return (
-    <section className="board-panel" aria-label="Editor de circuitos">
+    <section
+      className="board-panel pixel-frame"
+      aria-label="Editor de circuitos"
+      data-review={game.review?.status ?? 'idle'}
+      aria-busy={game.playback?.running ?? false}
+    >
       <div className="board-heading">
-        <span>
-          <span className="status-dot" /> TABLERO
-        </span>
-        <span className="mono">
-          {circuit.nodes.filter((node) => node.type === 'gate').length} CARTAS ·{' '}
-          {circuit.edges.length} CABLES
-        </span>
+        <h1>Nivel {level.id}</h1>
+        <div className="board-actions">
+          <div className="board-tools">
+            <button
+              aria-label="Organizar tablero"
+              onClick={(event) => {
+                game.arrange();
+                window.requestAnimationFrame(() =>
+                  fitView({ padding: 0.08, maxZoom: 1, duration: motionDuration(event) }),
+                );
+              }}
+            >
+              <Icon name="grid" size={17} />
+              <span>Organizar</span>
+            </button>
+          </div>
+          <PuzzleControls game={game} />
+        </div>
       </div>
       <div className="circuit-canvas" data-testid="circuit-board">
+        <div className="board-view-tools board-tools" aria-label="Vista del circuito">
+          <button aria-label="Acercar tablero" onClick={() => zoomIn({ duration: 0 })}>
+            <Icon name="plus" size={17} />
+          </button>
+          <button aria-label="Alejar tablero" onClick={() => zoomOut({ duration: 0 })}>
+            <Icon name="minus" size={17} />
+          </button>
+          <button
+            aria-label="Ajustar tablero"
+            onClick={(event) =>
+              fitView({
+                padding: game.vertical ? 0.08 : 0.2,
+                maxZoom: 1,
+                duration: motionDuration(event),
+              })
+            }
+          >
+            <Icon name="fit" size={17} />
+            <span>Ajustar vista</span>
+          </button>
+        </div>
         <ReactFlow
           nodes={nodes}
           edges={edges}
           nodeTypes={nodeTypes}
           edgeTypes={edgeTypes}
+          connectionLineType={ConnectionLineType.Step}
           onNodesChange={changeNodes}
           onConnect={connect}
           onConnectEnd={connectEnd}
@@ -160,36 +257,12 @@ function Board({ game }) {
           ariaLabelConfig={ariaLabels}
           onInit={(flow) => flow.fitView({ padding: game.vertical ? 0.08 : 0.18, maxZoom: 1 })}
         >
-          <Background variant={BackgroundVariant.Dots} gap={22} size={1} color="#31414b" />
-          <Panel position="bottom-right">
-            <div className="board-tools">
-              <button
-                aria-label="Organizar tablero"
-                onClick={() => {
-                  game.arrange();
-                  window.requestAnimationFrame(() =>
-                    fitView({ padding: 0.08, maxZoom: 1, duration: 180 }),
-                  );
-                }}
-              >
-                <Icon name="grid" size={17} />
-              </button>
-              <button aria-label="Acercar tablero" onClick={() => zoomIn()}>
-                <Icon name="plus" size={17} />
-              </button>
-              <button aria-label="Alejar tablero" onClick={() => zoomOut()}>
-                <Icon name="minus" size={17} />
-              </button>
-              <button
-                aria-label="Ajustar tablero"
-                onClick={() =>
-                  fitView({ padding: game.vertical ? 0.08 : 0.2, maxZoom: 1, duration: 180 })
-                }
-              >
-                <Icon name="fit" size={17} />
-              </button>
-            </div>
-          </Panel>
+          <Background
+            variant={BackgroundVariant.Lines}
+            gap={32}
+            size={1}
+            color="var(--grid)"
+          />
         </ReactFlow>
       </div>
       <div className="board-hint">
@@ -198,15 +271,14 @@ function Board({ game }) {
           Toca una salida y después una entrada. También puedes arrastrar los cables.
         </span>
       </div>
-      <ConnectionForm circuit={circuit} onConnect={connect} />
     </section>
   );
 }
 
-export function CircuitBoard({ game }) {
+export function CircuitBoard({ game, level }) {
   return (
     <ReactFlowProvider>
-      <Board game={game} />
+      <Board game={game} level={level} />
     </ReactFlowProvider>
   );
 }

@@ -1,0 +1,136 @@
+.puzzle-hint {
+  border-top: 1px solid var(--border);
+  margin-top: 20px;
+  padding-top: 8px;
+}
+.puzzle-hint summary {
+  font-size: 16px;
+}
+.puzzle-hint summary > svg {
+  margin-left: 0;
+}
+.puzzle-hint-content {
+  padding: 12px 0 8px;
+}
+.hint-formulas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 16px;
+  border-radius: var(--radius-control);
+  background: var(--surface-soft);
+}
+.hint-formulas dt {
+  font-size: 12px;
+  color: var(--muted);
+}
+.hint-formulas dd {
+  margin: 4px 0 0;
+  overflow-wrap: anywhere;
+}
+.hint-formulas code {
+  font: 600 20px/1.5 var(--mono);
+}
+.hint-notation {
+  font-size: 12px;
+  color: var(--muted);
+}
+.hint-guidance {
+  font-size: 14px;
+  margin: 16px 0 12px;
+}
+.puzzle-hint .button {
+  min-height: 44px;
+  font-size: 14px;
+  padding: 8px 12px;
+}
+
+.case-state {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.case-state[data-state='pending'] {
+  color: var(--muted);
+}
+.case-state[data-state='checking'] {
+  color: var(--blue);
+}
+.case-state[data-state='passed'] {
+  color: var(--success);
+}
+.case-state[data-state='failed'],
+.case-state[data-state='invalid'] {
+  color: var(--danger);
+}
+.objective-table tbody td,
+.results-table tbody td {
+  position: relative;
+  isolation: isolate;
+}
+.objective-table tbody td::before,
+.objective-table tbody td::after,
+.results-table tbody td::before,
+.results-table tbody td::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-state) var(--ease-out);
+}
+.objective-table tbody td::before,
+.results-table tbody td::before {
+  background: var(--surface-soft);
+}
+.objective-table tbody td::after,
+.results-table tbody td::after {
+  background: var(--signal-soft);
+}
+.objective-table .case-checking td::before,
+.results-table .case-checking td::before,
+.objective-table .case-passed td::after,
+.results-table .case-passed td::after,
+.objective-table .case-failed td::after,
+.results-table .case-failed td::after {
+  opacity: 1;
+}
+.objective-table .case-failed td::after,
+.results-table .case-failed td::after {
+  background: var(--danger-soft);
+}
+.objective-table .case-failed td,
+.results-table .case-failed td {
+  color: var(--danger);
+}
+.objective-table .case-checking td:first-child,
+.results-table .case-checking td:first-child {
+  box-shadow: inset 3px 0 var(--blue);
+}
+.validation-progress {
+  display: block;
+  width: calc(100% - 48px);
+  margin: 0 24px 16px;
+  height: 4px;
+}
+.test-running .test-result-heading > svg {
+  color: var(--blue);
+}
+/* A revealed verdict fades in while data and geometry update immediately. */
+.case-state > svg,
+.board-review-status {
+  transition: opacity var(--duration-state) var(--ease-out);
+}
+@starting-style {
+  .case-state > svg,
+  .board-review-status {
+    opacity: 0;
+  }
+}
+.output-node {
+  transition:
+    background-color var(--duration-state) var(--ease-out),
+    border-color var(--duration-state) var(--ease-out);
+}

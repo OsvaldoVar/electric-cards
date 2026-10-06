@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 import { gates } from '../../data/gates';
 import { GateSymbol } from '../GateSymbol';
 import { Icon } from '../Icon';
+import { gateUnlocks } from '../../data/unlocks';
 
-export function GateInventory({ inventory, onAdd }) {
+export function GateInventory({ inventory, lockedGates = [], onAdd }) {
   return (
     <section className="inventory-panel">
-      <span className="eyebrow">TUS CARTAS</span>
-      <h2>Inventario</h2>
+      <h2>Tus compuertas</h2>
       <p className="muted small">Toca una carta para añadirla al tablero.</p>
       <div className="inventory-list">
         {Object.entries(inventory).map(([type, remaining]) => (
@@ -19,8 +19,12 @@ export function GateInventory({ inventory, onAdd }) {
               aria-label={`Añadir ${type}. ${remaining} disponibles`}
             >
               <GateSymbol type={type} />
-              <strong className="mono">{type}</strong>
-              <span className="inventory-count">×{remaining}</span>
+              <span className="inventory-name">
+                <strong>{type}</strong>
+                <small>
+                  Añadir · {remaining} {remaining === 1 ? 'disponible' : 'disponibles'}
+                </small>
+              </span>
               <Icon name="plus" size={16} />
             </button>
             <Link
@@ -33,6 +37,12 @@ export function GateInventory({ inventory, onAdd }) {
           </div>
         ))}
       </div>
+      {lockedGates.map((type) => (
+        <p className="inventory-locked" key={type}>
+          <Icon name="lock" size={16} />
+          {type}: completa el nivel {gateUnlocks[type]} para desbloquearlo.
+        </p>
+      ))}
       <div className="inventory-note">
         <Icon name="reset" size={16} />
         <p>Al eliminar una carta, regresa a tu inventario.</p>

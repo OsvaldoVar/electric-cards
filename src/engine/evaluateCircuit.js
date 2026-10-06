@@ -1,5 +1,5 @@
 import { evaluateGate } from './evaluateGate';
-import { isBinary, targetPorts } from './operations';
+import { isBinary, isFlipFlop, targetPorts } from './operations';
 import { circuitError, validateCircuit } from './validateCircuit';
 
 export function evaluateCircuit(circuit, inputs, options = {}) {
@@ -22,6 +22,26 @@ export function evaluateCircuit(circuit, inputs, options = {}) {
     const node = nodes.get(id);
     if (node.type === 'input') {
       nodeValues[id] = inputs[node.data.inputId];
+      continue;
+    }
+    if (node.type === 'gate' && node.data.gateType === 'CLOCK') {
+      nodeValues[id] = options.simulation?.clock ?? 0;
+      if (!isBinary(nodeValues[id]))
+        return {
+          valid: false,
+          error: 'INVALID_SIGNAL',
+          errors: [circuitError('INVALID_SIGNAL')],
+        };
+      continue;
+    }
+    if (node.type === 'gate' && isFlipFlop(node.data.gateType)) {
+      nodeValues[id] = options.simulation?.memory?.[id]?.q ?? 0;
+      if (!isBinary(nodeValues[id]))
+        return {
+          valid: false,
+          error: 'INVALID_SIGNAL',
+          errors: [circuitError('INVALID_SIGNAL')],
+        };
       continue;
     }
     const values = targetPorts(node).map(

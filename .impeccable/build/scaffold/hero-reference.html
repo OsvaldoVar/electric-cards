@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Scaffold reference: b-circuito.png</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Signika:wght@700&display=swap">
+  <link rel="stylesheet" href="layout.css">
+  <style>html,body{margin:0}body{background:#f2f7f8}.region{box-sizing:border-box}.region.text p{white-space:pre-wrap}</style>
+</head>
+<body>
+<!-- Reference only. Every region sits at its measured box inside a comp-aspect frame. Take the boxes (layout.css), keep your own semantic structure. -->
+<main class="comp-frame" style="max-width:1487px">
+  <div class="r-navigation region chrome" data-region="navigation"><!-- White navigation strip with pale blue bottom border --></div>
+  <div class="r-brand region text" data-region="brand"><!-- Electric Cards bold navy wordmark --><p style="font-size:var(--r-brand-font);line-height:1.05;margin:0">brand</p></div>
+  <div class="r-nav-jugar region control" data-region="nav-jugar"><!-- Jugar active navigation link with yellow underline: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-jugar); a control need not have button chrome --></div>
+  <div class="r-nav-learn region control" data-region="nav-learn"><!-- Compuertas navigation link: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop nav-learn); a control need not have button chrome --></div>
+  <div class="r-score region control" data-region="score"><!-- Actual earned-star count and small star icons: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop score); a control need not have button chrome --></div>
+  <div class="r-breadcrumb region text" data-region="breadcrumb"><!-- Jugar level breadcrumb in navy small sans --><p style="font-size:var(--r-breadcrumb-font);line-height:1.05;margin:0">breadcrumb</p></div>
+  <div class="r-title region text" data-region="title"><!-- Dos señales, una salida bold navy heading --><p style="font-size:var(--r-title-font);font-family:var(--r-title-family),sans-serif;font-weight:var(--r-title-weight);line-height:1.05;margin:0">title</p></div>
+  <div class="r-description region text" data-region="description"><!-- La salida vale 1 solo cuando A y B valen 1. --><p style="font-size:var(--r-description-font);line-height:1.05;margin:0">description</p></div>
+  <div class="r-test-button region control" data-region="test-button"><!-- Yellow Probar circuito primary button: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop test-button); a control need not have button chrome --></div>
+  <div class="r-reset-button region control" data-region="reset-button"><!-- White outlined Reiniciar button: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop reset-button); a control need not have button chrome --></div>
+  <div class="r-board region chrome" data-region="board"><!-- White interactive runtime circuit editor container --></div>
+  <div class="r-board-title region text" data-region="board-title"><!-- Tu circuito navy bold section heading --><p style="font-size:var(--r-board-title-font);line-height:1.05;margin:0">board-title</p></div>
+  <div class="r-arrange region control" data-region="arrange"><!-- Organizar outlined toolbar button: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop arrange); a control need not have button chrome --></div>
+  <div class="r-fit region control" data-region="fit"><!-- Ajustar vista outlined toolbar button: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop fit); a control need not have button chrome --></div>
+  <div class="r-runtime-canvas region chrome" data-region="runtime-canvas"><!-- Interactive data-driven graph of current Boolean nodes and connections --></div>
+  <div class="r-input-a region control" data-region="input-a"><!-- A current input value control, dynamic runtime node: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop input-a); a control need not have button chrome --></div>
+  <div class="r-input-b region control" data-region="input-b"><!-- B current input value control, dynamic runtime node: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop input-b); a control need not have button chrome --></div>
+  <div class="r-gate-and region control" data-region="gate-and"><!-- AND gate interactive node showing a metadata-driven logic symbol: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop gate-and); a control need not have button chrome --></div>
+  <div class="r-output region control" data-region="output"><!-- Readonly current Boolean output node: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop output); a control need not have button chrome --></div>
+  <div class="r-board-help region text" data-region="board-help"><!-- Toca una salida y luego una entrada para conectar un cable. --><p style="font-size:var(--r-board-help-font);line-height:1.05;margin:0">board-help</p></div>
+  <div class="r-sidebar region chrome" data-region="sidebar"><!-- White outlined objective and inventory sidebar --></div>
+  <div class="r-objective-heading region text" data-region="objective-heading"><!-- Objetivo bold navy heading --><p style="font-size:var(--r-objective-heading-font);line-height:1.05;margin:0">objective-heading</p></div>
+  <div class="r-objective-copy region text" data-region="objective-copy"><!-- Construye un circuito que cumpla la tabla de verdad utilizando solo las compuertas disponibles. --><p style="font-size:var(--r-objective-copy-font);line-height:1.05;margin:0">objective-copy</p></div>
+  <div class="r-truth-table region control" data-region="truth-table"><!-- Semantic table of required per-case Boolean output values: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop truth-table); a control need not have button chrome --></div>
+  <div class="r-inventory-heading region text" data-region="inventory-heading"><!-- Tus compuertas bold navy heading --><p style="font-size:var(--r-inventory-heading-font);line-height:1.05;margin:0">inventory-heading</p></div>
+  <div class="r-inventory-button region control" data-region="inventory-button"><!-- Yellow-edged Añadir AND inventory button with available quantity: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop inventory-button); a control need not have button chrome --></div>
+  <div class="r-hint region control" data-region="hint"><!-- Ver pista accessible disclosure action: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop hint); a control need not have button chrome --></div>
+  <div class="r-star-goal region text" data-region="star-goal"><!-- Hasta 3 estrellas · 1 compuerta goal --><p style="font-size:var(--r-star-goal-font);line-height:1.05;margin:0">star-goal</p></div>
+  <div class="r-wiring-panel region chrome" data-region="wiring-panel"><!-- Light blue accessible connection form container --></div>
+  <div class="r-wiring-heading region text" data-region="wiring-heading"><!-- Conectar con selectores section heading --><p style="font-size:var(--r-wiring-heading-font);line-height:1.05;margin:0">wiring-heading</p></div>
+  <div class="r-source-label region text" data-region="source-label"><!-- Origen del cable accessible select label --><p style="font-size:var(--r-source-label-font);line-height:1.05;margin:0">source-label</p></div>
+  <div class="r-target-label region text" data-region="target-label"><!-- Destino del cable accessible select label --><p style="font-size:var(--r-target-label-font);line-height:1.05;margin:0">target-label</p></div>
+  <div class="r-source-select region control" data-region="source-select"><!-- Source port selector with original accessible name: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop source-select); a control need not have button chrome --></div>
+  <div class="r-target-select region control" data-region="target-select"><!-- Target port selector with original accessible name: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop target-select); a control need not have button chrome --></div>
+  <div class="r-connect-button region control" data-region="connect-button"><!-- Conectar button enabled only with valid selection: match the control's lettering and visible shape to the crop (comp-spec.mjs --crop connect-button); a control need not have button chrome --></div>
+  <div class="r-saved region text" data-region="saved"><!-- Tu progreso se guarda en este navegador. --><p style="font-size:var(--r-saved-font);line-height:1.05;margin:0">saved</p></div>
+</main>
+</body>
+</html>

@@ -1,0 +1,469 @@
+{
+  "schemaVersion": 3,
+  "stage": "components",
+  "id": "components",
+  "title": "Plan and asset review · src/pages/Puzzle.jsx",
+  "comp": {
+    "path": ".impeccable/mocks/b-circuito.png",
+    "width": 1487,
+    "height": 1058
+  },
+  "specSha256": "841687c54cee1a1a5e63eabe227e390b8cf6290381ab99952d0ef79bf31b735e",
+  "components": [
+    {
+      "id": "runtime-canvas",
+      "name": "Runtime canvas",
+      "kind": "chrome",
+      "role": "plan",
+      "box": {
+        "x": 0.039,
+        "y": 0.2713,
+        "w": 0.655,
+        "h": 0.4537
+      },
+      "note": "Interactive data-driven graph of current Boolean nodes and connections",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "gate-and",
+      "name": "Gate and",
+      "kind": "control",
+      "role": "plan",
+      "box": {
+        "x": 0.3571,
+        "y": 0.449,
+        "w": 0.076,
+        "h": 0.1087
+      },
+      "note": "AND gate interactive node showing a metadata-driven logic symbol",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    },
+    {
+      "id": "truth-table",
+      "name": "Truth table",
+      "kind": "control",
+      "role": "plan",
+      "box": {
+        "x": 0.731,
+        "y": 0.3526,
+        "w": 0.2293,
+        "h": 0.1843
+      },
+      "note": "Semantic table of required per-case Boolean output values",
+      "medium": "code",
+      "preview": {
+        "kind": "comp-crop"
+      },
+      "codeDrawn": true,
+      "dependencies": []
+    }
+  ],
+  "codeRegions": [
+    {
+      "id": "navigation",
+      "name": "Navigation",
+      "kind": "chrome",
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 0.0633
+      },
+      "note": "White navigation strip with pale blue bottom border"
+    },
+    {
+      "id": "brand",
+      "name": "Brand",
+      "kind": "text",
+      "box": {
+        "x": 0.0525,
+        "y": 0.018,
+        "w": 0.1157,
+        "h": 0.0274
+      },
+      "note": "Electric Cards bold navy wordmark"
+    },
+    {
+      "id": "nav-jugar",
+      "name": "Nav jugar",
+      "kind": "control",
+      "box": {
+        "x": 0.2078,
+        "y": 0.0132,
+        "w": 0.0599,
+        "h": 0.0482
+      },
+      "note": "Jugar active navigation link with yellow underline"
+    },
+    {
+      "id": "nav-learn",
+      "name": "Nav learn",
+      "kind": "control",
+      "box": {
+        "x": 0.2811,
+        "y": 0.0189,
+        "w": 0.0814,
+        "h": 0.0284
+      },
+      "note": "Compuertas navigation link"
+    },
+    {
+      "id": "score",
+      "name": "Score",
+      "kind": "control",
+      "box": {
+        "x": 0.9038,
+        "y": 0.0132,
+        "w": 0.0659,
+        "h": 0.034
+      },
+      "note": "Actual earned-star count and small star icons"
+    },
+    {
+      "id": "breadcrumb",
+      "name": "Breadcrumb",
+      "kind": "text",
+      "box": {
+        "x": 0.0296,
+        "y": 0.0832,
+        "w": 0.2401,
+        "h": 0.0189
+      },
+      "note": "Jugar level breadcrumb in navy small sans"
+    },
+    {
+      "id": "title",
+      "name": "Title",
+      "kind": "text",
+      "box": {
+        "x": 0.0296,
+        "y": 0.1181,
+        "w": 0.3376,
+        "h": 0.0388
+      },
+      "note": "Dos señales, una salida bold navy heading"
+    },
+    {
+      "id": "description",
+      "name": "Description",
+      "kind": "text",
+      "box": {
+        "x": 0.0296,
+        "y": 0.1711,
+        "w": 0.3262,
+        "h": 0.0236
+      },
+      "note": "La salida vale 1 solo cuando A y B valen 1."
+    },
+    {
+      "id": "test-button",
+      "name": "Test button",
+      "kind": "control",
+      "box": {
+        "x": 0.7061,
+        "y": 0.1219,
+        "w": 0.1459,
+        "h": 0.0539
+      },
+      "note": "Yellow Probar circuito primary button"
+    },
+    {
+      "id": "reset-button",
+      "name": "Reset button",
+      "kind": "control",
+      "box": {
+        "x": 0.8608,
+        "y": 0.1229,
+        "w": 0.111,
+        "h": 0.052
+      },
+      "note": "White outlined Reiniciar button"
+    },
+    {
+      "id": "board",
+      "name": "Board",
+      "kind": "chrome",
+      "box": {
+        "x": 0.0296,
+        "y": 0.2146,
+        "w": 0.6765,
+        "h": 0.6011
+      },
+      "note": "White interactive runtime circuit editor container"
+    },
+    {
+      "id": "board-title",
+      "name": "Board title",
+      "kind": "text",
+      "box": {
+        "x": 0.041,
+        "y": 0.2372,
+        "w": 0.1036,
+        "h": 0.0284
+      },
+      "note": "Tu circuito navy bold section heading"
+    },
+    {
+      "id": "arrange",
+      "name": "Arrange",
+      "kind": "control",
+      "box": {
+        "x": 0.5024,
+        "y": 0.2297,
+        "w": 0.0968,
+        "h": 0.0359
+      },
+      "note": "Organizar outlined toolbar button"
+    },
+    {
+      "id": "fit",
+      "name": "Fit",
+      "kind": "control",
+      "box": {
+        "x": 0.6066,
+        "y": 0.2297,
+        "w": 0.0861,
+        "h": 0.0359
+      },
+      "note": "Ajustar vista outlined toolbar button"
+    },
+    {
+      "id": "input-a",
+      "name": "Input a",
+      "kind": "control",
+      "box": {
+        "x": 0.0995,
+        "y": 0.3573,
+        "w": 0.0915,
+        "h": 0.0888
+      },
+      "note": "A current input value control, dynamic runtime node"
+    },
+    {
+      "id": "input-b",
+      "name": "Input b",
+      "kind": "control",
+      "box": {
+        "x": 0.0982,
+        "y": 0.569,
+        "w": 0.0921,
+        "h": 0.0898
+      },
+      "note": "B current input value control, dynamic runtime node"
+    },
+    {
+      "id": "output",
+      "name": "Output",
+      "kind": "control",
+      "box": {
+        "x": 0.5804,
+        "y": 0.4575,
+        "w": 0.0672,
+        "h": 0.0992
+      },
+      "note": "Readonly current Boolean output node"
+    },
+    {
+      "id": "board-help",
+      "name": "Board help",
+      "kind": "text",
+      "box": {
+        "x": 0.0625,
+        "y": 0.7476,
+        "w": 0.4156,
+        "h": 0.0208
+      },
+      "note": "Toca una salida y luego una entrada para conectar un cable."
+    },
+    {
+      "id": "sidebar",
+      "name": "Sidebar",
+      "kind": "chrome",
+      "box": {
+        "x": 0.7182,
+        "y": 0.2146,
+        "w": 0.2535,
+        "h": 0.6011
+      },
+      "note": "White outlined objective and inventory sidebar"
+    },
+    {
+      "id": "objective-heading",
+      "name": "Objective heading",
+      "kind": "text",
+      "box": {
+        "x": 0.731,
+        "y": 0.2353,
+        "w": 0.0894,
+        "h": 0.0236
+      },
+      "note": "Objetivo bold navy heading"
+    },
+    {
+      "id": "objective-copy",
+      "name": "Objective copy",
+      "kind": "text",
+      "box": {
+        "x": 0.731,
+        "y": 0.2675,
+        "w": 0.2192,
+        "h": 0.0662
+      },
+      "note": "Construye un circuito que cumpla la tabla de verdad utilizando solo las compuertas disponibles."
+    },
+    {
+      "id": "inventory-heading",
+      "name": "Inventory heading",
+      "kind": "text",
+      "box": {
+        "x": 0.731,
+        "y": 0.5832,
+        "w": 0.1406,
+        "h": 0.0236
+      },
+      "note": "Tus compuertas bold navy heading"
+    },
+    {
+      "id": "inventory-button",
+      "name": "Inventory button",
+      "kind": "control",
+      "box": {
+        "x": 0.7303,
+        "y": 0.621,
+        "w": 0.23,
+        "h": 0.0718
+      },
+      "note": "Yellow-edged Añadir AND inventory button with available quantity"
+    },
+    {
+      "id": "hint",
+      "name": "Hint",
+      "kind": "control",
+      "box": {
+        "x": 0.7317,
+        "y": 0.7136,
+        "w": 0.2286,
+        "h": 0.0416
+      },
+      "note": "Ver pista accessible disclosure action"
+    },
+    {
+      "id": "star-goal",
+      "name": "Star goal",
+      "kind": "text",
+      "box": {
+        "x": 0.7566,
+        "y": 0.7817,
+        "w": 0.2031,
+        "h": 0.0198
+      },
+      "note": "Hasta 3 estrellas · 1 compuerta goal"
+    },
+    {
+      "id": "wiring-panel",
+      "name": "Wiring panel",
+      "kind": "chrome",
+      "box": {
+        "x": 0.0296,
+        "y": 0.8318,
+        "w": 0.9422,
+        "h": 0.1181
+      },
+      "note": "Light blue accessible connection form container"
+    },
+    {
+      "id": "wiring-heading",
+      "name": "Wiring heading",
+      "kind": "text",
+      "box": {
+        "x": 0.0457,
+        "y": 0.8459,
+        "w": 0.1769,
+        "h": 0.0189
+      },
+      "note": "Conectar con selectores section heading"
+    },
+    {
+      "id": "source-label",
+      "name": "Source label",
+      "kind": "text",
+      "box": {
+        "x": 0.0451,
+        "y": 0.8733,
+        "w": 0.1197,
+        "h": 0.0151
+      },
+      "note": "Origen del cable accessible select label"
+    },
+    {
+      "id": "target-label",
+      "name": "Target label",
+      "kind": "text",
+      "box": {
+        "x": 0.3826,
+        "y": 0.8733,
+        "w": 0.1197,
+        "h": 0.0151
+      },
+      "note": "Destino del cable accessible select label"
+    },
+    {
+      "id": "source-select",
+      "name": "Source select",
+      "kind": "control",
+      "box": {
+        "x": 0.0437,
+        "y": 0.8932,
+        "w": 0.3194,
+        "h": 0.0435
+      },
+      "note": "Source port selector with original accessible name"
+    },
+    {
+      "id": "target-select",
+      "name": "Target select",
+      "kind": "control",
+      "box": {
+        "x": 0.3826,
+        "y": 0.8932,
+        "w": 0.3201,
+        "h": 0.0435
+      },
+      "note": "Target port selector with original accessible name"
+    },
+    {
+      "id": "connect-button",
+      "name": "Connect button",
+      "kind": "control",
+      "box": {
+        "x": 0.7182,
+        "y": 0.8932,
+        "w": 0.1002,
+        "h": 0.0435
+      },
+      "note": "Conectar button enabled only with valid selection"
+    },
+    {
+      "id": "saved",
+      "name": "Saved",
+      "kind": "text",
+      "box": {
+        "x": 0.0525,
+        "y": 0.9716,
+        "w": 0.3127,
+        "h": 0.0151
+      },
+      "note": "Tu progreso se guarda en este navegador."
+    }
+  ]
+}

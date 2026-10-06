@@ -1,9 +1,11 @@
 export function TruthTable({ gate, activeInputs }) {
-  const labels = gate.inputs === 1 ? ['A', 'Y'] : ['A', 'B', 'Y'];
+  const labels = gate.tableLabels ?? (gate.inputs === 1 ? ['A', 'Y'] : ['A', 'B', 'Y']);
   return (
     <div className="table-scroll">
       <table className="truth-table">
-        <caption>Tabla de verdad de {gate.name}</caption>
+        <caption>
+          {gate.sequential ? 'Tabla de transición' : 'Tabla de verdad'} de {gate.name}
+        </caption>
         <thead>
           <tr>
             {labels.map((label) => (

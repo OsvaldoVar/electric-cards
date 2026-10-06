@@ -15,6 +15,7 @@ const messages = {
   INVALID_SIGNAL: 'Las entradas solo pueden tener valores 0 o 1.',
   LEVEL_TERMINALS: 'El circuito debe usar exactamente las entradas y salidas de este nivel.',
   INVENTORY_EXCEEDED: 'El circuito supera el inventario permitido en este nivel.',
+  GATE_LOCKED: 'Completa los niveles anteriores para desbloquear este componente.',
 };
 
 export function circuitError(code, details = {}) {
@@ -44,7 +45,10 @@ export function validateConnection(circuit, connection) {
   return code ? { valid: false, error: circuitError(code) } : { valid: true };
 }
 
-export function validateCircuit(circuit, { allowIncomplete = false, level } = {}) {
+export function validateCircuit(
+  circuit,
+  { allowIncomplete = false, level, unlockedGates } = {},
+) {
   const errors = [];
   const add = (code, details) => errors.push(circuitError(code, details));
   if (!circuit || !Array.isArray(circuit.nodes) || !Array.isArray(circuit.edges)) {
@@ -69,6 +73,8 @@ export function validateCircuit(circuit, { allowIncomplete = false, level } = {}
     if (node.type === 'gate') {
       if (!Object.hasOwn(gateInputCounts, node.data.gateType))
         add('UNKNOWN_GATE', { nodeId: node.id });
+      else if (unlockedGates && !unlockedGates.includes(node.data.gateType))
+        add('GATE_LOCKED', { nodeId: node.id });
     } else {
       const id = node.data[node.type === 'input' ? 'inputId' : 'outputId'];
       if (typeof id !== 'string' || !id || terminals[node.type].has(id))

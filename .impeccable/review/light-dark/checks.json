@@ -1,0 +1,795 @@
+{
+  "checks": [
+    {
+      "name": "puzzle",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 334,
+        "height": 365.8125,
+        "top": 367,
+        "right": 347,
+        "bottom": 732.8125,
+        "left": 13
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 334,
+        "height": 365.8125,
+        "top": 367,
+        "right": 347,
+        "bottom": 732.8125,
+        "left": 13
+      }
+    },
+    {
+      "name": "memory",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 334,
+        "height": 365.8125,
+        "top": 367,
+        "right": 347,
+        "bottom": 732.8125,
+        "left": 13
+      }
+    },
+    {
+      "name": "map",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 614,
+        "height": 376,
+        "top": 367,
+        "right": 627,
+        "bottom": 743,
+        "left": 13
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 614,
+        "height": 376,
+        "top": 367,
+        "right": 627,
+        "bottom": 743,
+        "left": 13
+      }
+    },
+    {
+      "name": "memory",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 614,
+        "height": 376,
+        "top": 367,
+        "right": 627,
+        "bottom": 743,
+        "left": 13
+      }
+    },
+    {
+      "name": "map",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 307,
+        "y": 147,
+        "width": 446,
+        "height": 798.71875,
+        "top": 147,
+        "right": 753,
+        "bottom": 945.71875,
+        "left": 307
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 307,
+        "y": 147,
+        "width": 446,
+        "height": 798.71875,
+        "top": 147,
+        "right": 753,
+        "bottom": 945.71875,
+        "left": 307
+      }
+    },
+    {
+      "name": "memory",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 307,
+        "y": 147,
+        "width": 446,
+        "height": 798.71875,
+        "top": 147,
+        "right": 753,
+        "bottom": 945.71875,
+        "left": 307
+      }
+    },
+    {
+      "name": "map",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 365.3125,
+        "y": 147,
+        "width": 979.203125,
+        "height": 560,
+        "top": 147,
+        "right": 1344.515625,
+        "bottom": 707,
+        "left": 365.3125
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 365.3125,
+        "y": 147,
+        "width": 979.203125,
+        "height": 560,
+        "top": 147,
+        "right": 1344.515625,
+        "bottom": 707,
+        "left": 365.3125
+      }
+    },
+    {
+      "name": "memory",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 365.3125,
+        "y": 147,
+        "width": 979.203125,
+        "height": 560,
+        "top": 147,
+        "right": 1344.515625,
+        "bottom": 707,
+        "left": 365.3125
+      }
+    },
+    {
+      "name": "map",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 405,
+        "y": 147,
+        "width": 1486,
+        "height": 872,
+        "top": 147,
+        "right": 1891,
+        "bottom": 1019,
+        "left": 405
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 405,
+        "y": 147,
+        "width": 1486,
+        "height": 872,
+        "top": 147,
+        "right": 1891,
+        "bottom": 1019,
+        "left": 405
+      }
+    },
+    {
+      "name": "memory",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 405,
+        "y": 147,
+        "width": 1486,
+        "height": 872,
+        "top": 147,
+        "right": 1891,
+        "bottom": 1019,
+        "left": 405
+      }
+    },
+    {
+      "name": "map",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 334,
+        "height": 365.8125,
+        "top": 367,
+        "right": 347,
+        "bottom": 732.8125,
+        "left": 13
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 334,
+        "height": 365.8125,
+        "top": 367,
+        "right": 347,
+        "bottom": 732.8125,
+        "left": 13
+      }
+    },
+    {
+      "name": "memory",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 334,
+        "height": 365.8125,
+        "top": 367,
+        "right": 347,
+        "bottom": 732.8125,
+        "left": 13
+      }
+    },
+    {
+      "name": "map",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 360,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 614,
+        "height": 376,
+        "top": 367,
+        "right": 627,
+        "bottom": 743,
+        "left": 13
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 614,
+        "height": 376,
+        "top": 367,
+        "right": 627,
+        "bottom": 743,
+        "left": 13
+      }
+    },
+    {
+      "name": "memory",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 13,
+        "y": 367,
+        "width": 614,
+        "height": 376,
+        "top": 367,
+        "right": 627,
+        "bottom": 743,
+        "left": 13
+      }
+    },
+    {
+      "name": "map",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 640,
+      "height": 800,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 307,
+        "y": 147,
+        "width": 446,
+        "height": 798.71875,
+        "top": 147,
+        "right": 753,
+        "bottom": 945.71875,
+        "left": 307
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 307,
+        "y": 147,
+        "width": 446,
+        "height": 798.71875,
+        "top": 147,
+        "right": 753,
+        "bottom": 945.71875,
+        "left": 307
+      }
+    },
+    {
+      "name": "memory",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 307,
+        "y": 147,
+        "width": 446,
+        "height": 798.71875,
+        "top": 147,
+        "right": 753,
+        "bottom": 945.71875,
+        "left": 307
+      }
+    },
+    {
+      "name": "map",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 768,
+      "height": 1024,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 365.3125,
+        "y": 147,
+        "width": 979.203125,
+        "height": 560,
+        "top": 147,
+        "right": 1344.515625,
+        "bottom": 707,
+        "left": 365.3125
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 365.3125,
+        "y": 147,
+        "width": 979.203125,
+        "height": 560,
+        "top": 147,
+        "right": 1344.515625,
+        "bottom": 707,
+        "left": 365.3125
+      }
+    },
+    {
+      "name": "memory",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 365.3125,
+        "y": 147,
+        "width": 979.203125,
+        "height": 560,
+        "top": 147,
+        "right": 1344.515625,
+        "bottom": 707,
+        "left": 365.3125
+      }
+    },
+    {
+      "name": "map",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 1366,
+      "height": 768,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "puzzle",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 405,
+        "y": 147,
+        "width": 1486,
+        "height": 872,
+        "top": 147,
+        "right": 1891,
+        "bottom": 1019,
+        "left": 405
+      }
+    },
+    {
+      "name": "advanced",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 405,
+        "y": 147,
+        "width": 1486,
+        "height": 872,
+        "top": 147,
+        "right": 1891,
+        "bottom": 1019,
+        "left": 405
+      }
+    },
+    {
+      "name": "memory",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false,
+      "board": {
+        "x": 405,
+        "y": 147,
+        "width": 1486,
+        "height": 872,
+        "top": 147,
+        "right": 1891,
+        "bottom": 1019,
+        "left": 405
+      }
+    },
+    {
+      "name": "map",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "home",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "collection",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    },
+    {
+      "name": "gate",
+      "width": 1920,
+      "height": 1080,
+      "overflowX": false,
+      "overflowY": false
+    }
+  ],
+  "errors": []
+}

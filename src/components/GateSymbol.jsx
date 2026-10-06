@@ -12,11 +12,29 @@ export function GateSymbol({ type, className = '' }) {
       <g
         fill="none"
         stroke="currentColor"
-        strokeWidth="2.3"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        strokeWidth="3"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
       >
-        {type === 'NOT' ? (
+        {['CLOCK', 'DFF', 'TFF'].includes(type) ? (
+          <>
+            <rect x="26" y="8" width="60" height="54" />
+            <path d="M86 35h22" />
+            {type === 'CLOCK' ? (
+              <path d="M34 42V25h14v17h14V25h14" />
+            ) : (
+              <>
+                <path d="M4 22h22M4 48h22m0-5 8 5-8 5" />
+                <text x="37" y="26" fill="currentColor" stroke="none" fontSize="13">
+                  {type === 'DFF' ? 'D' : 'T'}
+                </text>
+                <text x="68" y="39" fill="currentColor" stroke="none" fontSize="13">
+                  Q
+                </text>
+              </>
+            )}
+          </>
+        ) : type === 'NOT' ? (
           <>
             <path d="M4 35h19m0-24 52 24-52 24V11Z" />
             <circle cx="80" cy="35" r="5" />

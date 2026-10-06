@@ -1,5 +1,6 @@
 import { levels } from '../data/levels';
 import { useGame } from './useGame';
+import { unlockedGateIds } from '../data/unlocks';
 
 export function useProgress() {
   const { state } = useGame();
@@ -9,7 +10,6 @@ export function useProgress() {
     unlockedLevel: state.unlockedLevel,
     completedCount: completed.length,
     totalLevels: levels.length,
-    stars: completed.reduce((total, level) => total + level.stars, 0),
-    maxStars: levels.length * 3,
+    unlockedGates: unlockedGateIds(state.completedLevels),
   };
 }

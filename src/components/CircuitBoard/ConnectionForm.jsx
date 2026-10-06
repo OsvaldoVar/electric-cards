@@ -34,14 +34,14 @@ export function ConnectionForm({ circuit, onConnect }) {
       setDestination('');
   };
   return (
-    <details className="connection-details">
+    <details className="connection-details" open>
       <summary>
         <Icon name="link" size={17} />
         Conectar con selectores<span className="muted">Alternativa a tocar los puertos</span>
       </summary>
       <form className="connection-form" onSubmit={submit}>
         <label>
-          Origen
+          Origen del cable
           <select
             aria-label="Origen del cable"
             value={validSource}
@@ -56,7 +56,7 @@ export function ConnectionForm({ circuit, onConnect }) {
           </select>
         </label>
         <label>
-          Destino
+          Destino del cable
           <select
             aria-label="Destino del cable"
             value={validDestination}

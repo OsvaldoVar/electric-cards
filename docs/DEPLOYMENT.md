@@ -56,4 +56,4 @@ Este repositorio incluye la configuración; todavía no se ha desplegado.
   los límites conocidos de la verificación.
 
 Cambiar el dominio o limpiar los datos del navegador no transfiere el progreso.
-Las estrellas y los borradores no se sincronizan entre dispositivos.
+El progreso y los borradores no se sincronizan entre dispositivos.

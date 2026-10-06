@@ -1,0 +1,197 @@
+{
+  "checks": [
+    {
+      "name": "home",
+      "width": 360,
+      "height": 800,
+      "overflow": false
+    },
+    {
+      "name": "levels",
+      "width": 360,
+      "height": 800,
+      "overflow": false
+    },
+    {
+      "name": "learn",
+      "width": 360,
+      "height": 800,
+      "overflow": false
+    },
+    {
+      "name": "gate",
+      "width": 360,
+      "height": 800,
+      "overflow": false
+    },
+    {
+      "name": "puzzle",
+      "width": 360,
+      "height": 800,
+      "overflow": false
+    },
+    {
+      "name": "not-found",
+      "width": 360,
+      "height": 800,
+      "overflow": false
+    },
+    {
+      "name": "home",
+      "width": 768,
+      "height": 1024,
+      "overflow": false
+    },
+    {
+      "name": "levels",
+      "width": 768,
+      "height": 1024,
+      "overflow": false
+    },
+    {
+      "name": "learn",
+      "width": 768,
+      "height": 1024,
+      "overflow": false
+    },
+    {
+      "name": "gate",
+      "width": 768,
+      "height": 1024,
+      "overflow": false
+    },
+    {
+      "name": "puzzle",
+      "width": 768,
+      "height": 1024,
+      "overflow": false
+    },
+    {
+      "name": "not-found",
+      "width": 768,
+      "height": 1024,
+      "overflow": false
+    },
+    {
+      "name": "home",
+      "width": 1366,
+      "height": 768,
+      "overflow": false
+    },
+    {
+      "name": "levels",
+      "width": 1366,
+      "height": 768,
+      "overflow": false
+    },
+    {
+      "name": "learn",
+      "width": 1366,
+      "height": 768,
+      "overflow": false
+    },
+    {
+      "name": "gate",
+      "width": 1366,
+      "height": 768,
+      "overflow": false
+    },
+    {
+      "name": "puzzle",
+      "width": 1366,
+      "height": 768,
+      "overflow": false
+    },
+    {
+      "name": "not-found",
+      "width": 1366,
+      "height": 768,
+      "overflow": false
+    },
+    {
+      "name": "home",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false
+    },
+    {
+      "name": "levels",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false
+    },
+    {
+      "name": "learn",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false
+    },
+    {
+      "name": "gate",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false
+    },
+    {
+      "name": "puzzle",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false
+    },
+    {
+      "name": "not-found",
+      "width": 1920,
+      "height": 1080,
+      "overflow": false
+    },
+    {
+      "name": "review-passed",
+      "width": 360,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-failed",
+      "width": 360,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-passed",
+      "width": 768,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-failed",
+      "width": 768,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-passed",
+      "width": 1366,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-failed",
+      "width": 1366,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-passed",
+      "width": 1920,
+      "height": 900,
+      "overflow": false
+    },
+    {
+      "name": "review-failed",
+      "width": 1920,
+      "height": 900,
+      "overflow": false
+    }
+  ],
+  "errors": []
+}

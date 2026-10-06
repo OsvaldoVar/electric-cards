@@ -1,0 +1,142 @@
+{
+  "src/engine": [
+    {
+      "file": "src/engine/createCircuit.js",
+      "sha256": "ceae35e22e1fc0e8abf018062456786ea49224c09dc2710e33a34b6619493f13",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/evaluateCircuit.js",
+      "sha256": "f8cb86f5b649d9832de716375132685bf384d48336eeb3c37f1e8e565b4698a5",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/evaluateGate.js",
+      "sha256": "93088b2b1c2e219cbbb758aeb3c47a307739ab51d04c8ff7d5ff14e7b7da0033",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/formatExpression.js",
+      "sha256": "89765fffb28ad85f322fa5e0eec315084e4d1433e5ac9d4366244f0f41e1601a",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/graph.js",
+      "sha256": "b60e3e8ef6d0e57df64c126afd7ed592420d6272bc8ebb5438e21a8949d5428c",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/operations.js",
+      "sha256": "b532055943bfd5a80af63196c063adef4385105789918d67cb2705949c24d13e",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/sequential.js",
+      "sha256": "65087cd7b0c1dc5ec5899e4602aacca583b7bc796e8ca6c24022a3bb90070132",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/sequentialObjectives.js",
+      "sha256": "7c4d75f65f5cdbf5352449919eb2351d2caed5bad0870bba6e434eabb5dbb220",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/validateCircuit.js",
+      "sha256": "7e657b2b93c6aee6dc8b1e56bf98050fa3e595371ed9c683dc927895a6addf59",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/engine/validateLevel.js",
+      "sha256": "94a8747f9348b00a624a01fcde1ba3fb9821eb03686074b12fe8bddc72ab9f6f",
+      "unchanged_from_session_start": true
+    }
+  ],
+  "src/data": [
+    {
+      "file": "src/data/gates.js",
+      "sha256": "b57c20ed7d106002640174a63cd7d3d8fd1df05bb89dd15527c523e2f8ab757b",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/data/levels.js",
+      "sha256": "99c4f527e8cd8a93db9c7c53dadf5bbcd36078c8d42b18fd4213d27cb3f97292",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/data/sequentialLevels.js",
+      "sha256": "28d2cbfc122ac7a50644891050b70ea47b62d8da34a74f840cc743707dd0dd21",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/data/unlocks.js",
+      "sha256": "7cb2330232b046c3bc0f571cc798fa9323ee16f8514b350938c5b46aaafd8fde",
+      "unchanged_from_session_start": true
+    }
+  ],
+  "src/context": [
+    {
+      "file": "src/context/GameContext.js",
+      "sha256": "55c6ffc405e94e88fa06cfdb7873699ce142fa794e39d691fbc3bc08b94e36b4",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/context/GameProvider.jsx",
+      "sha256": "072e94618441023e21d325872096813fd71b2ab2cb661e314d59ca69bbd0adc6",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/context/gameReducer.js",
+      "sha256": "7ac94e9ad90590452c7f45f6788aec8b47a78ed8dce940853483a23c5d6813e3",
+      "unchanged_from_session_start": true
+    }
+  ],
+  "src/hooks": [
+    {
+      "file": "src/hooks/useGame.js",
+      "sha256": "9f0f1104c05d1f992ce42f3be0b2688b127d6eb28610dcfed0ee1454d5d9a31b",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/hooks/useMobileLayout.js",
+      "sha256": "a7312b9d92630d9c7eebdb01320f703db40e91c56f298ce29073b2c02bf81ad1",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/hooks/useProgress.js",
+      "sha256": "ffc08237f460e432eb000e6a27ce4a9ae3ffde07bf296bd1ef0fb5c639738cb7",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/hooks/usePuzzle.js",
+      "sha256": "23863e60f51cbfa20b11e4c711783ce2d630f70b20f181d5457df2de83adea6f",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/hooks/useValidationPlayback.js",
+      "sha256": "9b98c26f431ebf4183fc80b0693d264a28db4365e646162e81486eafcf573bf2",
+      "unchanged_from_session_start": true
+    }
+  ],
+  "src/services": [
+    {
+      "file": "src/services/boardLayout.js",
+      "sha256": "5d44fdb2f1f41784bdaa5b0538ec36b36c11e3a979448a32d0fd8dccfb9e734a",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/services/ids.js",
+      "sha256": "808478c1eff46bd7a76e6f0e17020b627b65920cc645e07f5e8f63e048bdeb95",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/services/storage.js",
+      "sha256": "cce485eff178fe8b8a307bf477cbc47f0d15749d02ede9e7bd2b7140250c2d5a",
+      "unchanged_from_session_start": true
+    },
+    {
+      "file": "src/services/validationPresentation.js",
+      "sha256": "ff07d103552921ee5716987ee7ec5ac8660754ee7d0e6838627614e017e7bfe3",
+      "unchanged_from_session_start": true
+    }
+  ]
+}

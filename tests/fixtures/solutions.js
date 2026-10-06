@@ -1,8 +1,25 @@
 import { createCircuit } from '../../src/engine/createCircuit';
 import { getLevel } from '../../src/data/levels';
+import { targetPorts } from '../../src/engine/operations';
 
 // Independent reference constructions, not copied from objective expressions.
 const solutions = {
+  26: { gates: [['CLOCK']], outputs: { LED: 'g1' } },
+  27: { gates: [['CLOCK'], ['NOT', 'g1']], outputs: { PULSO: 'g1', REPOSO: 'g2' } },
+  28: { gates: [['CLOCK'], ['DFF', 'A', 'g1']], outputs: { LED: 'g2' } },
+  29: { gates: [['CLOCK'], ['NOT', 'A'], ['DFF', 'g2', 'g1']], outputs: { LED: 'g3' } },
+  30: { gates: [['CLOCK'], ['AND', 'A', 'B'], ['DFF', 'g2', 'g1']], outputs: { LED: 'g3' } },
+  31: {
+    gates: [['CLOCK'], ['DFF', 'A', 'g1'], ['DFF', 'g2', 'g1']],
+    outputs: { PRIMERO: 'g2', SEGUNDO: 'g3' },
+  },
+  32: { gates: [['CLOCK'], ['TFF', 'A', 'g1']], outputs: { LED: 'g2' } },
+  33: { gates: [['CLOCK'], ['NOT', 'A'], ['TFF', 'g2', 'g1']], outputs: { LED: 'g3' } },
+  34: { gates: [['CLOCK'], ['XOR', 'A', 'B'], ['TFF', 'g2', 'g1']], outputs: { LED: 'g3' } },
+  35: {
+    gates: [['CLOCK'], ['DFF', 'A', 'g1'], ['TFF', 'A', 'g1']],
+    outputs: { DATO: 'g2', CAMBIO: 'g3' },
+  },
   1: { gates: [['AND', 'A', 'B']], outputs: { DOOR: 'g1' } },
   2: { gates: [['OR', 'A', 'B']], outputs: { LED: 'g1' } },
   3: { gates: [['NOT', 'A']], outputs: { FLAG: 'g1' } },
@@ -173,7 +190,8 @@ export function referenceCircuit(id) {
       position: { x: 230 + index * 50, y: 80 },
       data: { gateType },
     });
-    inputs.forEach((source, port) => connect(source, nodeId, port === 0 ? 'a' : 'b'));
+    const ports = targetPorts({ type: 'gate', data: { gateType } });
+    inputs.forEach((source, port) => connect(source, nodeId, ports[port]));
   });
   Object.entries(solution.outputs).forEach(([output, source]) =>
     connect(source, `output-${output}`, 'in'),

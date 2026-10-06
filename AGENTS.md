@@ -6,7 +6,9 @@ Read this file and all Markdown files under `docs/` before modifying code.
 
 Build a responsive educational React game in Spanish. Players construct acyclic
 Boolean circuits from a finite gate inventory. A solution must satisfy every
-test case for the level. Support AND, OR, NOT, NAND, NOR, XOR and XNOR only.
+test case for the level. Support AND, OR, NOT, NAND, NOR, XOR, XNOR, CLOCK, DFF and TFF.
+The user explicitly expanded the scope on 2026-09-30 to clocks and flip-flops.
+DFF/TFF are rising-edge memory primitives in acyclic circuit graphs.
 Do not add a backend, authentication, databases, Redux, analog electronics,
 voltage, propagation delays, feedback circuits, HDL or hardware integration.
 
@@ -29,7 +31,8 @@ Use Node.js 22.12+ or 24. Dependencies and lockfile must stay synchronized.
 
 ## Circuit constraints
 
-Signals are numeric 0/1. NOT has one input; other gates have two. Each target
+Signals are numeric 0/1. NOT has one input, CLOCK none, DFF has D/CLK and TFF has T/CLK;
+other gates have two. Each target
 port accepts one wire. Sources may fan out. Reject self-links, nonexistent
 nodes/ports, reversed connections, duplicate target connections and cycles.
 Check the whole circuit and the level's allowed nodes/inventory at validation.
@@ -41,8 +44,8 @@ cannot be deleted. A puzzle reset clears its draft, never earned progress.
 
 Inventory buttons add gates; there is no inventory drag requirement. Players
 move nodes, connect by dragging OR by tapping source then target, delete gates
-and disconnect occupied ports with visible buttons. An accessible connection
-form also allows wiring without precise pointer targeting. Touch operation
+and disconnect occupied ports with visible buttons. The user explicitly removed the selector connection form on 2026-09-30;
+keep drag and tap wiring on visible ports. Touch operation
 must work without hover, context menus or keyboard. Controls use large targets.
 Keep the board recoverable with an explicit fit-view control.
 Verify 360×800, 768×1024, 1366×768 and 1920×1080; no page overflow.
@@ -52,7 +55,7 @@ Use CSS variables. Inline styles are allowed for React Flow geometry only.
 
 Every gate has a name, correct symbol, expression, explanation, truth table,
 character, ability, example and interactive binary-input simulator.
-Use versioned localStorage for completions, best star/gate scores and puzzle
+Use versioned localStorage for completions, best gate counts and puzzle
 drafts. Treat corrupt/unavailable storage as empty, keep the game functional,
 and tell the user if persistence is unavailable. Never trust stored circuits.
 

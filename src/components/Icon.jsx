@@ -1,8 +1,9 @@
 const paths = {
+  settings:
+    'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Zm-2-5h4l1 3 3 1 3 2-2 3 2 3-3 2-3 1-1 3h-4l-1-3-3-1-3-2 2-3-2-3 3-2 3-1 1-3Z',
   bolt: 'm13 2-8 11h6l-1 9 9-12h-6l0-8Z',
   arrow: 'M4 12h16m-6-6 6 6-6 6',
   back: 'M20 12H4m6-6-6 6 6 6',
-  star: 'm12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9L12 3Z',
   book: 'M12 5v16m0-16C9 3 5 3 2 4v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 1Z',
   grid: 'M3 3h7v7H3V3Zm11 0h7v7h-7V3ZM3 14h7v7H3v-7Zm11 0h7v7h-7v-7Z',
   check: 'm5 12 4 4L19 6',
@@ -31,9 +32,9 @@ export function Icon({ name, className = '', size = 20 }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.7"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      strokeWidth="2"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
       className={className}
       aria-hidden="true"
     >

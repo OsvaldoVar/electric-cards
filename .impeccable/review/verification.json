@@ -1,0 +1,17 @@
+{
+  "node": "24.19.0",
+  "chromium": "153.0.8010.52",
+  "lint": "passed",
+  "format": "passed",
+  "unit": {
+    "passed": 54,
+    "files": 6
+  },
+  "build": "passed",
+  "e2e": {
+    "passed": 27,
+    "skipped": 1,
+    "note": "Desktop touch-only skip; initial restored-wire geometry and resize verified in both projects"
+  },
+  "detector": []
+}

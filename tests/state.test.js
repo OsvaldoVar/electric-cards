@@ -10,6 +10,24 @@ import { gameReducer } from '../src/context/gameReducer';
 import { referenceCircuit } from './fixtures/solutions';
 
 describe('Reducer and local persistence', () => {
+  it('loads legacy star progress and saves completions without stars', () => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        ...emptyGame(),
+        completedLevels: { 1: { completed: true, stars: 3, bestGateCount: 1 } },
+        drafts: { 1: { circuit: referenceCircuit(1), inputs: { A: 0, B: 0 } } },
+      }),
+    );
+    const { state } = loadGame();
+    expect(state.completedLevels[1]).toEqual({ completed: true, bestGateCount: 1 });
+    expect(state.unlockedLevel).toBe(2);
+    expect(state.drafts[1].circuit.edges).toHaveLength(3);
+    expect(saveGame(state)).toBe(true);
+    expect(
+      JSON.parse(localStorage.getItem(STORAGE_KEY)).completedLevels[1],
+    ).not.toHaveProperty('stars');
+  });
   it('never exceeds inventory and refunds deletion including wires', () => {
     let state = gameReducer(emptyGame(), {
       type: 'ADD_GATE',
@@ -45,7 +63,7 @@ describe('Reducer and local persistence', () => {
       state,
     );
   });
-  it('completes only validated circuits and preserves the best scores', () => {
+  it('completes only validated circuits and preserves the best gate count', () => {
     expect(
       gameReducer(emptyGame(), { type: 'COMPLETE_LEVEL', levelId: 1 }).completedLevels,
     ).toEqual({});
@@ -54,10 +72,10 @@ describe('Reducer and local persistence', () => {
       drafts: { 1: { circuit: referenceCircuit(1), inputs: { A: 0, B: 0 } } },
     };
     state = gameReducer(state, { type: 'COMPLETE_LEVEL', levelId: 1 });
-    expect(state.completedLevels[1]).toEqual({ completed: true, stars: 3, bestGateCount: 1 });
+    expect(state.completedLevels[1]).toEqual({ completed: true, bestGateCount: 1 });
     expect(state.unlockedLevel).toBe(2);
     state = gameReducer(state, { type: 'RESET_PUZZLE', levelId: 1 });
-    expect(state.completedLevels[1].stars).toBe(3);
+    expect(state.completedLevels[1].bestGateCount).toBe(1);
     expect(state.drafts[1].circuit.edges).toEqual([]);
   });
   it('rejects reducer wire conflicts', () => {
@@ -82,7 +100,7 @@ describe('Reducer and local persistence', () => {
   it('round-trips progress and drafts, recovering from malformed or unavailable storage', () => {
     const state = {
       ...emptyGame(),
-      completedLevels: { 1: { completed: true, stars: 3, bestGateCount: 1 } },
+      completedLevels: { 1: { completed: true, bestGateCount: 1 } },
       drafts: { 1: { circuit: referenceCircuit(1), inputs: { A: 1, B: 0 } } },
     };
     expect(saveGame(state)).toBe(true);
@@ -108,7 +126,7 @@ describe('Reducer and local persistence', () => {
     circuit.edges[0].targetHandle = 'invalid';
     const saved = {
       version: 1,
-      completedLevels: { 1: { completed: true, stars: 99, bestGateCount: 0 } },
+      completedLevels: { 1: { completed: true, bestGateCount: -1 } },
       unlockedLevel: 25,
       drafts: { 1: { circuit } },
     };

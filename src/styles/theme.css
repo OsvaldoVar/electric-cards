@@ -1,0 +1,96 @@
+/* Appearance changes semantic tokens; controls keep the HUD's action color. */
+.site-header {
+  background: var(--header-bg);
+  border-bottom-color: var(--border);
+}
+.site-header nav a.active {
+  color: var(--on-secondary);
+}
+.button-secondary,
+.button-quiet,
+:root .board-tools button {
+  background: var(--secondary);
+  color: var(--on-secondary);
+  border-color: var(--button-border);
+}
+:root .board-tools {
+  background: transparent;
+}
+button:disabled {
+  background: var(--disabled-bg);
+  color: var(--disabled-text);
+  border-color: var(--border);
+}
+progress {
+  accent-color: var(--secondary);
+}
+.nav-start {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+.settings-button {
+  width: 44px;
+  min-height: 44px;
+  padding: 0;
+}
+.settings-dialog {
+  width: min(440px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--border-highlight);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-card);
+  overflow-y: auto;
+}
+.settings-dialog::backdrop,
+.completion-dialog::backdrop {
+  background: var(--modal-backdrop);
+}
+body:has(.settings-dialog[open]) {
+  overflow: hidden;
+}
+.settings-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.settings-heading h2 {
+  font-size: 28px;
+}
+.settings-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 64px;
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius-control);
+  background: var(--surface-raised);
+  text-align: left;
+}
+.settings-toggle > span:first-child {
+  flex: 1;
+}
+.settings-toggle strong,
+.settings-toggle small {
+  display: block;
+}
+.settings-toggle small {
+  color: var(--muted);
+  margin-top: var(--space-1);
+}
+.settings-toggle[aria-checked='true'] .switch-indicator {
+  background: var(--secondary);
+}
+.settings-toggle[aria-checked='true'] .switch-indicator::before {
+  transform: translateX(14px);
+  background: var(--on-secondary);
+}

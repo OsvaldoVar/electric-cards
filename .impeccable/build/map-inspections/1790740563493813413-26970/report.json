@@ -1,0 +1,2169 @@
+{
+  "tool": "comp-spec inspect-map",
+  "version": 1,
+  "referenceOnly": true,
+  "stateChanged": false,
+  "comp": ".impeccable/mocks/b-circuito.png",
+  "compSize": {
+    "width": 1487,
+    "height": 1058
+  },
+  "inputRegionCount": 36,
+  "regions": [
+    {
+      "id": "navigation",
+      "kind": "chrome",
+      "note": "White navigation strip with pale blue bottom border",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 0.0633
+      },
+      "px": {
+        "x": 0,
+        "y": 0,
+        "w": 1487,
+        "h": 67
+      },
+      "aspect": 22.194,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.9712
+        },
+        {
+          "hex": "#0a164f",
+          "coverage": 0.0113
+        },
+        {
+          "hex": "#f8c81e",
+          "coverage": 0.0105
+        },
+        {
+          "hex": "#b1b8cb",
+          "coverage": 0.0038
+        },
+        {
+          "hex": "#f8e8a2",
+          "coverage": 0.0032
+        }
+      ],
+      "detail": {
+        "energy": 14.6038
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 1,
+      "cropPath": "region-1.png"
+    },
+    {
+      "id": "brand",
+      "kind": "text",
+      "note": "Electric Cards bold navy wordmark",
+      "grid": null,
+      "box": {
+        "x": 0.0525,
+        "y": 0.018,
+        "w": 0.1157,
+        "h": 0.0274
+      },
+      "px": {
+        "x": 78,
+        "y": 19,
+        "w": 172,
+        "h": 29
+      },
+      "aspect": 5.931,
+      "palette": [
+        {
+          "hex": "#f6f7f8",
+          "coverage": 0.6626
+        },
+        {
+          "hex": "#0a154f",
+          "coverage": 0.201
+        },
+        {
+          "hex": "#a9b2c9",
+          "coverage": 0.0787
+        },
+        {
+          "hex": "#2c3e71",
+          "coverage": 0.0385
+        },
+        {
+          "hex": "#68779c",
+          "coverage": 0.0192
+        }
+      ],
+      "detail": {
+        "energy": 60.4234
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 2,
+      "cropPath": "region-2.png"
+    },
+    {
+      "id": "nav-jugar",
+      "kind": "control",
+      "note": "Jugar active navigation link with yellow underline",
+      "grid": null,
+      "box": {
+        "x": 0.2078,
+        "y": 0.0132,
+        "w": 0.0599,
+        "h": 0.0482
+      },
+      "px": {
+        "x": 309,
+        "y": 14,
+        "w": 89,
+        "h": 51
+      },
+      "aspect": 1.7451,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.8913
+        },
+        {
+          "hex": "#f8c817",
+          "coverage": 0.0543
+        },
+        {
+          "hex": "#8f90b2",
+          "coverage": 0.0282
+        },
+        {
+          "hex": "#3a4a7f",
+          "coverage": 0.0141
+        },
+        {
+          "hex": "#d3dbe8",
+          "coverage": 0.0121
+        }
+      ],
+      "detail": {
+        "energy": 9.5511
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 3,
+      "cropPath": "region-3.png"
+    },
+    {
+      "id": "nav-learn",
+      "kind": "control",
+      "note": "Compuertas navigation link",
+      "grid": null,
+      "box": {
+        "x": 0.2811,
+        "y": 0.0189,
+        "w": 0.0814,
+        "h": 0.0284
+      },
+      "px": {
+        "x": 418,
+        "y": 20,
+        "w": 121,
+        "h": 30
+      },
+      "aspect": 4.0333,
+      "palette": [
+        {
+          "hex": "#f6f6f7",
+          "coverage": 0.8675
+        },
+        {
+          "hex": "#6c7997",
+          "coverage": 0.0425
+        },
+        {
+          "hex": "#bac2d6",
+          "coverage": 0.0375
+        },
+        {
+          "hex": "#9298b7",
+          "coverage": 0.0275
+        },
+        {
+          "hex": "#0e134d",
+          "coverage": 0.025
+        }
+      ],
+      "detail": {
+        "energy": 27.8359
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 4,
+      "cropPath": "region-4.png"
+    },
+    {
+      "id": "score",
+      "kind": "control",
+      "note": "Actual earned-star count and small star icons",
+      "grid": null,
+      "box": {
+        "x": 0.9038,
+        "y": 0.0132,
+        "w": 0.0659,
+        "h": 0.034
+      },
+      "px": {
+        "x": 1344,
+        "y": 14,
+        "w": 98,
+        "h": 36
+      },
+      "aspect": 2.7222,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.7772
+        },
+        {
+          "hex": "#f8c81f",
+          "coverage": 0.1736
+        },
+        {
+          "hex": "#c3cfe3",
+          "coverage": 0.0181
+        },
+        {
+          "hex": "#6378a5",
+          "coverage": 0.0155
+        },
+        {
+          "hex": "#9ba8c8",
+          "coverage": 0.0155
+        }
+      ],
+      "detail": {
+        "energy": 8.3859
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 5,
+      "cropPath": "region-5.png"
+    },
+    {
+      "id": "breadcrumb",
+      "kind": "text",
+      "note": "Jugar level breadcrumb in navy small sans",
+      "grid": null,
+      "box": {
+        "x": 0.0296,
+        "y": 0.0832,
+        "w": 0.2401,
+        "h": 0.0189
+      },
+      "px": {
+        "x": 44,
+        "y": 88,
+        "w": 357,
+        "h": 20
+      },
+      "aspect": 17.85,
+      "palette": [
+        {
+          "hex": "#eaf6f8",
+          "coverage": 0.8285
+        },
+        {
+          "hex": "#c0cde7",
+          "coverage": 0.0551
+        },
+        {
+          "hex": "#536695",
+          "coverage": 0.0488
+        },
+        {
+          "hex": "#8191b1",
+          "coverage": 0.0375
+        },
+        {
+          "hex": "#618adf",
+          "coverage": 0.03
+        }
+      ],
+      "detail": {
+        "energy": 44.079
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 6,
+      "cropPath": "region-6.png"
+    },
+    {
+      "id": "title",
+      "kind": "text",
+      "note": "Dos señales, una salida bold navy heading",
+      "grid": null,
+      "box": {
+        "x": 0.0296,
+        "y": 0.1181,
+        "w": 0.3376,
+        "h": 0.0388
+      },
+      "px": {
+        "x": 44,
+        "y": 125,
+        "w": 502,
+        "h": 41
+      },
+      "aspect": 12.2439,
+      "palette": [
+        {
+          "hex": "#ebf6f8",
+          "coverage": 0.6496
+        },
+        {
+          "hex": "#0b1e64",
+          "coverage": 0.2186
+        },
+        {
+          "hex": "#091d4d",
+          "coverage": 0.0504
+        },
+        {
+          "hex": "#b9c5de",
+          "coverage": 0.0468
+        },
+        {
+          "hex": "#51649a",
+          "coverage": 0.0346
+        }
+      ],
+      "detail": {
+        "energy": 108.8069
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 7,
+      "cropPath": "region-7.png"
+    },
+    {
+      "id": "description",
+      "kind": "text",
+      "note": "La salida vale 1 solo cuando A y B valen 1.",
+      "grid": null,
+      "box": {
+        "x": 0.0296,
+        "y": 0.1711,
+        "w": 0.3262,
+        "h": 0.0236
+      },
+      "px": {
+        "x": 44,
+        "y": 181,
+        "w": 485,
+        "h": 25
+      },
+      "aspect": 19.4,
+      "palette": [
+        {
+          "hex": "#e9f5f8",
+          "coverage": 0.8336
+        },
+        {
+          "hex": "#576d9d",
+          "coverage": 0.0791
+        },
+        {
+          "hex": "#a1b0d2",
+          "coverage": 0.0468
+        },
+        {
+          "hex": "#3b4e8d",
+          "coverage": 0.0323
+        },
+        {
+          "hex": "#c5d3ef",
+          "coverage": 0.0083
+        }
+      ],
+      "detail": {
+        "energy": 50.9413
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 8,
+      "cropPath": "region-8.png"
+    },
+    {
+      "id": "test-button",
+      "kind": "control",
+      "note": "Yellow Probar circuito primary button",
+      "grid": null,
+      "box": {
+        "x": 0.7061,
+        "y": 0.1219,
+        "w": 0.1459,
+        "h": 0.0539
+      },
+      "px": {
+        "x": 1050,
+        "y": 129,
+        "w": 217,
+        "h": 57
+      },
+      "aspect": 3.807,
+      "palette": [
+        {
+          "hex": "#f8d647",
+          "coverage": 0.8961
+        },
+        {
+          "hex": "#f8e8ae",
+          "coverage": 0.0516
+        },
+        {
+          "hex": "#09144f",
+          "coverage": 0.0273
+        },
+        {
+          "hex": "#1f284f",
+          "coverage": 0.0129
+        },
+        {
+          "hex": "#41414c",
+          "coverage": 0.0121
+        }
+      ],
+      "detail": {
+        "energy": 18.9642
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 9,
+      "cropPath": "region-9.png"
+    },
+    {
+      "id": "reset-button",
+      "kind": "control",
+      "note": "White outlined Reiniciar button",
+      "grid": null,
+      "box": {
+        "x": 0.8608,
+        "y": 0.1229,
+        "w": 0.111,
+        "h": 0.052
+      },
+      "px": {
+        "x": 1280,
+        "y": 130,
+        "w": 165,
+        "h": 55
+      },
+      "aspect": 3,
+      "palette": [
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.822
+        },
+        {
+          "hex": "#5f77b2",
+          "coverage": 0.1118
+        },
+        {
+          "hex": "#7d94c3",
+          "coverage": 0.0267
+        },
+        {
+          "hex": "#acb8d7",
+          "coverage": 0.0218
+        },
+        {
+          "hex": "#142779",
+          "coverage": 0.0178
+        }
+      ],
+      "detail": {
+        "energy": 25.1356
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 10,
+      "cropPath": "region-10.png"
+    },
+    {
+      "id": "board",
+      "kind": "chrome",
+      "note": "White interactive runtime circuit editor container",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0.0296,
+        "y": 0.2146,
+        "w": 0.6765,
+        "h": 0.6011
+      },
+      "px": {
+        "x": 44,
+        "y": 227,
+        "w": 1006,
+        "h": 636
+      },
+      "aspect": 1.5818,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.9906
+        },
+        {
+          "hex": "#0a62f8",
+          "coverage": 0.0051
+        },
+        {
+          "hex": "#c8d8ed",
+          "coverage": 0.0022
+        },
+        {
+          "hex": "#081050",
+          "coverage": 0.0014
+        },
+        {
+          "hex": "#586898",
+          "coverage": 0.0007
+        }
+      ],
+      "detail": {
+        "energy": 8.5408
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 11,
+      "cropPath": "region-11.png"
+    },
+    {
+      "id": "board-title",
+      "kind": "text",
+      "note": "Tu circuito navy bold section heading",
+      "grid": null,
+      "box": {
+        "x": 0.041,
+        "y": 0.2372,
+        "w": 0.1036,
+        "h": 0.0284
+      },
+      "px": {
+        "x": 61,
+        "y": 251,
+        "w": 154,
+        "h": 30
+      },
+      "aspect": 5.1333,
+      "palette": [
+        {
+          "hex": "#f6f6f7",
+          "coverage": 0.7391
+        },
+        {
+          "hex": "#091358",
+          "coverage": 0.1423
+        },
+        {
+          "hex": "#64719c",
+          "coverage": 0.087
+        },
+        {
+          "hex": "#1f316d",
+          "coverage": 0.0178
+        },
+        {
+          "hex": "#cddae8",
+          "coverage": 0.0138
+        }
+      ],
+      "detail": {
+        "energy": 42.5209
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 12,
+      "cropPath": "region-12.png"
+    },
+    {
+      "id": "arrange",
+      "kind": "control",
+      "note": "Organizar outlined toolbar button",
+      "grid": null,
+      "box": {
+        "x": 0.5024,
+        "y": 0.2297,
+        "w": 0.0968,
+        "h": 0.0359
+      },
+      "px": {
+        "x": 747,
+        "y": 243,
+        "w": 144,
+        "h": 38
+      },
+      "aspect": 3.7895,
+      "palette": [
+        {
+          "hex": "#f4f6f8",
+          "coverage": 0.9048
+        },
+        {
+          "hex": "#c2cde4",
+          "coverage": 0.0419
+        },
+        {
+          "hex": "#7e8dbb",
+          "coverage": 0.0242
+        },
+        {
+          "hex": "#505e9d",
+          "coverage": 0.0161
+        },
+        {
+          "hex": "#203484",
+          "coverage": 0.0129
+        }
+      ],
+      "detail": {
+        "energy": 20.1624
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 13,
+      "cropPath": "region-13.png"
+    },
+    {
+      "id": "fit",
+      "kind": "control",
+      "note": "Ajustar vista outlined toolbar button",
+      "grid": null,
+      "box": {
+        "x": 0.6066,
+        "y": 0.2297,
+        "w": 0.0861,
+        "h": 0.0359
+      },
+      "px": {
+        "x": 902,
+        "y": 243,
+        "w": 128,
+        "h": 38
+      },
+      "aspect": 3.3684,
+      "palette": [
+        {
+          "hex": "#f4f6f8",
+          "coverage": 0.8813
+        },
+        {
+          "hex": "#91a1c9",
+          "coverage": 0.0468
+        },
+        {
+          "hex": "#576aa6",
+          "coverage": 0.0288
+        },
+        {
+          "hex": "#cdd6e7",
+          "coverage": 0.0234
+        },
+        {
+          "hex": "#27458f",
+          "coverage": 0.0198
+        }
+      ],
+      "detail": {
+        "energy": 21.5952
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 14,
+      "cropPath": "region-14.png"
+    },
+    {
+      "id": "runtime-canvas",
+      "kind": "chrome",
+      "note": "Interactive data-driven graph of current Boolean nodes and connections",
+      "grid": null,
+      "codeDrawn": true,
+      "container": true,
+      "box": {
+        "x": 0.039,
+        "y": 0.2713,
+        "w": 0.655,
+        "h": 0.4537
+      },
+      "px": {
+        "x": 58,
+        "y": 287,
+        "w": 974,
+        "h": 480
+      },
+      "aspect": 2.0292,
+      "palette": [
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.9869
+        },
+        {
+          "hex": "#0a63f8",
+          "coverage": 0.007
+        },
+        {
+          "hex": "#cedeee",
+          "coverage": 0.0043
+        },
+        {
+          "hex": "#081050",
+          "coverage": 0.0012
+        },
+        {
+          "hex": "#3888f8",
+          "coverage": 0.0007
+        }
+      ],
+      "detail": {
+        "energy": 8.0311
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 15,
+      "cropPath": "region-15.png"
+    },
+    {
+      "id": "input-a",
+      "kind": "control",
+      "note": "A current input value control, dynamic runtime node",
+      "grid": null,
+      "parentId": "runtime-canvas",
+      "box": {
+        "x": 0.0995,
+        "y": 0.3573,
+        "w": 0.0915,
+        "h": 0.0888
+      },
+      "px": {
+        "x": 148,
+        "y": 378,
+        "w": 136,
+        "h": 94
+      },
+      "aspect": 1.4468,
+      "palette": [
+        {
+          "hex": "#f7f8f8",
+          "coverage": 0.9074
+        },
+        {
+          "hex": "#d0dbeb",
+          "coverage": 0.0734
+        },
+        {
+          "hex": "#096af8",
+          "coverage": 0.0103
+        },
+        {
+          "hex": "#232f6f",
+          "coverage": 0.0048
+        },
+        {
+          "hex": "#080d53",
+          "coverage": 0.0041
+        }
+      ],
+      "detail": {
+        "energy": 8.3209
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 16,
+      "cropPath": "region-16.png"
+    },
+    {
+      "id": "input-b",
+      "kind": "control",
+      "note": "B current input value control, dynamic runtime node",
+      "grid": null,
+      "parentId": "runtime-canvas",
+      "box": {
+        "x": 0.0982,
+        "y": 0.569,
+        "w": 0.0921,
+        "h": 0.0898
+      },
+      "px": {
+        "x": 146,
+        "y": 602,
+        "w": 137,
+        "h": 95
+      },
+      "aspect": 1.4421,
+      "palette": [
+        {
+          "hex": "#f4f5f7",
+          "coverage": 0.9602
+        },
+        {
+          "hex": "#c5d0e5",
+          "coverage": 0.0199
+        },
+        {
+          "hex": "#0864f8",
+          "coverage": 0.0089
+        },
+        {
+          "hex": "#5e6b93",
+          "coverage": 0.0069
+        },
+        {
+          "hex": "#485085",
+          "coverage": 0.0041
+        }
+      ],
+      "detail": {
+        "energy": 8.9458
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 17,
+      "cropPath": "region-17.png"
+    },
+    {
+      "id": "gate-and",
+      "kind": "control",
+      "note": "AND gate interactive node showing a metadata-driven logic symbol",
+      "grid": null,
+      "codeDrawn": true,
+      "parentId": "runtime-canvas",
+      "box": {
+        "x": 0.3571,
+        "y": 0.449,
+        "w": 0.076,
+        "h": 0.1087
+      },
+      "px": {
+        "x": 531,
+        "y": 475,
+        "w": 113,
+        "h": 115
+      },
+      "aspect": 0.9826,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.907
+        },
+        {
+          "hex": "#080d4f",
+          "coverage": 0.0324
+        },
+        {
+          "hex": "#cbd4e5",
+          "coverage": 0.0303
+        },
+        {
+          "hex": "#101f51",
+          "coverage": 0.0165
+        },
+        {
+          "hex": "#0862f8",
+          "coverage": 0.0138
+        }
+      ],
+      "detail": {
+        "energy": 11.874
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 18,
+      "cropPath": "region-18.png"
+    },
+    {
+      "id": "output",
+      "kind": "control",
+      "note": "Readonly current Boolean output node",
+      "grid": null,
+      "parentId": "runtime-canvas",
+      "box": {
+        "x": 0.5804,
+        "y": 0.4575,
+        "w": 0.0672,
+        "h": 0.0992
+      },
+      "px": {
+        "x": 863,
+        "y": 484,
+        "w": 100,
+        "h": 105
+      },
+      "aspect": 0.9524,
+      "palette": [
+        {
+          "hex": "#eff1f6",
+          "coverage": 0.9409
+        },
+        {
+          "hex": "#091257",
+          "coverage": 0.0197
+        },
+        {
+          "hex": "#545f8f",
+          "coverage": 0.0137
+        },
+        {
+          "hex": "#23326b",
+          "coverage": 0.0137
+        },
+        {
+          "hex": "#0b69f8",
+          "coverage": 0.012
+        }
+      ],
+      "detail": {
+        "energy": 11.0114
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 19,
+      "cropPath": "region-19.png"
+    },
+    {
+      "id": "board-help",
+      "kind": "text",
+      "note": "Toca una salida y luego una entrada para conectar un cable.",
+      "grid": null,
+      "box": {
+        "x": 0.0625,
+        "y": 0.7476,
+        "w": 0.4156,
+        "h": 0.0208
+      },
+      "px": {
+        "x": 93,
+        "y": 791,
+        "w": 618,
+        "h": 22
+      },
+      "aspect": 28.0909,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.8447
+        },
+        {
+          "hex": "#6577a6",
+          "coverage": 0.0589
+        },
+        {
+          "hex": "#8996b6",
+          "coverage": 0.0576
+        },
+        {
+          "hex": "#b9c1d7",
+          "coverage": 0.0261
+        },
+        {
+          "hex": "#4d5d9b",
+          "coverage": 0.0127
+        }
+      ],
+      "detail": {
+        "energy": 40.1416
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 20,
+      "cropPath": "region-20.png"
+    },
+    {
+      "id": "sidebar",
+      "kind": "chrome",
+      "note": "White outlined objective and inventory sidebar",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0.7182,
+        "y": 0.2146,
+        "w": 0.2535,
+        "h": 0.6011
+      },
+      "px": {
+        "x": 1068,
+        "y": 227,
+        "w": 377,
+        "h": 636
+      },
+      "aspect": 0.5928,
+      "palette": [
+        {
+          "hex": "#f6f7f8",
+          "coverage": 0.8809
+        },
+        {
+          "hex": "#f8f8da",
+          "coverage": 0.0959
+        },
+        {
+          "hex": "#0a1157",
+          "coverage": 0.0086
+        },
+        {
+          "hex": "#576798",
+          "coverage": 0.0074
+        },
+        {
+          "hex": "#8492b4",
+          "coverage": 0.0072
+        }
+      ],
+      "detail": {
+        "energy": 17.3996
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 21,
+      "cropPath": "region-21.png"
+    },
+    {
+      "id": "objective-heading",
+      "kind": "text",
+      "note": "Objetivo bold navy heading",
+      "grid": null,
+      "box": {
+        "x": 0.731,
+        "y": 0.2353,
+        "w": 0.0894,
+        "h": 0.0236
+      },
+      "px": {
+        "x": 1087,
+        "y": 249,
+        "w": 133,
+        "h": 25
+      },
+      "aspect": 5.32,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.7626
+        },
+        {
+          "hex": "#091359",
+          "coverage": 0.1086
+        },
+        {
+          "hex": "#bec8d6",
+          "coverage": 0.0455
+        },
+        {
+          "hex": "#929cbb",
+          "coverage": 0.0429
+        },
+        {
+          "hex": "#2d3c72",
+          "coverage": 0.0404
+        }
+      ],
+      "detail": {
+        "energy": 40.473
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 22,
+      "cropPath": "region-22.png"
+    },
+    {
+      "id": "objective-copy",
+      "kind": "text",
+      "note": "Construye un circuito que cumpla la tabla de verdad utilizando solo las compuertas disponibles.",
+      "grid": null,
+      "box": {
+        "x": 0.731,
+        "y": 0.2675,
+        "w": 0.2192,
+        "h": 0.0662
+      },
+      "px": {
+        "x": 1087,
+        "y": 283,
+        "w": 326,
+        "h": 70
+      },
+      "aspect": 4.6571,
+      "palette": [
+        {
+          "hex": "#f7f7f7",
+          "coverage": 0.8378
+        },
+        {
+          "hex": "#8d9aba",
+          "coverage": 0.0564
+        },
+        {
+          "hex": "#5b6d9b",
+          "coverage": 0.0521
+        },
+        {
+          "hex": "#bac5d7",
+          "coverage": 0.0456
+        },
+        {
+          "hex": "#3e4e8b",
+          "coverage": 0.0081
+        }
+      ],
+      "detail": {
+        "energy": 48.9407
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 23,
+      "cropPath": "region-23.png"
+    },
+    {
+      "id": "truth-table",
+      "kind": "control",
+      "note": "Semantic table of required per-case Boolean output values",
+      "grid": null,
+      "codeDrawn": true,
+      "container": true,
+      "box": {
+        "x": 0.731,
+        "y": 0.3526,
+        "w": 0.2293,
+        "h": 0.1843
+      },
+      "px": {
+        "x": 1087,
+        "y": 373,
+        "w": 341,
+        "h": 195
+      },
+      "aspect": 1.7487,
+      "palette": [
+        {
+          "hex": "#f4f7f8",
+          "coverage": 0.9922
+        },
+        {
+          "hex": "#6c7ca1",
+          "coverage": 0.0033
+        },
+        {
+          "hex": "#3f4f7f",
+          "coverage": 0.0019
+        },
+        {
+          "hex": "#b5bece",
+          "coverage": 0.0014
+        },
+        {
+          "hex": "#080f4f",
+          "coverage": 0.0012
+        }
+      ],
+      "detail": {
+        "energy": 7.8269
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 24,
+      "cropPath": "region-24.png"
+    },
+    {
+      "id": "inventory-heading",
+      "kind": "text",
+      "note": "Tus compuertas bold navy heading",
+      "grid": null,
+      "box": {
+        "x": 0.731,
+        "y": 0.5832,
+        "w": 0.1406,
+        "h": 0.0236
+      },
+      "px": {
+        "x": 1087,
+        "y": 617,
+        "w": 209,
+        "h": 25
+      },
+      "aspect": 8.36,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.7582
+        },
+        {
+          "hex": "#081058",
+          "coverage": 0.1086
+        },
+        {
+          "hex": "#cacfe1",
+          "coverage": 0.0576
+        },
+        {
+          "hex": "#233173",
+          "coverage": 0.0543
+        },
+        {
+          "hex": "#4e5a8e",
+          "coverage": 0.0214
+        }
+      ],
+      "detail": {
+        "energy": 58.2513
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 25,
+      "cropPath": "region-25.png"
+    },
+    {
+      "id": "inventory-button",
+      "kind": "control",
+      "note": "Yellow-edged Añadir AND inventory button with available quantity",
+      "grid": null,
+      "box": {
+        "x": 0.7303,
+        "y": 0.621,
+        "w": 0.23,
+        "h": 0.0718
+      },
+      "px": {
+        "x": 1086,
+        "y": 657,
+        "w": 342,
+        "h": 76
+      },
+      "aspect": 4.5,
+      "palette": [
+        {
+          "hex": "#f8f8db",
+          "coverage": 0.8517
+        },
+        {
+          "hex": "#f8c61d",
+          "coverage": 0.0863
+        },
+        {
+          "hex": "#bfbebb",
+          "coverage": 0.0217
+        },
+        {
+          "hex": "#090d52",
+          "coverage": 0.0203
+        },
+        {
+          "hex": "#f7f4f4",
+          "coverage": 0.02
+        }
+      ],
+      "detail": {
+        "energy": 31.8373
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 26,
+      "cropPath": "region-26.png"
+    },
+    {
+      "id": "hint",
+      "kind": "control",
+      "note": "Ver pista accessible disclosure action",
+      "grid": null,
+      "box": {
+        "x": 0.7317,
+        "y": 0.7136,
+        "w": 0.2286,
+        "h": 0.0416
+      },
+      "px": {
+        "x": 1088,
+        "y": 755,
+        "w": 340,
+        "h": 44
+      },
+      "aspect": 7.7273,
+      "palette": [
+        {
+          "hex": "#f8f8f8",
+          "coverage": 0.9582
+        },
+        {
+          "hex": "#0c1567",
+          "coverage": 0.0159
+        },
+        {
+          "hex": "#394788",
+          "coverage": 0.0106
+        },
+        {
+          "hex": "#a0accb",
+          "coverage": 0.0094
+        },
+        {
+          "hex": "#556393",
+          "coverage": 0.0059
+        }
+      ],
+      "detail": {
+        "energy": 18.7808
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 27,
+      "cropPath": "region-27.png"
+    },
+    {
+      "id": "star-goal",
+      "kind": "text",
+      "note": "Hasta 3 estrellas · 1 compuerta goal",
+      "grid": null,
+      "box": {
+        "x": 0.7566,
+        "y": 0.7817,
+        "w": 0.2031,
+        "h": 0.0198
+      },
+      "px": {
+        "x": 1125,
+        "y": 827,
+        "w": 302,
+        "h": 21
+      },
+      "aspect": 14.381,
+      "palette": [
+        {
+          "hex": "#f7f7f8",
+          "coverage": 0.8225
+        },
+        {
+          "hex": "#cfd7e7",
+          "coverage": 0.0592
+        },
+        {
+          "hex": "#a6b0d1",
+          "coverage": 0.0433
+        },
+        {
+          "hex": "#253e8d",
+          "coverage": 0.0375
+        },
+        {
+          "hex": "#7284b8",
+          "coverage": 0.0375
+        }
+      ],
+      "detail": {
+        "energy": 52.6993
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 28,
+      "cropPath": "region-28.png"
+    },
+    {
+      "id": "wiring-panel",
+      "kind": "chrome",
+      "note": "Light blue accessible connection form container",
+      "grid": null,
+      "container": true,
+      "box": {
+        "x": 0.0296,
+        "y": 0.8318,
+        "w": 0.9422,
+        "h": 0.1181
+      },
+      "px": {
+        "x": 44,
+        "y": 880,
+        "w": 1401,
+        "h": 125
+      },
+      "aspect": 11.208,
+      "palette": [
+        {
+          "hex": "#ebf6f7",
+          "coverage": 0.9859
+        },
+        {
+          "hex": "#b3c0d8",
+          "coverage": 0.006
+        },
+        {
+          "hex": "#8e9cbc",
+          "coverage": 0.0041
+        },
+        {
+          "hex": "#0e2e8e",
+          "coverage": 0.002
+        },
+        {
+          "hex": "#6777a7",
+          "coverage": 0.002
+        }
+      ],
+      "detail": {
+        "energy": 12.3545
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 29,
+      "cropPath": "region-29.png"
+    },
+    {
+      "id": "wiring-heading",
+      "kind": "text",
+      "note": "Conectar con selectores section heading",
+      "grid": null,
+      "box": {
+        "x": 0.0457,
+        "y": 0.8459,
+        "w": 0.1769,
+        "h": 0.0189
+      },
+      "px": {
+        "x": 68,
+        "y": 895,
+        "w": 263,
+        "h": 20
+      },
+      "aspect": 13.15,
+      "palette": [
+        {
+          "hex": "#edf6f8",
+          "coverage": 0.7027
+        },
+        {
+          "hex": "#10318f",
+          "coverage": 0.0956
+        },
+        {
+          "hex": "#849dcb",
+          "coverage": 0.0708
+        },
+        {
+          "hex": "#bbc9e4",
+          "coverage": 0.0673
+        },
+        {
+          "hex": "#3858a8",
+          "coverage": 0.0637
+        }
+      ],
+      "detail": {
+        "energy": 103.1097
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 30,
+      "cropPath": "region-30.png"
+    },
+    {
+      "id": "source-label",
+      "kind": "text",
+      "note": "Origen del cable accessible select label",
+      "grid": null,
+      "box": {
+        "x": 0.0451,
+        "y": 0.8733,
+        "w": 0.1197,
+        "h": 0.0151
+      },
+      "px": {
+        "x": 67,
+        "y": 924,
+        "w": 178,
+        "h": 16
+      },
+      "aspect": 11.125,
+      "palette": [
+        {
+          "hex": "#ebf7f8",
+          "coverage": 0.7833
+        },
+        {
+          "hex": "#7283a6",
+          "coverage": 0.0778
+        },
+        {
+          "hex": "#b3bed6",
+          "coverage": 0.075
+        },
+        {
+          "hex": "#425281",
+          "coverage": 0.0556
+        },
+        {
+          "hex": "#1d2d6d",
+          "coverage": 0.0083
+        }
+      ],
+      "detail": {
+        "energy": 42.575
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 31,
+      "cropPath": "region-31.png"
+    },
+    {
+      "id": "target-label",
+      "kind": "text",
+      "note": "Destino del cable accessible select label",
+      "grid": null,
+      "box": {
+        "x": 0.3826,
+        "y": 0.8733,
+        "w": 0.1197,
+        "h": 0.0151
+      },
+      "px": {
+        "x": 569,
+        "y": 924,
+        "w": 178,
+        "h": 16
+      },
+      "aspect": 11.125,
+      "palette": [
+        {
+          "hex": "#ecf7f8",
+          "coverage": 0.7778
+        },
+        {
+          "hex": "#526490",
+          "coverage": 0.0917
+        },
+        {
+          "hex": "#8797b8",
+          "coverage": 0.0528
+        },
+        {
+          "hex": "#b8c4d5",
+          "coverage": 0.05
+        },
+        {
+          "hex": "#253b75",
+          "coverage": 0.0278
+        }
+      ],
+      "detail": {
+        "energy": 44.6728
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 32,
+      "cropPath": "region-32.png"
+    },
+    {
+      "id": "source-select",
+      "kind": "control",
+      "note": "Source port selector with original accessible name",
+      "grid": null,
+      "box": {
+        "x": 0.0437,
+        "y": 0.8932,
+        "w": 0.3194,
+        "h": 0.0435
+      },
+      "px": {
+        "x": 65,
+        "y": 945,
+        "w": 475,
+        "h": 46
+      },
+      "aspect": 10.3261,
+      "palette": [
+        {
+          "hex": "#f5f5f6",
+          "coverage": 0.9226
+        },
+        {
+          "hex": "#c8d7e7",
+          "coverage": 0.0411
+        },
+        {
+          "hex": "#8897b8",
+          "coverage": 0.0154
+        },
+        {
+          "hex": "#6879a8",
+          "coverage": 0.0142
+        },
+        {
+          "hex": "#b0b8d0",
+          "coverage": 0.0067
+        }
+      ],
+      "detail": {
+        "energy": 13.6703
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 33,
+      "cropPath": "region-33.png"
+    },
+    {
+      "id": "target-select",
+      "kind": "control",
+      "note": "Target port selector with original accessible name",
+      "grid": null,
+      "box": {
+        "x": 0.3826,
+        "y": 0.8932,
+        "w": 0.3201,
+        "h": 0.0435
+      },
+      "px": {
+        "x": 569,
+        "y": 945,
+        "w": 476,
+        "h": 46
+      },
+      "aspect": 10.3478,
+      "palette": [
+        {
+          "hex": "#f5f5f6",
+          "coverage": 0.9128
+        },
+        {
+          "hex": "#c8d7e7",
+          "coverage": 0.056
+        },
+        {
+          "hex": "#7080a9",
+          "coverage": 0.0268
+        },
+        {
+          "hex": "#a3adca",
+          "coverage": 0.0036
+        },
+        {
+          "hex": "#080858",
+          "coverage": 0.0008
+        }
+      ],
+      "detail": {
+        "energy": 14.0226
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 34,
+      "cropPath": "region-34.png"
+    },
+    {
+      "id": "connect-button",
+      "kind": "control",
+      "note": "Conectar button enabled only with valid selection",
+      "grid": null,
+      "box": {
+        "x": 0.7182,
+        "y": 0.8932,
+        "w": 0.1002,
+        "h": 0.0435
+      },
+      "px": {
+        "x": 1068,
+        "y": 945,
+        "w": 149,
+        "h": 46
+      },
+      "aspect": 3.2391,
+      "palette": [
+        {
+          "hex": "#d7daea",
+          "coverage": 0.9525
+        },
+        {
+          "hex": "#9fadcc",
+          "coverage": 0.0475
+        }
+      ],
+      "detail": {
+        "energy": 3.9267
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 35,
+      "cropPath": "region-35.png"
+    },
+    {
+      "id": "saved",
+      "kind": "text",
+      "note": "Tu progreso se guarda en este navegador.",
+      "grid": null,
+      "box": {
+        "x": 0.0525,
+        "y": 0.9716,
+        "w": 0.3127,
+        "h": 0.0151
+      },
+      "px": {
+        "x": 78,
+        "y": 1028,
+        "w": 465,
+        "h": 16
+      },
+      "aspect": 29.0625,
+      "palette": [
+        {
+          "hex": "#e8f6f8",
+          "coverage": 0.9086
+        },
+        {
+          "hex": "#6076a6",
+          "coverage": 0.0409
+        },
+        {
+          "hex": "#97a7ca",
+          "coverage": 0.028
+        },
+        {
+          "hex": "#bbc8e0",
+          "coverage": 0.0226
+        }
+      ],
+      "detail": {
+        "energy": 33.7552
+      },
+      "medium": "semantic",
+      "plate": null,
+      "text": null,
+      "surface": {
+        "flat": false,
+        "rules": false
+      },
+      "number": 36,
+      "cropPath": "region-36.png"
+    }
+  ],
+  "issues": [
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region navigation: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region board: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region runtime-canvas: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region runtime-canvas: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region gate-and: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region sidebar: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region truth-table: \"codeDrawn\": true set in the regions file (the painted-material refusal is overridden: code draws this region)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region truth-table: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+    },
+    {
+      "severity": "warning",
+      "code": "measurement-warning",
+      "regionId": null,
+      "message": "region wiring-panel: \"container\": true set in the regions file (the region-size refusal is overridden: one undivided element)"
+    },
+    {
+      "severity": "warning",
+      "code": "uncovered-ink",
+      "regionId": null,
+      "message": "2 grid cells have detail outside named regions. This is a coverage heuristic, not proof of missing components."
+    }
+  ],
+  "overlaps": [
+    {
+      "a": "navigation",
+      "b": "brand",
+      "pixels": 4988.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "navigation",
+      "b": "nav-jugar",
+      "pixels": 4539.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "navigation",
+      "b": "nav-learn",
+      "pixels": 3630.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "navigation",
+      "b": "score",
+      "pixels": 3528.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "board-title",
+      "pixels": 4620.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "arrange",
+      "pixels": 5472.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "fit",
+      "pixels": 4864.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "runtime-canvas",
+      "pixels": 467520.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "input-a",
+      "pixels": 12784.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "input-b",
+      "pixels": 13015.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "gate-and",
+      "pixels": 12995.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "output",
+      "pixels": 10500.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "board",
+      "b": "board-help",
+      "pixels": 13596.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "runtime-canvas",
+      "b": "input-a",
+      "pixels": 12784.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "runtime-canvas",
+      "b": "input-b",
+      "pixels": 13015.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "runtime-canvas",
+      "b": "gate-and",
+      "pixels": 12995.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "runtime-canvas",
+      "b": "output",
+      "pixels": 10500.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "sidebar",
+      "b": "objective-heading",
+      "pixels": 3325.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "sidebar",
+      "b": "objective-copy",
+      "pixels": 22820.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "sidebar",
+      "b": "truth-table",
+      "pixels": 66495.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "sidebar",
+      "b": "inventory-heading",
+      "pixels": 5225.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "sidebar",
+      "b": "inventory-button",
+      "pixels": 25992.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "sidebar",
+      "b": "hint",
+      "pixels": 14960.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "sidebar",
+      "b": "star-goal",
+      "pixels": 6342.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "wiring-panel",
+      "b": "wiring-heading",
+      "pixels": 5260.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "wiring-panel",
+      "b": "source-label",
+      "pixels": 2848.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "wiring-panel",
+      "b": "target-label",
+      "pixels": 2848.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "wiring-panel",
+      "b": "source-select",
+      "pixels": 21850.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "wiring-panel",
+      "b": "target-select",
+      "pixels": 21896.0,
+      "relationship": "container extent"
+    },
+    {
+      "a": "wiring-panel",
+      "b": "connect-button",
+      "pixels": 6854.0,
+      "relationship": "container extent"
+    }
+  ],
+  "reviewGroups": {},
+  "uncoveredInkCells": [
+    "A9",
+    "B9"
+  ],
+  "comparisonSheets": []
+}

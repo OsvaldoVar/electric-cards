@@ -1,6 +1,50 @@
 import { evaluateExpression } from '../engine/evaluateGate';
+import { formatExpression } from '../engine/formatExpression';
+import { sequentialLevels } from './sequentialLevels';
+
+// One intentional distractor for every level. It is never labeled in the UI.
+// Existing options remain available so saved drafts and alternative solutions work.
+const distractors = {
+  1: 'OR',
+  2: 'AND',
+  3: 'OR',
+  4: 'NOT',
+  5: 'NOT',
+  6: 'OR',
+  7: 'AND',
+  8: 'OR',
+  9: 'AND',
+  10: 'XOR',
+  11: 'OR',
+  12: 'AND',
+  13: 'OR',
+  14: 'AND',
+  15: 'AND',
+  16: 'NOT',
+  17: 'XOR',
+  18: 'XOR',
+  19: 'OR',
+  20: 'OR',
+  21: 'OR',
+  22: 'AND',
+  23: 'OR',
+  24: 'NAND',
+  25: 'NOT',
+};
 
 export const worlds = [
+  {
+    id: 6,
+    title: 'El ritmo de las señales',
+    subtitle: 'Relojes, flancos y el primer bit de memoria.',
+    family: 'blue',
+  },
+  {
+    id: 7,
+    title: 'Memoria en movimiento',
+    subtitle: 'Registros, alternancia y decisiones que recuerdan.',
+    family: 'violet',
+  },
   {
     id: 1,
     title: 'Primeras señales',
@@ -31,10 +75,10 @@ export const worlds = [
     subtitle: 'El mismo resultado, con un inventario más exigente.',
     family: 'mint',
   },
-];
+].sort((a, b) => a.id - b.id);
 
 function createLevel(record) {
-  const { inputIds, goals, budgets, ...rest } = record;
+  const { inputIds, goals, ...rest } = record;
   const inputs = inputIds.map((id) => ({
     id,
     label: id === 'S' ? 'Selector S' : `Sensor ${id}`,
@@ -43,6 +87,7 @@ function createLevel(record) {
     id,
     label: value[0],
     type: value[1],
+    formula: formatExpression(value[2]),
   }));
   const tests = Array.from({ length: 2 ** inputs.length }, (_, index) => {
     const values = Object.fromEntries(
@@ -57,11 +102,15 @@ function createLevel(record) {
   });
   return {
     ...rest,
+    distractor: distractors[rest.id],
+    inventory: {
+      ...rest.inventory,
+      [distractors[rest.id]]: rest.inventory[distractors[rest.id]] ?? 1,
+    },
     difficulty: rest.world,
     inputs,
     outputs,
     tests,
-    stars: { maxGates2: budgets[0], maxGates3: budgets[1] },
   };
 }
 
@@ -79,7 +128,7 @@ const records = [
       AND: 1,
       OR: 1,
     },
-    budgets: [2, 1],
+    optimizationGateCount: 1,
     hints: [
       'Ambas condiciones deben cumplirse a la vez.',
       'Prueba una AND con los dos sensores.',
@@ -98,7 +147,7 @@ const records = [
       OR: 1,
       AND: 1,
     },
-    budgets: [2, 1],
+    optimizationGateCount: 1,
     hints: [
       'Una sola entrada activa ya es suficiente.',
       'OR permite que cualquiera active la salida.',
@@ -116,7 +165,7 @@ const records = [
     inventory: {
       NOT: 1,
     },
-    budgets: [1, 1],
+    optimizationGateCount: 1,
     hints: ['Necesitas invertir el valor de la entrada.', 'NOT transforma 0 en 1 y 1 en 0.'],
   },
   {
@@ -133,7 +182,7 @@ const records = [
       OR: 1,
       NOT: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: [
       'Resuelve primero la condición de A y B.',
       'Combina esa salida con C mediante OR.',
@@ -153,7 +202,7 @@ const records = [
       OR: 1,
       NOT: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: ['C es un permiso obligatorio.', 'Agrupa A y B con OR y exige C con AND.'],
   },
   {
@@ -170,7 +219,7 @@ const records = [
       AND: 1,
       NOT: 1,
     },
-    budgets: [2, 1],
+    optimizationGateCount: 1,
     hints: ['Busca la negación de AND.', 'Una NAND resuelve todo el objetivo.'],
   },
   {
@@ -187,7 +236,7 @@ const records = [
       OR: 1,
       NOT: 1,
     },
-    budgets: [2, 1],
+    optimizationGateCount: 1,
     hints: ['El resultado es lo contrario de OR.', 'NOR da 1 únicamente con 0 y 0.'],
   },
   {
@@ -204,7 +253,7 @@ const records = [
       NOT: 1,
       OR: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: ['B representa un bloqueo: invierte su señal.', 'Conecta A y NOT(B) a una AND.'],
   },
   {
@@ -221,7 +270,7 @@ const records = [
       NOT: 1,
       AND: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: ['Hay dos maneras de activar la salida.', 'Combina A con NOT(B) usando OR.'],
   },
   {
@@ -237,7 +286,7 @@ const records = [
       NOT: 2,
       AND: 1,
     },
-    budgets: [3, 3],
+    optimizationGateCount: 3,
     hints: [
       'Estar ambos apagados equivale a que ambas negaciones estén encendidas.',
       'NOT(A) AND NOT(B) es igual a NOR(A,B).',
@@ -257,7 +306,7 @@ const records = [
       OR: 1,
       AND: 1,
     },
-    budgets: [2, 1],
+    optimizationGateCount: 1,
     hints: [
       'OR también se activa con dos unos; aquí eso no sirve.',
       'XOR detecta entradas diferentes.',
@@ -277,7 +326,7 @@ const records = [
       XOR: 1,
       NOT: 1,
     },
-    budgets: [2, 1],
+    optimizationGateCount: 1,
     hints: ['La igualdad incluye 0/0 y 1/1.', 'XNOR es un comparador de igualdad.'],
   },
   {
@@ -294,7 +343,7 @@ const records = [
       AND: 1,
       OR: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: ['Primero detecta la diferencia.', 'C debe coincidir con una salida XOR activa.'],
   },
   {
@@ -311,7 +360,7 @@ const records = [
       OR: 1,
       AND: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: [
       'La igualdad activa la puerta; C también puede hacerlo por sí solo.',
       'Une XNOR(A,B) con C mediante OR.',
@@ -332,7 +381,7 @@ const records = [
       XNOR: 1,
       NOT: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: [
       'Las salidas deben ser opuestas para cada entrada.',
       'Puedes usar XOR y XNOR, o compartir XOR con una NOT.',
@@ -352,7 +401,7 @@ const records = [
       OR: 2,
       NOT: 1,
     },
-    budgets: [5, 4],
+    optimizationGateCount: 4,
     hints: [
       'Si A y B coinciden en 1, ya existe mayoría. Si solo uno está en 1, C decide.',
       'Usa (A AND B) OR (C AND (A OR B)) para ahorrar una compuerta.',
@@ -372,7 +421,7 @@ const records = [
       OR: 1,
       NOT: 1,
     },
-    budgets: [4, 4],
+    optimizationGateCount: 4,
     hints: [
       'Agrupa por separado los permisos y los bloqueos.',
       'Combina AND(A,B) con NOT(OR(C,D)) mediante AND.',
@@ -393,7 +442,7 @@ const records = [
       AND: 1,
       NOT: 1,
     },
-    budgets: [3, 3],
+    optimizationGateCount: 3,
     hints: ['C es un bloqueo global.', '(A OR B) AND NOT(C) cumple todas las combinaciones.'],
   },
   {
@@ -410,7 +459,7 @@ const records = [
       OR: 1,
       AND: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: [
       'XOR acumula la paridad de dos señales.',
       'Encadena dos XOR para comparar tres entradas.',
@@ -432,7 +481,7 @@ const records = [
       AND: 1,
       OR: 1,
     },
-    budgets: [3, 2],
+    optimizationGateCount: 2,
     hints: [
       'Un semisumador suma dos bits y puede producir un acarreo.',
       'Comparte A y B entre una XOR y una AND.',
@@ -442,7 +491,8 @@ const records = [
     id: 21,
     world: 5,
     title: 'AND con otro nombre',
-    description: 'Abre la puerta cuando A y B estén activos. Solo puedes usar NAND.',
+    description:
+      'Abre la puerta cuando A y B estén activos. Encuentra una solución con dos compuertas.',
     inputIds: ['A', 'B'],
     goals: {
       DOOR: ['Puerta', 'door', ['AND', 'A', 'B']],
@@ -450,7 +500,7 @@ const records = [
     inventory: {
       NAND: 2,
     },
-    budgets: [2, 2],
+    optimizationGateCount: 2,
     hints: [
       'Una NAND con sus dos entradas iguales se comporta como NOT.',
       'Invierte el resultado de la primera NAND usando la segunda.',
@@ -461,7 +511,7 @@ const records = [
     world: 5,
     title: 'OR universal',
     description:
-      'Enciende el LED cuando A o B estén activos. Tu inventario solo contiene NAND.',
+      'Enciende el LED cuando A o B estén activos. Aprovecha las NAND del inventario.',
     inputIds: ['A', 'B'],
     goals: {
       LED: ['Luz de señal', 'led', ['OR', 'A', 'B']],
@@ -469,7 +519,7 @@ const records = [
     inventory: {
       NAND: 3,
     },
-    budgets: [3, 3],
+    optimizationGateCount: 3,
     hints: [
       'Una NAND puede invertir una entrada si recibe esa señal en ambos puertos.',
       'NAND(NOT(A),NOT(B)) equivale a OR(A,B).',
@@ -479,7 +529,8 @@ const records = [
     id: 23,
     world: 5,
     title: 'La diferencia mínima',
-    description: 'Activa la alarma si A y B son diferentes. Tienes exactamente cuatro NAND.',
+    description:
+      'Activa la alarma si A y B son diferentes. Elige bien entre las compuertas disponibles.',
     inputIds: ['A', 'B'],
     goals: {
       ALARM: ['Diferencia', 'alarm', ['XOR', 'A', 'B']],
@@ -487,7 +538,7 @@ const records = [
     inventory: {
       NAND: 4,
     },
-    budgets: [4, 4],
+    optimizationGateCount: 4,
     hints: [
       'Comparte el resultado de NAND(A,B) con otras dos NAND.',
       'N1=NAND(A,B); N2=NAND(A,N1); N3=NAND(B,N1); salida=NAND(N2,N3).',
@@ -511,7 +562,7 @@ const records = [
       OR: 1,
       NOT: 1,
     },
-    budgets: [4, 4],
+    optimizationGateCount: 4,
     hints: [
       'S permite una ruta mientras su negación permite la otra.',
       '(A AND NOT(S)) OR (B AND S) forma un multiplexor.',
@@ -534,7 +585,7 @@ const records = [
       OR: 2,
       NOT: 1,
     },
-    budgets: [6, 5],
+    optimizationGateCount: 5,
     hints: [
       'Construye la paridad y la mayoría. Busca una señal intermedia que puedan compartir.',
       'Comparte XOR(A,B): SUMA=XOR(esa,C), ACARREO=OR(AND(A,B),AND(esa,C)).',
@@ -542,5 +593,5 @@ const records = [
   },
 ];
 
-export const levels = records.map(createLevel);
+export const levels = [...records.map(createLevel), ...sequentialLevels];
 export const getLevel = (id) => levels.find((level) => level.id === Number(id));

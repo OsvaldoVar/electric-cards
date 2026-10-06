@@ -4,6 +4,7 @@ import { validateConnection } from '../engine/validateCircuit';
 import { validateLevel } from '../engine/validateLevel';
 import { isBinary } from '../engine/operations';
 import { arrangeNodes } from '../services/boardLayout';
+import { unlockedGateIds } from '../data/unlocks';
 
 export function createDraft(level, vertical = false) {
   const circuit = createCircuit(level);
@@ -25,13 +26,14 @@ export function gameReducer(state, action) {
       return state.drafts[level.id] ? state : update(draft);
     case 'ADD_GATE': {
       if (
+        !unlockedGateIds(state.completedLevels).includes(action.gateType) ||
         !(remainingInventory(level, circuit)[action.gateType] > 0) ||
         circuit.nodes.some((node) => node.id === action.nodeId)
       )
         return state;
       const index = circuit.nodes.filter((node) => node.type === 'gate').length;
       const position = action.position ?? {
-        x: 285 + (index % 2) * 150,
+        x: 285 + (index % 2) * 220,
         y: 75 + Math.floor(index / 2) * 160,
       };
       let nodes = [
@@ -48,6 +50,17 @@ export function gameReducer(state, action) {
         // Existing cards retain their positions; outputs move below new rows.
         nodes = nodes.map((node) =>
           node.id === action.nodeId || node.type === 'output' ? arranged.get(node.id) : node,
+        );
+      } else {
+        // Keep output ports clear of newly placed cards and their disconnect buttons.
+        const outputX = Math.max(
+          570,
+          ...nodes.filter((node) => node.type === 'gate').map((node) => node.position.x + 220),
+        );
+        nodes = nodes.map((node) =>
+          node.type === 'output' && node.position.x < outputX
+            ? { ...node, position: { ...node.position, x: outputX } }
+            : node,
         );
       }
       return update({
@@ -134,7 +147,9 @@ export function gameReducer(state, action) {
         circuit: { ...circuit, nodes: arrangeNodes(circuit.nodes, action.vertical) },
       });
     case 'COMPLETE_LEVEL': {
-      const result = validateLevel(level, circuit);
+      const result = validateLevel(level, circuit, {
+        unlockedGates: unlockedGateIds(state.completedLevels),
+      });
       if (!result.success || level.id > state.unlockedLevel) return state;
       const previous = state.completedLevels[level.id];
       return {
@@ -143,7 +158,6 @@ export function gameReducer(state, action) {
           ...state.completedLevels,
           [level.id]: {
             completed: true,
-            stars: Math.max(previous?.stars ?? 0, result.stars),
             bestGateCount: Math.min(previous?.bestGateCount ?? Infinity, result.gateCount),
           },
         },

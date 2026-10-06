@@ -3,8 +3,17 @@ import { evaluateGate } from '../engine/evaluateGate';
 import { GateSymbol } from './GateSymbol';
 import { Icon } from './Icon';
 import { TruthTable } from './TruthTable/TruthTable';
+import { SequentialSimulator } from './SequentialSimulator';
 
 export function GateSimulator({ gate, withTable = true }) {
+  return gate.sequential ? (
+    <SequentialSimulator gate={gate} />
+  ) : (
+    <CombinationalSimulator gate={gate} withTable={withTable} />
+  );
+}
+
+function CombinationalSimulator({ gate, withTable }) {
   const [inputs, setInputs] = useState(Array(gate.inputs).fill(0));
   const output = evaluateGate(gate.id, inputs);
   return (

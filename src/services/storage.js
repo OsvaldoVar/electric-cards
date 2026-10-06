@@ -17,16 +17,12 @@ export function sanitizeGame(value) {
     const saved = value.completedLevels?.[level.id];
     if (
       saved?.completed === true &&
-      Number.isInteger(saved.stars) &&
-      saved.stars >= 1 &&
-      saved.stars <= 3 &&
       Number.isInteger(saved.bestGateCount) &&
       saved.bestGateCount >= 0 &&
       saved.bestGateCount <= 40
     ) {
       state.completedLevels[level.id] = {
         completed: true,
-        stars: saved.stars,
         bestGateCount: saved.bestGateCount,
       };
     }

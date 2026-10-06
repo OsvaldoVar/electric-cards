@@ -6,6 +6,9 @@ export const gateInputCounts = Object.freeze({
   NOR: 2,
   XOR: 2,
   XNOR: 2,
+  CLOCK: 0,
+  DFF: 2,
+  TFF: 2,
 });
 
 export const gateOperations = Object.freeze({
@@ -19,8 +22,12 @@ export const gateOperations = Object.freeze({
 });
 
 export const isBinary = (value) => value === 0 || value === 1;
+export const isFlipFlop = (type) => type === 'DFF' || type === 'TFF';
 export const targetPorts = (node) => {
   if (node.type === 'output') return ['in'];
   if (node.type !== 'gate' || !Object.hasOwn(gateInputCounts, node.data?.gateType)) return [];
+  if (node.data.gateType === 'CLOCK') return [];
+  if (node.data.gateType === 'DFF') return ['d', 'clk'];
+  if (node.data.gateType === 'TFF') return ['t', 'clk'];
   return gateInputCounts[node.data.gateType] === 1 ? ['a'] : ['a', 'b'];
 };

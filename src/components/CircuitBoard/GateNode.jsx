@@ -2,11 +2,12 @@ import { gates } from '../../data/gates';
 import { GateSymbol } from '../GateSymbol';
 import { Icon } from '../Icon';
 import { Port } from './Port';
+import { targetPorts } from '../../engine/operations';
 
 export function GateNode({ id, data }) {
   const gate = gates[data.gateType];
   return (
-    <div className={`circuit-node gate-node family-${gate.family}`}>
+    <div className={`circuit-node pixel-frame gate-node family-${gate.family}`}>
       <div className="gate-node-heading">
         <strong className="mono">{gate.name}</strong>
         <button
@@ -19,14 +20,18 @@ export function GateNode({ id, data }) {
         </button>
       </div>
       <GateSymbol type={gate.id} />
+      {gate.sequential && (
+        <p className="gate-port-labels mono">
+          {gate.id === 'CLOCK' ? 'CLK →' : `${gate.id === 'DFF' ? 'D' : 'T'} · CLK → Q`}
+        </p>
+      )}
       <div className="gate-node-bottom">
         <span className="mono">CARTA {String(data.instance).padStart(2, '0')}</span>
         <span className={`node-signal bit-${data.value ?? 'unknown'}`}>
           {data.value ?? '?'}
         </span>
       </div>
-      {Array.from({ length: gate.inputs }, (_, index) => {
-        const port = index === 0 ? 'a' : 'b';
+      {targetPorts({ type: 'gate', data }).map((port, index) => {
         return (
           <Port
             vertical={data.vertical}
