@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './returning-player';
 import { referenceCircuit } from '../fixtures/solutions';
 import { seedProgress } from './helpers';
 import { createCircuit } from '../../src/engine/createCircuit';

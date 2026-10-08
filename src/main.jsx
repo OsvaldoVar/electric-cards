@@ -11,6 +11,7 @@ import './styles/progression.css';
 import './styles/workspace.css';
 import './styles/theme.css';
 import './styles/pixel.css';
+import './styles/tutorials.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

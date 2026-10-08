@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './returning-player';
 
 test('rapid signal changes keep the simulator responsive during motion', async ({ page }) => {
   await page.goto('/');

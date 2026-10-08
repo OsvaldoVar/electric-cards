@@ -19,6 +19,14 @@ export function createDraft(level, vertical = false) {
 export function gameReducer(state, action) {
   const level = getLevel(action.levelId);
   if (!level || !canAccessLevel(level.id, state.completedLevels)) return state;
+  if (action.type === 'ACKNOWLEDGE_TUTORIAL') {
+    if (
+      !(level.inventory[action.gateType] > 0) ||
+      !unlockedGateIds(state.completedLevels).includes(action.gateType)
+    )
+      return state;
+    return { ...state, seenTutorials: { ...state.seenTutorials, [action.gateType]: true } };
+  }
   const draft = state.drafts[level.id] ?? createDraft(level, action.vertical);
   const circuit = draft.circuit;
   const update = (next) => ({ ...state, drafts: { ...state.drafts, [level.id]: next } });

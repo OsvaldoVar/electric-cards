@@ -1,34 +1,25 @@
-# Roadmap
+# Estado y próximos pasos
 
-## Implemented in 0.1.0
+## Implementado
 
-- React/Vite app, five routes and lazy loading.
-- Seven Boolean gates plus CLOCK, DFF and TFF, with DAG and port validation.
-- 35 declarative puzzles and independent reference constructions.
-- React Flow editor with finite inventory and mouse/touch movement.
-- Drag and tap wiring; visible deletion/disconnection actions.
-- Exhaustive validation, per-case preview, hints, reset and blue optimization advice.
-- Versioned local progression and drafts with storage-failure recovery.
-- Ten progressively unlocked learning cards with SVG characters, symbols and interactive tables.
-- Four responsive viewport checks, unit/component tests and Chromium E2E.
-- CI workflow and Vercel SPA config.
+- SPA React/Vite con carga de rutas bajo demanda y presentación pixel art.
+- Diez componentes, grafos acíclicos y memoria por flanco ascendente.
+- Cinco etapas, 40 lecciones, cinco retos de salto y soluciones de referencia.
+- Editor táctil, carriles coordinados de cables y controles por selección.
+- Validación exhaustiva, pistas, reproducción de casos y ventana de éxito.
+- Guardado local validado, recuperación ante fallos y compatibilidad de progreso.
+- Colección, retorno al nivel de origen y mini tutoriales interactivos por primera aparición.
+- Índice de documentación, contratos vigentes e historial técnico separado.
+- Pruebas automatizadas, CI y configuración de SPA para Vercel.
 
-## Repository and deployment
+## Pendientes
 
-The verified source, tests, screenshots and documentation are stored in the
-private [OsvaldoVar/electric-cards](https://github.com/OsvaldoVar/electric-cards)
-repository on `main`. GitHub Actions verifies pushes and pull requests; see
-[Actions](https://github.com/OsvaldoVar/electric-cards/actions) for the current
-run status. Vercel deployment has not been requested or executed. Follow
-[DEPLOYMENT.md](DEPLOYMENT.md) when a hosted release is needed.
+| Prioridad | Trabajo                                          | Criterio de cierre                                                                               |
+| --------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| Alta      | Revisión física Safari/iOS y Firefox             | Verificar drag, toques, diálogo, zoom y persistencia                                             |
+| Alta      | Revisión visual de pendientes móviles históricos | Comprobar solapamiento de zoom y tamaño de módulos en horizontal; registrar dictamen actualizado |
+| Opcional  | Exportar/importar progreso                       | Mantener saneamiento y compatibilidad de versión                                                 |
+| Opcional  | Herramientas de autoría de niveles               | Generar datos y soluciones verificables                                                          |
+| Opcional  | PWA                                              | Definir actualizaciones y uso sin conexión                                                       |
 
-## Next iteration
-
-1. Physical Safari/iOS and Firefox checks, including zoom/drag and storage.
-2. Optional guided first-puzzle tutorial and richer character illustrations.
-3. Export/import local progress with the same version/validation rules.
-4. Data-only level authoring and additional reference circuit fixtures.
-5. Optional installable PWA after agreeing offline-update behavior.
-
-Keep all future work within Boolean educational puzzles unless the project
-scope is explicitly changed. Do not add accounts or a database for these tasks.
+Los resultados automatizados no cierran por sí solos los hallazgos visuales del [checkpoint histórico](history/PIXEL-2026-10-01.md). El despliegue no se ha ejecutado en esta tarea. Consulta [DEPLOYMENT.md](DEPLOYMENT.md) y [TESTING.md](TESTING.md).

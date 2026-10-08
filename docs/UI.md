@@ -1,148 +1,51 @@
-# UI and interaction
+# Interfaz e interacción
 
-The current presentation, implemented on 2026-10-01 from the user's reference,
-is a modern pixel art indie logic puzzle editor. DESIGN.md and
-`.impeccable/design.json` describe this active system; earlier notebook,
-Apple-inspired and navy/yellow directions are historical.
+Presentación vigente: editor de lógica con estética pixel art, implementado desde octubre de 2026. [DESIGN.md](../DESIGN.md) define el sistema visual; los estilos anteriores se conservan como historial.
 
-## Visual system
+## Sistema visual
 
-`src/styles/variables.css` owns the palette, Pixelify Sans font faces, spacing,
-shape, depth and short-motion tokens. The default background is #090d1f,
-surfaces #11162b / #181e37, borders #504075 / #8b5cb5, action yellow #ffd34e
-and hover yellow #ffe47a. Text uses #f4f2ff and secondary #aeb4d0. Signal wires
-use pink #ff547d for 0 and cyan #63ddff for 1; success uses green #55e58c.
-Red #e84763 marks inactive output frames. Values, labels and dashed unknown
-wires provide additional state cues.
+`variables.css` define paleta, tipografía local Pixelify Sans, espaciado, profundidad y movimiento. Fondo `#090d1f`, superficies `#11162b` y `#181e37`, bordes violeta, acciones amarillas `#ffd34e`, texto claro y secundario `#aeb4d0`. Señales 0 rosa y 1 cian; desconocidas discontinuas. Los valores numéricos complementan el color.
 
-Pixelify Sans regular and bold are self-hosted under `public/fonts/`; preserve
-`Pixelify-OFL.txt`. Shared pixel materials in `pixel.css` use solid panels,
-2px borders, 2px base corners and hollow stepped outlines. The outlines do not
-clip ports, focus or controls. Buttons are yellow with dark text and hard
-zero-blur relief. There are no gradients, glass effects, blur, soft shadows,
-characters or scenery. `CharacterPortrait` now renders the technical
-`GateSymbol` and EC module identifier; existing educational names and labels
-remain intact.
+Los materiales usan paneles opacos, bordes de 2px, esquinas mínimas y marcos escalonados huecos que no recortan puertos ni foco. Sin gradientes, cristal, blur o sombras difusas. Los componentes se representan con símbolos técnicos; los nombres educativos permanecen. Conserva la licencia de la fuente en `public/fonts/Pixelify-OFL.txt`.
 
-Dark is the default before first paint. Configuraciones remains available on
-all routes. A saved explicit light preference uses the alternate pixel palette:
-light surfaces, dark text and darker cyan, pink and success indicators. The
-separate `electric-cards:theme` preference does not migrate game storage.
-Settings and completion use native dialogs with solid pixel materials;
-Escape and close restore appropriate focus.
+La apariencia oscura es predeterminada. Configuraciones permite una preferencia clara persistida en `electric-cards:theme`, independiente del progreso. Los diálogos nativos mantienen foco modal, Escape y regreso al control de origen cuando existe.
 
-## Routes and learning surfaces
+## Navegación y aprendizaje
 
-Home retains its live AND simulator and main action. Wide screens show
-introduction and demonstration side by side; narrow screens stack them. The
-map retains 35 puzzles across seven worlds and distinguishes available,
-locked and completed states with text and state indicators. Visible puzzle
-names remain Nivel N. The collection and gate details retain expressions,
-explanations, truth/transition tables and interactive simulators for AND, OR,
-NOT, NAND, NOR, XOR, XNOR, CLOCK, DFF and TFF. Technical symbols replace
-portrait artwork throughout these surfaces.
+Inicio contiene el simulador AND y continuación. El mapa muestra cinco etapas, 40 lecciones y cinco retos con estados disponibles, bloqueados, resueltos o etapa acreditada. Los títulos visibles de puzzles usan Nivel N, con IDs estables.
 
-## Editor geometry
+La colección y sus fichas muestran expresión, explicación, ejemplo, símbolo, tabla y simulador de los diez componentes. Enlaces iniciados desde un puzzle conservan `from`; el encabezado y la ficha permiten Volver al nivel N. La recarga conserva el origen y recupera el borrador validado. Una visita directa a la colección ofrece el mapa.
 
-Puzzle routes occupy `100dvh` without document scrolling. The header normally
-uses 76px, with Configuraciones and Mapa at the left and navigation plus brand
-at the right. The workspace fills the remaining height. A left sidebar holds
-objective, inventory, clock, hints, inputs and detailed results; only that
-panel and table containers scroll when their content grows.
-The decorative pixel frame belongs to a separate outer container so its bottom
-edge never scrolls across the inventory; section separators follow the content.
+## Mini tutoriales
 
-Desktop sidebar width is `clamp(300px, 23vw, 360px)`, becoming 300px at 1200px
-and 280px at 1000px. The board has a stable header containing Nivel N,
-Organizar, Probar circuito and Reiniciar. Zoom and Ajustar vista float in the
-upper right of the canvas; instructions remain in its bottom strip. Validation,
-reset confirmation and dialog dismissal preserve the editor's layout.
+Cada componente nuevo del inventario utilizable abre un tutorial dentro del nivel. Si hay varios, se presentan de uno en uno. La ficha incluye explicación, expresión, ejemplo, tabla y simulador interactivo. Escape o continuar registra la lectura; Mini tutoriales de este nivel permite repaso. El diálogo se limita al viewport y desplaza su contenido sin cambiar la geometría del tablero. Véase [TUTORIALS.md](TUTORIALS.md).
 
-At 700px and below, supporting tools stack above the board in a compact region
-bounded by `min(26dvh, 208px)`; the board receives the remaining height. Controls
-use shorter visual labels while accessible names remain available. Landscape
-phones at least 701px wide and no more than 540px high keep a 252px tools panel
-beside the board. Tables wider than their panel scroll internally.
+## Disposición del editor
 
-## Circuit interaction and signals
+Puzzle ocupa `100dvh` sin scroll del documento. El encabezado contiene mapa, configuración, navegación y marca. El panel lateral agrupa objetivo, tutoriales, inventario, reloj, pistas, entradas y resultados; solo herramientas y tablas se desplazan internamente. Un contenedor exterior mantiene fijo el marco pixelado.
 
-React Flow retains node movement, selection, connections, zoom and viewport
-recovery. Inventory buttons add gates. Wiring uses drag or source/target taps
-on visible ports; there is no selector connection form. Visible delete and
-disconnect buttons remain available without hover, with 44px targets. The
-16px port visuals also have 44px interactive areas. Organizar and Ajustar vista
-remain available to recover the circuit.
+El ancho lateral es `clamp(300px, 23vw, 360px)`, reducido a 300px en 1200px y 280px en 1000px. A 700px o menos, las herramientas se apilan sobre el tablero en una región limitada a `min(26dvh, 208px)`. Teléfonos horizontales de al menos 701px de ancho y hasta 540px de alto usan panel lateral de 252px.
 
-Input and gate modules are 136px wide; outputs are 144px. Selected gates use
-a yellow outline. Keyboard focus uses a separate visible cyan contour and does
-not add a large selection rectangle. Wires use orthogonal paths with square
-90-degree corners, including the connection preview. Known wires use a crisp
-4px SVG stroke with an opaque 8px dark outline and no blur. Unknown wires use
-dashed segments and omit the outline. Selected wires use a 6px main stroke.
-Ports are 16px squares with signal-colored borders and dark outlines. Wire colors,
-0/1 badges and output verdict borders convey complementary state information.
+El encabezado del tablero contiene nivel, Organizar, Probar circuito y Reiniciar. Zoom y Ajustar vista flotan en el canvas; instrucciones permanecen abajo. Validación y diálogos no insertan filas en el editor.
 
-## Validation, progression and memory
+## Construcción y cables
 
-Probar circuito previews each truth-table combination, then its verdict;
-playback finishes automatically. The objective table retains input and expected
-output columns, accessible review states and numeric values. Failed rows use
-red feedback without an additional «Obtenido» value. Detailed results
-remain in the sidebar. Keyboard tests and reduced motion reveal full results
-without timed playback. Incomplete circuits report actionable errors.
+Añadir desde inventario; mover nodos; conectar por arrastre o dos toques en puertos visibles. No hay formulario de selectores de conexión. Controles táctiles de 44px, puertos visuales cuadrados de 16px, foco cian y selección amarilla.
 
-Only the completion popup confirms success, offers Siguiente nivel, reports
-new unlocks and gives optimization advice when applicable. Seguir explorando
-and Escape dismiss it. No success banner or duplicate continuation action is
-inserted over the board. Reset clears the draft and preserves earned progress.
+Entradas/compuertas miden 136px y salidas 144px. Las rutas ortogonales coordinan carriles, evitan módulos y muestran puentes cuadrados en cruces. Una fuente compartida puede conservar un tramo inicial común. Señales conocidas usan trazo de 4px sobre contorno oscuro de 8px; selección 6px. Geometría y colores se actualizan al mover o explorar, sin alterar conexiones.
 
-Sequential puzzles retain manual/automatic clock controls, visible pause and
-memory reset. Their objective table selects an independent sequence of steps.
-CLOCK, DFF and TFF learning pages retain clock-controlled simulators and
-transition tables. All circuit, progression and persistence rules are unchanged.
+Solo un cable seleccionado muestra el botón central y la X del destino. Seleccionar nodo o canvas los oculta. Teclado, ratón y touch comparten selección controlada; nunca se guarda con el borrador. Organizar y Ajustar vista permiten recuperar la construcción.
 
-## Motion, access and review
+## Validación y memoria
 
-Press feedback moves controls down 2px in 80ms and reduces their hard relief.
-Colors and borders respond in 120ms with ease-out. Hover treatments require a
-precise pointer. Canvas geometry follows React Flow directly. Keyboard input
-disables CSS animation and transitions; reduced motion also removes press
-movement and uses immediate scrolling. No decorative animation loops are used.
+Probar circuito recorre combinaciones y muestra resultados antes de acreditar. Tabla objetivo contiene entradas y valores esperados, con filas de revisión accesibles; el detalle conserva los valores recibidos. Los fallos usan información textual y color. Cambios cancelan reproducción; teclado y movimiento reducido muestran resultados sin demoras.
 
-Preserve native controls, focus visibility, accessible labels, browser zoom,
-44px targets, touch wiring and equivalent keyboard actions. Review routes at
-360×800, 768×1024, 1366×768 and 1920×1080, plus a landscape phone and explicit
-light/reduced-motion preferences. Touch emulation needs real-device review for
-release. Actual validation results and limitations belong in `docs/TESTING.md`;
-this presentation contract does not claim unperformed checks.
+La ventana de éxito ofrece continuación, desbloqueos y optimización cuando corresponde. Seguir explorando o Escape regresa al tablero. Reiniciar vacía el borrador sin borrar progreso.
 
-Final visual acceptance and any remaining browser review are pending at this
-handoff. The saved documentation describes implemented source; it does not
-claim completion of that final review.
+Las secuencias usan reloj manual/automático, pausa y reinicio de memoria. CLOCK/DFF/TFF explican fases y transiciones. Un tutorial tiene memoria independiente del circuito. Recargar o editar lógica reinicia el estado temporal; mover nodos lo conserva.
 
-## Learning return and quiet wires — 2026-10-06
+## Accesibilidad y revisión
 
-Unselected wires have no delete controls. Selecting a wire reveals its central
-remove button and the X at its target port; other wires stay clear. Selecting
-a node or the canvas hides these controls. Node deletion remains available.
+Controles nativos, etiquetas claras, foco visible, zoom del navegador y objetivos de 44px. Presión de 80ms y cambios de estado de 120ms; teclado y movimiento reducido eliminan movimiento CSS. No suavizar el arrastre ni añadir bucles decorativos.
 
-Aprender and Compuertas opened during a puzzle retain the current level.
-The collection and gate details offer Volver al nivel N in the header, and
-the gate detail's main action returns to that same level. The collection link
-and its cards preserve this context, including through reload. Normal visits
-to the collection continue to offer the level map. Circuit drafts and earned
-progress use the existing save behavior.
-
-## Separate wire lanes and crossing bridges — 2026-10-06
-
-The board now routes wires together instead of giving each wire the same
-independent midpoint. Parallel runs prefer separate lanes, and routes avoid
-module bodies. A branching source retains a short common stem before its paths
-separate. Necessary crossings show a square bridge, so a crossover does not
-look like a connection. Signal colors, selection and disconnect actions remain.
-
-Routes follow moved modules, reload existing drafts and switch between desktop
-and mobile port directions. The same path drives the visible stroke, outline
-and hit area. Routing changes no connections, gate inventory or test results.
-The geometry regression reproduces A/B feeding both XOR and XNOR as in the
-reported image.
+Revisar 360×800, 768×1024, 1366×768 y 1920×1080, además de horizontal, tema claro y movimiento reducido. Las comprobaciones físicas y los pendientes visuales históricos requieren revisión separada; resultados y límites actuales en [TESTING.md](TESTING.md).

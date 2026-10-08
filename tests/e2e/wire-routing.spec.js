@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './returning-player';
 import { seedProgress } from './helpers';
 import { createCircuit } from '../../src/engine/createCircuit';
 import { getLevel } from '../../src/data/levels';

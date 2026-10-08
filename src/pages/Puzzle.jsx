@@ -13,6 +13,7 @@ import { Icon } from '../components/Icon';
 import NotFound from './NotFound';
 import { CompletionDialog } from '../components/CompletionDialog';
 import { ClockControls } from '../components/ClockControls';
+import { GateTutorials } from '../components/GateTutorials';
 
 function ActivePuzzle({ level }) {
   const game = usePuzzle(level);
@@ -34,6 +35,7 @@ function ActivePuzzle({ level }) {
                 : stageForLevel(level.id).title}
             </p>
             <LevelObjective level={level} game={game} />
+            <GateTutorials level={level} />
             <GateInventory
               inventory={game.inventory}
               lockedGates={game.lockedGates}

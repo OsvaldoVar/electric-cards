@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './returning-player';
 import { wire, selectWire, seedProgress } from './helpers';
 import { sanitizeGame } from '../../src/services/storage';
 

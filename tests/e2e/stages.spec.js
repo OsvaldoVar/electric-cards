@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from './returning-player';
 import { stages } from '../../src/data/stages';
 import { getLevel } from '../../src/data/levels';
 import { referenceCircuit } from '../fixtures/solutions';
@@ -16,11 +16,17 @@ async function seedChallenges(page, ids, draftIds) {
   );
   await page.addInitScript(
     ({ ids, drafts }) => {
-      if (localStorage.getItem('electric-cards:v1')) return;
+      const existing = JSON.parse(localStorage.getItem('electric-cards:v1') || 'null');
+      if (
+        Object.keys(existing?.completedLevels ?? {}).length ||
+        Object.keys(existing?.drafts ?? {}).length
+      )
+        return;
       localStorage.setItem(
         'electric-cards:v1',
         JSON.stringify({
           version: 1,
+          seenTutorials: existing?.seenTutorials ?? {},
           completedLevels: Object.fromEntries(
             ids.map((id) => [id, { completed: true, bestGateCount: 8 }]),
           ),

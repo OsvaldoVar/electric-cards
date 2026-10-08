@@ -16,7 +16,7 @@ Aprender construyendo circuitos booleanos. Una solución debe satisfacer todas l
 
 ## Positioning
 
-Inventario finito de siete compuertas, un reloj y flip-flops D/T, 35 retos en siete mundos, editor interactivo y comprobación exhaustiva. Colección educativa con personajes, símbolos, expresiones, tablas y simuladores.
+Inventario finito de siete compuertas, un reloj y flip-flops D/T, 40 lecciones y cinco retos de salto en cinco etapas, editor interactivo y comprobación exhaustiva. Colección educativa con símbolos, expresiones, tablas, simuladores y mini tutoriales al encontrar componentes nuevos.
 
 ## Operating Context
 

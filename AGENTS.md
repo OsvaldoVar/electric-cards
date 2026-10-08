@@ -1,6 +1,8 @@
 # Electric Cards — Agent instructions
 
-Read this file and all Markdown files under `docs/` before modifying code.
+Read this file, `docs/README.md` and all current Markdown guides directly under
+`docs/` before modifying code. `docs/history/` preserves previous sessions and
+is reference material, not the active contract. Consult it when tracing a decision.
 
 ## Goal and scope
 
@@ -58,6 +60,13 @@ character, ability, example and interactive binary-input simulator.
 Use versioned localStorage for completions, best gate counts and puzzle
 drafts. Treat corrupt/unavailable storage as empty, keep the game functional,
 and tell the user if persistence is unavailable. Never trust stored circuits.
+
+New usable components must have an in-level interactive mini tutorial at their
+first appearance. Reuse gate descriptors and engine-backed simulators, preserve
+the puzzle draft, and offer replay without leaving the level. Store sanitized
+known component acknowledgements in the optional v1 `seenTutorials` field.
+Update the relevant current guides and CHANGELOG.md in the same change; record
+actual verification in docs/TESTING.md and keep historical records separate.
 
 ## Required checks
 

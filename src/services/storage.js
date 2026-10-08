@@ -2,6 +2,7 @@ import { levels, getLevel } from '../data/levels';
 import { validateCircuit } from '../engine/validateCircuit';
 import { nextRegularLevel } from '../data/stages';
 import { isBinary } from '../engine/operations';
+import { gates } from '../data/gates';
 
 export const STORAGE_KEY = 'electric-cards:v1';
 export const emptyGame = () => ({
@@ -9,11 +10,15 @@ export const emptyGame = () => ({
   completedLevels: {},
   unlockedLevel: 1,
   drafts: {},
+  seenTutorials: {},
 });
 
 export function sanitizeGame(value) {
   const state = emptyGame();
   if (!value || value.version !== 1) return state;
+  for (const id of Object.keys(gates)) {
+    if (value.seenTutorials?.[id] === true) state.seenTutorials[id] = true;
+  }
   for (const level of levels) {
     const saved = value.completedLevels?.[level.id];
     if (

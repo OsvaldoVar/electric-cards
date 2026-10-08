@@ -1,0 +1,59 @@
+.gate-tutorial-dialog {
+  width: min(680px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  text-align: left;
+}
+
+.gate-tutorial-dialog .gate-simulator {
+  padding: 12px;
+  min-width: 0;
+}
+
+.gate-tutorial-dialog .sequential-simulator {
+  flex-wrap: wrap;
+}
+
+.tutorial-library {
+  margin-block: 12px;
+}
+
+.tutorial-library summary {
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.tutorial-library-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 400px) {
+  .gate-tutorial-dialog {
+    padding: 16px;
+  }
+  .gate-tutorial-dialog .simulator-circuit {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .gate-tutorial-dialog .simulator-circuit {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+  }
+  .gate-tutorial-dialog .sim-inputs {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    gap: 8px;
+  }
+  .gate-tutorial-dialog .binary-switch {
+    flex: 1;
+    min-width: 0;
+  }
+  .gate-tutorial-dialog .sim-inputs::after,
+  .gate-tutorial-dialog .sim-gate::after {
+    display: none;
+  }
+}

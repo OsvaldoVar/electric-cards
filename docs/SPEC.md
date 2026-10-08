@@ -1,59 +1,40 @@
-# Electric Cards — Specification
+# Especificación funcional
 
-Electric Cards teaches combinational and sequential digital logic through circuit puzzles.
-The interface is Spanish and works on desktop, tablet and mobile browsers.
-This is a standalone SPA with no account, server or database.
+Electric Cards enseña lógica combinacional y secuencial mediante circuitos. Es una SPA estática en español para escritorio, tablet y celular, sin servidor de aplicación, autenticación ni base de datos.
 
-## Routes
+## Pantallas
 
-| Route          | Purpose                                                 |
-| -------------- | ------------------------------------------------------- |
-| `/`            | Introduction, progress and resume action                |
-| `/levels`      | Seven worlds, unlocks and completed levels              |
-| `/puzzle/:id`  | Objective, finite inventory, circuit editor and results |
-| `/learn`       | Ten progressively unlocked component cards              |
-| `/learn/:gate` | Gate symbol, expression, simulator and truth table      |
+| Ruta           | Función                                               |
+| -------------- | ----------------------------------------------------- |
+| `/`            | Introducción, simulador y continuación                |
+| `/levels`      | Cinco etapas, 40 lecciones y cinco retos              |
+| `/puzzle/:id`  | Objetivo, tutoriales, inventario, editor y resultados |
+| `/learn`       | Colección de diez componentes                         |
+| `/learn/:gate` | Símbolo, expresión, explicación, tabla y simulador    |
 
-## Game rules
+Los enlaces educativos iniciados en un puzzle conservan el origen mediante `from`; permiten volver al mismo nivel.
 
-- Nodes: fixed binary inputs, movable gate instances and fixed output terminals.
-- AND/OR/NAND/NOR/XOR/XNOR have two inputs, NOT one, CLOCK none.
-  DFF has D/CLK; TFF has T/CLK. Both expose Q through the out handle.
-- Target ports accept one wire; a source may feed several target ports.
-- Connections always travel from a source output to a target input.
-- All nodes must form a DAG. Incomplete wiring produces unknown previews.
-- All placed gates must be fully connected, even unused ones, for completion.
-- Inventory is finite and derived from placed nodes; deleting refunds a gate.
-- Validation checks circuit shape, level terminals, inventory and all cases.
-- Every correct circuit completes its level. When it exceeds the optimization
-  gate target, show blue advice explaining a smaller feasible gate count.
-  Replays preserve the best gate count; there are no star ratings.
-- Completing a level unlocks the next. Completed levels remain replayable.
-- Progress and in-progress drafts persist locally; no sync between devices.
+## Reglas
 
-## Content
+- Entradas y salidas fijas, instancias de componentes móviles y señales 0/1.
+- NOT tiene una entrada; CLOCK ninguna; las demás compuertas dos. DFF usa D/CLK y TFF T/CLK.
+- Cada puerto destino admite un cable; una salida puede alimentar varios destinos.
+- El grafo es acíclico. Conexiones incompletas muestran valores desconocidos.
+- Todos los componentes colocados deben estar conectados por completo para validar.
+- El inventario es finito; eliminar una carta devuelve su unidad.
+- La validación comprueba estructura, inventario, terminales y todos los casos o pasos.
+- Toda solución correcta completa el nivel. Superar el objetivo de compuertas muestra consejo de optimización, sin penalización ni estrellas.
+- Completar lecciones o el reto acredita una etapa; los niveles omitidos no se marcan como resueltos.
+- Las siete compuertas booleanas están habilitadas inicialmente. CLOCK/DFF/TFF requieren entrada a etapa 4; los logros antiguos de memoria conservan acceso.
 
-35 puzzles across fundamentals, negation, comparison, combinational circuits,
-optimization, clocks and memory. Include LED, door, flag, alarm and motor terminal visuals.
-All representations are Boolean. Tables cover every input combination.
-Hints are educational and never count as failed attempts or reduce progress.
+## Enseñanza
 
-## Acceptance
+Cada componente que aparece por primera vez en el inventario utilizable abre un mini tutorial. Si aparecen varios, se presentan de uno en uno. El tutorial incluye descripción, expresión, ejemplo y simulador con tabla, y puede cerrarse o repasarse dentro del nivel. Consultarlo no acredita niveles ni cambia el circuito. Véase [TUTORIALS.md](TUTORIALS.md).
 
-All engine tests, lint, build and E2E checks pass. A player can complete a
-puzzle on touch using tap-to-connect, see every failed case, replay inputs,
-reset a draft and reload without losing progression. No interactive feature
-depends exclusively on hover, right-click or keyboard.
+## Reloj y memoria
 
-## Sequential progression
+DFF guarda D y TFF alterna Q si T=1, exclusivamente en flancos 0→1. Todos los registros empiezan en 0, conservan Q en flancos descendentes o reloj estable y actualizan simultáneamente en un reloj compartido. Las secuencias independientes se validan desde Q=0. La memoria y los temporizadores son transitorios; los borradores y el progreso se guardan localmente.
 
-Start with AND. Unlock OR after 1, NOT after 2, NAND after 5, NOR after 6,
-XOR after 10, XNOR after 11, CLOCK after 25, DFF after 27 and TFF after 31.
-Correct completion opens a success dialog with a next-level button and any new
-component. Escape or Seguir explorando closes it.
+## Criterios de aceptación
 
-Levels 26–35 contain memory and ordered clocked tests. Validate every step of
-every independent scenario from Q=0. Clock 0→1 captures D or toggles enabled T;
-falling or held clocks preserve Q. Shared-clock registers sample simultaneously.
-The clock can be stepped or run automatically and paused. Resetting memory
-keeps the circuit. Memory and timer state are transient across page reloads.
+Completar un nivel con ratón o conexiones táctiles, identificar los casos fallidos y recuperar progreso tras recargar. Los tutoriales deben respetar teclado, Escape, foco modal y pantallas pequeñas. Ninguna acción requiere exclusivamente hover o menú contextual. Las comprobaciones y sus límites se registran en [TESTING.md](TESTING.md).

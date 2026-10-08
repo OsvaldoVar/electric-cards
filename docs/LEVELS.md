@@ -1,46 +1,44 @@
-# Level authoring
+# Autoría de niveles
 
-Levels live in `src/data/levels.js`. Every record defines id, world, title,
-description, difficulty, inputs, outputs, inventory, tests, hints and optimizationGateCount.
-IDs are consecutive and stable to preserve saved progress. Input/output IDs
-are local to each level. Use the ten supported component IDs and output visuals
-`led`, `door`, `flag`, `alarm`, `motor`.
+## Fuentes de contenido
 
-The internal author helper expands a declarative objective expression into
-all 2^n input cases. Expressions are strings for inputs or arrays like
-`['OR', ['AND','A','B'], 'C']`; they are never evaluated with `eval()`.
-The public level record contains the complete test table rather than exposing
-a solution circuit. Inventory can contain distractors. The optimization target refers to
-all placed gate nodes, including connected unused ones. It provides advice
-only; correctness alone completes the level.
+| Archivo                        | Contenido                                          |
+| ------------------------------ | -------------------------------------------------- |
+| `src/data/levels.js`           | Niveles combinacionales y colección de registros   |
+| `src/data/sequentialLevels.js` | Secuencias con reloj y memoria                     |
+| `src/data/stageLevels.js`      | Lecciones y retos añadidos al currículo            |
+| `src/data/stages.js`           | Orden pedagógico, acceso y crédito de cinco etapas |
+| `src/data/unlocks.js`          | Disponibilidad de componentes por etapa            |
+| `tests/fixtures/solutions.js`  | Soluciones independientes de referencia            |
 
-To add a level, add its descriptor, a reference circuit fixture under
-`tests/fixtures/solutions.js`, and confirm that its full truth table passes
-with an allowed inventory at or below optimizationGateCount. Check that targets remain
-mathematically valid for every available gate type. Do not label a budget
-optimal if another available construction uses fewer gates.
+Hay 40 lecciones y cinco retos. Los IDs 1–35 son estables; las lecciones nuevas son 36, 37 y 39–41, y los retos 38 y 42–45. El orden visible depende de `stages.js`, no de ordenar IDs.
 
-| World                | Levels | Focus                                      |
-| -------------------- | ------ | ------------------------------------------ |
-| 1. Primeras señales  | 1–5    | AND, OR, NOT and composition               |
-| 2. El otro lado      | 6–10   | NAND, NOR and De Morgan                    |
-| 3. En sintonía       | 11–15  | XOR, XNOR and comparison                   |
-| 4. Redes de decisión | 16–20  | Three/four inputs and multiple outputs     |
-| 5. Menos es más      | 21–25  | Restricted gates and compact constructions |
+## Esquema y reglas
 
-| World                      | Levels | Focus                                                   |
-| -------------------------- | ------ | ------------------------------------------------------- |
-| 6. El ritmo de las señales | 26–30  | CLOCK, two phases, D memory and stored decisions        |
-| 7. Memoria en movimiento   | 31–35  | Shared-clock registers, T memory and accumulated parity |
+Cada registro contiene ID, título interno, descripción, entradas, salidas, inventario, pruebas, pistas y `optimizationGateCount`. Las salidas admiten `led`, `door`, `flag` y `alarm`, además de `motor`. Solo utiliza los diez componentes soportados.
 
-Sequential levels live in `data/sequentialLevels.js`, declare
-`kind: 'sequential'`, and contain ordered test records
-`{scenario, step, clock, inputs, outputs}`. A scenario starts with all Q values
-zero. One-input challenges cover all three-sample histories; two-input
-challenges cover all two-sample histories. Each sample tests a low clock, rising
-edge, held high with changed data, and falling edge. Objective dropdowns show
-one sequence at a time; Probar circuito checks every sequence.
+Las expresiones declarativas usan nombres de entradas o arreglos como `['OR', ['AND', 'A', 'B'], 'C']`. El autor genera las 2ⁿ combinaciones completas; nunca usa `eval()`. El objetivo se expone como tabla, no como circuito resuelto. Inventario puede incluir distractores; cada pieza utilizable tendrá mini tutorial al primer encuentro.
 
-Component availability comes from `data/unlocks.js`; author inventories and
-reference constructions that are solvable using the components earned before
-that level. Existing level IDs 1–25 remain unchanged.
+Los niveles secuenciales declaran `kind: 'sequential'` y pruebas `{ scenario, step, clock, inputs, outputs }`. Cada escenario parte de Q=0 e incluye reloj bajo, flanco ascendente, reloj alto estable con dato cambiado y flanco descendente. La vista muestra una secuencia; la validación comprueba todas.
+
+## Currículo
+
+| Etapa | Objetivo                                   | Conteo de referencia del reto |
+| ----- | ------------------------------------------ | ----------------------------- |
+| 1     | Una o dos compuertas básicas iguales       | 3                             |
+| 2     | Dos a cuatro compuertas de distintos tipos | 5                             |
+| 3     | NAND, compartir señales y sumador          | 6                             |
+| 4     | CLOCK, DFF/TFF y registros                 | 5                             |
+| 5     | Integración de decisiones y memoria        | 8                             |
+
+Los conteos incluyen CLOCK y memoria. La optimización es un objetivo factible, no una prueba de mínimo matemático. Una solución correcta siempre completa el nivel.
+
+## Añadir o modificar contenido
+
+1. Conserva IDs usados para no invalidar progreso.
+2. Define el registro, su etapa y el orden pedagógico.
+3. Confirma que inventario y desbloqueos permiten resolverlo.
+4. Añade una construcción independiente en las fixtures de soluciones.
+5. Comprueba todos los casos dentro del inventario y objetivo de optimización.
+6. Revisa texto, tutoriales, acceso, reto de salto y continuación.
+7. Ejecuta las pruebas requeridas y documenta los resultados.

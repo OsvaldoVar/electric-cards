@@ -11,11 +11,17 @@ export async function seedProgress(page, through = 0, drafts = {}) {
   ];
   await page.addInitScript(
     ({ completedIds, through, drafts }) => {
-      if (localStorage.getItem('electric-cards:v1')) return;
+      const existing = JSON.parse(localStorage.getItem('electric-cards:v1') || 'null');
+      if (
+        Object.keys(existing?.completedLevels ?? {}).length ||
+        Object.keys(existing?.drafts ?? {}).length
+      )
+        return;
       localStorage.setItem(
         'electric-cards:v1',
         JSON.stringify({
           version: 1,
+          seenTutorials: existing?.seenTutorials ?? {},
           completedLevels: Object.fromEntries(
             completedIds.map((id) => [id, { completed: true, bestGateCount: 1 }]),
           ),
