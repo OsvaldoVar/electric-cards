@@ -43,7 +43,7 @@ La carga descarta puntuaciones, niveles, circuitos o posiciones inválidos y reg
 
 `stages.js` define orden, retos, acceso y continuación. Una etapa se acredita mediante su reto o sus lecciones; las finalizaciones antiguas conservan el crédito previsto. IDs 1–35 permanecen estables, con nuevas lecciones 36, 37 y 39–41 y retos 38, 42–45. Nunca se fabrican finalizaciones para lecciones omitidas.
 
-`GateTutorials` filtra el inventario por disponibilidad y registro consultado. Presenta una cola modal automática y permite repaso manual. Reutiliza `GateSimulator`, que selecciona el simulador combinacional o secuencial. La simulación del tutorial tiene estado local independiente del puzzle. Contrato detallado en [TUTORIALS.md](TUTORIALS.md).
+`GateTutorials` filtra el inventario por disponibilidad y registro consultado. Presenta una cola modal automática y permite repaso manual. Reutiliza `GateSimulator`, que selecciona el simulador combinacional o secuencial. La simulación del tutorial tiene estado local independiente del puzzle. La asignación visual de los diez componentes a cinco sprites decorativos vive en `data/tutorialGuide.js`; los archivos WebP transparentes se importan desde `assets/tutorial-guide/` y Vite genera sus URLs con hash. Contrato detallado en [TUTORIALS.md](TUTORIALS.md).
 
 ## Memoria discreta
 

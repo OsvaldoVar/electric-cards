@@ -4,6 +4,9 @@
 
 ### Añadido
 
+- Guía pixel art transparente en los tutoriales de los diez componentes, con cinco poses estables.
+- Corrección de dedos en celebración y pose pensativa; recursos WebP sin pérdida.
+
 - Mini tutorial interactivo por primera aparición de cada componente del inventario.
 - Cola para varias piezas nuevas y repaso desde el mismo nivel.
 - Registro validado de tutoriales consultados, compatible con guardados v1.

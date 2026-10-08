@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { gates } from '../data/gates';
 import { unlockedGateIds } from '../data/unlocks';
+import { tutorialGuide } from '../data/tutorialGuide';
 import { useGame } from '../hooks/useGame';
 import { GateSimulator } from './GateSimulator';
 
@@ -49,10 +50,23 @@ export function GateTutorials({ level }) {
       >
         {gate && (
           <>
-            <p className="muted small">
-              {replay ? 'Repaso' : 'Nuevo componente'} · Nivel {level.id}
-            </p>
-            <h2 id="gate-tutorial-title">Cómo funciona {gate.name}</h2>
+            <div className="tutorial-introduction">
+              <img
+                className="tutorial-guide"
+                src={tutorialGuide[id]}
+                alt=""
+                aria-hidden="true"
+                width="112"
+                height="112"
+                decoding="async"
+              />
+              <div>
+                <p className="muted small">
+                  {replay ? 'Repaso' : 'Nuevo componente'} · Nivel {level.id}
+                </p>
+                <h2 id="gate-tutorial-title">Cómo funciona {gate.name}</h2>
+              </div>
+            </div>
             <p id="gate-tutorial-description">{gate.description}</p>
             <p className="mono">{gate.expression}</p>
             <p>

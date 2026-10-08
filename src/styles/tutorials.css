@@ -14,6 +14,22 @@
   flex-wrap: wrap;
 }
 
+.tutorial-introduction {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.tutorial-guide {
+  display: block;
+  width: 112px;
+  height: 112px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+
 .tutorial-library {
   margin-block: 12px;
 }
@@ -39,6 +55,14 @@
 }
 
 @media (max-width: 600px) {
+  .tutorial-introduction {
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: var(--space-3);
+  }
+  .tutorial-guide {
+    width: 80px;
+    height: 80px;
+  }
   .gate-tutorial-dialog .simulator-circuit {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 12px;

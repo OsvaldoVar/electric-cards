@@ -1,7 +1,48 @@
 import { test, expect } from '@playwright/test';
 import { referenceCircuit } from '../fixtures/solutions';
+import { gates } from '../../src/data/gates';
+import { levels } from '../../src/data/levels';
 
 const tutorial = (page) => page.getByRole('dialog', { name: /Cómo funciona/ });
+
+test('every component tutorial loads its guide without obscuring its simulator', async ({
+  page,
+}, testInfo) => {
+  await page.addInitScript(
+    (ids) => {
+      localStorage.setItem(
+        'electric-cards:v1',
+        JSON.stringify({
+          version: 1,
+          completedLevels: Object.fromEntries(
+            ids.map((id) => [id, { completed: true, bestGateCount: 1 }]),
+          ),
+          drafts: {},
+          seenTutorials: {},
+        }),
+      );
+    },
+    levels.map((level) => level.id),
+  );
+  for (const id of Object.keys(gates)) {
+    const level = levels.find((item) => item.inventory[id] > 0);
+    await page.goto(`/puzzle/${level.id}`);
+    const dialog = tutorial(page);
+    await expect(dialog).toBeVisible();
+    while ((await dialog.getByRole('heading').innerText()) !== `Cómo funciona ${id}`) {
+      await dialog.getByRole('button', { name: 'Siguiente componente' }).click();
+    }
+    const guide = dialog.locator('.tutorial-guide');
+    await expect(guide).toBeVisible();
+    await expect(guide).toHaveJSProperty('complete', true);
+    expect(await guide.evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
+    await expect(dialog.locator('.gate-simulator')).toBeVisible();
+    expect(await dialog.evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(false);
+    if (id === 'NAND' || id === 'XOR') {
+      await page.screenshot({ path: testInfo.outputPath(`guide-${id}.png`) });
+    }
+  }
+});
 
 test('first component simulates, persists, replays and returns to the same circuit', async ({
   page,
@@ -10,6 +51,12 @@ test('first component simulates, persists, replays and returns to the same circu
   const dialog = tutorial(page);
   await expect(dialog).toBeVisible();
   await expect(dialog.getByRole('heading', { name: 'Cómo funciona AND' })).toBeVisible();
+  const guide = dialog.locator('.tutorial-guide');
+  await expect(guide).toBeVisible();
+  await expect(guide).toHaveAttribute('alt', '');
+  await expect(guide).toHaveJSProperty('complete', true);
+  expect(await guide.evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
+  const originalSprite = await guide.getAttribute('src');
   await dialog.getByRole('button', { name: 'Cambiar entrada A' }).click();
   await expect(dialog.getByText('Y = 0')).toBeVisible();
   await dialog.getByRole('button', { name: 'Cambiar entrada B' }).click();
@@ -23,6 +70,7 @@ test('first component simulates, persists, replays and returns to the same circu
   await expect(dialog).not.toBeVisible();
   await page.getByText('Mini tutoriales de este nivel', { exact: true }).click();
   await page.getByRole('button', { name: 'Repasar AND', exact: true }).click();
+  await expect(guide).toHaveAttribute('src', originalSprite);
   await expect(dialog.getByText('Y = 0')).toBeVisible();
   await page.keyboard.press('Escape');
   await expect(dialog).not.toBeVisible();
@@ -56,6 +104,10 @@ test('a skipped-stage memory challenge introduces every unfamiliar component in 
   const found = [];
   while (await dialog.isVisible()) {
     const title = await dialog.getByRole('heading').innerText();
+    const guide = dialog.locator('.tutorial-guide');
+    await expect(guide).toBeVisible();
+    await expect(guide).toHaveJSProperty('complete', true);
+    expect(await guide.evaluate((image) => image.naturalWidth)).toBeGreaterThan(0);
     found.push(title.replace('Cómo funciona ', ''));
     if (title.endsWith('DFF')) {
       await dialog.getByRole('button', { name: 'Cambiar entrada D' }).click();

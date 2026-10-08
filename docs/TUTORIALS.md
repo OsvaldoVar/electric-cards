@@ -8,6 +8,22 @@ Cada tutorial reutiliza la descripción, expresión, ejemplo y tabla de `src/dat
 
 Siguiente componente o Volver al circuito registra el tutorial consultado. Escape realiza la misma operación para la ficha actual. La sección Mini tutoriales de este nivel permite repasar cada pieza sin navegar fuera del puzzle. El diálogo contiene el foco y permite scroll interno en pantallas pequeñas; no añade filas al tablero.
 
+## Guía visual
+
+Todos los tutoriales muestran la misma guía pixel art con halo de compuertas lógicas. Cinco poses transparentes se asignan de forma estable en `src/data/tutorialGuide.js`:
+
+| Componentes | Pose                   |
+| ----------- | ---------------------- |
+| AND, CLOCK  | Saludo                 |
+| OR, DFF     | Mirando a la derecha   |
+| NOT, TFF    | Mirando a la izquierda |
+| NAND, NOR   | Pensativa              |
+| XOR, XNOR   | Celebración            |
+
+Los recursos de `src/assets/tutorial-guide/` usan WebP sin pérdida y conservan exactamente los píxeles RGBA de los PNG generados. Se corrigieron ambas manos de celebración a cinco dedos y la mano flexionada de la pose pensativa; el saludo conserva cinco dedos. Las vistas laterales no permiten contar dedos porque las manos quedan fuera del encuadre o parcialmente ocultas.
+
+La imagen es decorativa (`alt=""`, sin foco ni interacción). Mide 112 px en escritorio y 80 px hasta 600 px de ancho, con `object-fit: contain` y `image-rendering: pixelated`. No añade animaciones ni estados de guardado. Cada repaso conserva la misma pose y los recursos se publican con hashes mediante Vite.
+
 ## Guardado y compatibilidad
 
 `seenTutorials` pertenece al estado v1 existente y solo acepta IDs conocidos con valor `true`. Un guardado antiguo no tiene fichas consultadas: se muestran al siguiente uso. Cerrar el tutorial no completa niveles, no cambia el borrador y no guarda entradas de la demostración. Reiniciar un puzzle conserva el registro. Si localStorage no está disponible, el registro dura la sesión y se mantiene el aviso existente de guardado.

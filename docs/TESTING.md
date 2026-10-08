@@ -30,7 +30,26 @@ Playwright comprueba la build de producción. CI ejecuta lint, formato, pruebas 
 
 Las regresiones existentes usan una fixture de jugador que ya consultó los tutoriales. La suite dedicada `tutorials.spec.js` usa contextos nuevos sin esa fixture y comprueba el flujo real de primera aparición, incluidos saltos de etapa. Los controles y reglas del juego se prueban sin reemplazar su implementación.
 
-## Registro vigente — 2026-10-08
+## Registro vigente — sprites de tutoriales — 2026-10-08
+
+Verificado sobre main `82c49c5f1d03f1d701631919aaf221c51e6b8e3b` con esta integración, Node.js 24.19.0 y npm 11.9.0.
+
+| Comprobación                                  | Resultado                                                                                         |
+| --------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| ESLint y Prettier                             | Aprobados                                                                                         |
+| Vitest / Testing Library                      | 104 pruebas aprobadas en 12 archivos                                                              |
+| Build de producción                           | Aprobada; cinco sprites con URLs versionadas                                                      |
+| Playwright completo, escritorio y touch       | 125 aprobadas y una omisión intencional, antes de añadir el caso de carga de los diez componentes |
+| Suite final de tutoriales, escritorio y touch | 18 aprobadas, incluida carga real de sprites en los diez tutoriales                               |
+| Recursos gráficos                             | Cinco WebP transparentes; igualdad exacta RGBA respecto de los PNG de origen                      |
+
+Se revisaron visualmente capturas de AND en escritorio y móvil, NAND y XOR en escritorio, además de los cinco sprites. Se corrigieron los dedos de ambas manos de celebración y la mano flexionada de la pose pensativa; en saludo se distinguen cinco dedos. Las manos fuera de encuadre o cubiertas no permiten un conteo visual completo.
+
+La suite comprueba carga efectiva de imágenes, estabilidad al repasar, disponibilidad del simulador y ausencia de desbordamiento horizontal, además del flujo y guardado existentes. Los diálogos se comprobaron a 360×800, 768×1024, 1366×768 y 1920×1080.
+
+El CDN de Playwright volvió a entregar un ZIP inválido. Se utilizó Chromium 153 de una instalación temporal de `@sparticuz/chromium` fuera del proyecto y una configuración temporal para servir preview en 127.0.0.1. Esos archivos no forman parte del commit. No se modificaron dependencias ni lockfile. Safari/iOS y Firefox físicos permanecen sin verificar.
+
+## Verificación anterior — mini tutoriales — 2026-10-08
 
 Verificado sobre main `4fd610280c3054f8e19d770ff252c3227b0b7809` con los cambios de esta entrega, Node.js 24.19.0 y npm 11.9.0.
 

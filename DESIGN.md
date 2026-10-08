@@ -263,7 +263,7 @@ Cambios de color y borde usan 120ms `ease-out`; presión usa 80ms. No añadir an
 ### Don't:
 
 - **Don't** añadir gradientes, transparencias de cristal, desenfoque o sombras difusas.
-- **Don't** añadir personajes, paisajes o escenas decorativas; representar componentes mediante símbolos técnicos.
+- **Don't** añadir paisajes o escenas decorativas. Los componentes mantienen símbolos técnicos; por petición del usuario, los mini tutoriales incorporan una única guía pixel art en cinco poses, descrita en `docs/TUTORIALS.md`.
 - **Don't** depender solo del color, del hover o de un gesto preciso para operar el editor.
 - **Don't** recortar los puertos o el foco al implementar esquinas escalonadas.
 - **Don't** cambiar motor, niveles, IDs, inventario, rutas ni guardado para resolver una decisión visual.
