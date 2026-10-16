@@ -1,6 +1,6 @@
 import { test, expect } from './returning-player';
 import { wire, selectWire, seedProgress } from './helpers';
-import { sanitizeGame } from '../../src/services/storage';
+import { sanitizeGame } from '../../src/state/storage';
 
 test('disconnect controls belong only to the selected wire and clear on deselection', async ({
   page,

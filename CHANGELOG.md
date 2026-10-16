@@ -1,5 +1,24 @@
 # Registro de cambios
 
+## 2026-10-15
+
+### Reorganizado
+
+- Aplicación dividida en `app`, `features`, `state`, `shared`, `data` y `engine`.
+- Funcionalidades de inicio, aprendizaje, progresión y puzzle con responsabilidades explícitas y APIs públicas para capacidades compartidas.
+- Medición y adaptación de nodos/aristas separadas de `CircuitBoard`; herramientas en `PuzzleSidebar`.
+- Planificador de cables separado en geometría, búsqueda, reserva de carriles y presentación SVG.
+- Catálogo de niveles separado de sus registros y constructor; IDs, currículo y guardado v1 compatibles.
+- Estilos propios junto a cada funcionalidad, con entrada central que conserva la cascada.
+- Pruebas unitarias en `tests/unit/`, configuración de Vitest independiente y fixtures compartidas conservadas.
+- Formulario de conexión sin uso y sus estilos retirados; revisiones visuales antiguas archivadas en `docs/history/visual-reviews/`.
+
+### Mantenimiento
+
+- Límites de dependencias comprobados por ESLint y comando `npm run check` usado por CI.
+- Configuración de editor, finales de línea, Node y formato; dependencias y lockfile sincronizados.
+- Guía de contribución, plantilla de pull request y documentación actualizadas.
+
 ## 2026-10-08
 
 ### Añadido

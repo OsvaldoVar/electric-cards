@@ -6,6 +6,7 @@ Documentación vigente del juego educativo de lógica digital. La interfaz está
 
 | Necesidad                             | Documento                                          |
 | ------------------------------------- | -------------------------------------------------- |
+| Contribuir al código                  | [Guía de contribución](../CONTRIBUTING.md)         |
 | Instalar y comenzar a jugar           | [README del proyecto](../README.md)                |
 | Entender el alcance y las reglas      | [Especificación](SPEC.md)                          |
 | Modificar el motor, estado o guardado | [Arquitectura](ARCHITECTURE.md)                    |

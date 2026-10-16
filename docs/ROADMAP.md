@@ -11,6 +11,8 @@
 - Colección, retorno al nivel de origen y mini tutoriales interactivos por primera aparición.
 - Índice de documentación, contratos vigentes e historial técnico separado.
 - Pruebas automatizadas, CI y configuración de SPA para Vercel.
+- Estructura por funcionalidades, límites de dependencias en ESLint y comando único de verificación.
+- Contenido, geometría del editor y pruebas organizados por responsabilidad.
 
 ## Pendientes
 

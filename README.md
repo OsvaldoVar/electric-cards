@@ -59,24 +59,28 @@ Completar las lecciones de una etapa o su reto abre la siguiente. Los niveles om
 React, Vite, JavaScript, CSS, React Router y React Flow. Estado con Context/useReducer y localStorage; pruebas con Vitest, Testing Library y Playwright.
 
 ```sh
-npm run lint
-npm run format:check
-npm run test
-npm run build
+npm run check
 npx playwright install chromium
 npm run test:e2e
 ```
 
-| Directorio                                     | Responsabilidad                                   |
-| ---------------------------------------------- | ------------------------------------------------- |
-| `src/data/`                                    | Componentes, niveles y etapas declarativos        |
-| `src/engine/`                                  | Lógica booleana, memoria, grafos y validación     |
-| `src/context/` y `src/services/`               | Estado, persistencia y servicios del editor       |
-| `src/hooks/`                                   | Coordinación del juego                            |
-| `src/components/`, `src/pages/`, `src/styles/` | Interfaz y presentación                           |
-| `tests/`                                       | Pruebas y soluciones de referencia independientes |
-| `docs/`                                        | Contratos actuales, guías e historial             |
+| Directorio                                     | Responsabilidad                                               |
+| ---------------------------------------------- | ------------------------------------------------------------- |
+| `src/app/`                                     | Composición de rutas, layout, navegación y ajustes            |
+| `src/features/home/`                           | Portada y demostración inicial                                |
+| `src/features/learning/`                       | Colección, simuladores, tutoriales y sus recursos             |
+| `src/features/progression/`                    | Mapa de etapas y consulta del progreso                        |
+| `src/features/puzzle/`                         | Editor, controles, validación visual y trazado de cables      |
+| `src/state/`                                   | Context, reducer y persistencia validada                      |
+| `src/engine/`                                  | Lógica booleana, memoria, grafos y validación pura            |
+| `src/data/`                                    | Descriptores y catálogo de niveles, separado de sus registros |
+| `src/shared/`                                  | Componentes reutilizables, hooks y utilidades puras           |
+| `src/styles/`                                  | Tokens, reglas globales y entrada ordenada de estilos         |
+| `tests/unit/`, `tests/e2e/`, `tests/fixtures/` | Pruebas unitarias, navegador y soluciones independientes      |
+| `docs/`                                        | Guías vigentes e historial técnico                            |
 
-Lee [AGENTS.md](AGENTS.md) antes de modificar el proyecto. Consulta el [índice de documentación](docs/README.md), los [resultados y límites de verificación](docs/TESTING.md), la [hoja de ruta](docs/ROADMAP.md) y el [registro de cambios](CHANGELOG.md).
+`npm run check` ejecuta lint, formato, pruebas unitarias y compilación. `npm run format` aplica el formato común. La configuración de Vitest está separada de Vite. ESLint comprueba los límites entre módulos.
+
+Lee la [guía de contribución](CONTRIBUTING.md) y [AGENTS.md](AGENTS.md) antes de modificar el proyecto. Consulta el [índice de documentación](docs/README.md), los [resultados y límites de verificación](docs/TESTING.md), la [hoja de ruta](docs/ROADMAP.md) y el [registro de cambios](CHANGELOG.md).
 
 El juego modela señales binarias y circuitos acíclicos con memoria discreta; no modela electrónica analógica ni tiempos físicos. Para publicar la SPA, consulta [DEPLOYMENT.md](docs/DEPLOYMENT.md).

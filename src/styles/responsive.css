@@ -17,9 +17,6 @@
   .board-tools button > span {
     display: none;
   }
-  .connection-form {
-    gap: 14px;
-  }
 }
 @media (max-width: 850px) {
   .puzzle-workspace {
@@ -129,22 +126,6 @@
     border-top: 1px solid var(--border);
   }
 
-  .connection-details {
-    padding: 0 16px 16px;
-  }
-  .connection-details summary {
-    font-size: 16px;
-  }
-  .connection-details summary > .muted {
-    display: none;
-  }
-  .connection-form {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-  }
-  .connection-form .button {
-    width: 100%;
-  }
   .reset-confirmation,
   .test-result-heading {
     flex-wrap: wrap;

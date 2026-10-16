@@ -1,16 +1,38 @@
 # Arquitectura
 
-## Capas
+## Organización y dependencias
 
-| Capa                     | Responsabilidad                                                    |
-| ------------------------ | ------------------------------------------------------------------ |
-| `data/`                  | Diez descriptores, 45 circuitos y cinco etapas; niveles como datos |
-| `engine/`                | Operaciones, DAG, evaluación, memoria y validación pura            |
-| `context/` y `services/` | Transiciones, persistencia y geometría del editor                  |
-| `hooks/`                 | Control del puzzle y reproducción de validación                    |
-| `components/` y `pages/` | Presentación, rutas y React Flow                                   |
+| Módulo                  | Responsabilidad                                       | Dependencias permitidas                                            |
+| ----------------------- | ----------------------------------------------------- | ------------------------------------------------------------------ |
+| `app/`                  | Rutas bajo demanda, layout, navegación y ajustes      | Funcionalidades, estado y compartidos                              |
+| `features/home/`        | Portada y demostración inicial                        | APIs de aprendizaje y progresión; datos y compartidos              |
+| `features/learning/`    | Colección, simuladores, mini tutoriales y sus sprites | Progresión pública, estado, motor, datos y compartidos             |
+| `features/progression/` | Mapa y consulta del progreso                          | Estado, datos y compartidos                                        |
+| `features/puzzle/`      | Circuitos, editor, reproducción y resultados          | APIs de aprendizaje/progresión, estado, motor, datos y compartidos |
+| `state/`                | Context/useReducer, saneamiento y almacenamiento      | Motor, datos y utilidades puras de `shared/lib/`                   |
+| `engine/`               | Operaciones, DAG, evaluación, memoria y validación    | Motor y datos; sin React ni estado de la aplicación                |
+| `data/`                 | Descriptores, currículo y registros de contenido      | Motor y otros datos; sin interfaz                                  |
+| `shared/`               | UI reutilizable, hooks comunes y utilidades puras     | Datos y dependencias de plataforma; sin funcionalidades ni estado  |
 
-La lógica de las señales reside exclusivamente en el motor. Los simuladores y tutoriales llaman a sus funciones; no duplican tablas o reglas booleanas en la interfaz. Las rutas se cargan bajo demanda.
+La lógica de las señales reside exclusivamente en el motor. Los simuladores y tutoriales llaman a sus funciones. ESLint impide dependencias de interfaz en motor/datos, de funcionalidades en estado/compartidos y accesos a carpetas internas de otra funcionalidad. `learning/index.js` y `progression/index.js` exponen capacidades compartidas; cada módulo usa imports locales para sus propios archivos. La composición de rutas es la excepción explícita: `app/App.jsx` importa las páginas con `lazy()`.
+
+### Contenido
+
+`data/levels.js` es el registro público: conserva las exportaciones `levels` y `getLevel`, los 45 IDs y su orden pedagógico. `data/levels/combinational.js`, `sequential.js` y `stageChallenges.js` contienen registros. `createLevel.js` genera casos exhaustivos usando el motor. El registro aplica etapas y restricciones introductorias; la consulta por ID usa su mapa indexado.
+
+### Estado e interfaz
+
+`state/` concentra `GameContext`, `GameProvider`, `gameReducer`, `useGame` y `storage`. La disposición reutilizable de nodos vive en `shared/lib/boardLayout.js`, sin React ni dependencias del editor. Las páginas coordinan el acceso y componen componentes; `PuzzleSidebar` agrupa herramientas sin asumir la medición del canvas.
+
+`useBoardNodes` adapta circuitos a nodos de React Flow y conserva dimensiones/selección de forma local. `useBoardEdges` combina señales con rutas visuales. `CircuitBoard` compone el canvas y sus controles. La coordinación de simulación y edición permanece en `usePuzzle`.
+
+El trazado se divide en `services/wireRouting.js` como coordinador y `services/routing/` para constantes, extremos y geometría, búsqueda y reserva de carriles, puentes SVG y selección de medidas. No contiene reglas booleanas ni accede al almacenamiento.
+
+### Estilos y herramientas
+
+`styles/index.css` define la entrada y el orden de cascada. Tokens, bases, temas y ajustes compartidos permanecen en `styles/`; los estilos propios de puzzle, progresión y tutoriales están junto a su funcionalidad. Se importan en el orden establecido para conservar la presentación.
+
+`vite.config.js` configura la aplicación; `vitest.config.js` comparte el plugin de React y define exclusivamente `tests/unit/`. Playwright conserva `tests/e2e/`; las soluciones de referencia permanecen en `tests/fixtures/`. `npm run check` reúne lint, formato, pruebas unitarias y build. [CONTRIBUTING.md](../CONTRIBUTING.md) describe el flujo de trabajo.
 
 ## Contrato de circuito
 
@@ -43,7 +65,7 @@ La carga descarta puntuaciones, niveles, circuitos o posiciones inválidos y reg
 
 `stages.js` define orden, retos, acceso y continuación. Una etapa se acredita mediante su reto o sus lecciones; las finalizaciones antiguas conservan el crédito previsto. IDs 1–35 permanecen estables, con nuevas lecciones 36, 37 y 39–41 y retos 38, 42–45. Nunca se fabrican finalizaciones para lecciones omitidas.
 
-`GateTutorials` filtra el inventario por disponibilidad y registro consultado. Presenta una cola modal automática y permite repaso manual. Reutiliza `GateSimulator`, que selecciona el simulador combinacional o secuencial. La simulación del tutorial tiene estado local independiente del puzzle. La asignación visual de los diez componentes a cinco sprites decorativos vive en `data/tutorialGuide.js`; los archivos WebP transparentes se importan desde `assets/tutorial-guide/` y Vite genera sus URLs con hash. Contrato detallado en [TUTORIALS.md](TUTORIALS.md).
+`GateTutorials` filtra el inventario por disponibilidad y registro consultado. Presenta una cola modal automática y permite repaso manual. Reutiliza `GateSimulator`, que selecciona el simulador combinacional o secuencial. La simulación del tutorial tiene estado local independiente del puzzle. La asignación visual de los diez componentes a cinco sprites decorativos vive en `features/learning/data/tutorialGuide.js`; los archivos WebP transparentes se importan desde `features/learning/assets/tutorial-guide/` y Vite genera sus URLs con hash. Contrato detallado en [TUTORIALS.md](TUTORIALS.md).
 
 ## Memoria discreta
 

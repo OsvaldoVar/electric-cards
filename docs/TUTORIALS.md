@@ -10,7 +10,7 @@ Siguiente componente o Volver al circuito registra el tutorial consultado. Escap
 
 ## Guía visual
 
-Todos los tutoriales muestran la misma guía pixel art con halo de compuertas lógicas. Cinco poses transparentes se asignan de forma estable en `src/data/tutorialGuide.js`:
+Todos los tutoriales muestran la misma guía pixel art con halo de compuertas lógicas. Cinco poses transparentes se asignan de forma estable en `src/features/learning/data/tutorialGuide.js`:
 
 | Componentes | Pose                   |
 | ----------- | ---------------------- |
@@ -20,7 +20,7 @@ Todos los tutoriales muestran la misma guía pixel art con halo de compuertas l�
 | NAND, NOR   | Pensativa              |
 | XOR, XNOR   | Celebración            |
 
-Los recursos de `src/assets/tutorial-guide/` usan WebP sin pérdida y conservan exactamente los píxeles RGBA de los PNG generados. Se corrigieron ambas manos de celebración a cinco dedos y la mano flexionada de la pose pensativa; el saludo conserva cinco dedos. Las vistas laterales no permiten contar dedos porque las manos quedan fuera del encuadre o parcialmente ocultas.
+Los recursos de `src/features/learning/assets/tutorial-guide/` usan WebP sin pérdida y conservan exactamente los píxeles RGBA de los PNG generados. Se corrigieron ambas manos de celebración a cinco dedos y la mano flexionada de la pose pensativa; el saludo conserva cinco dedos. Las vistas laterales no permiten contar dedos porque las manos quedan fuera del encuadre o parcialmente ocultas.
 
 La imagen es decorativa (`alt=""`, sin foco ni interacción). Mide 112 px en escritorio y 80 px hasta 600 px de ancho, con `object-fit: contain` y `image-rendering: pixelated`. No añade animaciones ni estados de guardado. Cada repaso conserva la misma pose y los recursos se publican con hashes mediante Vite.
 

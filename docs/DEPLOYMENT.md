@@ -22,9 +22,7 @@ dispositivos a la misma red y permite el puerto del servidor en el firewall.
 ## Producción local
 
 ```sh
-npm run lint
-npm run test
-npm run build
+npm run check
 npm run preview
 ```
 

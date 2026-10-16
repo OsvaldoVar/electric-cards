@@ -2,14 +2,16 @@
 
 ## Fuentes de contenido
 
-| Archivo                        | Contenido                                          |
-| ------------------------------ | -------------------------------------------------- |
-| `src/data/levels.js`           | Niveles combinacionales y colección de registros   |
-| `src/data/sequentialLevels.js` | Secuencias con reloj y memoria                     |
-| `src/data/stageLevels.js`      | Lecciones y retos añadidos al currículo            |
-| `src/data/stages.js`           | Orden pedagógico, acceso y crédito de cinco etapas |
-| `src/data/unlocks.js`          | Disponibilidad de componentes por etapa            |
-| `tests/fixtures/solutions.js`  | Soluciones independientes de referencia            |
+| Archivo                              | Contenido                                          |
+| ------------------------------------ | -------------------------------------------------- |
+| `src/data/levels.js`                 | Registro público, etapas y consulta por ID         |
+| `src/data/levels/sequential.js`      | Secuencias con reloj y memoria                     |
+| `src/data/levels/stageChallenges.js` | Lecciones y retos añadidos al currículo            |
+| `src/data/stages.js`                 | Orden pedagógico, acceso y crédito de cinco etapas |
+| `src/data/unlocks.js`                | Disponibilidad de componentes por etapa            |
+| `tests/fixtures/solutions.js`        | Soluciones independientes de referencia            |
+
+Los registros combinacionales se definen en `src/data/levels/combinational.js`. `src/data/levels/createLevel.js` genera sus entradas, salidas y casos completos con el motor; `levels.js` reúne el catálogo y aplica el currículo.
 
 Hay 40 lecciones y cinco retos. Los IDs 1–35 son estables; las lecciones nuevas son 36, 37 y 39–41, y los retos 38 y 42–45. El orden visible depende de `stages.js`, no de ordenar IDs.
 

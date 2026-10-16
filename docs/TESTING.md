@@ -6,10 +6,7 @@ Requiere Node.js 22.12+ y npm; se recomienda Node.js 24.
 
 ```sh
 npm ci
-npm run lint
-npm run format:check
-npm run test
-npm run build
+npm run check
 npx playwright install chromium
 npm run test:e2e
 ```
@@ -30,7 +27,22 @@ Playwright comprueba la build de producción. CI ejecuta lint, formato, pruebas 
 
 Las regresiones existentes usan una fixture de jugador que ya consultó los tutoriales. La suite dedicada `tutorials.spec.js` usa contextos nuevos sin esa fixture y comprueba el flujo real de primera aparición, incluidos saltos de etapa. Los controles y reglas del juego se prueban sin reemplazar su implementación.
 
-## Registro vigente — sprites de tutoriales — 2026-10-08
+## Registro vigente — estructura modular — 2026-10-15
+
+Refactorización basada en main `c2b7c1d76407ad2db552a44c1e93057be81635a5`. Entorno: Node.js 24.19.0 y npm 11.9.0. Los contratos del motor, IDs de niveles, rutas públicas y formato del guardado v1 se conservan.
+
+| Comprobación             | Resultado                                                                                                                          |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run check`          | Aprobado: ESLint, Prettier, Vitest y compilación de producción                                                                     |
+| Vitest / Testing Library | 104 pruebas aprobadas en 12 archivos, reubicados bajo `tests/unit/`                                                                |
+| Límites de módulos       | Cuatro comprobaciones negativas confirmaron el rechazo de imports prohibidos en motor, estado, compartidos y entre funcionalidades |
+| Playwright completo      | 127 pruebas aprobadas y una omisión intencional del caso táctil en el proyecto de escritorio                                       |
+
+Las reglas de dependencias se comprobaron mediante la API de ESLint sin agregar archivos de prueba artificiales al proyecto. Los recursos trasladados conservan sus blobs originales. Los cambios de ubicación de pruebas no alteran los escenarios existentes. En la repetición final se produjo un 404 transitorio al recargar el mapa mientras se regeneraba `dist/`; la traza confirmó la respuesta HTTP y el mismo caso aprobó al repetirlo con la build estable, sin cambiar código ni expectativas. Se comprobaron recorridos completos, persistencia, memoria, inventario, navegación, tutoriales, cables y layouts entre 360 y 1920 px, incluidos 360×800, 768×1024, 1366×768 y 1920×1080.
+
+El CDN de Playwright entregó un ZIP inválido. La comprobación local utiliza Chromium 153 de una instalación temporal de `@sparticuz/chromium` fuera del repositorio, mediante `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. La instalación temporal y los binarios no forman parte del proyecto ni cambian sus dependencias. Safari/iOS físico y Firefox permanecen sin verificar.
+
+## Verificación anterior — sprites de tutoriales — 2026-10-08
 
 Verificado sobre main `82c49c5f1d03f1d701631919aaf221c51e6b8e3b` con esta integración, Node.js 24.19.0 y npm 11.9.0.
 

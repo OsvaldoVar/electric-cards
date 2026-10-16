@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: Boolean(process.env.CI),
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
+  workers: process.env.CI ? 2 : 4,
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
     baseURL: 'http://127.0.0.1:4173',
@@ -25,7 +25,7 @@ export default defineConfig({
     { name: 'touch', use: { ...devices['Pixel 7'], viewport: { width: 360, height: 800 } } },
   ],
   webServer: {
-    command: 'npm run preview -- --port 4173 --strictPort',
+    command: 'npm run preview -- --host 127.0.0.1 --port 4173 --strictPort',
     url: 'http://127.0.0.1:4173',
     reuseExistingServer: !process.env.CI,
   },

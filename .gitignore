@@ -8,3 +8,6 @@ test-results/
 !.env.example
 .DS_Store
 *.local
+
+# Local design-tool output; previous reviews are archived under docs/history.
+.impeccable/

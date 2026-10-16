@@ -29,7 +29,15 @@ Use Node.js 22.12+ or 24. Dependencies and lockfile must stay synchronized.
 - Circuit nodes use `input`, `gate`, `output` types; edges name both handles.
 - Gate metadata belongs in `src/data/gates.js`; levels in `src/data/levels.js`.
 - Levels are data, never individual React components.
-- Keep pure functions, small components and explicit error codes.
+- Organize routes and shell in `src/app/`; feature UI in `src/features/`.
+- Keep Context, reducer and persistence in `src/state/`; reusable UI/hooks and
+  pure helpers in `src/shared/`. State must not import feature components.
+- Use feature `index.js` exports across features. App may lazy-load route pages
+  directly. ESLint enforces dependency boundaries; do not disable them to move code.
+- `src/data/levels.js` remains the public registry. Author content in
+  `src/data/levels/` and preserve stable IDs and pedagogical order.
+- Keep the CSS cascade in `src/styles/index.css`; feature-specific styles belong
+  beside the feature. Keep pure functions, small components and explicit error codes.
 
 ## Circuit constraints
 
@@ -73,11 +81,11 @@ actual verification in docs/TESTING.md and keep historical records separate.
 Run before completing a phase:
 
 ```sh
-npm run lint
-npm run test
-npm run build
+npm run check
 ```
 
+`check` runs lint, formatting, unit tests and build. Unit tests live under
+`tests/unit/`; browser tests under `tests/e2e/`. Read `CONTRIBUTING.md`.
 Run `npm run test:e2e` after interaction changes. Unit tests must cover all gate
 truth tables, fan-out, multi-output evaluation, missing ports, invalid signals,
 cycle detection, every reference level solution, inventory constraints,
