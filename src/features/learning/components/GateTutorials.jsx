@@ -51,15 +51,21 @@ export function GateTutorials({ level }) {
         {gate && (
           <>
             <div className="tutorial-introduction">
-              <img
-                className="tutorial-guide"
-                src={tutorialGuide[id]}
-                alt=""
-                aria-hidden="true"
-                width="112"
-                height="112"
-                decoding="async"
-              />
+              <picture>
+                <source
+                  media="(prefers-reduced-motion: reduce)"
+                  srcSet={tutorialGuide.still}
+                />
+                <img
+                  className="tutorial-guide"
+                  src={tutorialGuide.animated}
+                  alt=""
+                  aria-hidden="true"
+                  width="112"
+                  height="112"
+                  decoding="async"
+                />
+              </picture>
               <div>
                 <p className="muted small">
                   {replay ? 'Repaso' : 'Nuevo componente'} · Nivel {level.id}

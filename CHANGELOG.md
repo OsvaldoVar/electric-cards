@@ -1,5 +1,13 @@
 # Registro de cambios
 
+## 2026-10-30
+
+### Actualizado
+
+- Nuevo personaje en los diez mini tutoriales con el GIF y PNG originales del usuario.
+- Retrato estático cuando está activada la preferencia de movimiento reducido.
+- Retiradas las cinco poses WebP del modelo anterior; tamaños y simuladores conservados.
+
 ## 2026-10-15
 
 ### Reorganizado

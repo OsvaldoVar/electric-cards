@@ -247,7 +247,7 @@ Probar circuito recorre combinaciones y muestra resultados sin alterar filas est
 
 ### Motion and accessibility
 
-Cambios de color y borde usan 120ms `ease-out`; presión usa 80ms. No añadir animaciones continuas ni suavizar el arrastre. El teclado elimina animaciones y transiciones CSS. Movimiento reducido elimina esas transiciones y el desplazamiento de presión. Foco visible, botones nativos, etiquetas, blancos táctiles y navegación por teclado forman parte del diseño.
+Cambios de color y borde usan 120ms `ease-out`; presión usa 80ms. El guía de los mini tutoriales utiliza el GIF original solicitado por el usuario, con PNG estático para movimiento reducido. No añadir otras animaciones continuas ni suavizar el arrastre. El teclado elimina animaciones y transiciones CSS. Movimiento reducido elimina esas transiciones y el desplazamiento de presión. Foco visible, botones nativos, etiquetas, blancos táctiles y navegación por teclado forman parte del diseño.
 
 ## Do's and Don'ts
 
@@ -263,7 +263,7 @@ Cambios de color y borde usan 120ms `ease-out`; presión usa 80ms. No añadir an
 ### Don't:
 
 - **Don't** añadir gradientes, transparencias de cristal, desenfoque o sombras difusas.
-- **Don't** añadir paisajes o escenas decorativas. Los componentes mantienen símbolos técnicos; por petición del usuario, los mini tutoriales incorporan una única guía pixel art en cinco poses, descrita en `docs/TUTORIALS.md`.
+- **Don't** añadir paisajes o escenas decorativas. Los componentes mantienen símbolos técnicos; por petición del usuario, los mini tutoriales incorporan una única guía pixel art animada con alternativa estática, descrita en `docs/TUTORIALS.md`.
 - **Don't** depender solo del color, del hover o de un gesto preciso para operar el editor.
 - **Don't** recortar los puertos o el foco al implementar esquinas escalonadas.
 - **Don't** cambiar motor, niveles, IDs, inventario, rutas ni guardado para resolver una decisión visual.

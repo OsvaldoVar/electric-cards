@@ -18,7 +18,7 @@ La colección y sus fichas muestran expresión, explicación, ejemplo, símbolo,
 
 ## Mini tutoriales
 
-Cada componente nuevo del inventario utilizable abre un tutorial dentro del nivel. Si hay varios, se presentan de uno en uno. La ficha incluye explicación, expresión, ejemplo, tabla y simulador interactivo. Escape o continuar registra la lectura; Mini tutoriales de este nivel permite repaso. El diálogo se limita al viewport y desplaza su contenido sin cambiar la geometría del tablero. La cabecera añade una guía pixel art decorativa con pose estable por componente, 112 px en escritorio y 80 px en móvil. Véase [TUTORIALS.md](TUTORIALS.md).
+Cada componente nuevo del inventario utilizable abre un tutorial dentro del nivel. Si hay varios, se presentan de uno en uno. La ficha incluye explicación, expresión, ejemplo, tabla y simulador interactivo. Escape o continuar registra la lectura; Mini tutoriales de este nivel permite repaso. El diálogo se limita al viewport y desplaza su contenido sin cambiar la geometría del tablero. La cabecera añade una guía pixel art decorativa animada y con retrato estático para movimiento reducido, 112 px en escritorio y 80 px en móvil. Véase [TUTORIALS.md](TUTORIALS.md).
 
 ## Disposición del editor
 
