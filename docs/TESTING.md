@@ -27,7 +27,17 @@ Playwright comprueba la build de producción. CI ejecuta lint, formato, pruebas 
 
 Las regresiones existentes usan una fixture de jugador que ya consultó los tutoriales. La suite dedicada `tutorials.spec.js` usa contextos nuevos sin esa fixture y comprueba el flujo real de primera aparición, incluidos saltos de etapa. Los controles y reglas del juego se prueban sin reemplazar su implementación.
 
-## Registro vigente — estructura modular — 2026-10-15
+## Registro vigente — nuevo guía de tutoriales — 2026-10-30
+
+- `npm run check`: aprobado; ESLint, Prettier, 104 pruebas unitarias y build de producción.
+- Suite `tests/e2e/tutorials.spec.js`: 18 pruebas aprobadas en escritorio y touch, incluida la carga de imágenes en los diez componentes, repaso, simuladores y layouts a 360×800, 768×1024, 1366×768 y 1920×1080.
+- Comprobación en Chromium de `picture`: GIF de 368 px en modo normal y PNG de 512 px al activar movimiento reducido.
+- Capturas de escritorio y móvil inspeccionadas: el nuevo retrato conserva el espacio de cabecera y no tapa el simulador.
+- GIF y PNG copiados sin modificar sus bytes; el GIF conserva seis fotogramas y transparencia. Los cinco WebP anteriores se retiran.
+
+El CDN de Playwright entregó un ZIP inválido. Las pruebas utilizaron Chromium 153 de una instalación temporal de `@sparticuz/chromium` fuera del proyecto mediante `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`. No se cambian dependencias ni lockfile. La suite completa de otros módulos, Safari/iOS físico y Firefox no se ejecutaron para este cambio visual.
+
+## Verificación anterior — estructura modular — 2026-10-15
 
 Refactorización basada en main `c2b7c1d76407ad2db552a44c1e93057be81635a5`. Entorno: Node.js 24.19.0 y npm 11.9.0. Los contratos del motor, IDs de niveles, rutas públicas y formato del guardado v1 se conservan.
 
