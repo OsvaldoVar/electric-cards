@@ -27,7 +27,13 @@ Playwright comprueba la build de producción. CI ejecuta lint, formato, pruebas 
 
 Las regresiones existentes usan una fixture de jugador que ya consultó los tutoriales. La suite dedicada `tutorials.spec.js` usa contextos nuevos sin esa fixture y comprueba el flujo real de primera aparición, incluidos saltos de etapa. Los controles y reglas del juego se prueban sin reemplazar su implementación.
 
-## Registro vigente — nuevo guía de tutoriales — 2026-10-30
+## Registro vigente — compatibilidad del runner de CI — 2026-10-30
+
+El workflow fija `runs-on: ubuntu-24.04`. `ubuntu-latest` seleccionó Ubuntu 26.04 y Playwright 1.58.2 detuvo la instalación de Chromium por sistema no compatible, después de aprobar lint, formato, las 104 pruebas unitarias y la build. Se conservan la instalación con `--with-deps` y la suite completa de navegador; no se omiten comprobaciones ni se actualizan dependencias.
+
+La ejecución remota del PR de corrección es la comprobación del runner y de la instalación real de Chromium. Consultar su resultado en GitHub Actions; este registro no anticipa un resultado aprobado.
+
+## Verificación anterior — nuevo guía de tutoriales — 2026-10-30
 
 - `npm run check`: aprobado; ESLint, Prettier, 104 pruebas unitarias y build de producción.
 - Suite `tests/e2e/tutorials.spec.js`: 18 pruebas aprobadas en escritorio y touch, incluida la carga de imágenes en los diez componentes, repaso, simuladores y layouts a 360×800, 768×1024, 1366×768 y 1920×1080.
