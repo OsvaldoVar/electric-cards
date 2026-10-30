@@ -4,6 +4,8 @@
 
 ### Actualizado
 
+- CI fija Ubuntu 24.04 para instalar Chromium con Playwright 1.58.2 y evitar la incompatibilidad de Ubuntu 26.04.
+
 - Nuevo personaje en los diez mini tutoriales con el GIF y PNG originales del usuario.
 - Retrato estático cuando está activada la preferencia de movimiento reducido.
 - Retiradas las cinco poses WebP del modelo anterior; tamaños y simuladores conservados.
