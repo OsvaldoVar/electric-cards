@@ -1,6 +1,6 @@
-import { evaluateCircuit } from './evaluateCircuit';
 import { validateCircuit } from './validateCircuit';
-import { initialSimulation, stepSequentialCircuit } from './sequential';
+import { evaluatePreparedCircuit, prepareCircuit } from './prepareCircuit';
+import { initialSimulation, stepPreparedCircuit } from './sequential';
 
 export function validateLevel(level, circuit, options = {}) {
   const gateCount = Array.isArray(circuit?.nodes)
@@ -19,6 +19,7 @@ export function validateLevel(level, circuit, options = {}) {
       canOptimize: false,
     };
   }
+  const plan = prepareCircuit(circuit, validation.order);
   let simulation = initialSimulation();
   let scenario;
   const cases = level.tests.map(
@@ -29,8 +30,8 @@ export function validateLevel(level, circuit, options = {}) {
       }
       const result =
         level.kind === 'sequential'
-          ? stepSequentialCircuit(circuit, inputs, simulation, { clock })
-          : evaluateCircuit(circuit, inputs);
+          ? stepPreparedCircuit(plan, inputs, simulation, { clock })
+          : evaluatePreparedCircuit(plan, inputs);
       if (result.simulation) simulation = result.simulation;
       const received = result.outputs ?? {};
       const passed =

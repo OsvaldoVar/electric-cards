@@ -37,6 +37,7 @@ npm run format
 npm run check
 npx playwright install chromium
 npm run test:e2e
+npm run test:portable
 ```
 
 `check` combina ESLint, Prettier, Vitest y build. Ejecuta Playwright después de cambios de interfaz o interacción y sobre una build actualizada. Para trabajar sobre una prueba concreta:
@@ -46,7 +47,7 @@ npm run test -- tests/unit/engine/levels.test.js
 npm run test:e2e -- tests/e2e/tutorials.spec.js
 ```
 
-Vite y Vitest tienen configuraciones separadas. Playwright sirve la build en `127.0.0.1:4173` y ejecuta proyectos de escritorio y touch. El formato general se define en `.editorconfig` y `.prettierrc.json`; `.gitattributes` normaliza finales de línea sin alterar recursos binarios.
+Vite y Vitest tienen configuraciones separadas. Playwright sirve la build web en `127.0.0.1:4173` y ejecuta proyectos de escritorio y touch. La configuración `playwright.portable.config.js` comprueba exclusivamente `tests/portable/`: copia un solo HTML a una carpeta independiente, lo abre por `file://` sin servidor y desactiva la red. Ejecuta `npm run test:portable` para generar y comprobar esa salida; sus contratos se documentan en [PORTABLE.md](docs/PORTABLE.md). El formato general se define en `.editorconfig` y `.prettierrc.json`; `.gitattributes` normaliza finales de línea sin alterar recursos binarios.
 
 ## Compatibilidad y revisión
 

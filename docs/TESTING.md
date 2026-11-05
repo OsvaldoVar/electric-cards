@@ -9,9 +9,15 @@ npm ci
 npm run check
 npx playwright install chromium
 npm run test:e2e
+npm run test:portable
 ```
 
 Playwright comprueba la build de producción. CI ejecuta lint, formato, pruebas unitarias, build y navegador en pushes a main y pull requests. Consulta [GitHub Actions](https://github.com/OsvaldoVar/electric-cards/actions) para el resultado remoto; los resultados locales no lo sustituyen.
+
+La suite portátil usa `playwright.portable.config.js` y `tests/portable/`, sin
+servidor. `npm run test:portable` genera el archivo antes de abrir una copia aislada
+por `file://` con la red desactivada. CI reutiliza la salida ya generada por `check`
+y ejecuta esa configuración directamente después de las pruebas web.
 
 ## Cobertura
 
@@ -27,7 +33,77 @@ Playwright comprueba la build de producción. CI ejecuta lint, formato, pruebas 
 
 Las regresiones existentes usan una fixture de jugador que ya consultó los tutoriales. La suite dedicada `tutorials.spec.js` usa contextos nuevos sin esa fixture y comprueba el flujo real de primera aparición, incluidos saltos de etapa. Los controles y reglas del juego se prueban sin reemplazar su implementación.
 
-## Registro vigente — compatibilidad del runner de CI — 2026-10-30
+## Verificación vigente — optimización y HTML portátil — 2026-11-05
+
+Comprobaciones locales de la integración:
+
+- `npm run check`: aprobado; ESLint, Prettier, 111 pruebas unitarias en 14
+  archivos y compilaciones web y portátil.
+- `npm run test:e2e`: 127 pruebas aprobadas y una omisión intencional del
+  escenario exclusivamente táctil en el proyecto de escritorio.
+- `npx playwright test --config playwright.portable.config.js`: 18 pruebas
+  aprobadas, nueve en escritorio y nueve con touch emulado. Dieciséis casos
+  copian solo el HTML a una carpeta aislada y lo renombran con espacios antes
+  de abrirlo con la red desactivada, sin servidor ni recursos externos. Dos
+  casos adicionales interceptan la respuesta de un documento HTTP y comprueban
+  navegación, recarga y simulador desde una ruta con nombre de archivo; no
+  necesitan un servidor real ni acceso de red.
+- Los casos portátiles comprueban un nivel completo y sus cables mediante ratón
+  y taps, persistencia tras recarga, tutorial y fuentes cargados, navegación e
+  historial, foco del enlace de salto, tema, simuladores CLOCK/DFF/TFF, retrato
+  de movimiento reducido y juego utilizable cuando falla el guardado.
+- Las dos suites cubren 360×800, 768×1024, 1366×768 y 1920×1080 sin
+  desbordamiento horizontal. La suite web añade otros tamaños y orientación.
+- Regresiones del motor: equivalencia en los 45 circuitos de referencia y un
+  solo análisis estructural durante los 512 pasos del nivel 45, en lugar de 1025. La prueba contó el comportamiento anterior antes de la optimización.
+- `npm audit`: cero vulnerabilidades en el árbol completo.
+
+La primera pasada portátil detectó cuatro fallos en las nuevas pruebas: dos
+localizadores suponían un elemento `output` inexistente en el simulador
+combinacional y dos preparaciones de estado eran sobrescritas por el flush
+`pagehide`. Se corrigieron los localizadores conforme al marcado real y la
+preparación mediante `addInitScript`; no se alteró el juego para satisfacer esas
+expectativas erróneas.
+
+La revisión independiente encontró que la selección por protocolo fallaba al
+servir el HTML portátil desde una URL HTTP con nombre de archivo: la prueba
+negativa mostró la pantalla de ruta no encontrada. La build portátil ahora fija
+el router hash con `import.meta.env.VITE_PORTABLE`; la edición web conserva el
+router habitual. La regresión de HTTP y la suite completa aprueban después del
+cambio. La build final usa una sustitución explícita del `import.meta` genérico
+para su salida IIFE y ya no emite los avisos `EMPTY_IMPORT_META` de los helpers
+inlineados; no se desactivan globalmente los avisos del compilador.
+
+La comprobación local usa Chromium en Linux, tanto escritorio como touch
+emulado. No verifica equipos Windows/macOS, Firefox, Safari/iOS ni móviles
+físicos; abrir archivos HTML en móviles depende además del gestor de archivos.
+No se ejecutó CI remoto, despliegue, commit ni push para esta entrega.
+
+### Línea base y prueba negativa de la edición portátil
+
+Entorno local: Node.js 24.22.2, npm 11.19.1 y Chrome for Testing 145.0.7632.6,
+revisión 1208 de Playwright. Se usa `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` porque
+el ejecutable de Chromium ya está disponible, pero la descarga adicional de
+`chromium_headless_shell` se interrumpió en el CDN. No se cambian las dependencias
+para resolver esta limitación del entorno.
+
+Antes de los cambios de producción, `npm run check` aprobó lint, formato, las
+104 pruebas unitarias y la build web. La suite web completa aprobó 127 casos con
+una omisión intencional del escenario touch en escritorio.
+
+La nueva prueba `one copied HTML` se ejecutó primero contra `dist/index.html`,
+copiado sin sus recursos (`PORTABLE_HTML=dist/index.html`). Falló como se esperaba:
+no apareció la portada y se detectaron 13 intentos/fallos de carga de JS, CSS,
+icono, inicializador de tema y fuente externos. Esto confirma que copiar solo el
+HTML de la build web no produce una aplicación portátil.
+
+La instalación inicial informó seis avisos de auditoría en herramientas de
+desarrollo. `npm audit fix`, sin `--force` ni saltos de versión mayor, actualizó
+17 paquetes y retiró uno; el lockfile fija Vite 8.3.6 y Vitest 5.1.0. La
+comprobación posterior `npm audit` informa cero vulnerabilidades en el árbol
+completo, no solo en dependencias de ejecución.
+
+## Verificación anterior — compatibilidad del runner de CI — 2026-10-30
 
 El workflow fija `runs-on: ubuntu-24.04`. `ubuntu-latest` seleccionó Ubuntu 26.04 y Playwright 1.58.2 detuvo la instalación de Chromium por sistema no compatible, después de aprobar lint, formato, las 104 pruebas unitarias y la build. Se conservan la instalación con `--with-deps` y la suite completa de navegador; no se omiten comprobaciones ni se actualizan dependencias.
 

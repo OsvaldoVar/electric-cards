@@ -13,6 +13,8 @@
 - Pruebas automatizadas, CI y configuración de SPA para Vercel.
 - Estructura por funcionalidades, límites de dependencias en ESLint y comando único de verificación.
 - Contenido, geometría del editor y pruebas organizados por responsabilidad.
+- Edición portátil autocontenida en un único HTML, adicional a la build web.
+- Motor con plan de evaluación local reutilizado durante la validación exhaustiva, sin reanalizar el grafo en cada caso.
 
 ## Pendientes
 

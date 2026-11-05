@@ -30,6 +30,26 @@ La build genera `dist/`. El comando preview permite comprobar esta build;
 no es un servidor de producción permanente. El servidor de publicación debe
 devolver `index.html` para rutas de la aplicación que no sean archivos.
 
+## Un archivo para compartir sin servidor
+
+```sh
+npm run build:portable
+npm run test:portable
+```
+
+Entrega `dist-portable/Electric-Cards.html`. Es independiente de `dist/` y se abre
+con doble clic en el navegador, sin conexión y sin Node.js. No necesitas servirlo
+con preview ni publicar un sitio. Las rutas usan hash para permitir la recarga de
+pantallas locales. Fuentes, imágenes, estilos, JavaScript y licencias van dentro.
+
+El guardado local no forma parte del archivo y las restricciones de `file://`
+dependen del navegador. Consulta [PORTABLE.md](PORTABLE.md) para instrucciones de
+uso y [TESTING.md](TESTING.md) para la compatibilidad realmente comprobada.
+
+CI ejecuta las pruebas web y portátiles y conserva `Electric-Cards-portable` como
+artefacto descargable durante 14 días cuando la ejecución aprueba. Los cambios
+locales no activan CI hasta que se publiquen en el repositorio.
+
 ## Vercel
 
 1. En Vercel, importa `OsvaldoVar/electric-cards` desde la cuenta autorizada de
