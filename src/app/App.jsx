@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { GameProvider } from '../state/GameProvider';
+import { AppRouter } from './AppRouter';
 import { Layout } from './layout/Layout';
 
 const Home = lazy(() => import('../features/home/pages/Home'));
@@ -13,7 +14,7 @@ const NotFound = lazy(() => import('../shared/ui/NotFound'));
 export default function App() {
   return (
     <GameProvider>
-      <BrowserRouter>
+      <AppRouter>
         <Suspense
           fallback={
             <div className="loading-screen" role="status">
@@ -32,7 +33,7 @@ export default function App() {
             </Route>
           </Routes>
         </Suspense>
-      </BrowserRouter>
+      </AppRouter>
     </GameProvider>
   );
 }

@@ -1,5 +1,22 @@
 # Registro de cambios
 
+## 2026-11-05
+
+### Añadido
+
+- Edición portátil en un único `Electric-Cards.html` con JavaScript, estilos, fuentes, imágenes y licencias incrustados, sin servidor ni conexión.
+- Compilación portátil independiente de la edición web y navegación por hash para abrir y recargar pantallas desde archivos locales.
+- Pruebas de navegador sobre una copia aislada y renombrada del HTML, con red desactivada; cobertura de circuito completo, guardado, simuladores, tema, recursos y cuatro tamaños de pantalla.
+- Guía de uso y distribución offline, límites del guardado local y artefacto portátil en CI.
+
+### Optimizado y modularizado
+
+- Preparación e indexación del circuito separadas de la evaluación de señales en un módulo puro del motor.
+- Validación exhaustiva con un solo análisis estructural por nivel, reutilizado en todos los casos y pasos secuenciales; el nivel 45 pasa de 1025 análisis repetidos a uno.
+- Muestreo secuencial con acceso indexado a cables, sin búsquedas lineales por puerto ni pérdida de simultaneidad de los registros.
+- Evaluadores públicos conservan la validación defensiva y los códigos de error; añadidas pruebas de equivalencia de los 45 circuitos y del número de validaciones.
+- Actualizado el lockfile con versiones compatibles de herramientas y dependencias transitivas para resolver los seis avisos de auditoría, sin actualizaciones mayores forzadas.
+
 ## 2026-10-30
 
 ### Actualizado

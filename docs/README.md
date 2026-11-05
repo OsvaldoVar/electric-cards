@@ -15,6 +15,7 @@ Documentación vigente del juego educativo de lógica digital. La interfaz está
 | Mantener interacción y diseño         | [Interfaz](UI.md) y [sistema visual](../DESIGN.md) |
 | Ejecutar pruebas y consultar límites  | [Verificación](TESTING.md)                         |
 | Preparar una publicación              | [Despliegue](DEPLOYMENT.md)                        |
+| Compartir un único HTML sin conexión  | [Edición portátil](PORTABLE.md)                    |
 | Consultar pendientes                  | [Hoja de ruta](ROADMAP.md)                         |
 | Consultar cambios entregados          | [Registro de cambios](../CHANGELOG.md)             |
 

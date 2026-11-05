@@ -32,7 +32,11 @@ El trazado se divide en `services/wireRouting.js` como coordinador y `services/r
 
 `styles/index.css` define la entrada y el orden de cascada. Tokens, bases, temas y ajustes compartidos permanecen en `styles/`; los estilos propios de puzzle, progresión y tutoriales están junto a su funcionalidad. Se importan en el orden establecido para conservar la presentación.
 
-`vite.config.js` configura la aplicación; `vitest.config.js` comparte el plugin de React y define exclusivamente `tests/unit/`. Playwright conserva `tests/e2e/`; las soluciones de referencia permanecen en `tests/fixtures/`. `npm run check` reúne lint, formato, pruebas unitarias y build. [CONTRIBUTING.md](../CONTRIBUTING.md) describe el flujo de trabajo.
+`vite.config.js` configura la aplicación web; `vitest.config.js` comparte el plugin de React y define exclusivamente `tests/unit/`. Playwright conserva `tests/e2e/`; las soluciones de referencia permanecen en `tests/fixtures/`. `npm run check` reúne lint, formato, pruebas unitarias y ambas builds. [CONTRIBUTING.md](../CONTRIBUTING.md) describe el flujo de trabajo.
+
+La salida portátil usa `vite.portable.config.js` y módulos de empaquetado en `scripts/portable/`. Genera `dist-portable/Electric-Cards.html` sin chunks ni recursos externos de ejecución. Es una distribución del mismo código modular, no una segunda implementación del juego. `AppRouter` y `routerMode.js` separan la selección del router de las páginas: la build web conserva rutas normales y la portátil usa rutas hash compatibles con `file://`. El enlace Saltar al contenido enfoca el contenido sin reemplazar el hash de navegación. Las licencias de recursos distribuidos quedan dentro del archivo.
+
+`playwright.portable.config.js` ejecuta `tests/portable/` sin servidor, sobre una copia aislada y renombrada del HTML con la red desactivada. CI comprueba ambas ediciones y adjunta el HTML como artefacto. Contrato de distribución y límites de persistencia en [PORTABLE.md](PORTABLE.md).
 
 ## Contrato de circuito
 
@@ -52,6 +56,10 @@ El trazado se divide en `services/wireRouting.js` como coordinador y `services/r
 Destinos booleanos: `a`/`b`, NOT solo `a`. Memoria: `d`/`clk` o `t`/`clk`. Terminal de salida: `in`. Fuente: `out`. IDs estables; posiciones y rutas de cables no afectan a la evaluación.
 
 `evaluateCircuit` devuelve `{ valid: true, outputs, nodeValues }` o errores estructurados. La vista parcial usa `null` para señales desconocidas. `validateLevel` devuelve éxito, casos, errores, número de compuertas y consejo de optimización. Errores estructurales detienen la evaluación; un circuito válido recorre todos los casos. Ordenación topológica O(nodos + cables).
+
+`prepareCircuit.js` separa la preparación estructural de la evaluación de señales: recibe el orden ya validado e indexa nodos, cables y entradas. `evaluatePreparedCircuit` reutiliza ese plan durante la evaluación exhaustiva. `validateLevel` valida estructura, inventario y terminales una sola vez y prepara un plan local para todos los casos; no vuelve a ordenar el mismo grafo en cada paso. El plan no se guarda ni se mantiene en una caché global. Las entradas públicas `evaluateCircuit` y `stepSequentialCircuit` conservan la validación defensiva de circuitos y señales; solo las rutas internas del motor usan el plan preparado.
+
+`stepPreparedCircuit` comparte el plan entre las evaluaciones anterior y posterior al flanco, consulta los cables por índice y conserva la toma simultánea de muestras desde los Q anteriores. Las comprobaciones de señales y relojes siguen ejecutándose por caso. Una regresión exige una sola validación estructural en el nivel 45, aunque recorra sus 512 pasos; las pruebas de equivalencia cubren los 45 circuitos de referencia.
 
 ## Estado y persistencia
 

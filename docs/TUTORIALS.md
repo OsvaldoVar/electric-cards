@@ -12,7 +12,7 @@ Siguiente componente o Volver al circuito registra el tutorial consultado. Escap
 
 Los diez tutoriales muestran el nuevo personaje pixel art proporcionado por el usuario. `src/features/learning/data/tutorialGuide.js` importa el GIF animado `guide-animated.gif` y el retrato PNG `guide-still.png` desde `src/features/learning/assets/tutorial-guide/`. Sustituyen las cinco poses del modelo anterior.
 
-Un elemento `picture` selecciona el PNG cuando el navegador indica `prefers-reduced-motion: reduce`; en los demás casos muestra el GIF original, conservando sus seis fotogramas, tiempos y transparencia. Ambos archivos se conservan sin modificaciones y Vite publica sus URLs con hash.
+Un elemento `picture` selecciona el PNG cuando el navegador indica `prefers-reduced-motion: reduce`; en los demás casos muestra el GIF original, conservando sus seis fotogramas, tiempos y transparencia. Ambos archivos se conservan sin modificaciones. La edición web publica sus URLs con hash; la edición portátil los incrusta como URLs de datos dentro del único HTML, manteniendo la selección por movimiento reducido y sin descargas externas.
 
 La imagen es decorativa (`alt=""`, sin foco ni interacción). Mide 112 px en escritorio y 80 px hasta 600 px de ancho, con `object-fit: contain` y `image-rendering: pixelated`. La cabecera mantiene su tamaño al cargar cualquiera de los recursos. El cambio no añade estados de guardado.
 

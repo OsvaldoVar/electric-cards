@@ -1,12 +1,29 @@
 import { Outlet, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Navbar } from './Navbar';
 import { useGame } from '../../state/useGame';
+import { usesHashRouting } from '../routerMode';
 
 export function Layout() {
   const { storageAvailable } = useGame();
   const { pathname } = useLocation();
+  const mainContentRef = useRef(null);
   const puzzleRoute = pathname.startsWith('/puzzle/');
+  const handleSkipLink = (event) => {
+    if (!usesHashRouting) return;
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+    event.preventDefault();
+    mainContentRef.current?.focus();
+  };
   useEffect(() => {
     const root = document.documentElement;
     const onPointer = () => {
@@ -35,7 +52,7 @@ export function Layout() {
   }, [pathname]);
   return (
     <div className={`app-shell${puzzleRoute ? ' puzzle-shell' : ''}`}>
-      <a className="skip-link" href="#main-content">
+      <a className="skip-link" href="#main-content" onClick={handleSkipLink}>
         Saltar al contenido
       </a>
       <Navbar />
@@ -45,7 +62,7 @@ export function Layout() {
           cerrar.
         </p>
       )}
-      <div id="main-content">
+      <div id="main-content" ref={mainContentRef} tabIndex={usesHashRouting ? -1 : undefined}>
         <Outlet />
       </div>
       {!puzzleRoute && (

@@ -14,6 +14,33 @@ Juego educativo de lógica digital para PC, tablet y celular. Construye circuito
 
 No requiere cuenta ni backend. El progreso pertenece al navegador y no se sincroniza entre dispositivos.
 
+## Compartir y jugar sin instalar nada
+
+La edición portátil es **un solo archivo `Electric-Cards.html`**. Envíalo por correo,
+USB o mensajería: quien lo reciba debe descargarlo y abrirlo con su navegador, no con
+la vista previa del correo. No necesita Node.js, servidor, cuenta ni conexión a Internet.
+
+Funciona como aplicación web local en navegadores modernos de Windows, Linux y macOS.
+No es un `.exe` específico de un sistema operativo. En móviles, la apertura de HTML
+local depende del navegador y del gestor de archivos; para esos dispositivos también
+se conserva la publicación web habitual.
+
+Para generar el archivo desde el código:
+
+```sh
+npm ci
+npm run build:portable
+```
+
+Comparte **`dist-portable/Electric-Cards.html`**, sin carpetas adicionales. Incluye
+código, estilos, fuentes, ilustraciones y licencias. El progreso se guarda en el
+navegador, **no dentro del HTML**: enviar o mover el archivo no transfiere las partidas,
+y algunos navegadores restringen el guardado de archivos locales. El juego sigue
+funcionando aunque no se permita guardar y muestra el aviso correspondiente.
+
+Consulta [la guía de la edición portátil](docs/PORTABLE.md) para comprobaciones,
+compatibilidad y diferencias respecto de la edición web.
+
 ## Inicio rápido
 
 Requiere Node.js 22.12 o posterior; se recomienda Node.js 24 y npm. El repositorio privado requiere acceso autorizado.
